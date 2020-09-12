@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>XProto Python API &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>XProto Python API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/xsdk/common/xproto/python_api/package/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="xproto-python-api">
+<h1>XProto Python API<a class="headerlink" href="#xproto-python-api" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>XProto Python API 为XProto框架功能在Python的封装, 通过它可以方便快速地定义运行智能应用.</p>
+<div class="section" id="id2">
+<h3>插件, 消息, 总线<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>XProto Python API 中利用 VioPlugin, SmartPlugin 两个插件分别实现获取输入数据和运行工作流的功能. 目前 XProto Python API 支持同步同步、异步两个模式. 同步模式下输入数据将被直接传递给SmartPlugin. 异步模式下, XProto 使用总线来管理各 plugin 和它们产生的数据.
+![XProto组件示意图]](docs/xproto.png “XProto组件示意图”)</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>前提<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>XProto Python API 需要和 XStream Python API 配合使用. 您需要了解如何定义工作流.</p>
+</div>
+<div class="section" id="id4">
+<h2>使用<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id5">
+<h3>同步模式<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>同步模式下, 您可以直接从 VioPlugin 获取输入数据，供 SmartPlugin 使用:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xstream</span>
+<span class="kn">import</span> <span class="nn">xproto</span>
+
+<span class="c1"># 创建VioPlugin, SmartPlugin</span>
+<span class="n">vio</span> <span class="o">=</span> <span class="n">xproto</span><span class="o">.</span><span class="n">VioPlugin</span><span class="p">(</span><span class="s2">&quot;96board&quot;</span><span class="p">)</span>
+<span class="c1"># workflow, callback是您定义的工作流和回调函数</span>
+<span class="n">smart</span> <span class="o">=</span> <span class="n">xproto</span><span class="o">.</span><span class="n">SmartPlugin</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+<span class="c1"># 以同步模式启动Vioplugin</span>
+<span class="n">vio</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">sync_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">t_end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="k">while</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">t_end</span><span class="p">:</span>
+    <span class="c1"># 获取输入</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">vio</span><span class="o">.</span><span class="n">get_image</span><span class="p">()</span>
+    <span class="c1"># 传递给SmartPlugin使用</span>
+    <span class="n">smart</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">vio</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">smart</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>同步模式下进行回灌时, 您需要根据回灌图片数来控制对 get_image() 接口的调用.</p>
+</div>
+<div class="section" id="id6">
+<h3>异步模式<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>异步模式下, 各插件产生的消息由总线管理. 您需要创建插件并指定它们的连接关系, 之后启动它们.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xstream</span>
+<span class="kn">import</span> <span class="nn">xproto</span>
+
+<span class="c1"># 创建插件</span>
+<span class="n">vio</span> <span class="o">=</span> <span class="n">xproto</span><span class="o">.</span><span class="n">VioPlugin</span><span class="p">(</span><span class="s2">&quot;96board&quot;</span><span class="p">)</span>
+<span class="n">smart</span> <span class="o">=</span> <span class="n">xproto</span><span class="o">.</span><span class="n">SmartPlugin</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+<span class="c1"># SmartPlugin监听VioPlugin产生的消息</span>
+<span class="n">smart</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">vio</span><span class="o">.</span><span class="n">get_message_type</span><span class="p">())</span>
+<span class="c1"># 启动Plugins, 默认为异步模式</span>
+<span class="n">vio</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">smart</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+ 
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">vio</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">smart</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="xproto">
+<h2>xproto包接口介绍<a class="headerlink" href="#xproto" title="永久链接至标题">¶</a></h2>
+<div class="section" id="vioplugin">
+<h3>VioPlugin类<a class="headerlink" href="#vioplugin" title="永久链接至标题">¶</a></h3>
+<div class="section" id="init-platform-data-source-panel-camera-cam-type-mono-kwargs">
+<h4>__init__(<em><code class="docutils literal notranslate"><span class="pre">platform</span></code></em>, <em><code class="docutils literal notranslate"><span class="pre">data_source</span></code></em>=<code class="docutils literal notranslate"><span class="pre">&quot;panel_camera&quot;</span></code>, <em><code class="docutils literal notranslate"><span class="pre">cam_type</span></code></em>=<code class="docutils literal notranslate"><span class="pre">&quot;mono&quot;</span></code>, <em><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code></em>)<a class="headerlink" href="#init-platform-data-source-panel-camera-cam-type-mono-kwargs" title="永久链接至标题">¶</a></h4>
+<p>创建一个 VioPlugin 对象</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">platform</span></code> : 使用的硬件平台, 目前支持<code class="docutils literal notranslate"><span class="pre">96Board</span></code>, <code class="docutils literal notranslate"><span class="pre">2610</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_source</span></code> : 输入数据源, 默认为<code class="docutils literal notranslate"><span class="pre">panel_camera</span></code>. 目前支持<code class="docutils literal notranslate"><span class="pre">panel_camera</span></code>, <code class="docutils literal notranslate"><span class="pre">jpeg_image_list</span></code>, <code class="docutils literal notranslate"><span class="pre">nv12_image_list</span></code>, <code class="docutils literal notranslate"><span class="pre">cached_image_list</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cam_type</span></code> : 使用的sensor类型, 默认为<code class="docutils literal notranslate"><span class="pre">mono</span></code>. 目前支持<code class="docutils literal notranslate"><span class="pre">mono</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> : 回灌模式下通过<code class="docutils literal notranslate"><span class="pre">name_list</span></code>或<code class="docutils literal notranslate"><span class="pre">image_list</span></code>关键字回灌图片列表/文件.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>VioPlugin对象.</p></li>
+</ul>
+</div>
+<div class="section" id="start-sync-mode-false">
+<h4>start(<em><code class="docutils literal notranslate"><span class="pre">sync_mode</span></code></em>=<code class="docutils literal notranslate"><span class="pre">False</span></code>)<a class="headerlink" href="#start-sync-mode-false" title="永久链接至标题">¶</a></h4>
+<p>启动VioPlugin.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sync_mode</span></code> : 是否为同步模式, 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>无.</p></li>
+</ul>
+</div>
+<div class="section" id="stop">
+<h4>stop()<a class="headerlink" href="#stop" title="永久链接至标题">¶</a></h4>
+<p>停在VioPlugin.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p>无.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>无.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="bind-msg-type-msg-cb-none">
+<h3>bind(<em><code class="docutils literal notranslate"><span class="pre">msg_type</span></code></em>, <em><code class="docutils literal notranslate"><span class="pre">msg_cb</span></code></em>=<code class="docutils literal notranslate"><span class="pre">None</span></code>)<a class="headerlink" href="#bind-msg-type-msg-cb-none" title="永久链接至标题">¶</a></h3>
+<p>绑定需要监听的消息.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p>msg_type : 消息类型.</p></li>
+<li><p>msg_cb ：对应的回调函数.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>无.</p></li>
+</ul>
+<div class="section" id="message-type">
+<h4>message_type()<a class="headerlink" href="#message-type" title="永久链接至标题">¶</a></h4>
+<p>返回 VioPlugin 所产生的消息的类型.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p>无.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>字符串列表 : VioPlugin 所产生的消息的类型.</p></li>
+</ul>
+</div>
+<div class="section" id="get-image">
+<h4>get_image()<a class="headerlink" href="#get-image" title="永久链接至标题">¶</a></h4>
+<p>同步模式下获取输入数据.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p>无.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>字典 : key: 工作流输入名字, value: 输入数据.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="smartplugin">
+<h3>SmartPlugin类<a class="headerlink" href="#smartplugin" title="永久链接至标题">¶</a></h3>
+<div class="section" id="init-workflow-callback-serialize-push-result-false">
+<h4>__init__(<em><code class="docutils literal notranslate"><span class="pre">workflow</span></code></em>, <em><code class="docutils literal notranslate"><span class="pre">callback</span></code></em>, <em><code class="docutils literal notranslate"><span class="pre">serialize</span></code></em>, <em><code class="docutils literal notranslate"><span class="pre">push_result</span></code></em>=<code class="docutils literal notranslate"><span class="pre">False</span></code>)<a class="headerlink" href="#init-workflow-callback-serialize-push-result-false" title="永久链接至标题">¶</a></h4>
+<p>创建一个 SmartPlugin 对象.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">workflow</span></code> : 定义工作流的函数.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">callback</span></code> : 工作流回调函数.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">serialize</span></code> : 智能数据序列化函数.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">push_result</span></code> : 是否推送智能数据到总线. 默认为<code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>SmartPlugin 对象</p></li>
+</ul>
+</div>
+<div class="section" id="start">
+<h4>start()<a class="headerlink" href="#start" title="永久链接至标题">¶</a></h4>
+<p>启动 SmartPlugin. 异步模式下需要显式调用.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p>无</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>无.</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h4>stop()<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
+<p>停在 SmartPlugin.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p>无</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>无.</p></li>
+</ul>
+</div>
+<div class="section" id="bind">
+<h4>bind()<a class="headerlink" href="#bind" title="永久链接至标题">¶</a></h4>
+<p>绑定需要监听的消息.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p>msg_type : 消息类型.</p></li>
+<li><p>msg_cb ：对应的回调函数.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>无.</p></li>
+</ul>
+</div>
+<div class="section" id="feed-inputs">
+<h4>feed(<em><code class="docutils literal notranslate"><span class="pre">inputs</span></code></em>)<a class="headerlink" href="#feed-inputs" title="永久链接至标题">¶</a></h4>
+<p>同步模式下接收输入数据.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p>inputs : 字典. key: 工作流输入数据名, value: 输入数据</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>无.</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h4>message_type()<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+<p>返回 SmartPlugin 所产生的消息的类型.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p>无.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>字符串列表 : SmartPlugin 所产生的消息的类型.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

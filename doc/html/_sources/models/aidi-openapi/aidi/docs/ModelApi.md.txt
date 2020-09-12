@@ -1,0 +1,234 @@
+# aidi.ModelApi
+
+All URIs are relative to *http://aidi.hobot.cc/api*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**append_gpu_model**](ModelApi.md#append_gpu_model) | **POST** /model/v1/gpumodelappend | Add GPU model version for existed GPU model dir.
+[**create_gpu_model**](ModelApi.md#create_gpu_model) | **POST** /model/v1/gpumodel | Create GPU model dir.
+[**get_gpu_model**](ModelApi.md#get_gpu_model) | **GET** /model/v1/gpumodel/0 | Get GPU model information.
+[**publish_gpu_model**](ModelApi.md#publish_gpu_model) | **PUT** /model/v1/gpumodelpublish | Publish GPU model to several published model list dir.
+
+
+# **append_gpu_model**
+> APIResult append_gpu_model(body=body)
+
+Add GPU model version for existed GPU model dir.
+
+This will append a version for existed gpu model dir.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.ModelApi(aidi.ApiClient(configuration))
+body = aidi.CreateGPUModelVersionReq() # CreateGPUModelVersionReq |  (optional)
+
+try:
+    # Add GPU model version for existed GPU model dir.
+    api_response = api_instance.append_gpu_model(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ModelApi->append_gpu_model: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateGPUModelVersionReq**](CreateGPUModelVersionReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_gpu_model**
+> APIResult create_gpu_model(body=body)
+
+Create GPU model dir.
+
+This will create a gpu model dir and it's initial version.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.ModelApi(aidi.ApiClient(configuration))
+body = aidi.CreateGPUModelReq() # CreateGPUModelReq |  (optional)
+
+try:
+    # Create GPU model dir.
+    api_response = api_instance.create_gpu_model(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ModelApi->create_gpu_model: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateGPUModelReq**](CreateGPUModelReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_gpu_model**
+> APIResult get_gpu_model(name, version, current=current, page_size=page_size)
+
+Get GPU model information.
+
+This will return all information of the specific gpu model.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.ModelApi(aidi.ApiClient(configuration))
+name = 'name_example' # str | gpu model's name
+version = 'version_example' # str | gpu model's version, if not set, return the lateset version
+current = 1 # int | relate gpu model current page (optional) (default to 1)
+page_size = 1 # int | relate gpu model page size (optional) (default to 1)
+
+try:
+    # Get GPU model information.
+    api_response = api_instance.get_gpu_model(name, version, current=current, page_size=page_size)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ModelApi->get_gpu_model: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| gpu model&#39;s name | 
+ **version** | **str**| gpu model&#39;s version, if not set, return the lateset version | 
+ **current** | **int**| relate gpu model current page | [optional] [default to 1]
+ **page_size** | **int**| relate gpu model page size | [optional] [default to 1]
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **publish_gpu_model**
+> APIResult publish_gpu_model(body=body)
+
+Publish GPU model to several published model list dir.
+
+This will publish the specific gpu model to serveral published model list dir.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.ModelApi(aidi.ApiClient(configuration))
+body = aidi.PublishGPUModelReq() # PublishGPUModelReq |  (optional)
+
+try:
+    # Publish GPU model to several published model list dir.
+    api_response = api_instance.publish_gpu_model(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ModelApi->publish_gpu_model: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**PublishGPUModelReq**](PublishGPUModelReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

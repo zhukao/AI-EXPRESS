@@ -1,0 +1,6 @@
+vio & cam & cnn_intf: 20200416 debug
+libhbrt_bernoulli_aarch64.so: 3.7.10
+
+vio & cam & bpu_predict: 20200423
+libhbrt_bernoulli_aarch64.so: 3.7.10
+

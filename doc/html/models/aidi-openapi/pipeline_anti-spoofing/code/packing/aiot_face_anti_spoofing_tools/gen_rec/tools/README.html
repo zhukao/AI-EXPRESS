@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>活体检测小工具 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../../../" src="../../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../../_static/language_data.js"></script>
+        <script src="../../../../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>活体检测小工具</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../../../_sources/models/aidi-openapi/pipeline_anti-spoofing/code/packing/aiot_face_anti_spoofing_tools/gen_rec/tools/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>活体检测小工具<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="seg-video-by-time-py">
+<h2><code class="docutils literal notranslate"><span class="pre">seg_video_by_time.py</span></code><a class="headerlink" href="#seg-video-by-time-py" title="永久链接至标题">¶</a></h2>
+<p>将整段视频按照既定的时间段单独切分成独立的视频。主要是将含有多个ID的视频分为每个ID一个小段的视频。</p>
+</div>
+<div class="section" id="extract-frames-py">
+<h2><code class="docutils literal notranslate"><span class="pre">extract_frames.py</span></code><a class="headerlink" href="#extract-frames-py" title="永久链接至标题">¶</a></h2>
+<p>抽帧工具。可以按照想要的帧率进行抽帧，同时可以检查当前视频是否已经完成抽帧，如果完成，则直接跳过。</p>
+</div>
+<div class="section" id="select-face-py">
+<h2><code class="docutils literal notranslate"><span class="pre">select_face.py</span></code><a class="headerlink" href="#select-face-py" title="永久链接至标题">¶</a></h2>
+<p>人脸优选代码。</p>
+</div>
+<div class="section" id="select-images-py">
+<h2><code class="docutils literal notranslate"><span class="pre">select_images.py</span></code><a class="headerlink" href="#select-images-py" title="永久链接至标题">¶</a></h2>
+<p>根据帧数来选择图片，主要用于数据量非常大时减小数据量。</p>
+</div>
+<div class="section" id="gen-label-py">
+<h2><code class="docutils literal notranslate"><span class="pre">gen_label.py</span></code><a class="headerlink" href="#gen-label-py" title="永久链接至标题">¶</a></h2>
+<p>根据文件路径，将每张图片打上活体与假体的label。</p>
+</div>
+<div class="section" id="class-statistic-py">
+<h2><code class="docutils literal notranslate"><span class="pre">class_statistic.py</span></code><a class="headerlink" href="#class-statistic-py" title="永久链接至标题">¶</a></h2>
+<p>查看list中各个类别的数据分别有多少。</p>
+</div>
+<div class="section" id="cp-images-py">
+<h2><code class="docutils literal notranslate"><span class="pre">cp_images.py</span></code><a class="headerlink" href="#cp-images-py" title="永久链接至标题">¶</a></h2>
+<p>将抽帧出来的图像单独复制到一个目录下。原因：抽帧工具抽完的图片命名都是<code class="docutils literal notranslate"><span class="pre">00000000.jpg</span></code>，全部放到一个文件夹下时，会重名，所以有此工具。</p>
+</div>
+<div class="section" id="trans-img-to-1080-py">
+<h2><code class="docutils literal notranslate"><span class="pre">trans_img_to_1080.py</span></code><a class="headerlink" href="#trans-img-to-1080-py" title="永久链接至标题">¶</a></h2>
+<p>将人脸图贴到一张1080的图上并保存。</p>
+</div>
+<div class="section" id="trans-rgb-to-yuv444-or-gray-py">
+<h2><code class="docutils literal notranslate"><span class="pre">trans_rgb_to_yuv444_or_gray.py</span></code><a class="headerlink" href="#trans-rgb-to-yuv444-or-gray-py" title="永久链接至标题">¶</a></h2>
+<p>将图像转换成yuv444或者gray，方便工程进行回灌测试。
+给工程回灌测试的流程是:</p>
+<ul class="simple">
+<li><p>用<code class="docutils literal notranslate"><span class="pre">cp_images.py</span></code>将图片复制出来。</p></li>
+<li><p>用<code class="docutils literal notranslate"><span class="pre">trans_img_to_1080.py</span></code>将图像转换成1080p。</p></li>
+<li><p>用<code class="docutils literal notranslate"><span class="pre">trans_rgb_to_yuv444_or_gray.py</span></code>将1080p图像转换成工程回灌所用的图。</p></li>
+</ul>
+</div>
+<div class="section" id="get-image-size-py">
+<h2><code class="docutils literal notranslate"><span class="pre">get_image_size.py</span></code><a class="headerlink" href="#get-image-size-py" title="永久链接至标题">¶</a></h2>
+<p>不需要读图片即可得到图像的大小。</p>
+</div>
+<div class="section" id="parse-x1-results-py">
+<h2><code class="docutils literal notranslate"><span class="pre">parse_x1_results.py</span></code><a class="headerlink" href="#parse-x1-results-py" title="永久链接至标题">¶</a></h2>
+<p>工程端（鹏飞给的yuv每张图的框）输出的框解析出来对应到每张图像上。</p>
+</div>
+<div class="section" id="plot-rects-anti-spoofing-py">
+<h2><code class="docutils literal notranslate"><span class="pre">plot_rects_anti_spoofing.py</span></code><a class="headerlink" href="#plot-rects-anti-spoofing-py" title="永久链接至标题">¶</a></h2>
+<p>画活体检测的人脸框，并保存图片。</p>
+</div>
+<div class="section" id="select-somethion-py">
+<h2><code class="docutils literal notranslate"><span class="pre">select_somethion.py</span></code><a class="headerlink" href="#select-somethion-py" title="永久链接至标题">¶</a></h2>
+<p>自定义一个规则，将list中符合要求的留下。</p>
+</div>
+<div class="section" id="split-data-py">
+<h2><code class="docutils literal notranslate"><span class="pre">split_data.py</span></code><a class="headerlink" href="#split-data-py" title="永久链接至标题">¶</a></h2>
+<p>弃用。</p>
+</div>
+<div class="section" id="split-data2-py">
+<h2><code class="docutils literal notranslate"><span class="pre">split_data2.py</span></code><a class="headerlink" href="#split-data2-py" title="永久链接至标题">¶</a></h2>
+<p>弃用。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

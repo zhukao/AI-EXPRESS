@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>车路协同方案AP侧Sample &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>车路协同方案AP侧Sample</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/xsdk/solution_zoo/vehicle/ap_sample/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="apsample">
+<h1>车路协同方案AP侧Sample<a class="headerlink" href="#apsample" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>该Sample基于x2-ipc提供AP侧使用BT1120发送图像和hbipc bifspi通路数据数据的样例。
+程序启动后会向CP侧发送yuv图像并请求连接CP端。连接成功后开始接收数据并进行解析。</p>
+</div>
+<div class="section" id="id2">
+<h2>编译<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">build</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>打包<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">deploy</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>该脚本会在当前目录下创建deploy文件夹，其中包含运行时库和可执行程序。
+此外，还包含bif驱动及相关脚本。</p>
+</div>
+<div class="section" id="id4">
+<h2>运行<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>将部署包拷贝到板子上，即可运行。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sh</span> <span class="n">run</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>工具<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>部署包tools目录下提供了hbipc-utils工具。使用它可以进行AP-CP间的文件传输，或在AP侧运行命令在CP上。
+运行前需要先加载bif驱动</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span>
+    <span class="n">hbipc</span><span class="o">-</span><span class="n">utils</span> <span class="n">put</span> <span class="n">src_file</span><span class="p">(</span><span class="n">ap</span><span class="p">)</span> <span class="n">dest_file</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+    <span class="n">hbipc</span><span class="o">-</span><span class="n">utils</span> <span class="n">get</span> <span class="n">dest_file</span><span class="p">(</span><span class="n">ap</span><span class="p">)</span> <span class="n">src_file</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+    <span class="n">hbipc</span><span class="o">-</span><span class="n">utils</span> <span class="n">run</span> <span class="s2">&quot;command&quot;</span>
+<span class="n">default</span> <span class="n">use</span> <span class="n">bifspi</span><span class="p">,</span> <span class="n">append</span> <span class="s2">&quot;--bifsd&quot;</span> <span class="n">to</span> <span class="n">use</span> <span class="n">bifsd</span> <span class="k">if</span> <span class="n">HW</span> <span class="n">support</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+# aidi.PublishedmodelApi
+
+All URIs are relative to *http://aidi.hobot.cc/api*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**append_published_model**](PublishedmodelApi.md#append_published_model) | **POST** /model/v1/publishedmodelappend | Add published model version for existed Published model dir.
+[**create_published_model**](PublishedmodelApi.md#create_published_model) | **POST** /model/v1/publishedmodel | Create Published model dir.
+[**get_published_model**](PublishedmodelApi.md#get_published_model) | **GET** /model/v1/publishedmodel/0 | Get Published model information.
+[**update_published_model_child**](PublishedmodelApi.md#update_published_model_child) | **PUT** /model/v1/publishedmodelchild | Add or Remove GPU model from Published model.
+
+
+# **append_published_model**
+> APIResult append_published_model(body=body)
+
+Add published model version for existed Published model dir.
+
+This will append a version for existed published model dir.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.PublishedmodelApi(aidi.ApiClient(configuration))
+body = aidi.CreatePublishedModelDirVersionReq() # CreatePublishedModelDirVersionReq |  (optional)
+
+try:
+    # Add published model version for existed Published model dir.
+    api_response = api_instance.append_published_model(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PublishedmodelApi->append_published_model: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreatePublishedModelDirVersionReq**](CreatePublishedModelDirVersionReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_published_model**
+> APIResult create_published_model(body=body)
+
+Create Published model dir.
+
+This will create a published model dir and it's initial version.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.PublishedmodelApi(aidi.ApiClient(configuration))
+body = aidi.CreatePublishedModelDirReq() # CreatePublishedModelDirReq |  (optional)
+
+try:
+    # Create Published model dir.
+    api_response = api_instance.create_published_model(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PublishedmodelApi->create_published_model: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreatePublishedModelDirReq**](CreatePublishedModelDirReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_published_model**
+> APIResult get_published_model(name, version, current=current, page_size=page_size)
+
+Get Published model information.
+
+This will return all information of the specific published model.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.PublishedmodelApi(aidi.ApiClient(configuration))
+name = 'name_example' # str | published model's name
+version = 'version_example' # str | published model's version, if not set, return the lateset version
+current = 1 # int | current page (optional) (default to 1)
+page_size = 1 # int | page size (optional) (default to 1)
+
+try:
+    # Get Published model information.
+    api_response = api_instance.get_published_model(name, version, current=current, page_size=page_size)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PublishedmodelApi->get_published_model: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| published model&#39;s name | 
+ **version** | **str**| published model&#39;s version, if not set, return the lateset version | 
+ **current** | **int**| current page | [optional] [default to 1]
+ **page_size** | **int**| page size | [optional] [default to 1]
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_published_model_child**
+> APIResult update_published_model_child(body=body)
+
+Add or Remove GPU model from Published model.
+
+This will add or remove gpu model from specific publish model.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.PublishedmodelApi(aidi.ApiClient(configuration))
+body = aidi.UpdatePublishedModelDirChildReq() # UpdatePublishedModelDirChildReq |  (optional)
+
+try:
+    # Add or Remove GPU model from Published model.
+    api_response = api_instance.update_published_model_child(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PublishedmodelApi->update_published_model_child: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdatePublishedModelDirChildReq**](UpdatePublishedModelDirChildReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

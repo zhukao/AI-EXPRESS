@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pybind11 — Seamless operability between C++11 and Python &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>pybind11 — Seamless operability between C++11 and Python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/common/pybind11/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p><img alt="pybind11 logo" src="https://github.com/pybind/pybind11/raw/master/docs/pybind11-logo.png" /></p>
+<div class="section" id="pybind11-seamless-operability-between-c-11-and-python">
+<h1>pybind11 — Seamless operability between C++11 and Python<a class="headerlink" href="#pybind11-seamless-operability-between-c-11-and-python" title="永久链接至标题">¶</a></h1>
+<p><a class="reference external" href="http://pybind11.readthedocs.org/en/master/?badge=master"><img alt="Documentation Status" src="https://readthedocs.org/projects/pybind11/badge/?version=master" /></a>
+<a class="reference external" href="http://pybind11.readthedocs.org/en/stable/?badge=stable"><img alt="Documentation Status" src="https://readthedocs.org/projects/pybind11/badge/?version=stable" /></a>
+<a class="reference external" href="https://gitter.im/pybind/Lobby"><img alt="Gitter chat" src="https://img.shields.io/gitter/room/gitterHQ/gitter.svg" /></a>
+<a class="reference external" href="https://travis-ci.org/pybind/pybind11"><img alt="Build Status" src="https://travis-ci.org/pybind/pybind11.svg?branch=master" /></a>
+<a class="reference external" href="https://ci.appveyor.com/project/wjakob/pybind11"><img alt="Build status" src="https://ci.appveyor.com/api/projects/status/riaj54pn4h08xy40?svg=true" /></a></p>
+<p><strong>pybind11</strong> is a lightweight header-only library that exposes C++ types in Python
+and vice versa, mainly to create Python bindings of existing C++ code. Its
+goals and syntax are similar to the excellent
+<a class="reference external" href="http://www.boost.org/doc/libs/1_58_0/libs/python/doc/">Boost.Python</a> library
+by David Abrahams: to minimize boilerplate code in traditional extension
+modules by inferring type information using compile-time introspection.</p>
+<p>The main issue with Boost.Python—and the reason for creating such a similar
+project—is Boost. Boost is an enormously large and complex suite of utility
+libraries that works with almost every C++ compiler in existence. This
+compatibility has its cost: arcane template tricks and workarounds are
+necessary to support the oldest and buggiest of compiler specimens. Now that
+C++11-compatible compilers are widely available, this heavy machinery has
+become an excessively large and unnecessary dependency.</p>
+<p>Think of this library as a tiny self-contained version of Boost.Python with
+everything stripped away that isn’t relevant for binding generation. Without
+comments, the core header files only require ~4K lines of code and depend on
+Python (2.7 or 3.x, or PyPy2.7 &gt;= 5.7) and the C++ standard library. This
+compact implementation was possible thanks to some of the new C++11 language
+features (specifically: tuples, lambda functions and variadic templates). Since
+its creation, this library has grown beyond Boost.Python in many ways, leading
+to dramatically simpler binding code in many common situations.</p>
+<p>Tutorial and reference documentation is provided at
+<a class="reference external" href="http://pybind11.readthedocs.org/en/master">http://pybind11.readthedocs.org/en/master</a>.
+A PDF version of the manual is available
+<a class="reference external" href="https://media.readthedocs.org/pdf/pybind11/master/pybind11.pdf">here</a>.</p>
+<div class="section" id="core-features">
+<h2>Core features<a class="headerlink" href="#core-features" title="永久链接至标题">¶</a></h2>
+<p>pybind11 can map the following core C++ features to Python</p>
+<ul class="simple">
+<li><p>Functions accepting and returning custom data structures per value, reference, or pointer</p></li>
+<li><p>Instance methods and static methods</p></li>
+<li><p>Overloaded functions</p></li>
+<li><p>Instance attributes and static attributes</p></li>
+<li><p>Arbitrary exception types</p></li>
+<li><p>Enumerations</p></li>
+<li><p>Callbacks</p></li>
+<li><p>Iterators and ranges</p></li>
+<li><p>Custom operators</p></li>
+<li><p>Single and multiple inheritance</p></li>
+<li><p>STL data structures</p></li>
+<li><p>Smart pointers with reference counting like <code class="docutils literal notranslate"><span class="pre">std::shared_ptr</span></code></p></li>
+<li><p>Internal references with correct reference counting</p></li>
+<li><p>C++ classes with virtual (and pure virtual) methods can be extended in Python</p></li>
+</ul>
+</div>
+<div class="section" id="goodies">
+<h2>Goodies<a class="headerlink" href="#goodies" title="永久链接至标题">¶</a></h2>
+<p>In addition to the core functionality, pybind11 provides some extra goodies:</p>
+<ul class="simple">
+<li><p>Python 2.7, 3.x, and PyPy (PyPy2.7 &gt;= 5.7) are supported with an
+implementation-agnostic interface.</p></li>
+<li><p>It is possible to bind C++11 lambda functions with captured variables. The
+lambda capture data is stored inside the resulting Python function object.</p></li>
+<li><p>pybind11 uses C++11 move constructors and move assignment operators whenever
+possible to efficiently transfer custom data types.</p></li>
+<li><p>It’s easy to expose the internal storage of custom data types through
+Pythons’ buffer protocols. This is handy e.g. for fast conversion between
+C++ matrix classes like Eigen and NumPy without expensive copy operations.</p></li>
+<li><p>pybind11 can automatically vectorize functions so that they are transparently
+applied to all entries of one or more NumPy array arguments.</p></li>
+<li><p>Python’s slice-based access and assignment operations can be supported with
+just a few lines of code.</p></li>
+<li><p>Everything is contained in just a few header files; there is no need to link
+against any additional libraries.</p></li>
+<li><p>Binaries are generally smaller by a factor of at least 2 compared to
+equivalent bindings generated by Boost.Python. A recent pybind11 conversion
+of PyRosetta, an enormous Boost.Python binding project,
+<a class="reference external" href="http://graylab.jhu.edu/RosettaCon2016/PyRosetta-4.pdf">reported</a> a binary
+size reduction of <strong>5.4x</strong> and compile time reduction by <strong>5.8x</strong>.</p></li>
+<li><p>Function signatures are precomputed at compile time (using <code class="docutils literal notranslate"><span class="pre">constexpr</span></code>),
+leading to smaller binaries.</p></li>
+<li><p>With little extra effort, C++ types can be pickled and unpickled similar to
+regular Python objects.</p></li>
+</ul>
+</div>
+<div class="section" id="supported-compilers">
+<h2>Supported compilers<a class="headerlink" href="#supported-compilers" title="永久链接至标题">¶</a></h2>
+<ol class="simple">
+<li><p>Clang/LLVM 3.3 or newer (for Apple Xcode’s clang, this is 5.0.0 or newer)</p></li>
+<li><p>GCC 4.8 or newer</p></li>
+<li><p>Microsoft Visual Studio 2015 Update 3 or newer</p></li>
+<li><p>Intel C++ compiler 17 or newer (16 with pybind11 v2.0 and 15 with pybind11 v2.0 and a <a class="reference external" href="https://github.com/pybind/pybind11/issues/276">workaround</a>)</p></li>
+<li><p>Cygwin/GCC (tested on 2.5.1)</p></li>
+</ol>
+</div>
+<div class="section" id="about">
+<h2>About<a class="headerlink" href="#about" title="永久链接至标题">¶</a></h2>
+<p>This project was created by <a class="reference external" href="http://rgl.epfl.ch/people/wjakob">Wenzel Jakob</a>.
+Significant features and/or improvements to the code were contributed by
+Jonas Adler,
+Lori A. Burns,
+Sylvain Corlay,
+Trent Houliston,
+Axel Huebl,
+&#64;hulucc,
+Sergey Lyskov
+Johan Mabille,
+Tomasz Miąsko,
+Dean Moldovan,
+Ben Pritchard,
+Jason Rhinelander,
+Boris Schäling,
+Pim Schellart,
+Henry Schreiner,
+Ivan Smirnov, and
+Patrick Stewart.</p>
+<div class="section" id="license">
+<h3>License<a class="headerlink" href="#license" title="永久链接至标题">¶</a></h3>
+<p>pybind11 is provided under a BSD-style license that can be found in the
+<code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> file. By using, distributing, or contributing to this project,
+you agree to the terms and conditions of this license.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

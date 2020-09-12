@@ -1,0 +1,235 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python C++ interface &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Python C++ interface</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/common/pybind11/docs/advanced/pycpp/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-c-interface">
+<h1>Python C++ interface<a class="headerlink" href="#python-c-interface" title="永久链接至标题">¶</a></h1>
+<p>pybind11 exposes Python types and functions using thin C++ wrappers, which
+makes it possible to conveniently call Python code from C++ without resorting
+to Python’s C API.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="object.html">Python types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object.html#available-wrappers">Available wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object.html#casting-back-and-forth">Casting back and forth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object.html#accessing-python-libraries-from-c">Accessing Python libraries from C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object.html#calling-python-functions">Calling Python functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object.html#calling-python-methods">Calling Python methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object.html#keyword-arguments">Keyword arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object.html#unpacking-arguments">Unpacking arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#buffer-protocol">Buffer protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#arrays">Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#structured-types">Structured types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#vectorizing-functions">Vectorizing functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#direct-access">Direct access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#ellipsis">Ellipsis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html#using-python-s-print-function-in-c">Using Python’s print function in C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html#capturing-standard-output-from-ostream">Capturing standard output from ostream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html#evaluating-python-expressions-from-strings-and-files">Evaluating Python expressions from strings and files</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

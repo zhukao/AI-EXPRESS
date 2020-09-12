@@ -1,0 +1,11 @@
+{
+  "model_name" : "backBone",
+  "model_version": "0.0.0",
+  "in_msg_type" : "img",
+  "norm_method": "norm_by_nothing",
+  "model_file_path": "../../models/backBone.hbm",
+  "bpu_config_path": "../configs/bpu_config.json",
+  "post_fn" : "back_bone",
+  "max_handle_num": -1,
+  "output_size" : 1
+}

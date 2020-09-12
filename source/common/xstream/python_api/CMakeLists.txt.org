@@ -1,0 +1,47 @@
+cmake_minimum_required(VERSION 2.8.12)
+project(xstream_python_api)
+
+include_directories(
+    ${PROJECT_SOURCE_DIR}/include
+)
+
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -g")
+set(METHOD_WRAPPER_SRC ${PROJECT_SOURCE_DIR}/src/method)
+set(VISION_TYPE_WRAPPER_SRC ${PROJECT_SOURCE_DIR}/src/vision_type)
+
+# xstream python binding library
+pybind11_add_module(xstream_internal
+    ${PROJECT_SOURCE_DIR}/src/xstream.cpp
+)
+
+# method factory
+add_library(method_factory SHARED
+    ${PROJECT_SOURCE_DIR}/src/method_factory.cpp
+    ${METHOD_WRAPPER_SRC}/bbox_filter/b_box_filter.cc
+)
+
+# method factory dependency
+target_link_libraries(method_factory
+    # FasterRCNNMethod
+    # MOTMethod
+    # bpu_predict
+    # opencv_world
+    # ipc_tracking
+)
+
+target_link_libraries(xstream_internal PRIVATE
+    xstream-framework
+    method_factory
+    jsoncpp
+    hobotlog
+)
+
+# version type
+pybind11_add_module(vision_type
+    ${VISION_TYPE_WRAPPER_SRC}/vision_type.cpp
+    ${VISION_TYPE_WRAPPER_SRC}/bbox_type.cpp
+    #src/vision_type/image_frame.cpp
+)
+target_link_libraries(vision_type PRIVATE
+    xstream-framework
+)

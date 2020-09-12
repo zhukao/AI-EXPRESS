@@ -1,0 +1,8 @@
+# 版本说明  版本 2.2.2
+
+<h2>        任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-473'>XPPXROC-473</a>] -         车路协同功能支持
+</li>
+</ul>

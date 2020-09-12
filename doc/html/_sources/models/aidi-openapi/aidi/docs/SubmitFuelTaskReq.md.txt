@@ -1,0 +1,17 @@
+# SubmitFuelTaskReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**config** | [**CreateFuelTaskRequest**](CreateFuelTaskRequest.md) |  | 
+**is_trigger_jenkins** | **bool** | is a jenkins pipeline will be triggered in: body | [optional] 
+**jenkins_detail_url** | **str** | jenkins detail url in: body | [optional] 
+**jenkins_trigger_url** | **str** | generic jenkins webhook url to trigger in: body | [optional] 
+**name** | **str** | compilation task name in: body | [optional] 
+**published_model_name** | **str** | compilation task related publish model name in: body | [optional] 
+**published_model_version** | **str** | compilation task related publish model version in: body | [optional] 
+**version** | **str** | compilation task version in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

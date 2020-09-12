@@ -1,0 +1,9 @@
+Initialize HBCC Env
+PATH=/gpfs/plat_aidi/build/hbcc/v3.7.10/bin/:/usr/local/jdk/jdk1.8.0_241/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+LD_LIBRARY_PATH=:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/lib/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/lib32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/lib64/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/darwin/lib32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/darwin/lib64/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/m2/lib32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/m2/lib64/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/matrix/lib32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/matrix/libarm32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/x2/lib32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/x2/lib64/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/x2/libarch64/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/x2a/lib32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/x2a/lib64/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/x2a/libarch64/
+PYTHONPATH=/gpfs/plat_aidi/build/hbcc/v3.7.10/lib/python3.6/site-packages/:
+hbdk-cc --march bernoulli2 -m /gpfs/plat_aidi/model/1273/IntInference/model-absorb-bn-ft-hobot-predict-symbol.json -p /gpfs/plat_aidi/model/1273/IntInference/model-absorb-bn-ft-hobot-predict-0121.params -s 1x128x128x3 -i resizer --O2  -o faceAgeGender.hbm
+
+hbdk-pack /gpfs/plat_aidi/build/1149/so/faceAgeGender.hbm -o /gpfs/plat_aidi/build/1149/so/faceAgeGender.hbm --tag faceAgeGender_v0.0.1
+hbdk-perf /gpfs/plat_aidi/build/1149/so/faceAgeGender.hbm
+  FPS=2078.41   (see faceAgeGender.html)

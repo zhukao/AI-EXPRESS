@@ -1,0 +1,6 @@
+{
+    "type": "gender",
+    "gender": {
+      "max_slide_window_size": 7
+    }
+}

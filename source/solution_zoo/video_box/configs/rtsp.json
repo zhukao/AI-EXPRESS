@@ -1,0 +1,19 @@
+{
+  "channel_num": 4,
+  "channel0": {
+    "rtsp_link": "rtsp://admin:hobot123@10.96.35.66:554/0",
+    "tcp": 1
+  },
+  "channel1": {
+    "rtsp_link": "rtsp://admin:hobot123@10.96.35.199:554/0",
+    "tcp": 0
+  },
+  "channel2": {
+    "rtsp_link": "rtsp://admin:hobot123@10.96.35.66:554/0",
+    "tcp": 1
+  },
+  "channel3": {
+    "rtsp_link": "rtsp://admin:hobot123@10.96.35.66:554/0",
+    "tcp": 0
+  }
+}

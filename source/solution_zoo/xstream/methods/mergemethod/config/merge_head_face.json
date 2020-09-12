@@ -1,0 +1,6 @@
+{
+  "merge_type": "head_face",
+  "match_threshold": 0.4,
+  "filtered_box_state_type": 0,
+  "desp": "match_threshold 是IOU重合区域占比的阈值; filtered_box_state_type是输出的被过滤box的状态，0表示状态为FILTERED， 1表示状态为INVALID"
+}

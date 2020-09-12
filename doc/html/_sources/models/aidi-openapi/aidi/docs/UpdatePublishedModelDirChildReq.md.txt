@@ -1,0 +1,13 @@
+# UpdatePublishedModelDirChildReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **str** | published model&#39;s name in: body | 
+**new_models** | [**list[GPUModelItem]**](GPUModelItem.md) | added experimemt models in: body | [optional] 
+**remove_models** | [**list[GPUModelItem]**](GPUModelItem.md) | removed experimemt models in: body | [optional] 
+**version** | **str** | published model&#39;s version, if not set, it will use the lastest version in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

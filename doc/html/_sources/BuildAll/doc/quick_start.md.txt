@@ -1,0 +1,276 @@
+# 快速上手
+本文介绍如何完成AI Express开发环境的搭建，以及完成内置人脸识别参考方案Demo的运行。
+
+## 环境准备
+AI Express主要是面向地平线芯片的边缘应用开发，相关环境准备包括开发机器环境准备和开发板准备。
+
+**1. 开发环境准备**
+* 安装`cmake 3.15+`以上版本
+* 安装芯片交叉编译工具`gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu`,路径:`/opt/`
+
+备注：如需要更新升级交叉编译工具链，请修改根目录CMakeLists.txt中配置如下：
+* `set(CMAKE_C_COMPILER /opt/${工具链目录名}/bin/aarch64-linux-gnu-gcc)`
+* `set(CMAKE_CXX_COMPILER /opt/${工具链目录名}/bin/aarch64-linux-gnu-g++)`
+
+**2. 开发板准备**
+
+AI Express内置支持X2平台96board和2610面板机两种板卡，支持X3平台X3Dev开发板.板卡支持固件版本为：
+* 96board：disk_96board_CP_1.1.1_0929.img
+* 2610：disk_HSP2610V-Linux-101-V12.tar.xz
+* x3dev：disk_xj3_emmc20200613.img
+
+备注：同芯片平台版卡间区别主要影响了XProto::VIO数据输入模块,对XStream智能结构化模块无影响,参见`@todo如何适配多版卡`。
+
+## 软件包获取
+AI Express Github开源还在内部申请流程中，当前还是采用版本发布方式来向客户提供，请联系地平线商务或在地平线开发者社区进行留言申请。
+
+## 软件包解析
+AI Express软件发布包为一个`tar.gz`的压缩包，解压以后整个软件包结构如下：
+
+**1. 目录结构**
+```
+├── build.sh
+├── CMakeLists.txt
+├── deploy.sh
+├── deps
+│   ├── bpu_predict
+│   ├── gtest
+│   ├── hobot
+│   ├── hobotlog
+│   ├── ipc_tracking
+│   ├── jsoncpp
+│   ├── libjpeg-turbo
+│   ├── libyuv
+│   ├── live555
+│   ├── opencv
+│   ├── openssl
+│   ├── protobuf
+│   ├── uWS
+│   ├── x2_prebuilt
+│   ├── x3_prebuilt
+│   ├── xwarehouse
+│   └── zlib
+├── doc
+│   └── release_note
+├── models
+│   ├── x2
+│   └── x3
+├── python_api
+│   ├── xproto
+│   └── xstream
+├── README.md
+├── run.sh
+├── source
+│   ├── common
+│   │   ├── viowrapper
+│   │   ├── xproto
+│   │   │   ├── framework
+│   │   │   ├── msgtype
+│   │   │   ├── plugins
+│   │   │   └── python_api
+│   │   └── xstream
+│   │       ├── framework
+│   │       ├── imagetools
+│   │       ├── methods
+│   │       ├── python_api
+│   │       ├── tutorials
+│   │       └── vision_type
+│   │
+│   └── solution_zoo
+│        ├── body
+│        ├── face
+│        ├── face_body_multisource
+│        ├── README.md
+│        ├── tools
+│        └── xstream
+│            └── methods
+├── start_nginx.sh
+└── webservice
+```
+**2. deps (二进制形式)**
+* bpu_predict：内部库，地平线bpu预测驱动库，分为x2芯片版本和x3芯片版本;
+* gtest：第三方开源库，google test框架;
+* hobot：内部库，另一种基于数据流的编程框架hobotsdk;
+* hobotlog：内部库，日志系统，支持不同的优先级控制等特性;
+* ipc_tracking:内部库，基于IOU的多目标跟踪（MOT）策略库;
+* jsoncpp：第三方开源库，用于json解析;
+* libjpeg-turbo：第三方开源库，用于jpeg格式图像处理;
+* libyuv：第三方开源库，用于yuv格式图像处理;
+* live555：第三方开源库，用于H264码流传输;
+* opencv： 第三方开源库，主要用于计算机视觉处理;
+* openssl：第三方开源库，用于websocket通信;
+* protobuf： 第三方开源库，多平台或者多模块间消息交互协议;
+* uWS： 第三方开源库，websocket通信;
+* x2_prebuilt： 内部库，x2平台底层系统库或者hbrt基础库等;
+* x3_prebuilt： 内部库，x3平台底层系统库或者hbrt基础库等;
+* xwarehouse： 内部库，人脸特征比对底库管理模块;
+
+**3. source (源代码形式)**
+* common: 为整个基础框架和内置算法模块和功能组件。
+* common/xstream-framework: 一套基于数据流的编程框架;
+* common/xstream-imagetools: XStream提供的Image处理工具;
+* common/xstream-methods: 基于xstream-framework开发、沉淀的模型处理或者算法策略模块;
+* common/xstream-vision_type: vision type是AI视觉方案常用数据结构定义，如BBox， landmark、PyramidImage;
+* common/xproto_framework: 消息订阅与分发的编程框架，每个基础组件以插件（plugin）的形式管理;
+* common/xproto_msgtype: 定义了xproto基础消息类型;
+* common/xproto_plugins: 基于XProto框架开发、沉淀的一系列基础组件，如VIO处理模块（VioPlugin）、智能处理模块(SmartPlugin)等， 基础组件以插件的形式管理;
+* solutions: 基于地平线中间件构建的不同场景的解决方案池;
+* solutions/solution_example: solution开发的样例;
+* solutions/solution_face：人脸抓拍/识别解决方案案例;
+* solutions/solution_body：人体骨骼检测/人体行为分析/体感游戏解决方案案例;
+* solutions/solution_vehicle：车辆相关解决方案案例;
+* solutions/solution_face_body_multisource：AI盒子场景参考方案案例:
+
+**4. doc (html格式文档)**
+* doc/html/index.html html格式文档入口,请用浏览器打开。
+
+**5. models (x2和x3模型)**
+* faceMultitask: source/solution/face所用到的模型: 人脸多任务模型,可实现人脸检测,人脸抓拍,人脸识别等。
+* personMultitask: source/solution/body所用到的模型: 人体多任务模型。
+* vehicleSolutionModels: source/solution/vehicle所用到的模型:  车辆相关模型。
+* faceID: source/solution/face所用到的模型:  人脸特征提取模型。
+* fallDet: source/solution/body所用到的模型:  摔倒检测模型。
+* backBone: source/solution/body所用到的模型: 体感游戏行为分析模型。
+* ssd: source/solution/ssd_test所用到的模型: ssd检测示例模型。
+
+**6. README.md (Markdown格式README文档)**
+* 工程简要介绍README文档
+
+**7. build.sh (bash shell脚本文件)**
+* 执行 bash build.sh x2, 或者bash build.sh x3，可以编译整个开发环境。
+* 如果没有权限，请使用chmod +x ./build.sh赋予执行权限。
+* build.sh 默认使用bash执行，如果您的环境中bash不是默认shell, 请使用`sudo bash build.sh`执行脚本。
+
+**6. CMakeLists.txt (cmake文件)**
+* 整个工程使用cmake编译，请安装`cmake 3.7+`以上版本。
+* build.sh中会调用cmake根据CMakeLists.txt执行编译。
+
+## 编译部署
+AI Express发布包采用源码发布，编译主要是针对`${发布包}/source`目录的基础框架和内置的solutions进行编译。
+用户也可以参考`solutions/solution_example`实现方式，完成自定义solutionn开发与编译。  
+重要说明： X2 与X3 是有两个包，里面主要的区别是模型文件和bpu_predict预测库不同。对于两个包，分别需要使用 `bash build.sh x2` 与 `bash build.sh x3` 进行编译，不能交叉使用。
+
+1. **编译**：
+直接运行`bash build.sh x2/x3`，完成整个开发包的编译，编译后的中间结果输出在`${发布包}/build`目录下。
+2. **打包**：直接运行`sh deploy.sh`,针对编译后的内容进行打包发布，打包发布在`${发布包}/deploy`目录下。
+3. **部署**：将deploy发布包进行压缩，传递到开发板文件系统中，并进行解压完成部署。
+4. **运行**：deploy中run.sh可以在96board、2610板卡或者x3开发板上运行内置solution。
+`sh run.sh [ face | face_recog | body | xbox | behavior | vehicle | vision_type | imagetools | grading_method | face_body_multisource | ssd_test ] [96board | 2610 | x3dev ] [ imx327 | os8a10 | s5kgm | s5kgm_2160p]`   
+5. **客户端展示**：pc上打开浏览器，输入板子的ip地址，点击"web展示端"，可以浏览适配与智能结果。
+
+## 实例解析
+这里采用人脸抓拍实例进行实例解析。`deploy/face_solution`实现了一个标准的人脸抓拍任务流程。
+
+它支持对视频图片帧进行人脸框，人脸关键点，人脸姿态检测，并对检测到人进行跟踪，打分与抓拍，其中涉及到算法和策略模块包括`FasterRCNNMethod`,`MOTMethod`,`GradingMethod`和`SnapShotMethod`，对应的XStream关系图如下：
+
+![框架](./image/face_snapshot.png "")
+
+构建该solution的workflow配置文件`deploy/face_solution/configs/face_solution.json`内容如下：
+```json
+{
+    "inputs":[
+        "image"
+    ],
+    "outputs":[
+        "image",
+        "face_bbox_list",
+        "snap_list"
+    ],
+    "workflow":[
+        {
+            "thread_count":1,
+            "method_type":"FasterRCNNMethod",
+            "unique_name":"multi_task",
+            "inputs":[
+                "image"
+            ],
+            "outputs":[
+                "rgb_face_box",
+                "rgb_lmk",
+                "rgb_pose"
+            ],
+            "method_config_file":"face_pose_lmk.json"
+        },
+        {
+            "method_type":"MOTMethod",
+            "thread_count":1,
+            "unique_name":"face_mot",
+            "inputs":[
+                "rgb_face_box"
+            ],
+            "outputs":[
+                "face_bbox_list",
+                "rgb_face_disappeared_track_id_list"
+            ],
+            "method_config_file":"iou_method_param.json"
+        },
+        {
+            "method_type":"GradingMethod",
+            "unique_name":"grading",
+            "inputs":[
+                "face_bbox_list",
+                "rgb_pose",
+                "rgb_lmk"
+            ],
+            "outputs":[
+                "select_score_list"
+            ],
+            "method_config_file":"grading.json"
+        },
+        {
+            "method_type":"SnapShotMethod",
+            "unique_name":"snapshot",
+            "inputs":[
+                "image",
+                "face_bbox_list",
+                "select_score_list",
+                "rgb_face_disappeared_track_id_list",
+                "rgb_pose",
+                "rgb_lmk",
+                "face_bbox_list"
+            ],
+            "outputs":[
+                "snap_list"
+            ],
+            "method_config_file":"snapshot.json"
+        }
+    ]
+}
+
+```
+其中：
+* inputs: image表示整个workflow外部输入只有图片帧。
+* outputs: 表示整个workflow输出，输出原始图片帧，人脸结构化数据以及抓拍图。
+* workflow：通过复用XStream内部四个Method来构建上述数据流，每个Method可以指定input，output，thread_count，以及Method相关模型配置信息。
+
+对于上述由XStream构建的Workflow，可以通过XProto进行调用，并在芯片上进行运行，调用关键代码`deploy/face_solution/main.cpp`如下：
+
+```C++
+    auto vio_plg = std::make_shared<VioPlugin>(vio_config_file);
+    auto smart_plg = std::make_shared<SmartPlugin>(smart_config_file);
+    vio_plg->Init();
+    smart_plg->Init();
+    vio_plg->Start();
+    smart_plg->Start();
+```
+XProto::VioPlugin为芯片板卡视频流输入模块，通过Init/Start以后，会持续在XProto消息总线中注入视频图片帧数据，并被XProto::SmartPlugin消费和结构化处理，其中smart_config_file参数即为上述的workflow配置文件。
+
+在板卡上运行`sh run.sh face`，输出结果如下：
+```python
+root@X2_96BOARD:/userdata/deploy# sh run.sh face 96boards
+(xpluginasync.cpp:58): XPluginAsync() cons
+(xpluginasync.cpp:58): XPluginAsync() cons
+(smartplugin.cpp:184): smart config file:./face_solution/configs/face_solution.json
+....
+(convert.cpp:35): Input Frame ID = 0, Timestamp = 21291
+(convert.cpp:51): input name:image
+(convert.cpp:35): Input Frame ID = 1, Timestamp = 21292
+(convert.cpp:51): input name:image
+(convert.cpp:35): Input Frame ID = 2, Timestamp = 21293
+(convert.cpp:51): input name:image
+(vioproduce.cpp:423): Vio TimeStamp: 21294
+(vioproduce.cpp:466): Push Drop message!!!
+(MOTMethod.cpp:73): MOTMethod::DoProcess
+................................
+................开始处理图片帧数据
+```

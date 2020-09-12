@@ -1,0 +1,14 @@
+# SubEvalSetConfig
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**desc** | **str** | sub eval set&#39;s description in: body | [optional] 
+**gt_info** | [**DataspaceInfo**](DataspaceInfo.md) |  | 
+**images_info** | [**DataspaceInfo**](DataspaceInfo.md) |  | 
+**name** | **str** | sub eval set&#39;s name in: body | 
+**tags** | **list[str]** | tags of this sub eval set in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

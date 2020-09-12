@@ -1,0 +1,503 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title> &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/xsdk/common/xstream/framework/doc/xstream_config_json_v1.1.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>子workflow Json格式</p>
+</div>
+<div class="section" id="id2">
+<h1><a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h1>
+<p>配置文件以json格式表示。</p>
+<p>json中，{} 表示一个对象。</p>
+<p>在一个XStream配置文件中，有如下几种对象：</p>
+<ul class="simple">
+<li><p>Root</p></li>
+<li><p>Template</p></li>
+<li><p>TemplateRef</p></li>
+<li><p>Workflow</p></li>
+<li><p>Node</p></li>
+</ul>
+<div class="section" id="id3">
+<h2><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>Root对象</p>
+</div>
+<div class="section" id="id4">
+<h2><a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>基本格式如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;root&quot;,    // 表示Root对象
+	&quot;version&quot;: &quot;1.1&quot;,  // 表示配置版本
+	&quot;templates&quot;: [     // Template对象，可选
+	],
+	&quot;workflows&quot;: [     // Workflow对象
+	]
+}
+</pre></div>
+</div>
+<p>Root对象包含了：</p>
+<ul class="simple">
+<li><p>version：协议的版本；若配置包含子workflow，则version字段必需</p></li>
+<li><p>templates：定义的模板；</p></li>
+<li><p>workflows：定义的工作流；</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>Template对象</p>
+</div>
+<div class="section" id="id6">
+<h2><a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>Template对象用于模板功能。用户可以通过Template对象定义一些带参数的模板，然后通过TemplateRef对象引用这些模板，即可实例化对象。</p>
+<p>基本格式如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;template&quot;,           // 表示Template对象
+	&quot;template_name&quot;: &quot;XXXX&quot;,      // 模板名称，需唯一化
+	&quot;parameters&quot;: [               // 模板参数
+	],
+	&quot;template&quot;: {                 // 模板内容
+	}
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>template_name 字段表示该模板名称，是模板的唯一性标志；</p></li>
+<li><p>parameters 字段指明了这个template所需要的参数；</p></li>
+<li><p>template 字段是这个模板的内容；在模板内容中，${xxx}格式的字符串，表示parameters字段中所定义的参数，在实例化该模板时直接替换为参数内容。需要注意，在定义的模板中，若存在workflow输入输出name参数，只需在global inputs、outputs用${name}格式表示，模板其他位置直接用参数name表示。</p></li>
+</ul>
+<p>如下为例，定义了一个名为”cnn.tpl”的Template对象：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+	<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;template&quot;</span><span class="p">,</span>
+	<span class="s2">&quot;template_name&quot;</span><span class="p">:</span> <span class="s2">&quot;cnn.tpl&quot;</span><span class="p">,</span>
+	<span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+	    <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+	    <span class="s2">&quot;pre_method&quot;</span><span class="p">,</span>
+	    <span class="s2">&quot;post_method&quot;</span><span class="p">,</span>
+	    <span class="s2">&quot;inputs&quot;</span><span class="p">,</span>
+	    <span class="s2">&quot;outputs&quot;</span>
+	<span class="p">],</span>
+	<span class="s2">&quot;template&quot;</span><span class="p">:</span> <span class="p">{</span>
+	    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{name}</span><span class="s2">&quot;</span><span class="p">,</span>
+	    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;workflow&quot;</span><span class="p">,</span>
+	    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;$</span><span class="si">{inputs}</span><span class="s2">&quot;</span><span class="p">],</span>
+	    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;$</span><span class="si">{outputs}</span><span class="s2">]&quot;</span><span class="p">,</span>
+	    <span class="s2">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+	        <span class="p">{</span>
+	            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+	            <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{pre_method}</span><span class="s2">&quot;</span><span class="p">,</span>
+	            <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;pre&quot;</span><span class="p">,</span>
+	            <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;inputs&quot;</span><span class="p">],</span>
+	            <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+	                <span class="s2">&quot;pre_out0&quot;</span><span class="p">,</span>
+	                <span class="s2">&quot;pre_out1&quot;</span>
+	            <span class="p">]</span>
+	        <span class="p">},</span>
+	        <span class="p">{</span>
+	            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+	            <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CNNMethod&quot;</span><span class="p">,</span>
+	            <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;cnn&quot;</span><span class="p">,</span>
+	            <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+	                <span class="s2">&quot;pre_out0&quot;</span><span class="p">,</span>
+	                <span class="s2">&quot;pre_out1&quot;</span>
+	            <span class="p">],</span>
+	            <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+	                <span class="s2">&quot;cnn_out0&quot;</span>
+	            <span class="p">]</span>
+	        <span class="p">},</span>
+	        <span class="p">{</span>
+	            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+	            <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{post_method}</span><span class="s2">&quot;</span><span class="p">,</span>
+	            <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+	            <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cnn_out0&quot;</span><span class="p">],</span>
+	            <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;outputs&quot;</span><span class="p">]</span>
+	        <span class="p">}</span>
+	    <span class="p">]</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>TemplateRef对象</p>
+</div>
+<div class="section" id="id8">
+<h2><a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>TemplateRef对象即对之前定义的Template的引用。
+基本格式如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;template_ref&quot;</span><span class="p">,</span>       <span class="o">//</span> <span class="n">表示TemplateRef对象</span>
+	<span class="s2">&quot;template_name&quot;</span><span class="p">:</span> <span class="s2">&quot;XXXX&quot;</span><span class="p">,</span>      <span class="o">//</span> <span class="n">引用的模板名称</span>
+	<span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>               <span class="o">//</span> <span class="n">模板参数</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>其中：</p>
+<ul class="simple">
+<li><p>template_name 指明了需要引用的template的名字；</p></li>
+<li><p>parameters 指定了这个template 所需要的参数的值。
+如下为例，定义了一个TemplateRef对象：</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;template_ref&quot;</span><span class="p">,</span>
+	<span class="s2">&quot;template_name&quot;</span><span class="p">:</span> <span class="s2">&quot;cnn.tpl&quot;</span><span class="p">,</span>
+	<span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+    	<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;vehicle_cnn&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;pre_method&quot;</span><span class="p">:</span> <span class="s2">&quot;VehiclePreProcess&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;post_method&quot;</span><span class="p">:</span> <span class="s2">&quot;VehiclePostProcess&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;vehicle_box&quot;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>结合Template对象，上述TemplateRef对象会被展开，等价于如下定义：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;vehicle_cnn&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;workflow&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;vehicle_box&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;VehiclePreProcess&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;pre&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;pre_out0&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre_out1&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CNNMethod&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;cnn&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;pre_out0&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre_out1&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;cnn_out0&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;VehiclePostProcess&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cnn_out0&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;vehicle_box&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+	<span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>Workflow对象</p>
+</div>
+<div class="section" id="id10">
+<h2><a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>基本格式如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+	&quot;name&quot;: &quot;xxx&quot;,         // workflow名称，需唯一化
+	&quot;type&quot;: &quot;workflow&quot;,    // 表示Workflow对象
+	&quot;inputs&quot;: [],          // 输入slots名称
+	&quot;outputs&quot;: [],         // 输出slots名称
+	&quot;workflow&quot;: [          // Workflow内容，包括Node或Workflow对象(子workflow)
+	]
+}
+</pre></div>
+</div>
+<p>示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+	<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
+	<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;workflow&quot;</span><span class="p">,</span>
+	<span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span>
+	<span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_lmk&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;face_pose&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;face_box&quot;</span>
+    <span class="p">],</span>
+	<span class="s2">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+	    <span class="p">{</span>
+	        <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;node&quot;</span><span class="p">,</span>
+	        <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;fasterrcnndet&quot;</span><span class="p">,</span>
+	        <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;FasterRCNNMethod&quot;</span><span class="p">,</span>
+	        <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span>
+	        <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_box&quot;</span><span class="p">]</span>
+	        <span class="o">//...</span>
+	    <span class="p">},</span>
+	    <span class="p">{</span>
+	        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;template_ref&quot;</span><span class="p">,</span>
+	        <span class="s2">&quot;template_name&quot;</span><span class="p">:</span> <span class="s2">&quot;cnn.tpl&quot;</span><span class="p">,</span>
+	        <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+	            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;face_cnn&quot;</span><span class="p">,</span>
+	            <span class="s2">&quot;pre_method&quot;</span><span class="p">:</span> <span class="s2">&quot;FacePreProcess&quot;</span><span class="p">,</span>
+	            <span class="s2">&quot;post_method&quot;</span><span class="p">:</span> <span class="s2">&quot;FacePostProcess&quot;</span><span class="p">,</span>
+	            <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_box&quot;</span><span class="p">],</span>
+	            <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_lmk&quot;</span><span class="p">,</span> <span class="s2">&quot;face_pose&quot;</span><span class="p">]</span>
+	       <span class="p">}</span>
+	    <span class="p">}</span>  <span class="o">//</span> <span class="n">该TemplateRef对象展开后是Workflow对象</span>
+	<span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2><a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<p>Node对象</p>
+</div>
+<div class="section" id="id12">
+<h2><a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<p>基本格式：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;node&quot;,                   // 表示Node对象
+    &quot;method_type&quot;: &quot;TestMethod&quot;,      // Method类型，需要实现该Method
+    &quot;unique_name&quot;: &quot;method&quot;,          // Node名称，唯一性标志
+    &quot;inputs&quot;: [&quot;global_in&quot;],          // 输入slots
+    &quot;outputs&quot;: [&quot;global_out&quot;]         // 输出slots
+    // ...
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h2><a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<p>include机制</p>
+</div>
+<div class="section" id="id14">
+<h2><a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<p>在配置文件中，如果一个字符串的内容为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;@include: path/to/file&quot;</span>
+</pre></div>
+</div>
+<p>那么，这个字符串形成了一个include指令。这个字符串会被替换成path/to/file这个路径指定的文件的内容。
+例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;method&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;method_config&quot;</span><span class="p">:</span> <span class="s2">&quot;@include:conf/bbox.json&quot;</span>
+    <span class="o">//</span> <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果bbox.json的内容为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mf">2.0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>那么，上述node对象会被定义为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;method&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;method_config&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mf">2.0</span>
+    <span class="p">}</span>
+    <span class="o">//</span> <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>注意：若配置中使用”method_config”字段，则需要对应的Method重载Init(Json::Value)函数, 且”method_config”字段与”method_config_file”字段不可同时使用</strong></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

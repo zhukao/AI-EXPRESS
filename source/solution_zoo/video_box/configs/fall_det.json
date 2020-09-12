@@ -1,0 +1,23 @@
+{
+  "model_file_path": "../../models/fallDet.hbm",
+  "bpu_config_path": "../configs/bpu_config.json",
+  "model_version": "v0.0.1",
+  "model_name" : "fallDet",
+  "in_msg_type" : "lmk_seq",
+  "post_fn" : "act_det",
+  "input_shift" : 7,
+  "seq_len" : 32,
+  "kps_len" : 17,
+  "stride" : 0.04,
+  "max_gap" : 0.08,
+  "buf_len" : 64,
+  "norm_kps_conf" : 1,
+  "kps_norm_scale" : 4.897640403536304,
+  "threshold" : 0.9,
+  "merge_groups" : "[0,4];[1,2,3]",
+  "target_group_idx": 1,
+  "output_size" : 1,
+  "output_names": [
+    "fall_chance"
+  ]
+}

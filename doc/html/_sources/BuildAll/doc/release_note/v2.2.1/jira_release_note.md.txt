@@ -1,0 +1,25 @@
+# 版本说明  版本 2.2.1
+
+<h2>        任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-455'>XPPXROC-455</a>] -         Method支持使用json字符串进行初始化
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-450'>XPPXROC-450</a>] -         UVC稳定性优化
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-439'>XPPXROC-439</a>] -         大小安防-集成年龄性别
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-438'>XPPXROC-438</a>] -         X3demo—大小安防
+</li>
+</ul>
+    
+<h2>        故障
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-454'>XPPXROC-454</a>] -         修复vehicle solution退出时Crash的问题
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-453'>XPPXROC-453</a>] -         修复face solution退出时vio资源释放异常
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-452'>XPPXROC-452</a>] -         HID退出时，不能释放资源
+</li>
+</ul>

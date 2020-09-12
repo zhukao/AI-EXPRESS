@@ -1,0 +1,295 @@
+# aidi.CompilationApi
+
+All URIs are relative to *http://aidi.hobot.cc/api*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**create_compilation_task**](CompilationApi.md#create_compilation_task) | **POST** /model/v1/appmodel | Create Compilation Task.
+[**create_fuel_task**](CompilationApi.md#create_fuel_task) | **POST** /model/v1/appmodel_fuel/submit | Create Fuel Task.
+[**get_compilation_task**](CompilationApi.md#get_compilation_task) | **GET** /model/v1/appmodel_download/0 | Get Compilation Task information.
+[**get_compilation_task_status**](CompilationApi.md#get_compilation_task_status) | **GET** /model/v1/appmodel_status/0 | Get Compilation Task status information.
+[**publish_published_model**](CompilationApi.md#publish_published_model) | **POST** /model/v1/appmodelpublish | Publish published model.
+
+
+# **create_compilation_task**
+> APIResult create_compilation_task(body=body)
+
+Create Compilation Task.
+
+This will create a compilation task.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.CompilationApi(aidi.ApiClient(configuration))
+body = aidi.CreateAPPModelReq() # CreateAPPModelReq |  (optional)
+
+try:
+    # Create Compilation Task.
+    api_response = api_instance.create_compilation_task(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CompilationApi->create_compilation_task: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAPPModelReq**](CreateAPPModelReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_fuel_task**
+> APIResult create_fuel_task(body=body)
+
+Create Fuel Task.
+
+This will create a fuel task using compilation result.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.CompilationApi(aidi.ApiClient(configuration))
+body = aidi.SubmitFuelTaskReq() # SubmitFuelTaskReq |  (optional)
+
+try:
+    # Create Fuel Task.
+    api_response = api_instance.create_fuel_task(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CompilationApi->create_fuel_task: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SubmitFuelTaskReq**](SubmitFuelTaskReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_compilation_task**
+> APIResult get_compilation_task(name=name, version=version, published_model_name=published_model_name, published_model_version=published_model_version)
+
+Get Compilation Task information.
+
+This will return all information of the specific compilation task.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.CompilationApi(aidi.ApiClient(configuration))
+name = 'name_example' # str | compilation task name (optional)
+version = 'version_example' # str | compilation task version (optional)
+published_model_name = 'published_model_name_example' # str | compilation task related publish model name (optional)
+published_model_version = 'published_model_version_example' # str | compilation task related publish model version (optional)
+
+try:
+    # Get Compilation Task information.
+    api_response = api_instance.get_compilation_task(name=name, version=version, published_model_name=published_model_name, published_model_version=published_model_version)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CompilationApi->get_compilation_task: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| compilation task name | [optional] 
+ **version** | **str**| compilation task version | [optional] 
+ **published_model_name** | **str**| compilation task related publish model name | [optional] 
+ **published_model_version** | **str**| compilation task related publish model version | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_compilation_task_status**
+> APIResult get_compilation_task_status(name=name, version=version, published_model_name=published_model_name, published_model_version=published_model_version)
+
+Get Compilation Task status information.
+
+This will return status of the specific compilation task.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.CompilationApi(aidi.ApiClient(configuration))
+name = 'name_example' # str | compilation task name (optional)
+version = 'version_example' # str | compilation task version (optional)
+published_model_name = 'published_model_name_example' # str | compilation task related publish model name (optional)
+published_model_version = 'published_model_version_example' # str | compilation task related publish model version (optional)
+
+try:
+    # Get Compilation Task status information.
+    api_response = api_instance.get_compilation_task_status(name=name, version=version, published_model_name=published_model_name, published_model_version=published_model_version)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CompilationApi->get_compilation_task_status: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| compilation task name | [optional] 
+ **version** | **str**| compilation task version | [optional] 
+ **published_model_name** | **str**| compilation task related publish model name | [optional] 
+ **published_model_version** | **str**| compilation task related publish model version | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **publish_published_model**
+> APIResult publish_published_model(body=body)
+
+Publish published model.
+
+This will publish published model that has been compiled and verified by fuel task.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.CompilationApi(aidi.ApiClient(configuration))
+body = aidi.PublishAPPModelReq() # PublishAPPModelReq |  (optional)
+
+try:
+    # Publish published model.
+    api_response = api_instance.publish_published_model(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CompilationApi->publish_published_model: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**PublishAPPModelReq**](PublishAPPModelReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

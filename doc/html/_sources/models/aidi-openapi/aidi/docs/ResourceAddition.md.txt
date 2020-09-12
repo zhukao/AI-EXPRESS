@@ -1,0 +1,12 @@
+# ResourceAddition
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**deptid** | **str** | resource dept id, such as auto aiot or platform in: body | 
+**level** | **str** | resource level, private or public in: body | 
+**members** | [**Members**](Members.md) |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

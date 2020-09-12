@@ -1,0 +1,10 @@
+{
+    "core_engine": "dual",
+    "engine_type": "naive",
+    "max_task" : 32,
+    "max_bpu_buffer" : 1024,
+    "debug" : 0,
+    "debug_config": "bug_log.conf",
+    "fc_cap": 4,
+    "enable_core_num" : 2
+}

@@ -1,0 +1,15 @@
+# CreateParamsReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**att_name** | **str** | algorithm task name of this params, such as detection, classification in: body | 
+**auth_info** | [**ResourceAddition**](ResourceAddition.md) |  | 
+**desc** | **str** | params&#39;s description in: body | [optional] 
+**name** | **str** | params&#39;s name in: body | 
+**params_path** | **str** | params&#39;s file path in: body | 
+**pf_name** | **str** | profile name of this params in: body | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

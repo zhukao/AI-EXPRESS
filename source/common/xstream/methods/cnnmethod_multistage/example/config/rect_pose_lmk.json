@@ -1,0 +1,39 @@
+{
+    "inputs": [
+      "face_box",
+      "pyramid"
+    ],
+    "outputs": [
+      "lmk",
+      "pose",
+      "pyramid",
+      "face_box"
+    ],
+    "workflow": [
+      {
+        "unique_name": "rect_input",
+        "method_type": "CNNRectPreMethod",
+        "inputs": [
+          "face_box",
+          "pyramid"
+        ],
+        "outputs": [
+          "tmp_out"
+        ],
+        "method_config_file": "method_conf/pose_lmk.json"
+      },
+      {
+        "unique_name": "lmkpose_post",
+        "method_type": "CNNLmkposePostMethod",
+        "inputs": [
+          "tmp_out"
+        ],
+        "outputs": [
+          "lmk",
+          "pose"
+        ],
+        "method_config_file": "method_conf/pose_lmk.json"
+      }
+    ]
+  }
+  

@@ -1,0 +1,26 @@
+{
+    "inputs": [
+      "body_box_list",
+      "disappeared_track_id",
+      "kps"
+    ],
+    "outputs": [
+      "raise_hand"
+    ],
+    "workflow": [
+      {
+        "unique_name": "raise_hand_method",
+        "method_type": "BehaviorMethod",
+        "inputs": [
+          "body_box_list",
+          "disappeared_track_id",
+          "kps"
+        ],
+        "outputs": [
+          "raise_hand"
+        ],
+        "method_config_file": "raise_hand.json"
+      }
+    ]
+  }
+  

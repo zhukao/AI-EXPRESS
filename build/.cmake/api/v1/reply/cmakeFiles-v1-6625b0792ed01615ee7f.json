@@ -1,0 +1,338 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/CMakeFiles/3.17.2/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/CMakeFiles/3.17.2/CMakeCCompiler.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/CMakeFiles/3.17.2/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/Platform/Linux.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/Compiler/GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/Internal/CMakeCheckCompilerFlag.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/Platform/Linux-GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/Compiler/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/Platform/Linux-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/data/root/local/share/cmake-3.17/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"path" : "source/common/xproto/framework/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xproto/framework/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xproto/framework/sample/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xproto/msgtype/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xproto/plugins/vioplugin/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xproto/plugins/smartplugin/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xproto/plugins/smartplugin/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xproto/plugins/smartplugin/sample/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xproto/plugins/visualplugin/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xproto/plugins/hbipcplugin/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xproto/plugins/hbipcplugin/sample/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xproto/plugins/hbipcplugin/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xproto/plugins/websocketplugin/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/framework/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/framework/example/bbox_filter/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/framework/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/vision_type/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/vision_type/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/tutorials/stage1/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/tutorials/stage2/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/tutorials/stage3/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/tutorials/stage4/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/methods/fasterrcnnmethod/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/methods/fasterrcnnmethod/example/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/methods/fasterrcnnmethod/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/imagetools/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/imagetools/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/imagetools/example/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/viowrapper/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/methods/cnnmethod/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/methods/cnnmethod/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/methods/cnnmethod/example/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/methods/motmethod/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/methods/motmethod/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/common/xstream/methods/motmethod/example/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/gradingmethod/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/gradingmethod/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/filtermethod/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/filtermethod/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/mergemethod/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/mergemethod/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/mergemethod/example/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/behavior_method/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/behavior_method/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/snapshotmethod/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/snapshotmethod/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/vehicle_snap_method/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/vehicle_snap_method/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/vehicle_plate_match_method/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/vehicle_plate_match_method/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/plate_vote_method/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/plate_vote_method/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/FilterSkipFrameMethod/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/FilterSkipFrameMethod/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/vote_method/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/vote_method/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/vote_method/example/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/ssd_method/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/xstream/methods/ssd_method/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/face/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/body/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/face_body_multisource/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/face_body_multisource/test/CMakeLists.txt"
+		},
+		{
+			"path" : "source/solution_zoo/tools/xwarehouse/CMakeLists.txt"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/build",
+		"source" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

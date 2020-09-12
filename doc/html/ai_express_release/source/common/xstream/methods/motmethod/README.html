@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MOTMethod &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/language_data.js"></script>
+        <script src="../../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>MOTMethod</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../_sources/ai_express_release/source/common/xstream/methods/motmethod/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="motmethod">
+<h1>MOTMethod<a class="headerlink" href="#motmethod" title="永久链接至标题">¶</a></h1>
+<div class="section" id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="永久链接至标题">¶</a></h2>
+<p>多目标跟踪Method，用于检测框的跟踪、ID分配。</p>
+</div>
+<div class="section" id="build">
+<h2>Build<a class="headerlink" href="#build" title="永久链接至标题">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># sh cicd/scripts/build_linux.sh, 默认编译release版，sh cicd/scripts/build_linux.sh debug 编译debug版</span>
+<span class="c1"># 打包example程序与依赖的库：sh cicd/scripts/copy_runtime.sh 然后将打包好的release文件夹拷贝到开发板上就可以运行了。</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="永久链接至标题">¶</a></h2>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="永久链接至标题">¶</a></h3>
+<p>//todo</p>
+</div>
+<div class="section" id="id1">
+<h3>输入/输出<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id2">
+<h4>输入<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Slot</th>
+<th align="center">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">XStreamBBox_list</td>
+<td align="center">必要项</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id3">
+<h4>输出<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Slot</th>
+<th align="center">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">XStreamBBox_list</td>
+<td align="center">带track_id</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">XStreamUint32_List</td>
+<td align="center">disappeared_track_id_list</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="section" id="id4">
+<h3>配置文件<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">字段</th>
+<th>描述</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">tracker_type</td>
+<td>MOT工作模式，目前仅支持IOU based MOT</td>
+<td align="center">IOU</td>
+</tr>
+<tr>
+<td align="center">device</td>
+<td>设备名称，若设置为X1，最大track_id为255，用以比对一致性</td>
+<td align="center">X2</td>
+</tr>
+<tr>
+<td align="center">update_no_target_predict</td>
+<td>无检测框输入更新状态机track预测框，设置为true对主体连续运动且有遮挡的场景效果好，设置为false对主体不移动且有遮挡的场景效果好</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">support_hungarian</td>
+<td>匈牙利匹配开关，打开匈牙利匹配id召回多，准确率下降；关闭则id召回少，准确率提升</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">need_check_merge</td>
+<td>每组输入框IOU大于一定阈值做融合，该操作会影响输出数量，检测框融合多在检测模块完成，一般情况置为false</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">original_bbox</td>
+<td>是否使用卡尔曼滤波器预测框，true为不使用，输出原始框坐标</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="center">max_track_target_num</td>
+<td>状态机保存最大track数</td>
+<td align="center">512</td>
+</tr>
+<tr>
+<td align="center">max_det_target_num</td>
+<td>输入框最大计算数</td>
+<td align="center">512</td>
+</tr>
+<tr>
+<td align="center">vanish_frame_count</td>
+<td>消失帧数</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="center">time_gap</td>
+<td>帧间隔时间</td>
+<td align="center">40</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id5">
+<h3>补充说明<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>内部有状态机来存储每个tracklet</p></li>
+<li><p>该Method支持workflow多实例，method_info.is_thread_safe_ = false，method_info.is_need_reorder = true。</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

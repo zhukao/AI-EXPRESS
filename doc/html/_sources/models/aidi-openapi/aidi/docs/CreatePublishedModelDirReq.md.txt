@@ -1,0 +1,15 @@
+# CreatePublishedModelDirReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**auth_info** | [**ResourceAddition**](ResourceAddition.md) |  | 
+**desc** | **str** | published model dir&#39;s description in: body | [optional] 
+**jenkins_detail_url** | **str** | jenkins detail url in: body | [optional] 
+**jenkins_trigger_url** | **str** | generic webhook url to trigger jenkins pipeline in: body | [optional] 
+**name** | **str** | published model dir&#39;s name in: body | 
+**tags** | **list[str]** | published model dir&#39;s tags in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

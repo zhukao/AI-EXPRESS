@@ -1,0 +1,15 @@
+{
+  "model_name": "vehicle_type_v2.0",
+  "model_file_path": "../models/vehicle_type_v2.0.hbm",
+  "bpu_config_path": "../configs/bpu_config.json",
+  "in_msg_type": "img",
+  "aspect_ratio":0.91,
+  "expand_scale":1.20,
+  "post_fn": "vehicle_type",
+  "norm_method": "norm_by_lside_square",
+  "filter_method": "no_filter",
+  "output_size": 1,
+  "output_names": ["vehicle_type"],
+  "enable_conformance_test": 0,
+  "conformance_log_file": "vehicle_type_info.log"
+}

@@ -1,0 +1,123 @@
+{
+  "inputs": [
+    "image"
+  ],
+  "outputs": [
+    "image",
+    "face_bbox_list",
+    "snap_list",
+    "face_mask",
+    "age",
+    "gender"
+  ],
+  "workflow": [
+    {
+      "thread_count": 1,
+      "method_type": "FasterRCNNMethod",
+      "unique_name": "multi_task",
+      "inputs": [
+        "image"
+      ],
+      "outputs": [
+        "rgb_face_box",
+        "rgb_lmk",
+        "rgb_pose"
+      ],
+      "method_config_file": "face_pose_lmk.json"
+    },
+    {
+      "method_type": "MOTMethod",
+      "thread_count": 1,
+      "unique_name": "face_mot",
+      "inputs": [
+        "rgb_face_box"
+      ],
+      "outputs": [
+        "face_bbox_list",
+        "rgb_face_disappeared_track_id_list"
+      ],
+      "method_config_file": "iou_method_param.json"
+    },
+    {
+      "method_type": "CNNMethod",
+      "unique_name": "face_mask",
+      "inputs": [
+        "face_bbox_list",
+        "image"
+      ],
+      "outputs": [
+        "face_mask"
+      ],
+      "method_config_file": "face_mask.json"
+    },
+    {
+        "method_type": "CNNMethod",
+        "unique_name": "age_gender",
+        "inputs": [
+          "face_bbox_list",
+          "image"
+        ],
+        "outputs": [
+          "age_list",
+          "gender_list"
+        ],
+        "method_config_file": "age_gender.json"
+    },
+    {
+      "method_type": "VoteMethod",
+      "unique_name": "age_voting",
+      "inputs": [
+        "face_bbox_list",
+        "rgb_face_disappeared_track_id_list",
+        "age_list"
+      ],
+      "outputs": [
+        "age"
+      ],
+      "method_config_file": "age_voting.json"
+    },
+    {
+      "method_type": "VoteMethod",
+      "unique_name": "gender_voting",
+      "inputs": [
+        "face_bbox_list",
+        "rgb_face_disappeared_track_id_list",
+        "gender_list"
+      ],
+      "outputs": [
+        "gender"
+      ],
+      "method_config_file": "gender_voting.json"
+    },
+    {
+      "method_type": "GradingMethod",
+      "unique_name": "grading",
+      "inputs": [
+        "face_bbox_list",
+        "rgb_pose",
+        "rgb_lmk"
+      ],
+      "outputs": [
+        "select_score_list"
+      ],
+      "method_config_file": "grading.json"
+    },
+    {
+      "method_type": "SnapShotMethod",
+      "unique_name": "snapshot",
+      "inputs": [
+        "image",
+        "face_bbox_list",
+        "select_score_list",
+        "rgb_face_disappeared_track_id_list",
+        "rgb_pose",
+        "rgb_lmk",
+        "face_bbox_list"
+      ],
+      "outputs": [
+        "snap_list"
+      ],
+      "method_config_file": "snapshot.json"
+    }
+  ]
+}

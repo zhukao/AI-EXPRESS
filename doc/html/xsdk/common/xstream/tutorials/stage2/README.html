@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>分配线程资源 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>分配线程资源</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/xsdk/common/xstream/tutorials/stage2/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>分配线程资源<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>在某些实际场景下，Node内部可能执行一些阻塞操作(例如，在调用BPU接口进行模型计算时),适当的分配线程资源策略，可以提高workflow的整体性能。
+如果Node执行的任务（即对应的method_type）是无状态、无上下文依赖的，通常可以通过创建多个实例并利用多线程提高并发来提升性能。
+在workflow json config文件中可以配置每个Node分配线程资源，可以通过两种方式给Node分配线程资源：</p>
+<ul class="simple">
+<li><p>通过thread_count字段指定每个node可以在多少个thread中并行执行，当一个node指定多个线程时，连续多帧任务默认会按round-robin的方式分发到多个线程。</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;inputs&quot;: [&quot;in_bbox&quot;],  // 输入的数据list，它是workflow里面定义的inputs的子集
+  &quot;outputs&quot;: [&quot;bbox_filtered_A&quot;,
+              &quot;bbox_filtered_B&quot;],  // 输出的数据list，它是workflow里面定义的outputs的一个子集
+  &quot;workflow&quot;: [ // node列表，
+    { // BBoxFilter_A node
+      &quot;method_type&quot;: &quot;BBoxFilter&quot;,  // Method类型是BBoxFilter
+      &quot;unique_name&quot;: &quot;BBoxFilter_A&quot;,  // Node 在workflow中的唯一名字
+      &quot;thread_count&quot;: 3, // 给BBoxFilter_A分配了3个执行线程
+      &quot;inputs&quot;: [
+        &quot;in_bbox&quot;  // 本Node的输入，它是从整体workflow的“inputs”中连过来的
+      ],
+      &quot;outputs&quot;: [
+        &quot;bbox_filtered_A&quot;  // 本Node的输出，它可以被连接到workflow输出或者其他Node的输入
+      ],
+      &quot;method_config_file&quot;: &quot;a_filter.json&quot;  // 本Node对应的Method的配置文件路径，为相对本workflow配置文件的相对路径
+    },
+    { // BBoxFilter_B node
+      &quot;method_type&quot;: &quot;BBoxFilter&quot;,  // Method类型是BBoxFilter
+      &quot;unique_name&quot;: &quot;BBoxFilter_B&quot;,  // Node 在workflow中的唯一名字
+      &quot;thread_count&quot;: 2, // 给BBoxFilter_B分配2个执行线程
+      &quot;inputs&quot;: [
+        &quot;in_bbox&quot;  // 本Node的输入，它是从整体workflow的“inputs”中连过来的
+      ],
+      &quot;outputs&quot;: [
+        &quot;bbox_filtered_B&quot;
+      ],
+      &quot;method_config_file&quot;: &quot;b_filter.json&quot;
+    }
+  ]
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>通过thread_list指定每个Node可运行的线程index数组(即，thread_list指定了每个node运行在线程池的特点的第index号线程上)，通过该方式可以使多个Node之间共享线程资源。</p></li>
+<li><p>下面的例子就是BBoxFilter_A node和BBoxFilter_B node共享2(第0号和第1号)个线程。</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;inputs&quot;: [&quot;in_bbox&quot;],  // 输入的数据list，它是workflow里面定义的inputs的子集
+  &quot;outputs&quot;: [&quot;bbox_filtered_A&quot;,
+              &quot;bbox_filtered_B&quot;],  // 输出的数据list，它是workflow里面定义的outputs的一个子集
+  &quot;workflow&quot;: [ // node列表，
+    { // BBoxFilter_A node
+      &quot;method_type&quot;: &quot;BBoxFilter&quot;,  // Method类型是BBoxFilter
+      &quot;unique_name&quot;: &quot;BBoxFilter_A&quot;,  // Node 在workflow中的唯一名字
+      &quot;thread_list&quot;: [0, 1], // 给BBoxFilter_A分配了2个执行线程, 线程index为[0, 1]
+      &quot;inputs&quot;: [
+        &quot;in_bbox&quot;  // 本Node的输入，它是从整体workflow的“inputs”中连过来的
+      ],
+      &quot;outputs&quot;: [
+        &quot;bbox_filtered_A&quot;  // 本Node的输出，它可以被连接到workflow输出或者其他Node的输入
+      ],
+      &quot;method_config_file&quot;: &quot;a_filter.json&quot;  // 本Node对应的Method的配置文件路径，为相对本workflow配置文件的相对路径
+    },
+    { // BBoxFilter_B node
+      &quot;method_type&quot;: &quot;BBoxFilter&quot;,  // Method类型是BBoxFilter
+      &quot;unique_name&quot;: &quot;BBoxFilter_B&quot;,  // Node 在workflow中的唯一名字
+      &quot;thread_list&quot;: [0, 1], // 给BBoxFilter_B分配2个执行线程, 线程index为[0, 1]
+      &quot;inputs&quot;: [
+        &quot;in_bbox&quot;  // 本Node的输入，它是从整体workflow的“inputs”中连过来的
+      ],
+      &quot;outputs&quot;: [
+        &quot;bbox_filtered_B&quot;
+      ],
+      &quot;method_config_file&quot;: &quot;b_filter.json&quot;
+    }
+  ]
+}
+</pre></div>
+</div>
+<p>通过thread_list的方式相比thread_count可以设置多个Node共享线程资源，比如上面的配置，BBoxFilter_A与BBoxFilter_B在两个共享线程上执行。</p>
+<blockquote>
+<div><p>Note：通过thread_list的方式，用户可设置的合法的index取值范围为[0, 999]。</p>
+</div></blockquote>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "in_msg_type": "pyramid_image",
+  "net_info": {
+    "model_name": "SegmentationMultitask",
+    "model_version": "0.0.18",
+    "model_out_sequence": [
+      {
+        "name": "body_box_int",
+        "type": "invalid"
+      },
+      {
+        "name": "body_box",
+        "type": "bbox",
+        "labels": [
+          {"key": 1, "value": "body_box"},
+          {"key": 2, "value": "cat_box"},
+          {"key": 3, "value": "dog_box"},
+          {"key": 4, "value": "other_box"}
+        ]
+      },
+      {
+        "name": "head_box_int",
+        "type": "invalid"
+      },
+      {
+        "name": "head_box",
+        "type": "bbox"
+      },
+      {
+        "name": "face_box_int",
+        "type": "invalid"
+      },
+      {
+        "name": "face_box",
+        "type": "bbox"
+      },
+      {
+        "name": "kps",
+        "type": "kps",
+        "box_name": "body_box"
+      },
+      {
+        "name": "mask",
+        "type": "mask",
+        "box_name": "body_box"
+      }
+    ],
+    "model_input_width": 960,
+    "model_input_height": 540,
+    "pyramid_layer": 8,
+    "kps_pos_distance": 0.1,
+    "kps_feat_width": 16,
+    "kps_feat_height": 16,
+    "kps_points_number": 17,
+    "kps_anchor_param": -0.46875
+  },
+  "method_outs": ["face_box", "head_box", "body_box","cat_box","dog_box","other_box","kps","mask"],
+  "bpu_config_path": "../configs/bpu_config.json",
+  "model_file_path": "../../models/SegmentationMultitask.hbm"
+}

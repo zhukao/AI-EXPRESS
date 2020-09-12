@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>关闭指定的method实例 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>关闭指定的method实例</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/xsdk/common/xstream/tutorials/stage4/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="method">
+<h1>关闭指定的method实例<a class="headerlink" href="#method" title="永久链接至标题">¶</a></h1>
+<p>在一些应用场景中，我们需要根据应用场景来关闭某些method实例计算节点node。例如, 通过外部传入人脸照片，提取特征时，创建底库时, 需要运行人脸检测，特征提取计算, 但不需要再进行人脸mot跟踪, mot method的计算节点就可以关闭。 在关闭不必要的计算节点的情况下，可以降低芯片的功耗，降低系统的延迟。
+XSTREAM提供了一下几种关闭Method的方式：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">模式</th>
+<th align="center">详细说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Invalid</td>
+<td align="center">令每个输出都是INVALID的BaseData</td>
+</tr>
+<tr>
+<td align="center">PassThrough</td>
+<td align="center">透传输入数据到输出，要求输入数据与输出数据个数一致,且类型相同</td>
+</tr>
+<tr>
+<td align="center">UsePreDefine</td>
+<td align="center">拷贝先验数据到输出，要求先验数据个数与输出数据个数一致, 且类型相同</td>
+</tr>
+<tr>
+<td align="center">BestEffortPassThrough</td>
+<td align="center">按顺序逐个透传输入数据到输出， 如果输入数据大小多于输出，则只透传前面的slot。如果输入数据大小少于输出，则多余的输出slot为Invalid的BaseData</td>
+</tr>
+</tbody>
+</table><p>在前面stage1, stage2, stage3的基础上, 我们来看如何进行计算节点node的控制</p>
+<div class="section" id="invalid-mode">
+<h2>Invalid Mode<a class="headerlink" href="#invalid-mode" title="永久链接至标题">¶</a></h2>
+<p>准备一个workflow如下(见<code class="docutils literal notranslate"><span class="pre">config/control_workflow_disablemethod.json</span></code>), 这个workflow的输入数据face_head_box, 最终输出数据是face_head_box_filter_3。face_head_box_filter_5。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;max_running_count&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+  <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_head_box&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_head_box_filter_2&quot;</span><span class="p">,</span> <span class="s2">&quot;face_head_box_filter_3&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter_1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_1&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter_2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_1&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_2&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">},</span>
+	  <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter_3&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_2&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_3&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>正常运行控制下输入数据 “<strong>face_head_box</strong>”  经BBoxFilter_1节点处理输出数据”<strong>face_head_box_filter_1</strong>”。数据”<strong>face_head_box_filter_1</strong>”经由BBoxFilter_2节点处理产生数据”<strong>face_head_box_filter_2</strong>”。”<strong>face_head_box_filter_2</strong>”经BBoxFilter_3节点处理产生数据”<strong>face_head_box_filter_3</strong>”, 既最终输出结果之一。workflow运行图示:</p>
+<p><img alt="Invalid1" src="../../../../../_images/Invalid11.png" /></p>
+<p>我们为实现这个案例，创建了几个Method:<code class="docutils literal notranslate"><span class="pre">BBoxFilter</span></code>,<code class="docutils literal notranslate"><span class="pre">PostBoxFilter</span></code>:
+(见<code class="docutils literal notranslate"><span class="pre">method/bbox_filter.cc</span></code>,<code class="docutils literal notranslate"><span class="pre">method/bbox_filter.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">method/postbox_filter.cc</span></code>,<code class="docutils literal notranslate"><span class="pre">method/postbox_filter.h</span></code>)。这几个method, 通过<code class="docutils literal notranslate"><span class="pre">config/</span></code>下的workflow配置文件和method_factory工厂方法，共同组成Invalid和后面几种模式的案例。</p>
+<p>在一些场景中，我们希望暂时停止BBoxFilter_3的运行，例如人脸识别业务。
+下面我们来看下如何实现的，示例代码见<code class="docutils literal notranslate"><span class="pre">disable_method_main.cc</span></code>。在不加控制参数的情况下，我们通过打印看下数据输出，我们可以看到两组输出数据”<strong>face_head_box_filter_2</strong>”, “<strong>face_head_box_filter_3</strong>”，state均为VALID:0。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>============Output Call Back============
+—seq: 0
+—output_type: __NODE_WHOLE_OUTPUT__
+—error_code: 0
+—error_detail_: 
+—datas_ size: 2
+——output data face_head_box_filter_2 state:0
+——data type:BaseDataVector name:face_head_box_filter_2
+——output data face_head_box_filter_3 state:0
+——data type:BaseDataVector name:face_head_box_filter_3
+============Output Call Back End============
+</pre></div>
+</div>
+<div class="section" id="demo-1">
+<h3>demo 1<a class="headerlink" href="#demo-1" title="永久链接至标题">¶</a></h3>
+<p>接下来，我们准备关闭节点<code class="docutils literal notranslate"><span class="pre">BBoxFilter_3</span></code>。
+在准备Input Data这步, 构建一个DisableParam对象给HobotXStream::InputParamPtr共享指针,加入到Input data的params_参数中</p>
+<ul class="simple">
+<li><p>准备Input Data数据</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="n">InputDataPtr</span> <span class="nf">inputdata</span><span class="p">(</span><span class="k">new</span> <span class="n">InputData</span><span class="p">());</span>
+  <span class="n">BaseDataVector</span> <span class="o">*</span><span class="nf">data</span><span class="p">(</span><span class="k">new</span> <span class="n">BaseDataVector</span><span class="p">);</span>
+  <span class="n">HobotXStream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox1</span><span class="p">(</span><span class="k">new</span> <span class="n">HobotXStream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span>
+    <span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">)));</span>
+  <span class="n">bbox1</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;face_head_box&quot;</span><span class="p">;</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox1</span><span class="p">));</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>为Input Data增加参数</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="c1">// 2 set DisableParam Invalid for &quot;BBoxFilter_3&quot;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;------------ invalid output------------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="c1">// DisableParam set mode with default value Mode::Invalid</span>
+  <span class="n">HobotXStream</span><span class="o">::</span><span class="n">InputParamPtr</span> <span class="n">invalidFilter3</span><span class="p">(</span><span class="k">new</span> <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParam</span><span class="p">(</span><span class="s">&quot;BBoxFilter_3&quot;</span><span class="p">));</span>
+  <span class="c1">// add invalid parameter to inputdata params_</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">params_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">invalidFilter3</span><span class="p">);</span>
+  <span class="c1">// start synchronous predict, and then </span>
+  <span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">SyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+  <span class="n">callback</span><span class="p">.</span><span class="n">OnCallback</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>这里我们通过构造函数传入”BBoxFilter_3”, 既指定method实例计算节点node的unique name为”BBoxFilter_3”将被关闭。HobotXStream::DisableParam构造函数 <code class="docutils literal notranslate"><span class="pre">DisableParam(const</span> <span class="pre">std::string</span> <span class="pre">&amp;</span> <span class="pre">unique_name,</span> <span class="pre">Mode</span> <span class="pre">mode</span> <span class="pre">=</span> <span class="pre">Mode::Invalid)</span></code>设置mode默认值为Mode::Invalid，因此<code class="docutils literal notranslate"><span class="pre">HobotXStream::DisableParam(&quot;BBoxFilter_3&quot;)</span></code>等同于
+<code class="docutils literal notranslate"><span class="pre">HobotXStream::DisableParam(&quot;BBoxFilter_3&quot;,</span> <span class="pre">Mode::Invalid)</span></code>
+我们再看下打印输出，这时输出数据”<strong>face_head_box_filter_3</strong>”，state均为INVALID:4。在这次workflow运行过程中, “BBoxFilter_3”节点没有被调用到，它的输出数据被标记为INVALID。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>============Output Call Back============
+—seq: 1
+—output_type: __NODE_WHOLE_OUTPUT__
+—error_code: 0
+—error_detail_: 
+—datas_ size: 2
+——output data face_head_box_filter_2 state:0
+——data type:BaseDataVector name:face_head_box_filter_2
+——output data face_head_box_filter_3 state:4
+——data type:BaseData name:face_head_box_filter_3
+============Output Call Back End============
+</pre></div>
+</div>
+<p>经过DisableParam参数控制后的workflow运行图如下所示:</p>
+<p><img alt="Invalid2" src="../../../../../_images/Invalid22.png" /></p>
+</div>
+<div class="section" id="demo-2">
+<h3>demo 2<a class="headerlink" href="#demo-2" title="永久链接至标题">¶</a></h3>
+<p>我们再来看下如果关闭”BBoxFilter_3”的前置节点”BBoxFilter_2”又会如何。
+同样设置构建一个DisableParam对象给HobotXStream::InputParamPtr共享指针,加入到Input data的params_参数中。
+如果在inputdata的params数组记得需要清理下，否则几条DisableParam规则会一起生效.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="c1">// 3 set DisableParam Invalid output &quot;BBoxFilter_2&quot;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;------------ invalid output------------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="c1">// DisableParam set mode with default value Mode::Invalid</span>
+  <span class="n">HobotXStream</span><span class="o">::</span><span class="n">InputParamPtr</span> <span class="n">invalidFilter2</span><span class="p">(</span><span class="k">new</span> <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParam</span><span class="p">(</span><span class="s">&quot;BBoxFilter_2&quot;</span><span class="p">));</span>
+  <span class="c1">// add invalid parameter to inputdata params_</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">params_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">params_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">invalidFilter2</span><span class="p">);</span>
+  <span class="c1">// start synchronous predict, and then </span>
+  <span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">SyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+  <span class="n">callback</span><span class="p">.</span><span class="n">OnCallback</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>再次运行workflow,因为我们看到因为BBoxFilter_3输入数据”<strong>face_head_box_filter_2</strong>”的state是INVALID:4,前置条件不满足。打印输出如下，
+error_code:-2002 HOBOTXSTREAM_ERROR_OUTPUT_NOT_READY，
+error_detail:face_head_box_filter_3 is not ready;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>============Output Call Back============
+—seq: 2
+—output_type: __NODE_WHOLE_OUTPUT__
+—error_code: -2002
+—error_detail_: face_head_box_filter_3 is not ready;
+—datas_ size: 1
+——output data face_head_box_filter_2 state:4
+——data type:BaseData name:face_head_box_filter_2
+============Output Call Back End============
+</pre></div>
+</div>
+<p>经过DisableParam参数控制后的workflow运行图示:</p>
+<p><img alt="Invalid3" src="../../../../../_images/Invalid31.png" /></p>
+<p>因此关闭节点,会影响到输出数据的后置节点的输出。在这个例子中节点”BBoxFilter_2”只影响到了节点”BBoxFilter_3”。因此从输出数据的结果看，有效结果与关闭节点”BBoxFilter_3”相同。</p>
+</div>
+</div>
+<div class="section" id="passthrough-mode">
+<h2>PassThrough Mode<a class="headerlink" href="#passthrough-mode" title="永久链接至标题">¶</a></h2>
+<p>场景:在给计算节点设置Invalid的案例2中,我们看到如果关闭中间节点, 会导致后置节点计算条件不满足, 而无法运行。那么在一些场景下,我们需要关闭前置节点的计算功能,但不影响后置节点的运行。例如,有些中间节点,进行数据的过滤,在有些特殊场景下,我们需要即时关闭这些过滤,让数据越过这个节点,直接让后续节点处理。这时PassThrough模式就可以上场了，当然PassThrough模式要求，关闭节点的输入数据和输出数据个数(InputData.data_.size())是一致的。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;max_running_count&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+  <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_head_box&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_head_box_filter_2&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter_1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_1&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;PostBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;PostBoxFilter_2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_1&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_2&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这里我们设置了一个简单的workflow(见<code class="docutils literal notranslate"><span class="pre">config/control_workflow_pass_through.json</span></code>)。输入数据是”<strong>face_head_box</strong>”, 输出数据是”<strong>face_head_box_filter_2</strong>”。第一个节点”BBoxFilter_1”处理输出数据”<strong>face_head_box_filter_1</strong>”,
+经”BBoxFilter_2”处理后生成输出数据”<strong>face_head_box_filter_2</strong>”。
+示例代码见<code class="docutils literal notranslate"><span class="pre">pass_through_method_main.cc</span></code>,首先按worflow的定义, 给workflow输入一个name是”face_head_box”,type是”BBOX”的输入数据</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="c1">// 2 prepare input data</span>
+  <span class="n">InputDataPtr</span> <span class="nf">inputdata</span><span class="p">(</span><span class="k">new</span> <span class="n">InputData</span><span class="p">());</span>
+  <span class="n">BaseDataVector</span> <span class="o">*</span><span class="nf">data</span><span class="p">(</span><span class="k">new</span> <span class="n">BaseDataVector</span><span class="p">);</span>
+  <span class="n">HobotXStream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox1</span><span class="p">(</span><span class="k">new</span> <span class="n">HobotXStream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span>
+    <span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">)));</span>
+  <span class="n">bbox1</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;face_head_box&quot;</span><span class="p">;</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox1</span><span class="p">));</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>我们先按正常模式运行一遍,我们看下结果如下。workflow按照预期给出输出数据face_head_box_filter_2</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>============Output Call Back============
+—seq: 0
+—output_type: __NODE_WHOLE_OUTPUT__
+—error_code: 0
+—error_detail_: 
+—datas_ size: 1
+——output data face_head_box_filter_2 state:0
+——data type_name : BaseDataVector face_head_box_filter_2
+============Output Call Back End============
+</pre></div>
+</div>
+<p>用图来表示workflow的运行：</p>
+<p><img alt="PassThrough1" src="../../../../../_images/PassThrough11.png" /></p>
+<p>接下来，我们尝试用PassThrough方式关闭<code class="docutils literal notranslate"><span class="pre">PostBoxFilter_2</span></code>节点。创建一个DisableParam对象给HobotXStream::InputParamPtr共享指针,加入到Input data的params_参数中，在DisableParam的构造函数中, 设置mode 为PassThrough: <code class="docutils literal notranslate"><span class="pre">HobotXStream::InputParamPtr</span> <span class="pre">pass_through(new</span> <span class="pre">HobotXStream::DisableParam(&quot;PostBoxFilter_2&quot;,</span> <span class="pre">HobotXStream::DisableParam::Mode::PassThrough)</span></code></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// 4 set pass through output</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;------------ pass through output----------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">params_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+  <span class="n">HobotXStream</span><span class="o">::</span><span class="n">InputParamPtr</span>
+      <span class="n">pass_through</span><span class="p">(</span><span class="k">new</span> <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParam</span><span class="p">(</span><span class="s">&quot;PostBoxFilter_2&quot;</span><span class="p">,</span> <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParam</span><span class="o">::</span><span class="n">Mode</span><span class="o">::</span><span class="n">PassThrough</span><span class="p">));</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">params_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pass_through</span><span class="p">);</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">AsyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+  <span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>注意,这次我们使用了异步的调用方式,为了通过日志输出来确定执行结果,我们让主线程sleep 1秒以获得日志输出。
+同时为了确定”PostBoxFilter_2”节点没有调用到，在PostBoxFilter::DoProcess中增加了日志输出。
+这时候，我们再用图来看下workflow的运行：</p>
+<p><img alt="PassThrough-2" src="../../../../../_images/PassThrough-22.png" /></p>
+<p>运行后的日志如下，”PostBoxFilter_2”节点没有运行，输出数据既”PostBoxFilter_2”节点输入数据face_head_box_filter_1更替为face_head_box_filter_2</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>============Output Call Back============
+—seq: 1
+—output_type: __NODE_WHOLE_OUTPUT__
+—error_code: 0
+—error_detail_: 
+—datas_ size: 1
+——output data face_head_box_filter_2 state:0
+——data type_name : BaseDataVector face_head_box_filter_2
+============Output Call Back End============
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-predefined-mode">
+<h2>Use Predefined Mode<a class="headerlink" href="#use-predefined-mode" title="永久链接至标题">¶</a></h2>
+<p>场景：在一些启动初始化过程，调试场景中，通过这个Use Predefined模式中，用户可以通过DisableParam参数不仅关闭某个计算节点，并使本应其产生的数据改成DisableParam参数自带的数据。
+构建如<code class="docutils literal notranslate"><span class="pre">config/control_workflow_use_predefined.json</span></code>中的workflow。这个workflow中仅有”BBoxFilter_1”和”PostBoxFilter_2”两个前后计算节点。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;max_running_count&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+  <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_head_box&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_head_box_filter_2&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter_1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_1&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;PostBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;PostBoxFilter_2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_1&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_2&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>workflow运行过程可见</p>
+<p><img alt="PreDefined-1" src="../../../../../_images/PreDefined-11.png" /></p>
+<p>如下代码(见<code class="docutils literal notranslate"><span class="pre">use_predefined_method_main.cc</span></code>)，首先构建DisableParamPtr对象pre_define, 关闭”BBoxFilter_1”节点，将mode设置为UsePreDefine。</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span> <span class="c1">// 3 use pre-defined input data</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;------------ pre-defined output----------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">params_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+  <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParamPtr</span>
+      <span class="n">pre_define</span><span class="p">(</span>
+        <span class="k">new</span> <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParam</span><span class="p">(</span>
+          <span class="s">&quot;BBoxFilter_1&quot;</span><span class="p">,</span>
+          <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParam</span><span class="o">::</span><span class="n">Mode</span><span class="o">::</span><span class="n">UsePreDefine</span><span class="p">));</span>
+  
+  <span class="c1">// 4 preprea new input data   </span>
+  <span class="n">BaseDataVector</span> <span class="o">*</span><span class="nf">pre_data</span><span class="p">(</span><span class="k">new</span> <span class="n">BaseDataVector</span><span class="p">);</span>
+  <span class="n">HobotXStream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">pre_bbox1</span><span class="p">(</span><span class="k">new</span> <span class="n">HobotXStream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span>
+    <span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)));</span>
+  <span class="n">pre_bbox1</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+  <span class="n">pre_data</span><span class="o">-&gt;</span><span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;face_head_box&quot;</span><span class="p">;</span>
+  <span class="n">pre_data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">pre_bbox1</span><span class="p">));</span>
+  <span class="n">pre_define</span><span class="o">-&gt;</span><span class="n">pre_datas_</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">pre_data</span><span class="p">));</span>
+
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">params_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pre_define</span><span class="p">);</span>
+  <span class="k">auto</span> <span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">SyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>接下来构建BaseDataVector,和准备一个Input数据基本一致，区别在于将这个新数据pre_data加入pre_define的pre_datas_成员中。新的数据我们设置BOX大小为(0, 0, 20, 20)的矩形。将DisableParamPtr对象pre_define设置为Input参数后，我们再运行一次workflow，我们来看下结果是怎样的。</p>
+<p><img alt="PreDefined-2" src="../../../../../_images/PreDefined-21.png" /></p>
+<p>这次的日志输出如下，PostBoxFilter_2节点的PostBoxFilter Method,在”BBoxFilter_1”关闭的情况下，收到的数据不是输入数据Box(0, 0, 60, 60), 而是控制参数重新定义的(0,0,20,20)。在这之后的流程中PostBoxFilter_2按输出数据(0,0,20,20)进行计算，输出结果数据face_head_box_filter_2</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>------------ pre-defined output----------
+PostBoxFilter::DoProcess
+input size: 1
+filter out: 0,0,20,20
+============Output Call Back============
+—seq: 0
+—output_type: __NODE_WHOLE_OUTPUT__
+—error_code: 0
+—error_detail_: 
+—datas_ size: 1
+——data type:BaseDataVector name:face_head_box_filter_2
+pdata size: 0
+============Output Call Back End============
+</pre></div>
+</div>
+</div>
+<div class="section" id="best-effort-passthrough-mode">
+<h2>Best Effort PassThrough Mode<a class="headerlink" href="#best-effort-passthrough-mode" title="永久链接至标题">¶</a></h2>
+<p>场景：在PassThrough的场景下，输入数据个数和输出数据个数刚好相等，或者只做修改，是非常特殊的情况，更多的实际场景下，输入数据和输出数据并不匹配。因此，这里提供一个更灵活的关闭节点模式<strong>Best Effort PassThrough Model</strong>。在这种模式下，输入数据大小多于输出，则只透传前面的slot。如果输入数据大小少于输出，则多余的输出slot为Invalid的BaseData。BestEffortPassThrough是PassThrough的改进版本，多数情况下更推荐使用estEffortPassThrough模式。
+接下来，我们看下这种模式如何使用。</p>
+<div class="section" id="demo1">
+<h3>demo1<a class="headerlink" href="#demo1" title="永久链接至标题">¶</a></h3>
+<p>首先，我们构造一个workflow如下,见<code class="docutils literal notranslate"><span class="pre">config/control_workflow_best_effort_use_predefined.json</span></code>, 输入数据是face_head_box,输出数据是”<em><strong>face_head_box_filter_3</strong></em>”, “<em><strong>face_head_box_filter_2</strong></em>”, “<em><strong>post_box_filter_1</strong></em>”。节点”BBoxFilter_1”将输入数据处理后转化成”<em><strong>face_head_box_filter_1</strong></em>”,”<em><strong>face_head_box_filter_2</strong></em>”后输出。”BBoxFilter_3”将”<em><strong>post_box_filter_1</strong></em>”
+处理后生成”<em><strong>face_head_box_filter_3</strong></em>”, “PostBoxFilter_4”将”<em><strong>face_head_box_filter_2</strong></em>”处理后生成”<em><strong>post_box_filter_1</strong></em>”。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;max_running_count&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+  <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_head_box&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_head_box_filter_3&quot;</span><span class="p">,</span> <span class="s2">&quot;face_head_box_filter_2&quot;</span><span class="p">,</span> <span class="s2">&quot;post_box_filter_1&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter_1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;face_head_box_filter_2&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter_3&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_1&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_3&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;PostBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;PostBoxFilter_4&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_2&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;post_box_filter_1&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>正常情况下，以上的workflow应该如下图运行</p>
+<p><img alt="BEPassThrough-1" src="../../../../../_images/BEPassThrough-11.png" /></p>
+<p>接下来，我们看下使用BestEffortPassThrough的情况下，workflow的运行。
+首先创建一个DisableParam对象给HobotXStream::InputParamPtr共享指针，DisableParam 构造函数中设置目标计算节点Node的unique name是”BBoxFilter_1”，既关闭第一个计算节点。”BBoxFilter_1”的输入参数是”<em><strong>face_head_box</strong></em>”,输出参数是”<em><strong>face_head_box_filter_1</strong></em>”, “<em><strong>face_head_box_filter_2</strong></em>”, 如果仅按PassThrough方式来关闭，会怎样呢？
+我们设置mode为PassThrough，加入input data的params_参数(见<code class="docutils literal notranslate"><span class="pre">best_effort_pass_though_method_main.cc</span></code>)。</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span> <span class="c1">// 4 set through output</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;------------ pass through output----------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">HobotXStream</span><span class="o">::</span><span class="n">InputParamPtr</span>
+    <span class="n">pass_through</span><span class="p">(</span>
+      <span class="k">new</span> <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParam</span><span class="p">(</span>
+        <span class="s">&quot;BBoxFilter_1&quot;</span><span class="p">,</span>
+        <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParam</span><span class="o">::</span><span class="n">Mode</span><span class="o">::</span><span class="n">PassThrough</span><span class="p">));</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">params_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pass_through</span><span class="p">);</span>
+  <span class="k">auto</span> <span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">AsyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>接着，我们运行下会有什么效果。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>============Output Call Back============
+—seq: 0
+input size: 1
+input slot 0 is invalid
+—output_type: __NODE_WHOLE_OUTPUT__
+—error_code: filter out: -6006
+—error_detail_: face_head_box_filter_3 is not ready;face_head_box_filter_2 is not ready;post_box_filter_1 is not ready;
+—datas_ size: 0
+============Output Call Back End============
+</pre></div>
+</div>
+<p>根据打印显示：
+error_code:-6006 代表 HOBOTXSTREAM_ERROR_OUTPUT_NOT_READY(-2002)*3,有3组数据错误码是 HOBOTXSTREAM_ERROR_OUTPUT_NOT_READY
+error_detail_: face_head_box_filter_3 is not ready
+face_head_box_filter_2 is not ready
+post_box_filter_1 is not ready
+代表预期的输出结果 “<em><strong>face_head_box_filter_3</strong></em>”, “<em><strong>face_head_box_filter_2</strong></em>”, “<em><strong>post_box_filter_1</strong></em>” 均为not ready。显然，后续节点”BBoxFilter_3”， “PostBoxFilter_4”均未能正常运行。这时workflow如下图:</p>
+<p><img alt="BEPassThrough-2" src="../../../../../_images/BEPassThrough-21.png" /></p>
+<p>接下来，我们看下使用Best Effort Pass Through会有怎样的效果。创建一个DisableParam对象给HobotXStream::InputParamPtr共享指针，DisableParam构造函数中设置目标计算节点Node的unique name是”BBoxFilter_1”,设置mode为BestEffortPassThrough，加入input data的params_参数。</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span>  <span class="c1">// 5 set best pass through output</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;------------best effort pass through output----------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">params_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+  <span class="n">HobotXStream</span><span class="o">::</span><span class="n">InputParamPtr</span>
+    <span class="n">b_effort_pass_through</span><span class="p">(</span>
+      <span class="k">new</span> <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParam</span><span class="p">(</span>
+        <span class="s">&quot;BBoxFilter_1&quot;</span><span class="p">,</span>
+        <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParam</span><span class="o">::</span><span class="n">Mode</span><span class="o">::</span><span class="n">BestEffortPassThrough</span><span class="p">));</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">params_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">b_effort_pass_through</span><span class="p">);</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">AsyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>我们运行一下，来看运行后的打印输出,如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">============</span>Output Call <span class="nv">Back</span><span class="o">============</span>
+—seq: <span class="m">1</span>
+—output_type: __NODE_WHOLE_OUTPUT__
+—error_code: -2002
+—error_detail_: post_box_filter_1 is not ready<span class="p">;</span>
+—datas_ size: <span class="m">2</span>
+——output data face_head_box_filter_3 state:0
+——data type:BaseDataVector name:face_head_box_filter_3
+pdata size: <span class="m">0</span>
+——output data face_head_box_filter_2 state:4
+——data type:BaseData name:face_head_box_filter_2
+pdata size: <span class="nv">18446744073709551610</span>
+<span class="o">============</span>Output Call Back <span class="nv">End</span><span class="o">============</span>
+</pre></div>
+</div>
+<p>这回<code class="docutils literal notranslate"><span class="pre">error_code:</span> <span class="pre">-2002</span> <span class="pre">error_detail_:</span> <span class="pre">post_box_filter_1</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">ready;</span></code>
+“<em><strong>post_box_filter_1</strong></em>” 状态是not ready,
+output data 有2组：
+“<em><strong>face_head_box_filter_3</strong></em>”的状态是<strong>VALID</strong>(0)
+“<em><strong>face_head_box_filter_2</strong></em>”的状态是<strong>INVALID</strong>(4)
+再来回顾下workflow:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span> &quot;workflow&quot;: [
+    {
+      &quot;thread_count&quot;: 3,
+      &quot;method_type&quot;: &quot;BBoxFilter&quot;,
+      &quot;unique_name&quot;: &quot;BBoxFilter_1&quot;,
+      &quot;inputs&quot;: [
+        &quot;face_head_box&quot;
+      ],
+      &quot;outputs&quot;: [
+        &quot;face_head_box_filter_1&quot;,
+        &quot;face_head_box_filter_2&quot;
+      ],
+      &quot;method_config_file&quot;: &quot;null&quot;
+    },
+    {
+      &quot;thread_count&quot;: 3,
+      &quot;method_type&quot;: &quot;BBoxFilter&quot;,
+      &quot;unique_name&quot;: &quot;BBoxFilter_3&quot;,
+      &quot;inputs&quot;: [
+        &quot;face_head_box_filter_1&quot;
+      ],
+      &quot;outputs&quot;: [
+        &quot;face_head_box_filter_3&quot;
+      ],
+      &quot;method_config_file&quot;: &quot;null&quot;
+    },
+    {
+      &quot;thread_count&quot;: 3,
+      &quot;method_type&quot;: &quot;PostBoxFilter&quot;,
+      &quot;unique_name&quot;: &quot;PostBoxFilter_4&quot;,
+      &quot;inputs&quot;: [
+        &quot;face_head_box_filter_2&quot;
+      ],
+      &quot;outputs&quot;: [
+        &quot;post_box_filter_1&quot;
+      ],
+      &quot;method_config_file&quot;: &quot;null&quot;
+    }
+  ]
+</pre></div>
+</div>
+<p>在BestEffortPassThrough的控制下的workflow如下图</p>
+<p><img alt="BEPassThrough-3" src="../../../../../_images/BEPassThrough-31.png" /></p>
+<p>在BestEffortPassThrough的模式控制下，”BBoxFilter_1”没有运行，但输入参数”<em><strong>face_head_box</strong></em>”直接转换成了输出参数”<em><strong>face_head_box_filter_1</strong></em>”,而”<em><strong>face_head_box_filter_2</strong></em>”因没有对应的输入数据,被设置为<strong>INVALID</strong>(4)。
+“<em><strong>face_head_box_filter_1</strong></em>”在计算节点”BBoxFilter_3”处理下，生成”<em><strong>face_head_box_filter_3</strong></em>”，因此最终输出数据中”<em><strong>face_head_box_filter_3</strong></em>”的状态是<strong>VALID</strong>(0)。 而”PostBoxFilter_4”节点，因为输入数据 “<em><strong>face_head_box_filter_2</strong></em>”被设置为<strong>INVALID</strong>(4),不满足运行要求, 输出数据”<em><strong>post_box_filter_1</strong></em>”状态就被设置为了not ready。
+这样在”BBoxFilter_1”节点不运行的情况下，通过输入数组的”<em><strong>face_head_box</strong></em>”的”Best Effort”转化，依然保证了”BBoxFilter_3”节点的正常运行。</p>
+</div>
+<div class="section" id="demo2">
+<h3>demo2<a class="headerlink" href="#demo2" title="永久链接至标题">¶</a></h3>
+<p>上一个例子中，是输入参数个数少于输出参数个数的情况(见<code class="docutils literal notranslate"><span class="pre">config/control_workflow_best_effort_use_predefined_2nd.json</span></code>)。接下来看下，如果输入参数大于输出参数时，Best Effort Pass Through 模式将输入参数按顺序转化成输出参数，多余部分丢弃。
+在上一个demo的workflow基础上,增加输入参数”face_head_box2”</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;max_running_count&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+  <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_head_box&quot;</span><span class="p">,</span><span class="s2">&quot;face_head_box2&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_head_box_filter_3&quot;</span><span class="p">,</span> <span class="s2">&quot;post_box_filter_1&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter_1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;face_head_box2&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_1&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter_3&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_1&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter_3&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;PostBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;PostBoxFilter_4&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box2&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;post_box_filter_1&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>在不加DisableParam参数的运行条件下, 打印输出如下，说明未发生错误，各输出参数状态正确。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>============Output Call Back===============
+—seq: 0
+—output_type: __NODE_WHOLE_OUTPUT__
+—error_code: 0
+—error_detail_: 
+filter out: —datas_ size: 2
+——output data face_head_box_filter_3 state:0
+——data type:BaseDataVector name:face_head_box_filter_3
+pdata size: 0
+——output data post_box_filter_1 state:0
+——data type:BaseDataVector name:post_box_filter_1
+pdata size: 1
+============Output Call Back End============
+</pre></div>
+</div>
+<p>同样的DisableParam, 设置目标计算节点Node的unique name是”BBoxFilter_1”, 设置mode为BestEffortPassThrough。(见<code class="docutils literal notranslate"><span class="pre">best_effort_pass_though_method_main_2.cc</span></code>)</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// 5 set best pass through output</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;------------best effort pass through output----------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">params_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+  <span class="n">HobotXStream</span><span class="o">::</span><span class="n">InputParamPtr</span>
+    <span class="n">b_effort_pass_through</span><span class="p">(</span>
+      <span class="k">new</span> <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParam</span><span class="p">(</span>
+        <span class="s">&quot;BBoxFilter_1&quot;</span><span class="p">,</span>
+        <span class="n">HobotXStream</span><span class="o">::</span><span class="n">DisableParam</span><span class="o">::</span><span class="n">Mode</span><span class="o">::</span><span class="n">BestEffortPassThrough</span><span class="p">));</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">params_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">b_effort_pass_through</span><span class="p">);</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">AsyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>再次运行看下结果如下，没有发生错误。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>============Output Call Back============
+—seq: 2
+—output_type: __NODE_WHOLE_OUTPUT__
+—error_code: 0
+—error_detail_: 
+—datas_ size: 2
+——output data face_head_box_filter_3 state:0
+——data type:BaseDataVector name:face_head_box_filter_3
+pdata size: 0
+——output data post_box_filter_1 state:0
+——data type:BaseDataVector name:post_box_filter_1
+pdata size: 1
+============Output Call Back End============
+</pre></div>
+</div>
+<p>预期输出结果”<em><strong>face_head_box_filter_3</strong></em>”,”<em><strong>post_box_filter_1</strong></em>”都得到正确状态的返回值。在运行过程中, 计算节点<em>BBoxFilter_1</em>”在关闭的状态下, “<em><strong>face_head_box</strong></em>”被转化成”<em><strong>face_head_box_filter_1</strong></em>”。因后续节点的输入数据没有收到影响, 因此没有发生任何错误, 所有其他期待的输出数据都状态正常。
+输出印证了workflow运行状况:
+<img alt="BEPassThrough-4" src="../../../../../_images/BEPassThrough-41.png" /></p>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>总结<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>以上就是控制计算节点运行的4种方式: Invalid, UsePreDefine, PassThrough, BestEffortPassThrough。</p>
+<ul class="simple">
+<li><p>Invalid模式: 直接关闭节点，输出数据是INVALID。依赖其输出数据的后置网络，都会受到影响，无法输出期待的输出数据。</p></li>
+<li><p>UsePreDefine模式: 直接定义关闭节点的输出数据。在模拟, 测试等场景可以使用</p></li>
+<li><p>PassThrough模式: 直接将关闭节点的输入数据当做输出数据,前提是输入数据和输出相等。</p></li>
+<li><p>BestEffortPassThrough: 如果关闭节点的输入数据多于或等于输出数据，则按顺序将输入数据拷贝到输出数据；如果输入数据少于输出数据, 则多余的输出为Invalid的BaseData。BestEffortPassThrough模式是PassThrough模式的替代版本。</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

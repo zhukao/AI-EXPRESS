@@ -1,0 +1,63 @@
+# aidi.GatewayApi
+
+All URIs are relative to *http://aidi.hobot.cc/api*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**upload_file_from_cli**](GatewayApi.md#upload_file_from_cli) | **POST** /gateway/v1/file/cli/upload | Upload file to remote server.
+
+
+# **upload_file_from_cli**
+> APIResult upload_file_from_cli(file1=file1)
+
+Upload file to remote server.
+
+This will upload local file to remote server and return it's remote path.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.GatewayApi(aidi.ApiClient(configuration))
+file1 = '/path/to/file.txt' # file |  (optional)
+
+try:
+    # Upload file to remote server.
+    api_response = api_instance.upload_file_from_cli(file1=file1)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling GatewayApi->upload_file_from_cli: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file1** | **file**|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

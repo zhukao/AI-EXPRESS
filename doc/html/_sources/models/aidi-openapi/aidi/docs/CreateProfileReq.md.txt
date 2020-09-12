@@ -1,0 +1,15 @@
+# CreateProfileReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**att_name** | **str** | algorithm task name of this profile, such as detection, classification in: body | 
+**auth_info** | [**ResourceAddition**](ResourceAddition.md) |  | 
+**desc** | **str** | profile&#39;s description in: body | [optional] 
+**name** | **str** | profile&#39;s name in: body | 
+**profile_path** | **str** | profile&#39;s file path in: body | 
+**tags** | **list[str]** | profile&#39;s tags in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

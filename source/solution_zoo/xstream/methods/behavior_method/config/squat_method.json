@@ -1,0 +1,25 @@
+{
+    "inputs": [
+      "body_box_list",
+      "disappeared_track_id",
+      "kps"
+    ],
+    "outputs": [
+      "squat"
+    ],
+    "workflow": [
+      {
+        "unique_name": "squat_method",
+        "method_type": "BehaviorMethod",
+        "inputs": [
+          "body_box_list",
+          "disappeared_track_id",
+          "kps"
+        ],
+        "outputs": [
+          "squat"
+        ],
+        "method_config_file": "squat.json"
+      }
+    ]
+}

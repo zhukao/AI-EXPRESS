@@ -1,0 +1,23 @@
+{
+  "model_file_path": "../models/gestureDet.hbm",
+  "bpu_config_path": "../configs/bpu_config.json",
+  "model_version": "v0.0.1",
+  "model_name" : "gestureDet",
+  "in_msg_type" : "lmk_seq",
+  "post_fn" : "act_det",
+  "data_type": "tensor_s8",
+  "input_shift" : 7,
+  "seq_len" : 32,
+  "kps_len" : 21,
+  "stride" : 0.0333333,
+  "max_gap" : 0.066666,
+  "buf_len" : 100,
+  "norm_kps_conf" : 0,
+  "kps_norm_scale" : 4.897640403536304,
+  "merge_groups" : "[0,1,15];[2];[3];[4];[5];[6];[7];[8];[9];[10];[11];[12];[13];[14]",
+  "output_size" : 1,
+  "output_type": "gesture",
+  "output_names": [
+    "gesture"
+  ]
+}

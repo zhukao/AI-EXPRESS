@@ -1,0 +1,84 @@
+# 版本说明  版本 2.4.0
+        
+<h2>        故事
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-519'>XPPXROC-519</a>] -         智能电视手势识别demo
+</li>
+</ul>
+                                                                                                        
+<h2>        任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-344'>XPPXROC-344</a>] -         对接AIDI平台的pythonsdk接口
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-500'>XPPXROC-500</a>] -         iot需求：支持iot X3生态板
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-513'>XPPXROC-513</a>] -         uvcplugin不能正常退出
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-515'>XPPXROC-515</a>] -         x3 pym 离线模式回灌无图像
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-516'>XPPXROC-516</a>] -         uvcplugin适配media manager模块
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-526'>XPPXROC-526</a>] -         ai-express合入多路盒子demo相关功能代码
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-528'>XPPXROC-528</a>] -         支持x3生态板os8a10 mipi camera
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-530'>XPPXROC-530</a>] -         uvc模式跑一段时间，x3板子直接挂掉
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-531'>XPPXROC-531</a>] -         使用uvc模式，usb camera app,无法正常获取图像视频流
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-533'>XPPXROC-533</a>] -         X2支持2160P回灌
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-535'>XPPXROC-535</a>] -         将hid智能信息上的原图坐标转换为用户预览图像上坐标
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-539'>XPPXROC-539</a>] -         web模式图像帧与智能结果不匹配问题
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-541'>XPPXROC-541</a>] -         适配0803镜像接口
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-542'>XPPXROC-542</a>] -         支持usb camera接入生态板子
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-543'>XPPXROC-543</a>] -         摔倒检测模型， 人体分割效果调优
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-545'>XPPXROC-545</a>] -         手势识别编写开发者教程
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-548'>XPPXROC-548</a>] -         ai-express 2.4版本对齐芯片基础工具链3.7版本
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-552'>XPPXROC-552</a>] -         适配0807镜像接口
+</li>
+</ul>
+    
+<h2>        故障
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-518'>XPPXROC-518</a>] -         多路人脸抓拍识别，workflow高概率卡死
+</li>
+</ul>
+                                    
+<h2>        子任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-427'>XPPXROC-427</a>] -         对好焦后，展示端显示的图像有纹理.
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-463'>XPPXROC-463</a>] -         vio回灌系统软件内部会出异常
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-486'>XPPXROC-486</a>] -         展示端属性值残留
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-521'>XPPXROC-521</a>] -         集成手的检测模型
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-522'>XPPXROC-522</a>] -         集成手的关键点检测模型
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-523'>XPPXROC-523</a>] -         集成手势识别模型
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-524'>XPPXROC-524</a>] -         手势识别demo，protobuf协议的适配
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-525'>XPPXROC-525</a>] -         手势识别，web前端适配
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-529'>XPPXROC-529</a>] -         预测帧率不足
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-532'>XPPXROC-532</a>] -         solution 退出crash
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-538'>XPPXROC-538</a>] -         【展示端】修改CP侧程序导致的结果展示异常
+</li>
+</ul>
+            

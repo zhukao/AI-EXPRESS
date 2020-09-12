@@ -1,0 +1,32 @@
+{
+    "inputs": [
+      "snap_list"
+    ],
+    "outputs": [
+      "face_feature"
+    ],
+    "workflow": [
+      {
+        "unique_name": "lmk_input",
+        "method_type": "CNNLmkPreMethod",
+        "inputs": [
+          "snap_list"
+        ],
+        "outputs": [
+          "tmp_out"
+        ],
+        "method_config_file": "method_conf/feature.json"
+      },
+      {
+        "unique_name": "faceid_post",
+        "method_type": "CNNFeaturePostMethod",
+        "inputs": [
+          "tmp_out"
+        ],
+        "outputs": [
+          "face_feature"
+        ],
+        "method_config_file": "method_conf/feature.json"
+      }
+    ]
+  }

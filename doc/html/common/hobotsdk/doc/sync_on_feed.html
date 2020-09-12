@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>问题场景 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>问题场景</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/common/hobotsdk/doc/sync_on_feed.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>问题场景<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>假设我们有如下的workflow：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>image
+  │
+  │            ┌───┐ 
+  ├───────────&gt;│0  │     ┌───┐
+  │   ┌───┐    │ B ├────&gt;│ C │
+  └──&gt;│ A ├───&gt;│1  │     └───┘
+      └───┘    └───┘
+</pre></div>
+</div>
+<p>其中 A 是BPU计算密集的Module，并且计算量和图片的内容密切相关，不同的图片计算量差距较大； B 接受image输入以及A的结果输出作为输入，需要做一些CPU密集的处理；但总的来说处理代价比A小很多。</p>
+<p>接下来，我们需要优化这个workflow：尽可能地提高资源利用率，降低处理延迟，提高吞吐量。</p>
+<div class="section" id="id2">
+<h2>并行化与乱序<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>这样，A 处理延迟可能会很大，造成整体workflow的瓶颈。所以可以考虑把 A 并行化：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>image
+  │
+  │                            ┌───┐ 
+  ├───────────────────────────&gt;│0  │     ┌───┐
+  │   ┌───┐       ┌───┐        │ B ├────&gt;│ C │
+  └──&gt;│ D ├───┬──&gt;│ Aa├───┬───&gt;│1  │     └───┘
+      └───┘   │   └───┘   │    └───┘
+              │   ┌───┐   │    
+              ├──&gt;│ Ab├───┤    
+              │   └───┘   │    
+              │   ┌───┐   │    
+              └──&gt;│ Ac├───┘    
+                  └───┘   
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Aa</span></code> <code class="docutils literal notranslate"><span class="pre">Ab</span></code> <code class="docutils literal notranslate"><span class="pre">Ac</span></code> 都是类型和<code class="docutils literal notranslate"><span class="pre">A</span></code>一样的三个实例；<code class="docutils literal notranslate"><span class="pre">D</span></code> 是一个新开发的负责分发的Module，其功能是可以在每一帧图像来的时候，以Round Robin的策略把图像轮流发给 <code class="docutils literal notranslate"><span class="pre">Aa</span></code>, <code class="docutils literal notranslate"><span class="pre">Ab</span></code>, <code class="docutils literal notranslate"><span class="pre">Ac</span></code>，以此达到充分利用BPU、消除瓶颈<code class="docutils literal notranslate"><span class="pre">A</span></code>的目的。</p>
+<p>我们假设连续俩帧输入的图片数据为<code class="docutils literal notranslate"><span class="pre">i0</span></code>和<code class="docutils literal notranslate"><span class="pre">i1</span></code>。<code class="docutils literal notranslate"><span class="pre">i0</span></code>包含很多车辆；<code class="docutils literal notranslate"><span class="pre">i1</span></code>包含的车辆较少。那么当<code class="docutils literal notranslate"><span class="pre">i1</span></code>被Feed之后，处理<code class="docutils literal notranslate"><span class="pre">i0</span></code>的<code class="docutils literal notranslate"><span class="pre">Aa</span></code>还没处理完，workflow中的数据可能会是这样：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>image
+  │
+  │                       i1,i0┌───┐ 
+  ├───────────────────────────&gt;│0  │     ┌───┐
+  │   ┌───┐     i0┌───┐        │ B ├────&gt;│ C │
+  └──&gt;│ D ├───┬──&gt;│ Aa├───┬───&gt;│1  │     └───┘
+      └───┘   │   └───┘   │    └───┘
+              │ i1┌───┐   │    
+              ├──&gt;│ Ab├───┤    
+              │   └───┘   │    
+              │   ┌───┐   │    
+              └──&gt;│ Ac├───┘    
+                  └───┘   
+</pre></div>
+</div>
+<p>如果<code class="docutils literal notranslate"><span class="pre">i0</span></code>处理完成的时间早于<code class="docutils literal notranslate"><span class="pre">i1</span></code>处理完成的时间，那么一切都不会有问题。但是如果出现<code class="docutils literal notranslate"><span class="pre">i0</span></code>的处理完成时间晚于<code class="docutils literal notranslate"><span class="pre">i1</span></code>，就会出现<code class="docutils literal notranslate"><span class="pre">B</span></code>的输入数据不匹配的情况：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>image
+  │
+  │                       i1,i0┌───┐ 
+  ├───────────────────────────&gt;│0  │     ┌───┐
+  │   ┌───┐       ┌───┐   a0,a1│ B ├────&gt;│ C │
+  └──&gt;│ D ├───┬──&gt;│ Aa├───┬───&gt;│1  │     └───┘
+      └───┘   │   └───┘   │    └───┘
+              │   ┌───┐   │    
+              ├──&gt;│ Ab├───┤    
+              │   └───┘   │    
+              │   ┌───┐   │    
+              └──&gt;│ Ac├───┘    
+                  └───┘   
+</pre></div>
+</div>
+<p>这样B后续的执行结果就不对了。</p>
+</div>
+<div class="section" id="id3">
+<h2>解决方案：重排序<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>一个办法是在<code class="docutils literal notranslate"><span class="pre">B</span></code>之前，加入一个Module，对数据<code class="docutils literal notranslate"><span class="pre">a</span></code> 按照 image 的顺序重新排序：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>image
+  │
+  │                                i1,i0┌───┐ 
+  ├────────────────────────────────────&gt;│0  │     ┌───┐
+  │   ┌───┐       ┌───┐      ┌───┐ a1,a0│ B ├────&gt;│ C │
+  └──&gt;│ D ├───┬──&gt;│ Aa├───┬─&gt;│ S ├─────&gt;│1  │     └───┘
+      └───┘   │   └───┘   │  └───┘      └───┘
+              │   ┌───┐   │    
+              ├──&gt;│ Ab├───┤    
+              │   └───┘   │    
+              │   ┌───┐   │    
+              └──&gt;│ Ac├───┘    
+                  └───┘   
+</pre></div>
+</div>
+<p>其中<code class="docutils literal notranslate"><span class="pre">S</span></code>是用来排序的Module，他的作用是将其输入的数据按照image的id的大小进行排序，再依次输出。</p>
+<p>这样可以避免在module <code class="docutils literal notranslate"><span class="pre">B</span></code>出输入数据对应错乱的问题。</p>
+</div>
+<div class="section" id="feed">
+<h2>解决方案：数据按照Feed 同步<a class="headerlink" href="#feed" title="永久链接至标题">¶</a></h2>
+<p>但是上面这样的话，<code class="docutils literal notranslate"><span class="pre">i1</span></code>这一帧的数据在A环节先处理完，却还是需要等待<code class="docutils literal notranslate"><span class="pre">i0</span></code>处理完才能走后续的流程，这样可能造成<code class="docutils literal notranslate"><span class="pre">B</span></code> <code class="docutils literal notranslate"><span class="pre">C</span></code>处不必要的空闲；如果<code class="docutils literal notranslate"><span class="pre">B</span></code>和<code class="docutils literal notranslate"><span class="pre">C</span></code>的业务逻辑本身并不要求输入是按照时间顺序的话，我们应该允许进一步优化，就需要允许<code class="docutils literal notranslate"><span class="pre">B</span></code>可以先处理 <code class="docutils literal notranslate"><span class="pre">i1</span></code>, <code class="docutils literal notranslate"><span class="pre">a1</span></code>这一组数据，再处理<code class="docutils literal notranslate"><span class="pre">i0</span></code>, <code class="docutils literal notranslate"><span class="pre">a0</span></code>这一组数据：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+image                       先处理Forward(i1, a1)
+  │                        /
+  │                       i1,i0┌───┐ 
+  ├───────────────────────────&gt;│0  │     ┌───┐
+  │   ┌───┐     i0┌───┐   a1   │ B ├────&gt;│ C │
+  └──&gt;│ D ├───┬──&gt;│ Aa├───┬───&gt;│1  │     └───┘
+      └───┘   │   └───┘   │    └───┘
+              │   ┌───┐   │    
+              ├──&gt;│ Ab├───┤    
+              │   └───┘   │    
+              │   ┌───┐   │    
+              └──&gt;│ Ac├───┘    
+                  └───┘   
+</pre></div>
+</div>
+<p>所以，可以引入一种机制，来确保<code class="docutils literal notranslate"><span class="pre">B</span></code>可以在自己的InputSlot中，识别出属于同一次Feed产生的数据，在这个的基础上执行Forward。</p>
+<p>还是以同步编程来比喻：实现一个Module就相当于实现一个子函数；整个Workflow就相当于实现了一个主函数；在Workflow里面使用Link将Module连接起来，就相当于在这个主函数里面，调用不同的子函数，一些子函数的输出是另一些子函数的输入，由此构成数据依赖。</p>
+<p>那么不同次的Feed就相当于对Workflow这个主函数的不同次的调用。在同步编程模式下，每次调用一个函数，其不同子函数的输入/输出数据相当于是局部变量，是在每次调用的线程栈上；所以不同次调用显然不会互相影响。但是在hobotsdk这样的流式处理框架中，我们就需要机制，来让用户有能力把每次“调用Workflow”——也就是每次Feed所产生的数据区分开来。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>修改建议<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h1>
+<div class="section" id="workflow-feed-feed-feed-id">
+<h2>Workflow增加接口：一次Feed一组数据；Feed增加参数：feed_id<a class="headerlink" href="#workflow-feed-feed-feed-id" title="永久链接至标题">¶</a></h2>
+<p>增加接口：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">Feed</span><span class="p">(</span><span class="n">spRunContext</span> <span class="n">run_context</span><span class="p">,</span>
+                    <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">Module</span> <span class="o">*</span><span class="p">,</span>   <span class="c1">// module</span>
+                      <span class="kt">int</span><span class="p">,</span>                           <span class="c1">// forward_index</span>
+                      <span class="kt">int</span><span class="p">,</span>                           <span class="c1">// input_slot_index</span>
+                      <span class="n">spMessage</span><span class="o">&gt;&gt;</span>                    <span class="c1">// message</span>
+                      <span class="n">feed_messages</span><span class="p">,</span> 
+                    <span class="n">int64</span> <span class="n">feed_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>当前的Feed方法都只支持单个数据的Feed；所以需要确保有一个接口可以代表对整个Workflow的一次调用，这次调用可以输入多个Message。同时，加入一个参数<code class="docutils literal notranslate"><span class="pre">feed_id</span></code>作为这次feed的唯一id，作为区分不同feed的数据的依据。同时，现有的Feed接口也追加<code class="docutils literal notranslate"><span class="pre">feed_id</span></code>作为参数，默认值-1代表可忽略的feed_id。</p>
+</div>
+<div class="section" id="message-feed-id">
+<h2>Message增加字段：feed_id<a class="headerlink" href="#message-feed-id" title="永久链接至标题">¶</a></h2>
+<p>Message增加一个字段<code class="docutils literal notranslate"><span class="pre">feed_id</span></code>。被<code class="docutils literal notranslate"><span class="pre">Feed</span></code>的message的<code class="docutils literal notranslate"><span class="pre">feed_id</span></code>就是这次Feed的<code class="docutils literal notranslate"><span class="pre">feed_id</span></code>；只要module做了相应的设置，那么以这些message为输入执行Forward，所产生的message，也会得到相同的<code class="docutils literal notranslate"><span class="pre">feed_id</span></code>。详见下文。</p>
+</div>
+<div class="section" id="workflow-setsynconfeed">
+<h2>Workflow增加接口：SetSyncOnFeed<a class="headerlink" href="#workflow-setsynconfeed" title="永久链接至标题">¶</a></h2>
+<p>增加接口：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">DefaultWorkflow</span><span class="o">::</span><span class="n">SetSyncOnFeed</span><span class="p">(</span><span class="n">Module</span> <span class="o">*</span><span class="n">module</span><span class="p">,</span>
+                                   <span class="kt">int</span> <span class="n">forward_index</span><span class="p">,</span>
+                                   <span class="nl">std</span><span class="p">:</span><span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">input_slots</span><span class="p">,</span>
+                                   <span class="kt">bool</span> <span class="n">order_by_feedid</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>指定某个module的输入需要按照feed来同步输入数据。</p>
+<p>当针对某个module调用这个接口时，改变这个module的设置，产生两个影响：</p>
+<ul class="simple">
+<li><p>这个Module的<code class="docutils literal notranslate"><span class="pre">input_slots</span></code>所指定的Input Slots的数据按照feed_id同步：只在feed_id相同的message之间，对Condition的Expression表达式求值，不同的feed_id各自求值；表达式过了就可以执行Forward了。如果有Input Slot不在<code class="docutils literal notranslate"><span class="pre">input_slots</span></code>指定的范围内，那么这个Input Slot作为一个整体，跟随每一个feed_id进行表达式求值。如果<code class="docutils literal notranslate"><span class="pre">preserve_order</span></code>为true，那么就按照调用Feed时<code class="docutils literal notranslate"><span class="pre">feed_id</span></code>的顺序，依次检查运行各个<code class="docutils literal notranslate"><span class="pre">feed_id</span></code>的数据。</p></li>
+<li><p>这个Module的<code class="docutils literal notranslate"><span class="pre">input_slots</span></code>所指定的Input Slots带来的feed_id传递给输出：这个Module的Forward执行过程中调用<code class="docutils literal notranslate"><span class="pre">Return</span></code>所产生的message，会带上来自<code class="docutils literal notranslate"><span class="pre">input_slots</span></code>的message中的feed_id。如果有Input Slot不在<code class="docutils literal notranslate"><span class="pre">input_slots</span></code>指定的范围内，那么这个Input Slot的message带来的<code class="docutils literal notranslate"><span class="pre">feed_id</span></code>被忽略。</p></li>
+</ul>
+<p>默认情况下，每个module的设置中，SyncOnFeed的input_slots为空，上述行为关闭。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,751 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "lib/libCNNMethod.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"install",
+			"add_definitions",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"source/common/xstream/methods/cnnmethod/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 94,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 102,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 5,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 53,
+				"parent" : 4
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 85,
+				"parent" : 4
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 22,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 92,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-Wall -Wno-unknown-pragmas -fPIC -fexceptions -Werror -O3 -fPIC  -std=c++11  -O3 -DNDEBUG  "
+				}
+			],
+			"defines" : 
+			[
+				{
+					"define" : "HR_LINUX"
+				},
+				{
+					"define" : "HR_POSIX"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "SEARCH_PERFORMANCE"
+				},
+				{
+					"define" : "X2"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/x2_prebuilt/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/face/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/framework/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/framework/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/msgtype/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/plugins/vioplugin/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/plugins/smartplugin/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/plugins/visualplugin/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/plugins/hbipcplugin/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/plugins/websocketplugin/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/plugins/uvcplugin/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/vision_type/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/media_codec/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/viowrapper/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/methods/cnnmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/methods/fasterrcnnmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/gradingmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/filtermethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/snapshotmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/mergemethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/behavior_method/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/predictmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/postprocessmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/methods/motmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/vehicle_snap_method/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/vehicle_plate_match_method/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/plate_vote_method/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/vote_method/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/FilterSkipFrameMethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/ssd_method/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/imagetools/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/ipc_tracking/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/bpu_predict/x2/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/jsoncpp/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/hobotlog/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/protobuf/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/gtest/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/opencv/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/libjpeg-turbo/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/libyuv/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/hobot/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/iou_based_mot/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/zlib/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/live555/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/xwarehouse/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/uWS/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/openssl/include"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/methods/cnnmethod/src"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/methods/cnnmethod/example/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25
+			]
+		}
+	],
+	"id" : "CNNMethod::@8e0c2b16b135bcbba6b6",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 2,
+				"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/output/CNNMethod/lib"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "/usr/local"
+		}
+	},
+	"name" : "CNNMethod",
+	"nameOnDisk" : "libCNNMethod.a",
+	"paths" : 
+	{
+		"build" : "source/common/xstream/methods/cnnmethod",
+		"source" : "source/common/xstream/methods/cnnmethod"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/CNNMethod.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/CNNConst.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/util/ModelInfo.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/util/AlignFace.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/Predictor/Predictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/Predictor/RectInputPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/Predictor/ImgInputPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/Predictor/LmkInputPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/Predictor/VehicleImgInputPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/Predictor/LmkSeqInputPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/Predictor/VidPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/PostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/AgeGenderPostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/BinaryClassifyPostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/AntiSpfPostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/FaceIdPostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/LmkPosePostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/PlateNumPostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/VehicleColorPostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/VehicleTypePostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/ClassifyPostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/FaceQualityPostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/ActPostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/BackbonePostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/VidPostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/common/xstream/methods/cnnmethod/src/PostPredictor/CommonLmkPostPredictor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/CNNMethod.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/CNNConst.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/util/util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/util/ModelInfo.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/util/AlignFace.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/util/ActDataPreprocess.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/util/CNNMethodData.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/util/CNNMethodConfig.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/Predictor/Predictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/Predictor/PredictorFactory.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/Predictor/ImgInputPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/Predictor/LmkInputPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/Predictor/RectInputPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/Predictor/VehicleImgInputPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/Predictor/LmkSeqInputPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/Predictor/VidPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/PostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/AgeGenderPostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/BinaryClassifyPostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/AntiSpfPostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/FaceIdPostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/LmkPosePostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/PostPredictorFactory.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/PlateNumPostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/VehicleColorPostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/VehicleTypePostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/ClassifyPostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/FaceQualityPostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/ActPostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/BackbonePostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/VidPostPredictor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "source/common/xstream/methods/cnnmethod/include/CNNMethod/PostPredictor/CommonLmkPostPredictor.h",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

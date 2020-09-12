@@ -1,0 +1,5 @@
+# Reconstruction1 - reproduce PRNet
+
+- Reference paper: Joint 3D Face Reconstruction and Dense Alignment with Position Map Regression Network
+- Original github: https://github.com/YadiraF/PRNet and https://github.com/YadiraF/face3d.
+- reimpletement by zijian.zhou@horizon.ai in GluonFace.

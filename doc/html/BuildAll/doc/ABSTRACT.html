@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>地平线AI芯片 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>地平线AI芯片</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/BuildAll/doc/ABSTRACT.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ai">
+<h1>地平线AI芯片<a class="headerlink" href="#ai" title="永久链接至标题">¶</a></h1>
+<p>X2是地平线研发的第二代面向AIoT场景的AI加速芯片，在视觉领域可用于智能相机、智能门禁系统等多种场景。
+BPU的架构如下图：</p>
+<p><img alt="BPU-ARCHITECTURE" src="../../_images/BPU-ARCH.png" /></p>
+<p>X2芯片主要包含VIO（视频输入处理单元）、BPU（CNN加速单元）、BIF（通过spi等对外传输模块）;
+X2支持camera以mipi或者bt1120接口传递视频到VIO单元，从VIO可以获得一帧帧NV12格式的图片;
+从VIO获取的图片输入BPU单元，配合不同的基于地平线工具链编译的模型可以得到对应的智能结果，如人脸检测框、人脸特征值等;
+通常可通过BIF模块或者网口（如果存在的话）将智能帧结果传输出去。</p>
+</div>
+<div class="section" id="id1">
+<h1>AI应用中间件<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>地平线AI应用中间件, 是基于地平线AI芯片, 提供的高性能AI应用快速开发框架。基于AI应用开发中间件，您可以快速集成算法模型，开发出适应实际使用场景的AI应用。
+AI应用中间件它有如下特点：</p>
+<p><em>模块化设计，帮助用户通过简单配置即实现定制化需求开发。</em></p>
+<p><em>提供典型场景应用案例，帮助用户快速上手AI应用开发，加速多场景AI业务的部署及落地。</em></p>
+<p><em>成熟的产品级方案，已在面板机、IPC的多个项目成功应用。</em></p>
+<p><em>完全开放&amp;省时&amp;省力</em>。</p>
+</div>
+<div class="section" id="id2">
+<h1>中间件框架<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h1>
+<p>地平线AI中间件框架如下图所示，算法策略框架XStream-framework和应用开发原型框架XProto-framework作为基础框架; Methods, XProto Plugins是地平线积累的算法策略以及应用模块池。Solutions是基于method，plugin的解决方案池。提供给客户参考及复用。</p>
+<p><img alt="框架" src="../../_images/aiexpress.png" /></p>
+<div class="section" id="xstream-framework">
+<h2>XStream Framework<a class="headerlink" href="#xstream-framework" title="永久链接至标题">¶</a></h2>
+<p>该框架可以通过JSON配置构建workflow，workflow是一个有向拓扑图，图中每个节点（Node）管理了一个或多个同类型method的实例;</p>
+<p>在XStream中method表示一种能力，通常是某类模型能力（人脸检测、人脸Pose等）或者算法策略（过滤策略、融合策略、优选策略等）;</p>
+<p>将一组能力串联在一起就构成了一个workflow，workflow表示一个范式，比如人脸检测、跟踪、属性（pose、blur等）以及优选等能力级联起来可以构建一个人脸抓拍范式；</p>
+<p>除此之外XStream-Framework定义了一套面向workflow的sdk C++通用接口，通过设置不同的配置文件同一套接口可以运行不同的workflow。</p>
+<p><img alt="框架" src="../../_images/aiexpress.png" /></p>
+</div>
+<div class="section" id="xproto-framework">
+<h2>XProto Framework<a class="headerlink" href="#xproto-framework" title="永久链接至标题">¶</a></h2>
+<p>XProto(X2 prototype platform)
+主要为了解耦合输入VIO与智能处理单元（通常需要BPU处理）、以及输出模块（通过BIF传输等）。</p>
+<p>XProto实现了一个松耦合的消息订阅与分发机制，输入、智能处理、输出等模块被抽象成一个个插件单元，每个插件可以通过总线订阅感兴趣的消息，同时也可以把合法的消息通过总线分发出去。</p>
+<p>该solution定义的插件及消息类型如下：</p>
+<p><img alt="xproto框架" src="BuildAll/doc/./image/xproto-message-arch.png" /></p>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>Methods是地平线AI应用中间件提供的, 基于XStream Framework开发的智能策略Method池。
+例如CNNMethod, FasterRCNNMethod, MotMethod。</p>
+</div>
+<div class="section" id="plugins">
+<h2>Plugins<a class="headerlink" href="#plugins" title="永久链接至标题">¶</a></h2>
+<p>Plugins是基于XProto framework的原型组件池。</p>
+<p>例如: SmartPlugin:基于XStream通用sdk接口开发的通用智能化sdk运行框架。</p>
+<p>VioPlugin负责获取、转换图像数据并控制图像数据获取速率，并将图像数据或丢帧数据推送给消息总线。</p>
+</div>
+<div class="section" id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="永久链接至标题">¶</a></h2>
+<p>Solutions中提供应对不同场景的AI Solution, 比如人脸方案，人体方案, 车辆行人结构化方案等。这些方案是集成特定method, 加载运行特定模型完成的solution方案。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>工程组织<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id4">
+<h2>目录结构<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>├── build.sh
+├── CMakeLists.txt
+├── deploy.sh
+├── deps
+│   ├── bpu_predict
+│   ├── gtest
+│   ├── hobot
+│   ├── hobotlog
+│   ├── ipc_tracking
+│   ├── jsoncpp
+│   ├── libjpeg-turbo
+│   ├── libyuv
+│   ├── live555
+│   ├── opencv
+│   ├── openssl
+│   ├── param_calibration
+│   ├── protobuf
+│   ├── road_model
+│   ├── roadside_perception
+│   ├── uWS
+│   ├── vehicle_behavior
+│   ├── vehicle_road_relation
+│   ├── x2_prebuilt
+│   ├── x3_prebuilt
+│   ├── xwarehouse
+│   └── zlib
+├── doc
+│   └── release_note
+├── models
+├── python_api
+│   ├── xproto
+│   └── xstream
+├── README.md
+├── run.sh
+├── source
+│   ├── common
+│   │   ├── README.md
+│   │   ├── viowrapper
+│   │   ├── xproto
+│   │   │   ├── framework
+│   │   │   ├── msgtype
+│   │   │   ├── plugins
+│   │   │   └── python_api
+│   │   └── xstream
+│   │       ├── framework
+│   │       ├── imagetools
+│   │       ├── methods
+│   │       ├── python_api
+│   │       ├── tutorials
+│   │       └── vision_type
+│   └── solution_zoo
+│       ├── body
+│       ├── face
+│       ├── face_body_multisource
+│       ├── vehicle
+│       └── xstream
+│           └── methods
+</pre></div>
+</div>
+</div>
+<div class="section" id="deps">
+<h2>deps (二进制形式)<a class="headerlink" href="#deps" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>bpu_predict：地平线bpu预测库;</p></li>
+<li><p>gtest：第三方开源库，google test框架;</p></li>
+<li><p>hobot：另一种基于数据流的编程框架hobotsdk;</p></li>
+<li><p>hobotlog：地平线提供的日志系统，支持不同的优先级控制等特性;</p></li>
+<li><p>ipc_tracking:基于IOU的多目标跟踪（MOT）策略库;</p></li>
+<li><p>jsoncpp：第三方开源库，用于json解析;</p></li>
+<li><p>libjpeg-turbo：第三方开源库，用于jpeg格式图像处理;</p></li>
+<li><p>libyuv：第三方开源库，用于yuv格式图像处理;</p></li>
+<li><p>opencv： 第三方开源库，主要用于计算机视觉处理;</p></li>
+<li><p>openssl： 第三方开源库，用于web通信的ssl库;</p></li>
+<li><p>param_calibration： 车路协同标定参数;</p></li>
+<li><p>protobuf： 第三方开源库，多平台或者多模块间消息交互协议;</p></li>
+<li><p>roadside_perception：车路协同目标定位sdk;</p></li>
+<li><p>uWS：第三方开源库，用于web socket通信;</p></li>
+<li><p>vehicle_behavior：车路协同，车路行为分析模块;</p></li>
+<li><p>vehicle_road_relation：车路协同，车路速度分析模块;</p></li>
+<li><p>x2_prebuilt：x2平台底层系统库或者hbrt基础库等;</p></li>
+<li><p>x3_prebuilt：x3平台底层系统库或者hbrt基础库等;</p></li>
+<li><p>xwarehouse：人脸比对，底库管理模块;</p></li>
+</ul>
+</div>
+<div class="section" id="source">
+<h2>source (源代码形式)<a class="headerlink" href="#source" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>xproto_framework: 消息订阅与分发的编程框架，每个基础组件以插件（plugin）的形式管理;</p></li>
+<li><p>xproto_msgtype: 定义了xproto基础消息类型;</p></li>
+<li><p>xproto_plugins: 基于XProto框架开发、沉淀的一系列基础组件，如VIO处理模块（VioPlugin）、智能处理模块(SmartPlugin)等， 基础组件以插件的形式管理;</p></li>
+<li><p>xstream-framework: 一套基于数据流的编程框架;</p></li>
+<li><p>xstream-imagetools: XStream提供的Image处理工具;</p></li>
+<li><p>xstream-methods: 基于xstream-framework开发、沉淀的模型处理或者算法策略模块;</p></li>
+<li><p>xstream-vision_type: vision type是AI视觉方案常用数据结构定义，如BBox， landmark、PyramidImage;</p></li>
+<li><p>solutions: 基于地平线中间件构建的不同场景（如人脸抓拍识别、车辆视频结构化等）的解决方案池。;</p></li>
+<li><p>solution_example: solution开发的样例;</p></li>
+<li><p>solution_face：人脸抓拍识别解决方案案例;</p></li>
+<li><p>solution_body：人体骨骼检测解决方案案例;</p></li>
+<li><p>solution_vehicle：车辆相关解决方案案例;</p></li>
+</ul>
+</div>
+<div class="section" id="doc-html">
+<h2>doc (html格式文档)<a class="headerlink" href="#doc-html" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>doc/html/index.html html格式文档入口,请用浏览器打开。</p></li>
+</ul>
+</div>
+<div class="section" id="models">
+<h2>models (模型)<a class="headerlink" href="#models" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>faceMultitask: source/solution/face所用到的模型: 人脸多任务模型,可实现人脸检测,人脸抓拍,人脸识别等。</p></li>
+<li><p>personMultitask: source/solution/body所用到的模型: 人体多任务模型。</p></li>
+<li><p>vehicleSolutionModels: source/solution/vehicle所用到的模型:  车辆相关模型。</p></li>
+</ul>
+</div>
+<div class="section" id="readme-md-markdownreadme">
+<h2>README.md (Markdown格式README文档)<a class="headerlink" href="#readme-md-markdownreadme" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>工程简要介绍README文档</p></li>
+</ul>
+</div>
+<div class="section" id="build-sh-bash-shell">
+<h2>build.sh (bash shell脚本文件)<a class="headerlink" href="#build-sh-bash-shell" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>执行 sh build.sh x2 或者 sh build.sh x3, 可以编译整个开发环境。</p></li>
+<li><p>如果没有权限，请使用chmod +x ./build.sh赋予执行权限。</p></li>
+<li><p>build.sh 默认使用bash执行，如果您的环境中bash不是默认shell, 请使用<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">bash</span> <span class="pre">build.sh</span></code>执行脚本。</p></li>
+</ul>
+</div>
+<div class="section" id="cmakelists-txt-cmake">
+<h2>CMakeLists.txt (cmake文件)<a class="headerlink" href="#cmakelists-txt-cmake" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>整个工程使用cmake编译，请安装<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">3.15+</span></code>以上版本。</p></li>
+<li><p>build.sh中会调用cmake根据CMakeLists.txt执行编译。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>开发准备<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p>安装BPU交叉编译工具链，地平线X2J2芯片的交叉编译工具链是gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu, 编译前请工具链安装到<code class="docutils literal notranslate"><span class="pre">/opt/</span></code>目录</p></li>
+<li><p>安装<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">2.8+</span></code>以上版本。</p></li>
+<li><p>如果需要更新升级交叉编译工具链，请修改根目录CMakeLists.txt中配置如下：
+<code class="docutils literal notranslate"><span class="pre">set(CMAKE_C_COMPILER</span> <span class="pre">/opt/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-gcc)</span></code>
+<code class="docutils literal notranslate"><span class="pre">set(CMAKE_CXX_COMPILER</span> <span class="pre">/opt/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++)</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="solution">
+<h1>开发 solution<a class="headerlink" href="#solution" title="永久链接至标题">¶</a></h1>
+<div class="section" id="vio">
+<h2>适配vio<a class="headerlink" href="#vio" title="永久链接至标题">¶</a></h2>
+<p>不同的终端设备可能会有不同的输入接口(mipi、bt1120)、不同的cam配置（单目、双目），以及不同的应用场景(实时视频流或者回灌模式)等，因此在构建solution之前需要先适配vio配置;</p>
+<p>vio配置参数详解见vioplugin;</p>
+<p>如果当前vioplugin不能满足终端需求，请及时联系地平线人员提供支持。</p>
+</div>
+<div class="section" id="id6">
+<h2>基于XStream-framework集成模型、开发算法策略模块等<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>XStream-framework提供了面向数据流的编程框架，基于该框架可以将多个业务模块串联起来构建一个workflow，模型集成或者算法策略模块以method的形式加入workflow中。</p>
+<p>XStream-tutorials<code class="docutils literal notranslate"><span class="pre">source/common/xstream/tutorials</span></code>提供了Step-by-step 创建xstream SDK, 创建多线程实例, Method属性支持。workflow执行流控制几个步骤。读者可从入门到精通的方式，掌握基于xstream framework的method开发。</p>
+<p>Solutions<code class="docutils literal notranslate"><span class="pre">source/solutions</span></code>包括几个method<code class="docutils literal notranslate"><span class="pre">fasterrcnnmethod,</span> <span class="pre">cnnmethod,</span> <span class="pre">filtermethod,</span> <span class="pre">gradingmethod,</span> <span class="pre">mergemethod,</span> <span class="pre">plate_vote_method,</span> <span class="pre">snapshotmethod,</span> <span class="pre">valuemergemethod等</span></code>， 基于这些method
+给出人脸抓拍识别解决方案<code class="docutils literal notranslate"><span class="pre">source/solutions/face</span></code>, 人体骨骼检测解决方案<code class="docutils literal notranslate"><span class="pre">source/solutions/body</span></code>, 车辆新人检测解决方案<code class="docutils literal notranslate"><span class="pre">source/solutions/vehicle</span></code>。</p>
+<p>Fasterrcnnmethod、CNNMethod对模型集成做了部分抽象，建议用户基于此完成自己的模型适配或者集成新的模型;</p>
+</div>
+<div class="section" id="smartpluginsolution">
+<h2>基于SmartPlugin构建Solution<a class="headerlink" href="#smartpluginsolution" title="永久链接至标题">¶</a></h2>
+<p>Smartplugin为该工程构建solution的入口，包含main程序(smartplugin/sample/smart_main.cpp);</p>
+<p>默认实现是基于XStream-framework面向workflow的通用接口实现了单workflow的AI应用运行框架;大部分情况下，用户可基于该实现通过简单修改完成自己的solution构建，构建过程详细参考smartplugin;</p>
+<p>如果默认构建不满足需求，用户还可以自定义plugin实现，自定义plugin的方式详见xproto;</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h1>编译<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p>在完成开发准备的前提下，可以直接运行build.sh，完成整个开发包的编译。</p></li>
+<li><p>如果您开发了自己的method, 或者其他solution方案，请在代码所在路径的CMakeLists.txt中增加对应的编译命令。</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h1>部署<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p>在编译完成后，执行deploy.sh, 会在根目录下生成deploy目录。</p></li>
+<li><p>请将deploy目录完整拷贝到X2板子上。</p></li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h1>运行<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p>deploy中有run.sh，运行这个脚本，可以运行软件包中默认提供的几个solution方案。
+<code class="docutils literal notranslate"><span class="pre">usage:</span> <span class="pre">sh</span> <span class="pre">run.sh</span> <span class="pre">[</span> <span class="pre">face</span> <span class="pre">|</span> <span class="pre">body</span> <span class="pre">|</span> <span class="pre">vehicle</span> <span class="pre">]</span></code></p></li>
+<li><p>如果您自己开发了solution，可以参考run.sh设置启动脚本。</p></li>
+<li><p>关键点: 将deploy/lib加入到LD_LIBRARY_PATH， 设置<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">LD_LIBRARY_PATH=./lib/</span></code>
+设置如<code class="docutils literal notranslate"><span class="pre">./configs/vio_config.json.96board</span> <span class="pre">./body_solution/configs/body_solution.json</span> <span class="pre">-i</span></code>这样的运行参数,其中vio_config.json.96board是96board的配置， ./body_solution/configs/body_solution.json是solution的配置。</p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

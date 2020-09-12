@@ -1,0 +1,272 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Customization Points &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../../../" src="../../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../../_static/language_data.js"></script>
+        <script src="../../../../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Customization Points</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../../../_sources/common/bpu-predict/3rdparty/gtest/include/gtest/internal/custom/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="customization-points">
+<h1>Customization Points<a class="headerlink" href="#customization-points" title="永久链接至标题">¶</a></h1>
+<p>The custom directory is an injection point for custom user configurations.</p>
+<div class="section" id="header-gtest-h">
+<h2>Header <code class="docutils literal notranslate"><span class="pre">gtest.h</span></code><a class="headerlink" href="#header-gtest-h" title="永久链接至标题">¶</a></h2>
+<div class="section" id="the-following-macros-can-be-defined">
+<h3>The following macros can be defined:<a class="headerlink" href="#the-following-macros-can-be-defined" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_OS_STACK_TRACE_GETTER_</span></code> - The name of an implementation of
+<code class="docutils literal notranslate"><span class="pre">OsStackTraceGetterInterface</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_CUSTOM_TEMPDIR_FUNCTION_</span></code> - An override for <code class="docutils literal notranslate"><span class="pre">testing::TempDir()</span></code>. See
+<code class="docutils literal notranslate"><span class="pre">testing::TempDir</span></code> for semantics and signature.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="header-gtest-port-h">
+<h2>Header <code class="docutils literal notranslate"><span class="pre">gtest-port.h</span></code><a class="headerlink" href="#header-gtest-port-h" title="永久链接至标题">¶</a></h2>
+<p>The following macros can be defined:</p>
+<div class="section" id="flag-related-macros">
+<h3>Flag related macros:<a class="headerlink" href="#flag-related-macros" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_FLAG(flag_name)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_USE_OWN_FLAGFILE_FLAG_</span></code> - Define to 0 when the system provides its
+own flagfile flag parsing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_DECLARE_bool_(name)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_DECLARE_int32_(name)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_DECLARE_string_(name)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_DEFINE_bool_(name,</span> <span class="pre">default_val,</span> <span class="pre">doc)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_DEFINE_int32_(name,</span> <span class="pre">default_val,</span> <span class="pre">doc)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_DEFINE_string_(name,</span> <span class="pre">default_val,</span> <span class="pre">doc)</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="logging">
+<h3>Logging:<a class="headerlink" href="#logging" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_LOG_(severity)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_CHECK_(condition)</span></code></p></li>
+<li><p>Functions <code class="docutils literal notranslate"><span class="pre">LogToStderr()</span></code> and <code class="docutils literal notranslate"><span class="pre">FlushInfoLog()</span></code> have to be provided too.</p></li>
+</ul>
+</div>
+<div class="section" id="threading">
+<h3>Threading:<a class="headerlink" href="#threading" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_HAS_NOTIFICATION_</span></code> - Enabled if Notification is already provided.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_HAS_MUTEX_AND_THREAD_LOCAL_</span></code> - Enabled if <code class="docutils literal notranslate"><span class="pre">Mutex</span></code> and <code class="docutils literal notranslate"><span class="pre">ThreadLocal</span></code>
+are already provided. Must also provide <code class="docutils literal notranslate"><span class="pre">GTEST_DECLARE_STATIC_MUTEX_(mutex)</span></code>
+and <code class="docutils literal notranslate"><span class="pre">GTEST_DEFINE_STATIC_MUTEX_(mutex)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_EXCLUSIVE_LOCK_REQUIRED_(locks)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_LOCK_EXCLUDED_(locks)</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="underlying-library-support-features">
+<h3>Underlying library support features<a class="headerlink" href="#underlying-library-support-features" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_HAS_CXXABI_H_</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="exporting-api-symbols">
+<h3>Exporting API symbols:<a class="headerlink" href="#exporting-api-symbols" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GTEST_API_</span></code> - Specifier for exported symbols.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="header-gtest-printers-h">
+<h2>Header <code class="docutils literal notranslate"><span class="pre">gtest-printers.h</span></code><a class="headerlink" href="#header-gtest-printers-h" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>See documentation at <code class="docutils literal notranslate"><span class="pre">gtest/gtest-printers.h</span></code> for details on how to define a
+custom printer.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

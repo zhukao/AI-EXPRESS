@@ -1,0 +1,35 @@
+Backbone
+================
+
+Introduction to Backbone.
+
+Overview
+--------
+
+.. py:currentmodule:: gluon_face.common.model_zoo.base_model
+
+.. autosummary::
+    :nosignatures:
+
+    BaseModel
+
+
+.. py:currentmodule:: gluon_face.common.model_zoo.resnet
+
+.. autosummary::
+    :nosignatures:
+
+    ResidualUnitV1
+    ResidualUnitV2
+    Resnet
+
+
+API Reference
+-------------
+
+.. automodule:: gluon_face.common.model_zoo.base_model
+    :members:
+
+.. automodule:: gluon_face.common.model_zoo.resnet
+    :members:
+

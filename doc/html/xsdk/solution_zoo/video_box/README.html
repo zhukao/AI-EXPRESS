@@ -1,0 +1,272 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>人体结构化范式方案 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>人体结构化范式方案</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/xsdk/solution_zoo/video_box/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>人体结构化范式方案<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>介绍<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>人体结构化参考方案，我们核心目标是对人检测与跟踪。我们选取人头检测，人脸检测，人体检测，人脸关键点，人脸姿态，人体关键点等数个产品模型，并通过MOT人头跟踪，MOT人体跟踪，MOT人体跟踪实现对人体分别进行跟踪，随后通过融合策略，实现三框的融合，最终完成对一个人体目标跟踪。</p>
+</div>
+<div class="section" id="id3">
+<h2>能力集<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>模块</th>
+<th align="right">输入</th>
+<th align="center">输出</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FasteRCNNMethod</td>
+<td align="right">图像帧</td>
+<td align="center">人脸框、人头框、人体框、人脸关键点、人脸姿态、骨骼关键点</td>
+<td align="center">多任务检测</td>
+</tr>
+<tr>
+<td>MOTMethod</td>
+<td align="right">人脸框</td>
+<td align="center">带有跟踪ID号的人脸框及消失目标集合</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>MOTMethod</td>
+<td align="right">人头框</td>
+<td align="center">带有跟踪ID号的人头框及消失目标集合</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>MOTMethod</td>
+<td align="right">人体框</td>
+<td align="center">带有跟踪ID号的人体框及消失目标集合</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>MergeMethod</td>
+<td align="right">人脸框、人头框、人体框、消失ID</td>
+<td align="center">融合后的人员ID</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id4">
+<h2>编译<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">build</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>打包部署包<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">deploy</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>该脚本会在当前目录下创建deploy文件夹，里面包含通用库、VIO配置文件、模型及body_solution目录</p>
+</div>
+<div class="section" id="id6">
+<h2>运行<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>将部署包拷贝到板子上，即可运行。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=./</span><span class="n">lib</span>
+<span class="o">./</span><span class="n">body_solution</span><span class="o">/</span><span class="n">body_solution</span> <span class="o">./</span><span class="n">configs</span><span class="o">/</span><span class="n">vio_config</span><span class="o">.</span><span class="n">json</span><span class="o">.</span><span class="mi">96</span><span class="n">board</span> <span class="o">./</span><span class="n">body_solution</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">body_solution</span><span class="o">.</span><span class="n">json</span> <span class="o">-</span><span class="n">i</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

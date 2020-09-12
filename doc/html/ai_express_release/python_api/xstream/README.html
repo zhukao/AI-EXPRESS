@@ -1,0 +1,1092 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>XStream Python API &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>XStream Python API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/ai_express_release/python_api/xstream/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="xstream-python-api">
+<h1>XStream Python API<a class="headerlink" href="#xstream-python-api" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>XStream Python API 为XStream框架功能在Python的封装, 通过它可以方便快速地定义XStream Workflow.</p>
+</div>
+<div class="section" id="id2">
+<h2>使用<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="workflow">
+<h3>创建简单的workflow<a class="headerlink" href="#workflow" title="永久链接至标题">¶</a></h3>
+<p>Workflow在Python中是用函数的方式来表示的. 比如定义一个简单的workflow:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xstream</span>
+
+<span class="n">frcnn_method</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;FasterRCNNMethod&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;image&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;face_box&quot;</span><span class="p">,</span> <span class="s2">&quot;head_box&quot;</span><span class="p">,</span> <span class="s2">&quot;body_box&quot;</span><span class="p">,</span> <span class="s2">&quot;kps&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Config</span><span class="p">(</span><span class="s2">&quot;multitask_config.json&quot;</span><span class="p">)</span>
+<span class="n">mot_method</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;MOTMethod&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;face_box&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;face_bbox_list&quot;</span><span class="p">,</span> <span class="s2">&quot;face_disappeared_track_id_list&quot;</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">my_workflow</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+    <span class="n">face_box</span><span class="p">,</span> <span class="n">head_box</span><span class="p">,</span> <span class="n">body_box</span><span class="p">,</span> <span class="n">kps</span> <span class="o">=</span> <span class="n">frcnn_method</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">face_bbox_list</span><span class="p">,</span> <span class="n">face_disappeared_track_id_list</span> <span class="o">=</span> <span class="n">mot_method</span><span class="p">(</span><span class="n">face_box</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">face_bbox_list</span><span class="p">,</span> <span class="n">face_disappeared_track_id_list</span>
+
+<span class="n">json</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">my_workflow</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>执行之后会生成如下json:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;image&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;face_bbox_list&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;face_disappeared_track_id_list&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;workflow&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;image&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;multitask_config.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;FasterRCNNMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;FasterRCNNMethod_0_face_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_0_head_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_0_body_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_0_kps&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;FasterRCNNMethod_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;FasterRCNNMethod_0_face_box&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;MOTMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;face_bbox_list&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;face_disappeared_track_id_list&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;MOTMethod_0&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>包含子workflow<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>在Python中,每一个workflow都是用python函数来表示,那么当然也是可以通过python函数调用的方式,调用子workflow.
+子workflow和其他workflow的形式相同,只是他们处在的位置不同.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xstream</span>
+
+<span class="n">frcnn_method</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;FasterRCNNMethod&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;image&quot;</span><span class="p">])</span>
+
+<span class="n">rect_method</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;rect_pre&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;face_box&quot;</span><span class="p">,</span> <span class="s2">&quot;image&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;rect&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">MethodConfig</span><span class="p">(</span><span class="s2">&quot;pose_lmk.json&quot;</span><span class="p">)</span>
+<span class="n">lmkpose_method</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;lmkpose_post&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;rect&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;lmk&quot;</span><span class="p">,</span> <span class="s2">&quot;pose&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">MethodConfig</span><span class="p">(</span><span class="s2">&quot;pose_lmk.json&quot;</span><span class="p">)</span>
+
+<span class="c1"># 创建workflow2, 其实就是子workflow</span>
+<span class="k">def</span> <span class="nf">my_workflow2</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+        <span class="n">face_box</span><span class="p">,</span> <span class="n">head_box</span><span class="p">,</span> <span class="n">body_box</span><span class="p">,</span> <span class="n">reid</span><span class="p">,</span> <span class="n">kps</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">frcnn_method</span><span class="p">(</span>
+            <span class="n">image</span><span class="p">,</span>
+            <span class="n">Outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;face_box&quot;</span><span class="p">,</span> <span class="s2">&quot;head_box&quot;</span><span class="p">,</span> <span class="s2">&quot;body_box&quot;</span><span class="p">,</span> <span class="s2">&quot;reid&quot;</span><span class="p">,</span> <span class="s2">&quot;kps&quot;</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">],</span>
+            <span class="n">MethodConfig</span><span class="o">=</span><span class="s2">&quot;fasterrcnndet.json&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">rect</span> <span class="o">=</span> <span class="n">rect_method</span><span class="p">(</span><span class="n">face_box</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+        <span class="n">lmk</span><span class="p">,</span> <span class="n">pose</span> <span class="o">=</span> <span class="n">lmkpose_method</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">face_box</span><span class="p">,</span> <span class="n">head_box</span><span class="p">,</span> <span class="n">body_box</span><span class="p">,</span> <span class="n">reid</span><span class="p">,</span> <span class="n">lmk</span><span class="p">,</span> <span class="n">pose</span>
+
+<span class="c1"># 总workflow</span>
+<span class="k">def</span> <span class="nf">all_workflow</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+    <span class="n">face_box</span><span class="p">,</span> <span class="n">head_box</span><span class="p">,</span> <span class="n">body_box</span><span class="p">,</span> <span class="n">kps</span> <span class="o">=</span> <span class="n">frcnn_method</span><span class="p">(</span>
+        <span class="n">image</span><span class="p">,</span>
+        <span class="n">Outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;face_box&quot;</span><span class="p">,</span> <span class="s2">&quot;head_box&quot;</span><span class="p">,</span> <span class="s2">&quot;body_box&quot;</span><span class="p">,</span> <span class="s2">&quot;kps&quot;</span><span class="p">],</span>
+        <span class="n">MethodConfig</span><span class="o">=</span><span class="s2">&quot;multitask_config.json&quot;</span><span class="p">,</span>
+        <span class="n">ThreadCount</span><span class="o">=</span><span class="mi">2</span>
+    <span class="p">)</span>
+    <span class="n">rect</span> <span class="o">=</span> <span class="n">rect_method</span><span class="p">(</span><span class="n">face_box</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+
+    <span class="n">face_box2</span><span class="p">,</span> <span class="n">head_box2</span><span class="p">,</span> <span class="n">body_box2</span><span class="p">,</span> <span class="n">reid</span><span class="p">,</span> <span class="n">lmk</span><span class="p">,</span> <span class="n">pose</span> <span class="o">=</span> <span class="n">my_workflow2</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">face_box</span><span class="p">,</span> <span class="n">head_box2</span><span class="p">,</span> <span class="n">rect</span><span class="p">,</span> <span class="n">lmk</span><span class="p">,</span> <span class="n">pose</span>
+
+<span class="n">json</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">all_workflow</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>执行后会生成如下json:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;image&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;head_box&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rect&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lmk&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pose&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;workflow&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;image&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;multitask_config.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;FasterRCNNMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_0_head_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_0_body_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_0_kps&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;FasterRCNNMethod_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;image&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;pose_lmk.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;rect_pre&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;rect&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;rect_pre_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;image&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;fasterrcnndet.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;FasterRCNNMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;FasterRCNNMethod_1_face_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;head_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_1_body_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_1_reid&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_1_kps&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_1_mask&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;FasterRCNNMethod_1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;FasterRCNNMethod_1_face_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;image&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;pose_lmk.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;rect_pre&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;rect_pre_1_rect&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;rect_pre_1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;rect_pre_1_rect&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;pose_lmk.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;lmkpose_post&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;lmk&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pose&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;lmkpose_post_0&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>名字空间<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>当一个workflow比较大时,workflow中所有输入输出, Method的唯一名字等就会容易冲突, 为了解决该问题, 在定义workflow时提出了scope概念.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xstream</span>
+
+<span class="n">frcnn_method</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;FasterRCNNMethod&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;image&quot;</span><span class="p">])</span>
+
+<span class="n">rect_method</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;rect_pre&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;face_box&quot;</span><span class="p">,</span> <span class="s2">&quot;image&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;rect&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">MethodConfig</span><span class="p">(</span><span class="s2">&quot;pose_lmk.json&quot;</span><span class="p">)</span>
+<span class="n">lmkpose_method</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;lmkpose_post&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;rect&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;lmk&quot;</span><span class="p">,</span> <span class="s2">&quot;pose&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">MethodConfig</span><span class="p">(</span><span class="s2">&quot;pose_lmk.json&quot;</span><span class="p">)</span>
+
+<span class="c1"># 创建workflow2, 其实就是子workflow</span>
+<span class="k">def</span> <span class="nf">my_workflow2</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+        <span class="n">face_box</span><span class="p">,</span> <span class="n">head_box</span><span class="p">,</span> <span class="n">body_box</span><span class="p">,</span> <span class="n">reid</span><span class="p">,</span> <span class="n">kps</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">frcnn_method</span><span class="p">(</span>
+            <span class="n">image</span><span class="p">,</span>
+            <span class="n">Outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;face_box&quot;</span><span class="p">,</span> <span class="s2">&quot;head_box&quot;</span><span class="p">,</span> <span class="s2">&quot;body_box&quot;</span><span class="p">,</span> <span class="s2">&quot;reid&quot;</span><span class="p">,</span> <span class="s2">&quot;kps&quot;</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">],</span>
+            <span class="n">MethodConfig</span><span class="o">=</span><span class="s2">&quot;fasterrcnndet.json&quot;</span>
+        <span class="p">)</span>
+        <span class="k">with</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Scope</span><span class="p">(</span><span class="s2">&quot;scope2&quot;</span><span class="p">):</span>
+            <span class="n">rect</span> <span class="o">=</span> <span class="n">rect_method</span><span class="p">(</span><span class="n">face_box</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+            <span class="n">lmk</span><span class="p">,</span> <span class="n">pose</span> <span class="o">=</span> <span class="n">lmkpose_method</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">face_box</span><span class="p">,</span> <span class="n">head_box</span><span class="p">,</span> <span class="n">body_box</span><span class="p">,</span> <span class="n">reid</span><span class="p">,</span> <span class="n">lmk</span><span class="p">,</span> <span class="n">pose</span>
+
+<span class="c1"># 总workflow</span>
+<span class="k">def</span> <span class="nf">all_workflow</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+    <span class="n">face_box</span><span class="p">,</span> <span class="n">head_box</span><span class="p">,</span> <span class="n">body_box</span><span class="p">,</span> <span class="n">kps</span> <span class="o">=</span> <span class="n">frcnn_method</span><span class="p">(</span>
+        <span class="n">image</span><span class="p">,</span>
+        <span class="n">Outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;face_box&quot;</span><span class="p">,</span> <span class="s2">&quot;head_box&quot;</span><span class="p">,</span> <span class="s2">&quot;body_box&quot;</span><span class="p">,</span> <span class="s2">&quot;kps&quot;</span><span class="p">],</span>
+        <span class="n">MethodConfig</span><span class="o">=</span><span class="s2">&quot;multitask_config.json&quot;</span><span class="p">,</span>
+        <span class="n">ThreadCount</span><span class="o">=</span><span class="mi">2</span>
+    <span class="p">)</span>
+    <span class="k">with</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Scope</span><span class="p">(</span><span class="s2">&quot;scope1&quot;</span><span class="p">):</span>
+        <span class="n">rect</span> <span class="o">=</span> <span class="n">rect_method</span><span class="p">(</span><span class="n">face_box</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+        <span class="n">face_box2</span><span class="p">,</span> <span class="n">head_box2</span><span class="p">,</span> <span class="n">body_box2</span><span class="p">,</span> <span class="n">reid</span><span class="p">,</span> <span class="n">lmk</span><span class="p">,</span> <span class="n">pose</span> <span class="o">=</span> <span class="n">my_workflow2</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">face_box</span><span class="p">,</span> <span class="n">head_box2</span><span class="p">,</span> <span class="n">rect</span><span class="p">,</span> <span class="n">lmk</span><span class="p">,</span> <span class="n">pose</span>
+
+<span class="n">json</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">all_workflow</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>执行后会生成如下json:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;image&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;head_box&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rect&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lmk&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pose&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;workflow&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;image&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;multitask_config.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;FasterRCNNMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_0_head_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_0_body_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FasterRCNNMethod_0_kps&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;FasterRCNNMethod_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;image&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;pose_lmk.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;rect_pre&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;rect&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;scope1_rect_pre_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;image&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;fasterrcnndet.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;FasterRCNNMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;scope1_FasterRCNNMethod_1_face_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;head_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;scope1_FasterRCNNMethod_1_body_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;scope1_FasterRCNNMethod_1_reid&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;scope1_FasterRCNNMethod_1_kps&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;scope1_FasterRCNNMethod_1_mask&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;scope1_FasterRCNNMethod_1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;scope1_FasterRCNNMethod_1_face_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;image&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;pose_lmk.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;rect_pre&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;scope1_scope2_rect_pre_1_rect&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;scope1_scope2_rect_pre_1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;scope1_scope2_rect_pre_1_rect&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;pose_lmk.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;lmkpose_post&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;lmk&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pose&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;scope1_scope2_lmkpose_post_0&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>可以看出, rect_pre method的第一个实例scope1_rect_pre_0已经加上了scope1前缀. 进入到子workflow中, method实例的unique name, inputs和outputs中都加上了scope1.
+在scope中再创建一个scope也是可以的. 所有scope的名字都会一起作为前缀.</p>
+</div>
+<div class="section" id="id5">
+<h3>一个更复杂的例子<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>如下图描述的一个workflow:
+<img alt="复杂的workflow" src="../../../_images/node.png" />
+用python表示的代码如下(sub_workflow函数):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xstream</span>
+
+<span class="n">node1</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;Node_1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">,</span> <span class="s2">&quot;data3&quot;</span><span class="p">,</span> <span class="s2">&quot;data4&quot;</span><span class="p">])</span>
+<span class="n">node1</span><span class="o">.</span><span class="n">MethodConfig</span><span class="p">(</span><span class="s2">&quot;Node1_cfg.json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ThreadCount</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">node2</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;Node_2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">,</span> <span class="s2">&quot;data3&quot;</span><span class="p">])</span>
+<span class="n">node3</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;Node_3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;data3&quot;</span><span class="p">,</span> <span class="s2">&quot;data4&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">,</span> <span class="s2">&quot;data3&quot;</span><span class="p">])</span>
+
+<span class="n">node5</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;Node_5&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">,</span> <span class="s2">&quot;data3&quot;</span><span class="p">])</span>
+<span class="n">node6</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;Node_6&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data3&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">,</span> <span class="s2">&quot;data3&quot;</span><span class="p">])</span>
+<span class="n">node7</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;Node_7&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data3&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">,</span> <span class="s2">&quot;data3&quot;</span><span class="p">])</span>
+<span class="n">node8</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;Node_8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">,</span> <span class="s2">&quot;data3&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">,</span> <span class="s2">&quot;data3&quot;</span><span class="p">])</span>
+<span class="n">node9</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;Node_9&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">Outputs</span><span class="p">([</span><span class="s2">&quot;data1&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">,</span> <span class="s2">&quot;data3&quot;</span><span class="p">])</span>
+
+<span class="n">cnn_method</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;CNNMethod&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Inputs</span><span class="p">([</span><span class="s2">&quot;image&quot;</span><span class="p">])</span>
+
+<span class="c1"># 创建workflow</span>
+<span class="k">def</span> <span class="nf">sub_workflow</span><span class="p">(</span><span class="n">data1</span><span class="p">):</span>
+    <span class="n">data1_1</span><span class="p">,</span> <span class="n">data2_1</span><span class="p">,</span> <span class="n">data3_1</span><span class="p">,</span> <span class="n">data4_1</span> <span class="o">=</span> <span class="n">node1</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Scope</span><span class="p">(</span><span class="s2">&quot;pre1&quot;</span><span class="p">):</span>
+        <span class="c1"># node1的下一级</span>
+        <span class="n">data1_2</span><span class="p">,</span> <span class="n">data2_2</span><span class="p">,</span> <span class="n">data3_2</span> <span class="o">=</span> <span class="n">node2</span><span class="p">(</span><span class="n">data1_1</span><span class="p">,</span> <span class="n">data2_1</span><span class="p">)</span>
+        <span class="n">data1_3</span><span class="p">,</span> <span class="n">data2_3</span><span class="p">,</span> <span class="n">data3_3</span> <span class="o">=</span> <span class="n">node3</span><span class="p">(</span><span class="n">data3_1</span><span class="p">,</span> <span class="n">data4_1</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Scope</span><span class="p">(</span><span class="s2">&quot;pre2&quot;</span><span class="p">):</span>
+            <span class="c1"># node2的下一级</span>
+            <span class="n">data1_5</span><span class="p">,</span> <span class="n">data2_5</span><span class="p">,</span> <span class="n">data3_5</span> <span class="o">=</span> <span class="n">node5</span><span class="p">(</span><span class="n">data1_2</span><span class="p">,</span> <span class="n">data2_2</span><span class="p">)</span>
+            <span class="n">data1_6</span><span class="p">,</span> <span class="n">data2_6</span><span class="p">,</span> <span class="n">data3_6</span> <span class="o">=</span> <span class="n">node6</span><span class="p">(</span><span class="n">data1_2</span><span class="p">,</span> <span class="n">data3_2</span><span class="p">)</span>
+
+            <span class="c1"># node3的下一级</span>
+            <span class="n">data1_7</span><span class="p">,</span> <span class="n">data2_7</span><span class="p">,</span> <span class="n">data3_7</span> <span class="o">=</span> <span class="n">node7</span><span class="p">(</span><span class="n">data1_3</span><span class="p">,</span> <span class="n">data3_3</span><span class="p">)</span>
+
+        <span class="c1"># node5 node6的下一级</span>
+        <span class="n">data1_8</span><span class="p">,</span> <span class="n">data2_8</span><span class="p">,</span> <span class="n">data3_8</span> <span class="o">=</span> <span class="n">node8</span><span class="p">(</span><span class="n">data1_5</span><span class="p">,</span> <span class="n">data2_5</span><span class="p">,</span> <span class="n">data2_6</span><span class="p">,</span> <span class="n">data3_6</span><span class="p">)</span>
+
+    <span class="c1"># node7的下一级</span>
+    <span class="n">data1_9</span><span class="p">,</span> <span class="n">data2_9</span><span class="p">,</span> <span class="n">data3_9</span> <span class="o">=</span> <span class="n">node9</span><span class="p">(</span><span class="n">data1_7</span><span class="p">,</span> <span class="n">data2_7</span><span class="p">)</span>
+
+    <span class="c1"># 返回当前工作流的结果</span>
+    <span class="k">return</span> <span class="n">data1_8</span><span class="p">,</span> <span class="n">data2_8</span><span class="p">,</span> <span class="n">data1_6</span><span class="p">,</span> <span class="n">data1_9</span><span class="p">,</span> <span class="n">data2_9</span>
+
+<span class="k">def</span> <span class="nf">my_workflow</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+    <span class="n">lmk</span> <span class="o">=</span> <span class="n">cnn_method</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">Outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">],</span> <span class="n">MethodConfig</span><span class="o">=</span><span class="s2">&quot;cnn_cfg.json&quot;</span><span class="p">)</span>
+    <span class="n">out1</span><span class="p">,</span> <span class="n">out2</span><span class="p">,</span> <span class="n">out3</span><span class="p">,</span> <span class="n">out4</span><span class="p">,</span> <span class="n">out5</span> <span class="o">=</span> <span class="n">sub_workflow</span><span class="p">(</span><span class="n">lmk</span><span class="p">)</span>
+    <span class="n">eyes</span> <span class="o">=</span> <span class="n">cnn_method</span><span class="p">(</span><span class="n">out2</span><span class="p">,</span> <span class="n">out3</span><span class="p">,</span> <span class="n">Inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;data2&quot;</span><span class="p">,</span> <span class="s2">&quot;data1&quot;</span><span class="p">],</span> <span class="n">Outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;eyes&quot;</span><span class="p">],</span> <span class="n">MethodConfig</span><span class="o">=</span><span class="s2">&quot;cnn_cfg2.json&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">eyes</span><span class="p">,</span> <span class="n">out4</span>
+
+<span class="c1"># 将workflow序列化成json</span>
+<span class="n">jsondata</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">my_workflow</span><span class="p">)</span> <span class="c1"># 可以对其写入至文件等</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jsondata</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>执行以上代码生成如下json:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;image&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;eyes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data1&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;workflow&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;image&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;cnn_cfg.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;CNNMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;CNNMethod_0_data1&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;CNNMethod_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;CNNMethod_0_data1&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;Node1_cfg.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;Node_1_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Node_1_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Node_1_0_data3&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Node_1_0_data4&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;Node_1_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;Node_1_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Node_1_0_data2&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;null&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_Node_2_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_2_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_2_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;pre1_Node_2_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;Node_1_0_data3&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Node_1_0_data4&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;null&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_3&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_Node_3_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_3_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_3_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;pre1_Node_3_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_Node_3_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_3_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;null&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_7&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_pre2_Node_7_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_7_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_7_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;pre1_pre2_Node_7_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_pre2_Node_7_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_7_0_data2&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;null&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_9&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Node_9_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Node_9_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;Node_9_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_Node_2_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_2_0_data2&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;null&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_5&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_pre2_Node_5_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_5_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_5_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;pre1_pre2_Node_5_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_Node_2_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_2_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;null&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_6&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_pre2_Node_6_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_6_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_6_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;pre1_pre2_Node_6_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_pre2_Node_5_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_5_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_6_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_6_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;null&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_8&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_Node_8_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_8_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_8_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;pre1_Node_8_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_Node_8_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_6_0_data1&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;cnn_cfg2.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;CNNMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;eyes&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;CNNMethod_1&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>冗余节点删除<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>还拿上面那个例子来说, 将my_workflow的out4输出删除,如下代码:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_workflow</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+    <span class="n">lmk</span> <span class="o">=</span> <span class="n">cnn_method</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">Outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">],</span> <span class="n">MethodConfig</span><span class="o">=</span><span class="s2">&quot;cnn_cfg.json&quot;</span><span class="p">)</span>
+    <span class="n">out1</span><span class="p">,</span> <span class="n">out2</span><span class="p">,</span> <span class="n">out3</span><span class="p">,</span> <span class="n">out4</span><span class="p">,</span> <span class="n">out5</span> <span class="o">=</span> <span class="n">sub_workflow</span><span class="p">(</span><span class="n">lmk</span><span class="p">)</span>
+    <span class="n">eyes</span> <span class="o">=</span> <span class="n">cnn_method</span><span class="p">(</span><span class="n">out2</span><span class="p">,</span> <span class="n">out3</span><span class="p">,</span> <span class="n">Inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;data2&quot;</span><span class="p">,</span> <span class="s2">&quot;data1&quot;</span><span class="p">],</span> <span class="n">Outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;eyes&quot;</span><span class="p">],</span> <span class="n">MethodConfig</span><span class="o">=</span><span class="s2">&quot;cnn_cfg2.json&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 删除 out4</span>
+    <span class="k">return</span> <span class="n">eyes</span>
+</pre></div>
+</div>
+<p>out4其实是Node9输出的data1, 是经过input-&gt;Node1-&gt;Node3-&gt;Node7-&gt;Node9产生的, 当最终workflow没有输出out4时, 也就是说上面的3,7,9节点路径其实是不需要走的. 所以上面这条路径其实是冗余的, 需要删除它以节约系统计算资源.
+xstream.Serialize会判断哪些路径是冗余的,然后删除这些路径上面的节点.
+生成json如下:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;image&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;eyes&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;workflow&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;image&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;cnn_cfg.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;CNNMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;CNNMethod_0_data1&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;CNNMethod_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;CNNMethod_0_data1&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;Node1_cfg.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;Node_1_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Node_1_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Node_1_0_data3&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Node_1_0_data4&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;Node_1_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;Node_1_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Node_1_0_data2&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;null&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_Node_2_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_2_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_2_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;pre1_Node_2_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_Node_2_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_2_0_data2&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;null&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_5&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_pre2_Node_5_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_5_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_5_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;pre1_pre2_Node_5_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_Node_2_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_2_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;null&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_6&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_pre2_Node_6_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_6_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_6_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;pre1_pre2_Node_6_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_pre2_Node_5_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_5_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_6_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_6_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;null&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;Node_8&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_Node_8_0_data1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_8_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_Node_8_0_data3&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;pre1_Node_8_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;pre1_Node_8_0_data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pre1_pre2_Node_6_0_data1&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;cnn_cfg2.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;CNNMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;eyes&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;CNNMethod_1&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>通过最终生成的json可以看出, workflow中不包含Node3,Node7和Node9.</p>
+</div>
+</div>
+<div class="section" id="xstream">
+<h2>xstream包接口介绍<a class="headerlink" href="#xstream" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id7">
+<h3>全局函数<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<div class="section" id="serialize-workflow-inputs">
+<h4>Serialize(<em><code class="docutils literal notranslate"><span class="pre">workflow</span></code></em>, <em><code class="docutils literal notranslate"><span class="pre">*inputs</span></code></em>)<a class="headerlink" href="#serialize-workflow-inputs" title="永久链接至标题">¶</a></h4>
+<p>该函数用来将一个python定义的workflow转换成XStream框架所能识别的Json格式的配置字符串.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">workflow</span></code> : 定义workflow的python函数对象.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inputs</span></code> : 该workflow的输入参数. <code class="docutils literal notranslate"><span class="pre">Variable</span></code>类型.</p></li>
+</ul>
+<blockquote>
+<div><p><em>Note</em>
+当一个workflow函数的参数名字与该workflow的输入数据名字相同时, <code class="docutils literal notranslate"><span class="pre">inputs</span></code>参数可以省略.</p>
+</div></blockquote>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>XStream框架支持的workflow json字符串</p></li>
+</ul>
+</div>
+<div class="section" id="scope-name">
+<h4>Scope(<em><code class="docutils literal notranslate"><span class="pre">name</span></code></em>)<a class="headerlink" href="#scope-name" title="永久链接至标题">¶</a></h4>
+<p>该函数创建一个新的名字空间, 在该名字空间下, 所有workflow中定义/生成的Method, Variable的名字都会加上<code class="docutils literal notranslate"><span class="pre">name</span></code>前缀.
+当有多级Scope生效时, 各级Scope的<code class="docutils literal notranslate"><span class="pre">name</span></code>会级联.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> : 当前scope的名字.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>Scope对象</p></li>
+</ul>
+<blockquote>
+<div><p><em>Note</em>
+该函数要和Python中的<code class="docutils literal notranslate"><span class="pre">with</span></code>关键字一起使用.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="method">
+<h3>Method类<a class="headerlink" href="#method" title="永久链接至标题">¶</a></h3>
+<div class="section" id="init-type">
+<h4>__init__(<em><code class="docutils literal notranslate"><span class="pre">type</span></code></em>)<a class="headerlink" href="#init-type" title="永久链接至标题">¶</a></h4>
+<p>创建一个Method对象</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> : 要创建的Method类型. Method类型一旦指定后就不可修改.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>Method对象</p></li>
+</ul>
+</div>
+<div class="section" id="inputs-value-none">
+<h4>Inputs(<em><code class="docutils literal notranslate"><span class="pre">value</span></code></em>=<code class="docutils literal notranslate"><span class="pre">None</span></code>)<a class="headerlink" href="#inputs-value-none" title="永久链接至标题">¶</a></h4>
+<p>设置或返回当前Method的输入数据名字列表.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> : 字符串列表类型或者None.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为<code class="docutils literal notranslate"><span class="pre">None</span></code>时 : 当前Method的输入参数名字列表.</p></li>
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为字符串列表时 : 当前Method对象.</p></li>
+</ul>
+</div>
+<div class="section" id="outputs-value-none">
+<h4>Outputs(<em><code class="docutils literal notranslate"><span class="pre">value</span></code></em>=<code class="docutils literal notranslate"><span class="pre">None</span></code>)<a class="headerlink" href="#outputs-value-none" title="永久链接至标题">¶</a></h4>
+<p>设置或返回当前Method的输出数据名字列表.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> : 字符串列表类型或者None.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为<code class="docutils literal notranslate"><span class="pre">None</span></code>时 : 当前Method的输出参数名字列表.</p></li>
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为字符串列表时 : 当前Method对象.</p></li>
+</ul>
+</div>
+<div class="section" id="methodtype">
+<h4>MethodType()<a class="headerlink" href="#methodtype" title="永久链接至标题">¶</a></h4>
+<p>返回当前Method的类型.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p>无.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>字符串 : 当前Method类型.</p></li>
+</ul>
+</div>
+<div class="section" id="configfile-value-none">
+<h4>ConfigFile(<em><code class="docutils literal notranslate"><span class="pre">value</span></code></em>=<code class="docutils literal notranslate"><span class="pre">None</span></code>)<a class="headerlink" href="#configfile-value-none" title="永久链接至标题">¶</a></h4>
+<p>设置或返回当前Method的配置文件路径.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> : 字符串类型或者None.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为<code class="docutils literal notranslate"><span class="pre">None</span></code>时 : 当前Method的配置文件路径.</p></li>
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为字符串类型时 : 当前Method对象.</p></li>
+</ul>
+</div>
+<div class="section" id="config-value-none">
+<h4>Config(<em><code class="docutils literal notranslate"><span class="pre">value</span></code></em>=<code class="docutils literal notranslate"><span class="pre">None</span></code>)<a class="headerlink" href="#config-value-none" title="永久链接至标题">¶</a></h4>
+<p>设置或返回当前Method的配置参数.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> : 字典类型或者None.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为<code class="docutils literal notranslate"><span class="pre">None</span></code>时 : 当前Method的配置.</p></li>
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为字典类型时 : 当前Method对象.</p></li>
+</ul>
+</div>
+<div class="section" id="threadcount-value-none">
+<h4>ThreadCount(<em><code class="docutils literal notranslate"><span class="pre">value</span></code></em>=<code class="docutils literal notranslate"><span class="pre">None</span></code>)<a class="headerlink" href="#threadcount-value-none" title="永久链接至标题">¶</a></h4>
+<p>设置或返回当前Method的最大线程个数.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> : 整数类型或者None.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为<code class="docutils literal notranslate"><span class="pre">None</span></code>时 : 当前Method的最大线程数.</p></li>
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为整数类型时 : 当前Method对象.</p></li>
+</ul>
+</div>
+<div class="section" id="threadlist-value-none">
+<h4>ThreadList(<em><code class="docutils literal notranslate"><span class="pre">value</span></code></em>=<code class="docutils literal notranslate"><span class="pre">None</span></code>)<a class="headerlink" href="#threadlist-value-none" title="永久链接至标题">¶</a></h4>
+<p>设置或返回当前Method的线程ID列表.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> : 整数列表类型或者None.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为<code class="docutils literal notranslate"><span class="pre">None</span></code>时 : 当前Method的线程ID列表.</p></li>
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为整数列表类型时 : 当前Method对象.</p></li>
+</ul>
+</div>
+<div class="section" id="call-inputs-attrs">
+<h4>__call__(<em><code class="docutils literal notranslate"><span class="pre">*inputs</span></code></em>,<em><code class="docutils literal notranslate"><span class="pre">**attrs</span></code></em>)<a class="headerlink" href="#call-inputs-attrs" title="永久链接至标题">¶</a></h4>
+<p>调用当前method对象, 每次调用代表着在workflow中创建一个节点. 同时在调用时支持覆盖声明Method对象时指定的预定义参数.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inputs</span></code> : 当前的Method的输入.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">attrs</span></code> : keywords arguments, 用来覆盖Method预定义参数. 支持下列参数:</p>
+<ul>
+<li><p>Inputs : 输入参数名字列表</p></li>
+<li><p>Outputs : 输出参数名字列表</p></li>
+<li><p>UniqueName : 当前Node的唯一名字</p></li>
+<li><p>ConfigFile : 配置文件路径</p></li>
+<li><p>Config : 配置参数</p></li>
+<li><p>ThreadCount : 线程最大个数</p></li>
+<li><p>ThreadList : 线程ID列表</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为<code class="docutils literal notranslate"><span class="pre">None</span></code>时 : 当前Method的线程ID列表.</p></li>
+<li><p>当<code class="docutils literal notranslate"><span class="pre">value</span></code>为整数列表类型时 : 当前Method对象.</p></li>
+</ul>
+<blockquote>
+<div><p><em>Demo</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xstream</span>
+
+<span class="c1"># 预定义该method使用test_cnn.json这个配置文件</span>
+<span class="n">method_a</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">.</span><span class="n">Method</span><span class="p">(</span><span class="s2">&quot;CNN&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ConfigFile</span><span class="p">(</span><span class="s2">&quot;test_cnn.json&quot;</span><span class="p">)</span>
+
+<span class="c1"># 覆盖预定义的ConfigFile配置</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">method_a</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">ConfigFile</span><span class="o">=</span><span class="s2">&quot;test_cnn_2.json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="variable">
+<h3>Variable类<a class="headerlink" href="#variable" title="永久链接至标题">¶</a></h3>
+<div class="section" id="init-dataname">
+<h4>__init__(<em><code class="docutils literal notranslate"><span class="pre">dataName</span></code></em>)<a class="headerlink" href="#init-dataname" title="永久链接至标题">¶</a></h4>
+<p>实例化一个Variable类型的对象.Variable对象作为workflow的输入和输出数据类型.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dataName</span></code> : Variable的数据名称.</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>Variable对象</p></li>
+</ul>
+</div>
+<div class="section" id="name">
+<h4>Name()<a class="headerlink" href="#name" title="永久链接至标题">¶</a></h4>
+<p>返回当前Variable的名字.</p>
+<p><strong>参数</strong></p>
+<ul class="simple">
+<li><p>无</p></li>
+</ul>
+<p><strong>返回值</strong></p>
+<ul class="simple">
+<li><p>字符串 : 该Variable对象的名字.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

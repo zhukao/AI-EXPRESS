@@ -1,0 +1,14 @@
+# MessageNotifyParamReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**cc** | **list[str]** | carbon copy in: body | [optional] 
+**_from** | **str** | message sender in: body | 
+**message** | [**MessageParamReq**](MessageParamReq.md) |  | 
+**notify_methods** | **list[str]** | notify methods in: body | 
+**to** | **list[str]** | message receivers in: body | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

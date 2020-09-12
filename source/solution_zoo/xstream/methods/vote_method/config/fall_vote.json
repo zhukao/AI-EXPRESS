@@ -1,0 +1,8 @@
+{
+  "type": "behavior",
+  "behavior": {
+    "max_slide_window_size": 7,
+    "positive_voting_threshold": 0.5,
+    "negative_voting_threshold": 0.5
+  }
+}

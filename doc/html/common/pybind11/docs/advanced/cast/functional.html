@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Functional &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Functional</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/common/pybind11/docs/advanced/cast/functional.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="functional">
+<h1>Functional<a class="headerlink" href="#functional" title="永久链接至标题">¶</a></h1>
+<p>The following features must be enabled by including <code class="file docutils literal notranslate"><span class="pre">pybind11/functional.h</span></code>.</p>
+<div class="section" id="callbacks-and-passing-anonymous-functions">
+<h2>Callbacks and passing anonymous functions<a class="headerlink" href="#callbacks-and-passing-anonymous-functions" title="永久链接至标题">¶</a></h2>
+<p>The C++11 standard brought lambda functions and the generic polymorphic
+function wrapper <code class="docutils literal notranslate"><span class="pre">std::function&lt;&gt;</span></code> to the C++ programming language, which
+enable powerful new ways of working with functions. Lambda functions come in
+two flavors: stateless lambda function resemble classic function pointers that
+link to an anonymous piece of code, while stateful lambda functions
+additionally depend on captured variables that are stored in an anonymous
+<em>lambda closure object</em>.</p>
+<p>Here is a simple example of a C++ function that takes an arbitrary function
+(stateful or stateless) with signature <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code> as an argument and runs
+it with the value 10.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">func_arg</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The example below is more involved: it takes a function of signature <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code>
+and returns another function of the same kind. The return value is a stateful
+lambda function, which stores the value <code class="docutils literal notranslate"><span class="pre">f</span></code> in the capture object and adds 1 to
+its return value upon execution.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">func_ret</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example demonstrates using python named parameters in C++ callbacks which
+requires using <code class="docutils literal notranslate"><span class="pre">py::cpp_function</span></code> as a wrapper. Usage is similar to defining
+methods of classes:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">py</span><span class="o">::</span><span class="n">cpp_function</span> <span class="n">func_cpp</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">py</span><span class="o">::</span><span class="n">cpp_function</span><span class="p">([](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="p">},</span>
+       <span class="n">py</span><span class="o">::</span><span class="n">arg</span><span class="p">(</span><span class="s">&quot;number&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>After including the extra header file <code class="file docutils literal notranslate"><span class="pre">pybind11/functional.h</span></code>, it is almost
+trivial to generate binding code for all of these functions.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;pybind11/functional.h&gt;</span><span class="cp"></span>
+
+<span class="n">PYBIND11_MODULE</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">m</span><span class="p">.</span><span class="n">def</span><span class="p">(</span><span class="s">&quot;func_arg&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">func_arg</span><span class="p">);</span>
+    <span class="n">m</span><span class="p">.</span><span class="n">def</span><span class="p">(</span><span class="s">&quot;func_ret&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">func_ret</span><span class="p">);</span>
+    <span class="n">m</span><span class="p">.</span><span class="n">def</span><span class="p">(</span><span class="s">&quot;func_cpp&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">func_cpp</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following interactive session shows how to call them from Python.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">$ python</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">example</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">example</span><span class="o">.</span><span class="n">func_arg</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+<span class="go">100L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">square_plus_1</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="n">func_ret</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">square_plus_1</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">17L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plus_1</span> <span class="o">=</span> <span class="n">func_cpp</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plus_1</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">43</span><span class="p">)</span>
+<span class="go">44L</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Keep in mind that passing a function from C++ to Python (or vice versa)
+will instantiate a piece of wrapper code that translates function
+invocations between the two languages. Naturally, this translation
+increases the computational cost of each function call somewhat. A
+problematic situation can arise when a function is copied back and forth
+between Python and C++ many times in a row, in which case the underlying
+wrappers will accumulate correspondingly. The resulting long sequence of
+C++ -&gt; Python -&gt; C++ -&gt; … roundtrips can significantly decrease
+performance.</p>
+<p>There is one exception: pybind11 detects case where a stateless function
+(i.e. a function pointer or a lambda function without captured variables)
+is passed as an argument to another C++ function exposed in Python. In this
+case, there is no overhead. Pybind11 will extract the underlying C++
+function pointer from the wrapped function to sidestep a potential C++ -&gt;
+Python -&gt; C++ roundtrip. This is demonstrated in <code class="file docutils literal notranslate"><span class="pre">tests/test_callbacks.cpp</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>This functionality is very useful when generating bindings for callbacks in
+C++ libraries (e.g. GUI libraries, asynchronous networking libraries, etc.).</p>
+<p>The file <code class="file docutils literal notranslate"><span class="pre">tests/test_callbacks.cpp</span></code> contains a complete example
+that demonstrates how to work with callbacks and anonymous functions in
+more detail.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

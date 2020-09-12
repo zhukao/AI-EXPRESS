@@ -1,0 +1,63 @@
+# aidi.DataspaceApi
+
+All URIs are relative to *http://aidi.hobot.cc/api*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**append_pr**](DataspaceApi.md#append_pr) | **POST** /dataspace/v1/data/appendpr | Append a predict result to dataset.
+
+
+# **append_pr**
+> APIResult append_pr(body=body)
+
+Append a predict result to dataset.
+
+This will append a predict result to a dataset.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.DataspaceApi(aidi.ApiClient(configuration))
+body = aidi.AppendPRReq() # AppendPRReq |  (optional)
+
+try:
+    # Append a predict result to dataset.
+    api_response = api_instance.append_pr(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DataspaceApi->append_pr: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**AppendPRReq**](AppendPRReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

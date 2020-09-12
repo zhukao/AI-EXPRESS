@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>快速上手 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="场景参考解决方案" href="solution.html" />
+    <link rel="prev" title="概述" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">概述</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">快速上手</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">环境准备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">软件包获取</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">软件包解析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">编译部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">实例解析</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>快速上手</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/BuildAll/doc/quick_start.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>快速上手<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>本文介绍如何完成AI Express开发环境的搭建，以及完成内置人脸识别参考方案Demo的运行。</p>
+<div class="section" id="id2">
+<h2>环境准备<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>AI Express主要是面向地平线芯片的边缘应用开发，相关环境准备包括开发机器环境准备和开发板准备。</p>
+<p><strong>1. 开发环境准备</strong></p>
+<ul class="simple">
+<li><p>安装<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">3.15+</span></code>以上版本</p></li>
+<li><p>安装芯片交叉编译工具<code class="docutils literal notranslate"><span class="pre">gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu</span></code>,路径:<code class="docutils literal notranslate"><span class="pre">/opt/</span></code></p></li>
+</ul>
+<p>备注：如需要更新升级交叉编译工具链，请修改根目录CMakeLists.txt中配置如下：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">set(CMAKE_C_COMPILER</span> <span class="pre">/opt/${工具链目录名}/bin/aarch64-linux-gnu-gcc)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set(CMAKE_CXX_COMPILER</span> <span class="pre">/opt/${工具链目录名}/bin/aarch64-linux-gnu-g++)</span></code></p></li>
+</ul>
+<p><strong>2. 开发板准备</strong></p>
+<p>AI Express内置支持X2平台96board和2610面板机两种板卡，支持X3平台X3Dev开发板.板卡支持固件版本为：</p>
+<ul class="simple">
+<li><p>96board：disk_96board_CP_1.1.1_0929.img</p></li>
+<li><p>2610：disk_HSP2610V-Linux-101-V12.tar.xz</p></li>
+<li><p>x3dev：disk_xj3_emmc20200613.img</p></li>
+</ul>
+<p>备注：同芯片平台版卡间区别主要影响了XProto::VIO数据输入模块,对XStream智能结构化模块无影响,参见<code class="docutils literal notranslate"><span class="pre">&#64;todo如何适配多版卡</span></code>。</p>
+</div>
+<div class="section" id="id3">
+<h2>软件包获取<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>AI Express Github开源还在内部申请流程中，当前还是采用版本发布方式来向客户提供，请联系地平线商务或在地平线开发者社区进行留言申请。</p>
+</div>
+<div class="section" id="id4">
+<h2>软件包解析<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>AI Express软件发布包为一个<code class="docutils literal notranslate"><span class="pre">tar.gz</span></code>的压缩包，解压以后整个软件包结构如下：</p>
+<p><strong>1. 目录结构</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>├── build.sh
+├── CMakeLists.txt
+├── deploy.sh
+├── deps
+│   ├── bpu_predict
+│   ├── gtest
+│   ├── hobot
+│   ├── hobotlog
+│   ├── ipc_tracking
+│   ├── jsoncpp
+│   ├── libjpeg-turbo
+│   ├── libyuv
+│   ├── live555
+│   ├── opencv
+│   ├── openssl
+│   ├── protobuf
+│   ├── uWS
+│   ├── x2_prebuilt
+│   ├── x3_prebuilt
+│   ├── xwarehouse
+│   └── zlib
+├── doc
+│   └── release_note
+├── models
+│   ├── x2
+│   └── x3
+├── python_api
+│   ├── xproto
+│   └── xstream
+├── README.md
+├── run.sh
+├── source
+│   ├── common
+│   │   ├── viowrapper
+│   │   ├── xproto
+│   │   │   ├── framework
+│   │   │   ├── msgtype
+│   │   │   ├── plugins
+│   │   │   └── python_api
+│   │   └── xstream
+│   │       ├── framework
+│   │       ├── imagetools
+│   │       ├── methods
+│   │       ├── python_api
+│   │       ├── tutorials
+│   │       └── vision_type
+│   │
+│   └── solution_zoo
+│        ├── body
+│        ├── face
+│        ├── face_body_multisource
+│        ├── README.md
+│        ├── tools
+│        └── xstream
+│            └── methods
+├── start_nginx.sh
+└── webservice
+</pre></div>
+</div>
+<p><strong>2. deps (二进制形式)</strong></p>
+<ul class="simple">
+<li><p>bpu_predict：内部库，地平线bpu预测驱动库，分为x2芯片版本和x3芯片版本;</p></li>
+<li><p>gtest：第三方开源库，google test框架;</p></li>
+<li><p>hobot：内部库，另一种基于数据流的编程框架hobotsdk;</p></li>
+<li><p>hobotlog：内部库，日志系统，支持不同的优先级控制等特性;</p></li>
+<li><p>ipc_tracking:内部库，基于IOU的多目标跟踪（MOT）策略库;</p></li>
+<li><p>jsoncpp：第三方开源库，用于json解析;</p></li>
+<li><p>libjpeg-turbo：第三方开源库，用于jpeg格式图像处理;</p></li>
+<li><p>libyuv：第三方开源库，用于yuv格式图像处理;</p></li>
+<li><p>live555：第三方开源库，用于H264码流传输;</p></li>
+<li><p>opencv： 第三方开源库，主要用于计算机视觉处理;</p></li>
+<li><p>openssl：第三方开源库，用于websocket通信;</p></li>
+<li><p>protobuf： 第三方开源库，多平台或者多模块间消息交互协议;</p></li>
+<li><p>uWS： 第三方开源库，websocket通信;</p></li>
+<li><p>x2_prebuilt： 内部库，x2平台底层系统库或者hbrt基础库等;</p></li>
+<li><p>x3_prebuilt： 内部库，x3平台底层系统库或者hbrt基础库等;</p></li>
+<li><p>xwarehouse： 内部库，人脸特征比对底库管理模块;</p></li>
+</ul>
+<p><strong>3. source (源代码形式)</strong></p>
+<ul class="simple">
+<li><p>common: 为整个基础框架和内置算法模块和功能组件。</p></li>
+<li><p>common/xstream-framework: 一套基于数据流的编程框架;</p></li>
+<li><p>common/xstream-imagetools: XStream提供的Image处理工具;</p></li>
+<li><p>common/xstream-methods: 基于xstream-framework开发、沉淀的模型处理或者算法策略模块;</p></li>
+<li><p>common/xstream-vision_type: vision type是AI视觉方案常用数据结构定义，如BBox， landmark、PyramidImage;</p></li>
+<li><p>common/xproto_framework: 消息订阅与分发的编程框架，每个基础组件以插件（plugin）的形式管理;</p></li>
+<li><p>common/xproto_msgtype: 定义了xproto基础消息类型;</p></li>
+<li><p>common/xproto_plugins: 基于XProto框架开发、沉淀的一系列基础组件，如VIO处理模块（VioPlugin）、智能处理模块(SmartPlugin)等， 基础组件以插件的形式管理;</p></li>
+<li><p>solutions: 基于地平线中间件构建的不同场景的解决方案池;</p></li>
+<li><p>solutions/solution_example: solution开发的样例;</p></li>
+<li><p>solutions/solution_face：人脸抓拍/识别解决方案案例;</p></li>
+<li><p>solutions/solution_body：人体骨骼检测/人体行为分析/体感游戏解决方案案例;</p></li>
+<li><p>solutions/solution_vehicle：车辆相关解决方案案例;</p></li>
+<li><p>solutions/solution_face_body_multisource：AI盒子场景参考方案案例:</p></li>
+</ul>
+<p><strong>4. doc (html格式文档)</strong></p>
+<ul class="simple">
+<li><p>doc/html/index.html html格式文档入口,请用浏览器打开。</p></li>
+</ul>
+<p><strong>5. models (x2和x3模型)</strong></p>
+<ul class="simple">
+<li><p>faceMultitask: source/solution/face所用到的模型: 人脸多任务模型,可实现人脸检测,人脸抓拍,人脸识别等。</p></li>
+<li><p>personMultitask: source/solution/body所用到的模型: 人体多任务模型。</p></li>
+<li><p>vehicleSolutionModels: source/solution/vehicle所用到的模型:  车辆相关模型。</p></li>
+<li><p>faceID: source/solution/face所用到的模型:  人脸特征提取模型。</p></li>
+<li><p>fallDet: source/solution/body所用到的模型:  摔倒检测模型。</p></li>
+<li><p>backBone: source/solution/body所用到的模型: 体感游戏行为分析模型。</p></li>
+<li><p>ssd: source/solution/ssd_test所用到的模型: ssd检测示例模型。</p></li>
+</ul>
+<p><strong>6. README.md (Markdown格式README文档)</strong></p>
+<ul class="simple">
+<li><p>工程简要介绍README文档</p></li>
+</ul>
+<p><strong>7. build.sh (bash shell脚本文件)</strong></p>
+<ul class="simple">
+<li><p>执行 bash build.sh x2, 或者bash build.sh x3，可以编译整个开发环境。</p></li>
+<li><p>如果没有权限，请使用chmod +x ./build.sh赋予执行权限。</p></li>
+<li><p>build.sh 默认使用bash执行，如果您的环境中bash不是默认shell, 请使用<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">bash</span> <span class="pre">build.sh</span></code>执行脚本。</p></li>
+</ul>
+<p><strong>6. CMakeLists.txt (cmake文件)</strong></p>
+<ul class="simple">
+<li><p>整个工程使用cmake编译，请安装<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">3.7+</span></code>以上版本。</p></li>
+<li><p>build.sh中会调用cmake根据CMakeLists.txt执行编译。</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>编译部署<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>AI Express发布包采用源码发布，编译主要是针对<code class="docutils literal notranslate"><span class="pre">${发布包}/source</span></code>目录的基础框架和内置的solutions进行编译。
+用户也可以参考<code class="docutils literal notranslate"><span class="pre">solutions/solution_example</span></code>实现方式，完成自定义solutionn开发与编译。<br />重要说明： X2 与X3 是有两个包，里面主要的区别是模型文件和bpu_predict预测库不同。对于两个包，分别需要使用 <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">build.sh</span> <span class="pre">x2</span></code> 与 <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">build.sh</span> <span class="pre">x3</span></code> 进行编译，不能交叉使用。</p>
+<ol class="simple">
+<li><p><strong>编译</strong>：
+直接运行<code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">build.sh</span> <span class="pre">x2/x3</span></code>，完成整个开发包的编译，编译后的中间结果输出在<code class="docutils literal notranslate"><span class="pre">${发布包}/build</span></code>目录下。</p></li>
+<li><p><strong>打包</strong>：直接运行<code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">deploy.sh</span></code>,针对编译后的内容进行打包发布，打包发布在<code class="docutils literal notranslate"><span class="pre">${发布包}/deploy</span></code>目录下。</p></li>
+<li><p><strong>部署</strong>：将deploy发布包进行压缩，传递到开发板文件系统中，并进行解压完成部署。</p></li>
+<li><p><strong>运行</strong>：deploy中run.sh可以在96board、2610板卡或者x3开发板上运行内置solution。
+<code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">run.sh</span> <span class="pre">[</span> <span class="pre">face</span> <span class="pre">|</span> <span class="pre">face_recog</span> <span class="pre">|</span> <span class="pre">body</span> <span class="pre">|</span> <span class="pre">xbox</span> <span class="pre">|</span> <span class="pre">behavior</span> <span class="pre">|</span> <span class="pre">vehicle</span> <span class="pre">|</span> <span class="pre">vision_type</span> <span class="pre">|</span> <span class="pre">imagetools</span> <span class="pre">|</span> <span class="pre">grading_method</span> <span class="pre">|</span> <span class="pre">face_body_multisource</span> <span class="pre">|</span> <span class="pre">ssd_test</span> <span class="pre">]</span> <span class="pre">[96board</span> <span class="pre">|</span> <span class="pre">2610</span> <span class="pre">|</span> <span class="pre">x3dev</span> <span class="pre">]</span> <span class="pre">[</span> <span class="pre">imx327</span> <span class="pre">|</span> <span class="pre">os8a10</span> <span class="pre">|</span> <span class="pre">s5kgm</span> <span class="pre">|</span> <span class="pre">s5kgm_2160p]</span></code></p></li>
+<li><p><strong>客户端展示</strong>：pc上打开浏览器，输入板子的ip地址，点击”web展示端”，可以浏览适配与智能结果。</p></li>
+</ol>
+</div>
+<div class="section" id="id6">
+<h2>实例解析<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>这里采用人脸抓拍实例进行实例解析。<code class="docutils literal notranslate"><span class="pre">deploy/face_solution</span></code>实现了一个标准的人脸抓拍任务流程。</p>
+<p>它支持对视频图片帧进行人脸框，人脸关键点，人脸姿态检测，并对检测到人进行跟踪，打分与抓拍，其中涉及到算法和策略模块包括<code class="docutils literal notranslate"><span class="pre">FasterRCNNMethod</span></code>,<code class="docutils literal notranslate"><span class="pre">MOTMethod</span></code>,<code class="docutils literal notranslate"><span class="pre">GradingMethod</span></code>和<code class="docutils literal notranslate"><span class="pre">SnapShotMethod</span></code>，对应的XStream关系图如下：</p>
+<p><img alt="框架" src="../../_images/face_snapshot.png" /></p>
+<p>构建该solution的workflow配置文件<code class="docutils literal notranslate"><span class="pre">deploy/face_solution/configs/face_solution.json</span></code>内容如下：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;image&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;image&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;face_bbox_list&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;snap_list&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;workflow&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;FasterRCNNMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;multi_task&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;image&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;rgb_face_box&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rgb_lmk&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rgb_pose&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;face_pose_lmk.json&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;MOTMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;face_mot&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;rgb_face_box&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;face_bbox_list&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rgb_face_disappeared_track_id_list&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;iou_method_param.json&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;GradingMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;grading&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;face_bbox_list&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rgb_pose&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rgb_lmk&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;select_score_list&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;grading.json&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;method_type&quot;</span><span class="p">:</span><span class="s2">&quot;SnapShotMethod&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span><span class="s2">&quot;snapshot&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;inputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;image&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;face_bbox_list&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;select_score_list&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rgb_face_disappeared_track_id_list&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rgb_pose&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rgb_lmk&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;face_bbox_list&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;outputs&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;snap_list&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span><span class="s2">&quot;snapshot.json&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>其中：</p>
+<ul class="simple">
+<li><p>inputs: image表示整个workflow外部输入只有图片帧。</p></li>
+<li><p>outputs: 表示整个workflow输出，输出原始图片帧，人脸结构化数据以及抓拍图。</p></li>
+<li><p>workflow：通过复用XStream内部四个Method来构建上述数据流，每个Method可以指定input，output，thread_count，以及Method相关模型配置信息。</p></li>
+</ul>
+<p>对于上述由XStream构建的Workflow，可以通过XProto进行调用，并在芯片上进行运行，调用关键代码<code class="docutils literal notranslate"><span class="pre">deploy/face_solution/main.cpp</span></code>如下：</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span>    <span class="k">auto</span> <span class="n">vio_plg</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">VioPlugin</span><span class="o">&gt;</span><span class="p">(</span><span class="n">vio_config_file</span><span class="p">);</span>
+    <span class="k">auto</span> <span class="n">smart_plg</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SmartPlugin</span><span class="o">&gt;</span><span class="p">(</span><span class="n">smart_config_file</span><span class="p">);</span>
+    <span class="n">vio_plg</span><span class="o">-&gt;</span><span class="n">Init</span><span class="p">();</span>
+    <span class="n">smart_plg</span><span class="o">-&gt;</span><span class="n">Init</span><span class="p">();</span>
+    <span class="n">vio_plg</span><span class="o">-&gt;</span><span class="n">Start</span><span class="p">();</span>
+    <span class="n">smart_plg</span><span class="o">-&gt;</span><span class="n">Start</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>XProto::VioPlugin为芯片板卡视频流输入模块，通过Init/Start以后，会持续在XProto消息总线中注入视频图片帧数据，并被XProto::SmartPlugin消费和结构化处理，其中smart_config_file参数即为上述的workflow配置文件。</p>
+<p>在板卡上运行<code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">run.sh</span> <span class="pre">face</span></code>，输出结果如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>root@X2_96BOARD:/userdata/deploy# sh run.sh face 96boards
+(xpluginasync.cpp:58): XPluginAsync() cons
+(xpluginasync.cpp:58): XPluginAsync() cons
+(smartplugin.cpp:184): smart config file:./face_solution/configs/face_solution.json
+....
+(convert.cpp:35): Input Frame ID = 0, Timestamp = 21291
+(convert.cpp:51): input name:image
+(convert.cpp:35): Input Frame ID = 1, Timestamp = 21292
+(convert.cpp:51): input name:image
+(convert.cpp:35): Input Frame ID = 2, Timestamp = 21293
+(convert.cpp:51): input name:image
+(vioproduce.cpp:423): Vio TimeStamp: 21294
+(vioproduce.cpp:466): Push Drop message!!!
+(MOTMethod.cpp:73): MOTMethod::DoProcess
+................................
+................开始处理图片帧数据
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

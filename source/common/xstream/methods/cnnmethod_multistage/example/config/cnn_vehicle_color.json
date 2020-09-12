@@ -1,0 +1,36 @@
+{
+  "inputs": [
+    "face_box",
+    "pyramid"
+  ],
+  "outputs": [
+    "vehicle_color",
+    "pyramid",
+    "face_box"
+  ],
+  "workflow": [
+    {
+      "unique_name": "img_input",
+      "method_type": "CNNImgPreMethod",
+      "inputs": [
+        "face_box",
+        "pyramid"
+      ],
+      "outputs": [
+        "tmp_out"
+      ],
+      "method_config_file": "method_conf/vehicle_color.json"
+    },
+    {
+        "unique_name": "vehicle_color",
+        "method_type": "CNNVehicleColorPostMethod",
+        "inputs": [
+          "tmp_out"
+        ],
+        "outputs": [
+          "vehicle_color"
+        ],
+        "method_config_file": "method_conf/vehicle_color.json"
+      }
+  ]
+}

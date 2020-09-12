@@ -1,0 +1,44 @@
+Loss
+====
+
+Introduction to Loss.
+
+
+Overview
+--------
+
+.. py:currentmodule:: gluon_face.common.nn.loss.distillation_softmax_ce_loss
+
+.. autosummary::
+    :nosignatures:
+
+    DistillationSoftmaxCrossEntropyLoss
+
+
+.. py:currentmodule:: gluon_face.common.nn.loss.mixup_softmax_ce_loss
+
+.. autosummary::
+    :nosignatures:
+
+    MixupSoftmaxCrossEntropyLoss
+
+
+.. py:currentmodule:: gluon_face.common.nn.loss.softmax_focal_loss
+
+.. autosummary::
+    :nosignatures:
+
+    SoftmaxFocalLoss
+
+
+API Reference
+-------------
+
+.. automodule:: gluon_face.common.nn.loss.distillation_softmax_ce_loss
+    :members:
+
+.. automodule:: gluon_face.common.nn.loss.mixup_softmax_ce_loss
+    :members:
+
+.. automodule:: gluon_face.common.nn.loss.softmax_focal_loss
+    :members:

@@ -1,0 +1,10 @@
+{
+  "model_name": "vid",
+  "in_msg_type": "vid",
+  "model_version": "0.0.1",
+  "model_file_path": "../../models/vid.hbm",
+  "bpu_config_path": "../configs/bpu_config.json",
+  "post_fn": "vid",
+  "max_handle_num": -1,
+  "output_size": 1
+}

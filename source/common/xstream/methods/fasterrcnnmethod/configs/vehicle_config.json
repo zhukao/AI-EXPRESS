@@ -1,0 +1,69 @@
+{
+  "in_msg_type": "pyramid_image",
+  "net_info": {
+    "model_name": "vehicle_multitask",
+    "model_version": "0.0.1",
+    "model_out_sequence": [
+        {
+            "name": "vehicle_box_int",
+            "type": "invalid"
+        },
+        {
+            "name": "vehicle_box",
+            "type": "bbox"
+        },
+        {
+            "name": "plate_box_int",
+            "type": "invalid"
+        },
+        {
+            "name": "plate_box",
+            "type": "bbox"
+        },
+        {
+            "name": "vehicle_un_box_int",
+            "type": "invalid"
+        },
+        {
+            "name": "vehicle_un_bbox",
+            "type": "bbox"
+        },
+        {
+            "name": "person_box_int",
+            "type": "invalid"
+        },
+        {
+            "name": "person_bbox",
+            "type": "bbox"
+        },
+        {
+            "name": "window_box_int",
+            "type": "invalid"
+        },
+        {
+            "name": "frontwindow_bbox",
+            "type": "bbox"
+        },
+        {
+            "name": "plate_color",
+            "type": "plate_color",
+            "box_name": "plate_box"
+        },
+        {
+            "name": "plate_type",
+            "type": "plate_row",
+            "box_name": "plate_box"
+        }
+    ],
+    "model_input_width": 960,
+    "model_input_height": 540,
+    "pyramid_layer": 4,
+    "plate_color_num": 6,
+    "plate_row_num": 2
+  },
+  "method_outs": ["vehicle_box", "plate_box", "vehicle_un_bbox", "person_bbox", "frontwindow_bbox", "plate_color", "plate_type"],
+  "model_file_path": "../models/vehicle_multitask.hbm",
+  "bpu_config_path": "bpu_config.json",
+  "enable_conformance_test": 0,
+  "conformance_log_file": "fasterRCNN.log"
+}

@@ -1,0 +1,178 @@
+# 版本说明  版本 0.9.0
+        
+<h2>        故事
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-76'>XPPXROC-76</a>] -         method zoo 规范构建
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-82'>XPPXROC-82</a>] -         【XppClientMini】通用展示前端精简版开发
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-103'>XPPXROC-103</a>] -         XPP功能完善
+</li>
+</ul>
+                                                                                                
+<h2>        任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-2'>XPPXROC-2</a>] -         【XRoc】CNNMethod重构
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-3'>XPPXROC-3</a>] -         【XRoc】内存资源释放
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-5'>XPPXROC-5</a>] -         【XRoc】output的多路输出
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-6'>XPPXROC-6</a>] -         【XRoc】xroc线程池管理
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-9'>XPPXROC-9</a>] -         【XRoc】依赖满足的情况下没有触发并行method处理
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-12'>XPPXROC-12</a>] -         【XRoc】源码依赖，统一编译探索
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-13'>XPPXROC-13</a>] -         【XRoc】BBoxFilter更新数据结构
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-14'>XPPXROC-14</a>] -         【XRoc】CICD 把Method zoo 的文档统一生成文档页面
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-15'>XPPXROC-15</a>] -         【XRoc】支持线程优先级
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-23'>XPPXROC-23</a>] -         【XRoc】Framework和Method文档补充到各个模块Readme
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-25'>XPPXROC-25</a>] -         移植xroc-framework现有源码管理为bazel方式
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-26'>XPPXROC-26</a>] -         移植FasterRCNNMethod源码管理为bazel方式
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-30'>XPPXROC-30</a>] -         【XRoc】framework接口文档更新到readme
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-31'>XPPXROC-31</a>] -         【XRoc】FasterRCNNMethod 描述文档补全
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-32'>XPPXROC-32</a>] -         【x2600】CNNMethod模块Readme
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-36'>XPPXROC-36</a>] -         【XRoc】MOTMethod 描述文档补全
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-73'>XPPXROC-73</a>] -         迁移多模的性能统计工具
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-75'>XPPXROC-75</a>] -         搜集解决目前存在的性能瓶颈问题
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-77'>XPPXROC-77</a>] -         BPU 异步调用支持
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-80'>XPPXROC-80</a>] -         支持多输入源 （多pipeine的通道或消息传输）
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-84'>XPPXROC-84</a>] -         渲染引擎支持C++类API接口
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-85'>XPPXROC-85</a>] -         支持适配不同的数据来源
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-88'>XPPXROC-88</a>] -         bazel repo 中，发布一个库（.a .so + .h ）到artifactory 最佳实践
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-90'>XPPXROC-90</a>] -         bazel repo 支持交叉编译工具链
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-92'>XPPXROC-92</a>] -         XRoc与HobotSDK融合方案设计
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-95'>XPPXROC-95</a>] -         Bazel 使用帮助文档编写
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-96'>XPPXROC-96</a>] -         96board XPP&amp;XRoc 开发环境帮助手册
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-97'>XPPXROC-97</a>] -         通用前端视频结构化 开发指导手册
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-98'>XPPXROC-98</a>] -         通用消息组件帮助文档
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-100'>XPPXROC-100</a>] -         xroc的进出函数，加log，特别是init这种重要的接口函数
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-101'>XPPXROC-101</a>] -         [XRoc]Fasterrcnn method适配method zoo规范
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-115'>XPPXROC-115</a>] -         【XRoc】workflow配置合法性检查
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-116'>XPPXROC-116</a>] -         [XPP] 通用消息组件资源释放
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-121'>XPPXROC-121</a>] -         [XRoc] 性能统计工具调研
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-130'>XPPXROC-130</a>] -         [XRoc] XRoc WorkFlow可视化工具
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-133'>XPPXROC-133</a>] -         XRoc&amp;XPP 文档整理
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-144'>XPPXROC-144</a>] -         [XPP] 通用消息组件 支持Onboard进程间通讯
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-147'>XPPXROC-147</a>] -         common/method_zoo/的bazel化
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-148'>XPPXROC-148</a>] -         method zoo Bazel编译
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-149'>XPPXROC-149</a>] -         [XRoc] XRoc WorkFlow可视化工具-合法性检查
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-153'>XPPXROC-153</a>] -         开发method标准sample
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-154'>XPPXROC-154</a>] -         [XPP] 通用消息组件 性能验证
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-160'>XPPXROC-160</a>] -         改造Fasterrcnnmethod、motmethod、cnnmethod以支持bazel，并把相关基础库迁移到common tdt_dev_hbdk3分支
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-161'>XPPXROC-161</a>] -         迁移smartplugin支持bazel，并升级xpp默认sample支持hbdk3
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-168'>XPPXROC-168</a>] -         XRoc tutorials(Get Started)
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-209'>XPPXROC-209</a>] -         使用git-repo完成源码依赖, 采用cmake实现编译框架
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-211'>XPPXROC-211</a>] -         确认0.9的交付内容
+</li>
+</ul>
+    
+<h2>        故障
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-145'>XPPXROC-145</a>] -         //xroc/framework:test_all 失败
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-146'>XPPXROC-146</a>] -         XPP 提供的标准sample（与hackthon相同） 不能平滑退出
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-222'>XPPXROC-222</a>] -         kps结果不输出
+</li>
+</ul>
+                    
+<h2>        子任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-4'>XPPXROC-4</a>] -         【XRoc】支持多路视频输入 -详细设计
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-7'>XPPXROC-7</a>] -         完成XPP中VioPlugin与HbipcPlugin文档的编写
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-33'>XPPXROC-33</a>] -         【XRoc】ValueMergeMethod 描述文档补全
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-34'>XPPXROC-34</a>] -         【XRoc】AntispfCalculateMethod 描述文档补全
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-35'>XPPXROC-35</a>] -         【XRoc】AntispfMergeMethod 描述文档补全
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-37'>XPPXROC-37</a>] -         【XRoc】GradingMethod描述文档补全
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-38'>XPPXROC-38</a>] -         【XRoc】SnapshotMethod描述文档补全
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-40'>XPPXROC-40</a>] -         【XRoc】MergeMethod文档补全
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-108'>XPPXROC-108</a>] -         sdk多实例、反复创建销毁、配置更新等
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-110'>XPPXROC-110</a>] -         xroc workflow 调度验证、非法配置能否平滑退出
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-117'>XPPXROC-117</a>] -         【XRoc】支持多路视频输入- 开发代码及UT测试
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-140'>XPPXROC-140</a>] -         task的超时监控bugfix + ut测试
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-143'>XPPXROC-143</a>] -         增加ut测试用例，验证多线程并发创建多个sdk
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-150'>XPPXROC-150</a>] -         绘图引擎同时支持Qt版本和c++版本视图
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-152'>XPPXROC-152</a>] -         子workflow配置模板展开
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-156'>XPPXROC-156</a>] -         xpp 标准sample， fasterrcnnmethod等升级hbdk3
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-159'>XPPXROC-159</a>] -         xpluginflow接口文档、sample程序；Vioplugin、hbipcplugin配置说明等
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-170'>XPPXROC-170</a>] -         拆分CNNMethod前处理、predictor、后处理三个method
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-174'>XPPXROC-174</a>] -         梳理模型编译、一致性验证、集成测试过程，并整理成wiki
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-191'>XPPXROC-191</a>] -         XRoc-tutorials：method属性支持
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-192'>XPPXROC-192</a>] -         xroc-tutorials：workflow执行流控制
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-199'>XPPXROC-199</a>] -         编写cnnmethod重构前后处理说明文档
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-201'>XPPXROC-201</a>] -         CnnMethod 前后处理重构：基于重构后的版本搭建真实workflow
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-205'>XPPXROC-205</a>] -         将cnn等待模型输出的阻塞操作从前处理移植到后处理
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-206'>XPPXROC-206</a>] -         整理ModelInfo数据结构，统一从bpupredict获取信息
+</li>
+</ul>
+        

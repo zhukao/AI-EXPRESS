@@ -1,0 +1,219 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>V2.2.0 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li><font color=#0000ff>V2.2.0</font></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/BuildAll/doc/release_note/v2.2.0/ReleaseNotes.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="font-color-0000ff-v2-2-0-font">
+<h1><font color=#0000ff>V2.2.0</font><a class="headerlink" href="#font-color-0000ff-v2-2-0-font" title="永久链接至标题">¶</a></h1>
+<div class="section" id="release-date">
+<h2>Release Date<a class="headerlink" href="#release-date" title="永久链接至标题">¶</a></h2>
+<p>2020/06/13</p>
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>适配X3模型: 基于hbdk3.7.10，提供X3版本模型;基于bpu-predict master分支，bpu-predict第一套接口进行模型预测;适配FasterRCNNMethod以及CNNMethod等预测Method，同时支持X2与X3;适配SSDMethod，同时支持X2和X3</p></li>
+<li><p>适配X3 VIO: 支持X3系统软件原生vio接口，获取camera图像以及图像回灌;支持X3媒体库接口获取camera图像;适配imx327（1080p），os8a10(2160p)，s5kgm（2160p与4000x3000);封装VIOWrapper，支持X2/X3接口统一调用</p></li>
+<li><p>现有Solution支持X3平台: 现有face_solution， face_recog solution，body solution, vehicle solution， face_body_multisource能够正常在X3上运行</p></li>
+<li><p>web统一客户端: 现有solution的结果展示切换到web 统一客户端， 能够显示视频、检测结果、属性分类、关键点结果</p></li>
+<li><p>新增人体行为分析solution: 集成人体多任务检测，人体摔倒模型，支持举手、站立、下蹲等策略分析。支持X2与X3</p></li>
+<li><p>新增体感游戏solution: 集成人体多任务检测，人体特征提取，人体行为三个模型，web客户端展示游戏界面，支持CrappyBird和PandaRun两个游戏。支持X2与X3</p></li>
+<li><p>新增USB Camera功能: 支持将X3开发板，通过USB接口接到AP上，AP通过UVC/HID拿到图像与智能结果。</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+    "model_name": "faceID",
+    "model_version": "v1.0.0",
+    "model_file_path": "../models/faceID.hbm",
+    "bpu_config_path": "../configs/bpu_config.json",
+    "max_handle_num": -1,
+    "output_size": 1
+  }

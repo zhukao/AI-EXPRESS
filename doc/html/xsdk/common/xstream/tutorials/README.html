@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/xsdk/common/xstream/tutorials/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="永久链接至标题">¶</a></h1>
+<div class="section" id="xstream-framework">
+<h2>XStream Framework是什么<a class="headerlink" href="#xstream-framework" title="永久链接至标题">¶</a></h2>
+<p>XStream-Framework是一种基于数据流的SDK编程框架：<br />1）可以通过JSON配置构建一个workflow，workflow是一个有向拓扑图，图中每个节点（Node）都是一个或多个method实例;<br />2）method表示一种能力，能力通常是某类模型能力（人脸检测、人脸Pose等）或者算法策略（过滤策略、融合策略、优选策略等）;<br />3）workflow表示一个范式，定义一组能力的串联方式，如下图定义了人脸抓拍范式，其中融合了检测、跟踪、人脸属性（pose、blur）以及优选策略等能力;<br />4）XStream-Framework定义了一套通用SDK C++接口。</p>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
+  A[FaceDetectionMethod]--&gt; B[TrackingMethod]
+  B--&gt;C[FacePoseMethod]
+  B--&gt;D[FaceBlurMethod]
+  C--&gt;E[SelectionMethod]
+  B--&gt;E[SelectionMethod]
+  D--&gt;E[SelectionMethod]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h1>
+<p>如何使用xstream framework样例代码。</p>
+</div>
+<div class="section" id="build">
+<h1>BUILD<a class="headerlink" href="#build" title="永久链接至标题">¶</a></h1>
+<div class="section" id="how-to-build">
+<h2>How to build<a class="headerlink" href="#how-to-build" title="永久链接至标题">¶</a></h2>
+<p>根据平台，直接运行每个Stage的子目录下的shell编译脚本即可编译。
+例如：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./stage1/build_b_box_filter_main_x86.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="stage1">
+<h2><a class="reference internal" href="stage1/README.html"><span class="doc">Stage1</span></a><a class="headerlink" href="#stage1" title="永久链接至标题">¶</a></h2>
+<p>Step-by-step 创建xstream SDK。</p>
+</div>
+<div class="section" id="stage2">
+<h2><a class="reference internal" href="stage2/README.html"><span class="doc">Stage2</span></a><a class="headerlink" href="#stage2" title="永久链接至标题">¶</a></h2>
+<p>创建多线程实例。</p>
+</div>
+<div class="section" id="stage3">
+<h2><a class="reference internal" href="stage3/README.html"><span class="doc">Stage3</span></a><a class="headerlink" href="#stage3" title="永久链接至标题">¶</a></h2>
+<p>Method属性支持。</p>
+</div>
+<div class="section" id="stage4">
+<h2><a class="reference internal" href="stage4/README.html"><span class="doc">Stage4</span></a><a class="headerlink" href="#stage4" title="永久链接至标题">¶</a></h2>
+<p>workflow执行流控制</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

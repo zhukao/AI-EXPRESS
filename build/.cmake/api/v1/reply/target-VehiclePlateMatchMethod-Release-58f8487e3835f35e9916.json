@@ -1,0 +1,340 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "lib/libVehiclePlateMatchMethod.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"install",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"source/solution_zoo/xstream/methods/vehicle_plate_match_method/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 8,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 9,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 53,
+				"parent" : 4
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 85,
+				"parent" : 4
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-Wall -Wno-unknown-pragmas -fPIC -fexceptions -Werror -O3 -fPIC  -std=c++11  -O3 -DNDEBUG  "
+				}
+			],
+			"defines" : 
+			[
+				{
+					"define" : "HR_LINUX"
+				},
+				{
+					"define" : "HR_POSIX"
+				},
+				{
+					"define" : "X2"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/x2_prebuilt/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/face/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/framework/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/framework/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/msgtype/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/plugins/vioplugin/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/plugins/smartplugin/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/plugins/visualplugin/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/plugins/hbipcplugin/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/plugins/websocketplugin/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xproto/plugins/uvcplugin/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/vision_type/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/media_codec/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/viowrapper/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/methods/cnnmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/methods/fasterrcnnmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/gradingmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/filtermethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/snapshotmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/mergemethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/behavior_method/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/predictmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/postprocessmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/methods/motmethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/vehicle_snap_method/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/vehicle_plate_match_method/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/plate_vote_method/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/vote_method/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/FilterSkipFrameMethod/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/solution_zoo/xstream/methods/ssd_method/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/source/common/xstream/imagetools/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/ipc_tracking/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/bpu_predict/x2/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/jsoncpp/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/hobotlog/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/protobuf/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/gtest/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/opencv/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/libjpeg-turbo/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/libyuv/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/hobot/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/iou_based_mot/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/zlib/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/live555/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/xwarehouse/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/uWS/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/deps/openssl/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 3,
+			"id" : "xstream-framework::@8e9725b6f1f026303cc2"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "vehicle_snap_method::@9a7cf15f616b6e8708ec"
+		}
+	],
+	"id" : "VehiclePlateMatchMethod::@18d1537d634278e1b5df",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 2,
+				"path" : "/data/qingpeng.liu/nfs/github/0912_ai_express_release/output/VehiclePlateMatchMethod/lib"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "/usr/local"
+		}
+	},
+	"name" : "VehiclePlateMatchMethod",
+	"nameOnDisk" : "libVehiclePlateMatchMethod.a",
+	"paths" : 
+	{
+		"build" : "source/solution_zoo/xstream/methods/vehicle_plate_match_method",
+		"source" : "source/solution_zoo/xstream/methods/vehicle_plate_match_method"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/solution_zoo/xstream/methods/vehicle_plate_match_method/src/VehiclePlateMatchMethod.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

@@ -1,0 +1,35 @@
+{
+    "inputs": [
+      "face_box",
+      "pyramid"
+    ],
+    "outputs": [
+      "cnn_anti_spf_bgr"
+    ],
+    "workflow": [
+      {
+        "unique_name": "img_pre",
+        "method_type": "CNNImgPreMethod",
+        "inputs": [
+          "face_box",
+          "pyramid"
+        ],
+        "outputs": [
+          "cnn_run_data"
+        ],
+        "method_config_file": "method_conf/anti_spf.json"
+      },
+      {
+        "unique_name": "antispf_post",
+        "method_type": "CNNAntispfPostMethod",
+        "inputs": [
+          "cnn_run_data"
+        ],
+        "outputs": [
+          "cnn_anti_spf_bgr",
+          "norm_rois"
+        ],
+        "method_config_file": "method_conf/anti_spf.json"
+      }
+    ]
+  }

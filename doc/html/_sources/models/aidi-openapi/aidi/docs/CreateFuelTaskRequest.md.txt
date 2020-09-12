@@ -1,0 +1,22 @@
+# CreateFuelTaskRequest
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**auto_camera** | **str** | fuel task auto_camera in: body | [optional] 
+**camera** | **int** | fuel task camera, 0:前视 -1:全部 in: body | 
+**camera_index** | **str** | fuel task camera index, 逗号分割，比如2,3表示回灌ImageIndex为2/3的两路数据 in: body | 
+**can_json** | **str** | fuel task can json in: body | 
+**common_params** | **str** | fuel task common params in: body | 
+**cur_fn** | **str** | fuel task cur fn hdfs path in: body | 
+**desc** | **str** | fuel task description in: body | [optional] 
+**device** | **int** | fuel task device, 0: matrix1.6 1:mono 2:quad 3:matrix1.7 4:DTS+QUAD 5:连续mono in: body | 
+**enable_config** | **str** | fuel task enable config, engine.json in: body | 
+**enable_odometry** | **int** | fuel task enable odometry, 0:否 1:是 in: body | 
+**name** | **str** | fuel task name in: body | 
+**priority** | **int** | fuel task priority, 1:低 2:中 3:高 in: body | 
+**relate** | **int** | fuel task pack id in: body | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -1,0 +1,554 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>场景参考解决方案 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="XStream用户手册" href="xstream_guide.html" />
+    <link rel="prev" title="快速上手" href="quick_start.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">快速上手</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">场景参考解决方案</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">整体概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">人脸结构化参考方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">人体结构化参考方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">人体行为分析参考方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">体感游戏参考方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">车辆结构化参考方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">手势识别参考方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ai">AI盒子场景参考方案</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>场景参考解决方案</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/BuildAll/doc/solution.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>场景参考解决方案<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>整体概述<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>场景参考解决方案是在天工开物模型仓库(Model Zoo)中的产品算法之上，将地平线各种量产场景方案进行开放。下图是“天工开物”模型仓库（Model Zoo）产品算法开放列表。</p>
+<p><img alt="模型仓库" src="../../_images/model-zoo.png" /></p>
+<p>这些产品算法涉及人脸、人体、车辆等多种类别，具备极高的算法质量和精度，可有效避免合作伙伴“重复发明轮子”，大幅节省算法训练和开发的时间与成本。</p>
+<p>当前版本我们选取人脸，人体，车辆部分核心算法模型，开放了<strong>人脸结构化参考方案</strong>,<strong>人体结构化参考方案</strong>,<strong>人体行为分析参考方案</strong>,<strong>体感游戏参考方案</strong>,<strong>车辆结构化参考方案[代码暂未开放]</strong>,<strong>手势识别</strong>六个解决方案以及一个复合的<strong>AI盒子场景参考方案</strong>。</p>
+<p>这些参考方案在地平线X2系列96board/2610面板机参考硬件板卡或者X3系列X3-DVB板上都可以直接部署运行，未来会支持IPC等更多硬件板卡形态。</p>
+<p><img alt="硬件板子" src="../../_images/n-boards.png" /></p>
+<p>您也可以将这些参考方案轻松迁移到基于地平线芯片的其他硬件设备中。</p>
+</div>
+<div class="section" id="id3">
+<h2>人脸结构化参考方案<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>我们选取<strong>人脸检测</strong>，<strong>人脸5关键点</strong>，<strong>人脸姿态</strong>，<strong>年龄性别</strong>，<strong>口罩检测</strong>五个产品模型，附加<strong>MOT人脸跟踪，人脸打分以及人脸抓拍</strong>三个业务策略，构建一个完整的人脸抓拍Workflow。</p>
+<p><img alt="框架" src="../../_images/face_snapshot.png" /></p>
+<p>其中使用XStream内置Method如下所示：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Method</th>
+<th>类型</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FasterRCNNMethod</td>
+<td>算法</td>
+<td>图像帧</td>
+<td>人脸框、关键点、姿态</td>
+</tr>
+<tr>
+<td>MOTMethod</td>
+<td>策略</td>
+<td>人脸框</td>
+<td>带有trackID的人脸框及消失目标集合</td>
+</tr>
+<tr>
+<td>CNNMethod</td>
+<td>算法</td>
+<td>带有trackID的人脸框人脸框、图像帧</td>
+<td>年龄性别、口罩属性</td>
+</tr>
+<tr>
+<td>GradingMethod</td>
+<td>策略</td>
+<td>人脸框、姿态、关键点</td>
+<td>目标优选分值</td>
+</tr>
+<tr>
+<td>SnapshotMethod</td>
+<td>策略</td>
+<td>图像帧、人脸框、目标优选分值</td>
+<td>抓拍图列表</td>
+</tr>
+<tr>
+<td>CNNMethod</td>
+<td>算法</td>
+<td>抓拍图列表</td>
+<td>人脸特征</td>
+</tr>
+</tbody>
+</table><ul class="simple">
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/fasterrcnnmethod/README.html"><span class="doc">FasterRCNNMethod</span></a>算法方法，我们采用MultiTask多任务实现方式，同时挂载<strong>人脸检测</strong>，<strong>人脸5关键点</strong>，<strong>人脸姿态</strong>三个模型。它可以针对输入图片进行结构化，输出图片中每个目标的人脸框、关键点、姿态.</p></li>
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/motmethod/README.html"><span class="doc">MOTMethod</span></a>：采用了基于IOU策略的MOT跟踪算法【&#64;todo待补充策略算法链接】，它对输入时序化的人脸框进行跟踪，输出带有trackID的人脸框和消失目标的集合。</p></li>
+<li><p><a class="reference internal" href="../../xsdk/solution_zoo/xstream/methods/gradingmethod/README.html"><span class="doc">GradingMethod</span></a>：是一个人脸框打分的策略模块，它综合考虑人脸框大小、关键点置信度，遮挡以及姿态等信息，输出单个目标的人脸框图片置信分数，用于后续优选抓拍。</p></li>
+<li><p><a class="reference internal" href="../../xsdk/solution_zoo/xstream/methods/snapshotmethod/README.html"><span class="doc">SnapshotMethod</span></a>：是一个抓拍的策略模块，基于MotMethod输出Tacklet以及GradingMethod输出的人脸框打分信息，在内存维持一个优选帧序列，针对一个Tracklet输出它的的抓拍图。</p></li>
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/cnnmethod/README.html"><span class="doc">CNNMethod</span></a>算法方法，包括<strong>年龄性别</strong>，<strong>口罩检测</strong>以及<strong>人脸特征提取</strong>三种模型，可以对输入的检测框或抓拍列表，输出图片中目标的属性。</p></li>
+</ul>
+<p>在人脸抓拍workflow上，除了目前提供的<strong>性别/年龄属性</strong>，<strong>口罩检测</strong>等模型，还可以继续追加<strong>人脸活体</strong>、<strong>人脸质量</strong>等模型，进而丰富整个人脸结构化数据流。</p>
+<p>在人脸结构化参考方案中，我们也提供了一个人脸识别Workflow，通过在SnapshotMethod抓拍策略后，追加<a class="reference internal" href="../../xsdk/common/xstream/methods/cnnmethod/README.html"><span class="doc">CNNMethod</span></a>来实现对抓拍人脸图的特征提取。</p>
+<p><img alt="框架" src="../../_images/face_rego.png" /></p>
+<p>关于人脸结构化参考方案，详细参考<a class="reference internal" href="../../xsdk/solution_zoo/face/README.html"><span class="doc">README</span></a>。</p>
+</div>
+<div class="section" id="id4">
+<h2>人体结构化参考方案<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>人体结构化参考方案，我们核心目标是对人检测与跟踪。我们选取<strong>人头检测</strong>，<strong>人脸检测</strong>，<strong>人体检测</strong>，<strong>人脸关键点</strong>，<strong>人脸姿态</strong>，<strong>人体关键点</strong>等数个产品模型，并通过<strong>MOT人头跟踪，MOT人体跟踪，MOT人体跟踪</strong>实现对人体分别进行跟踪，随后通过融合策略，实现三框的融合，最终完成对一个人体目标跟踪。</p>
+<p><img alt="框架" src="../../_images/body-solution.png" /></p>
+<p>其中使用XStream内置Method如下所示：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>模块</th>
+<th>类型</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FasteRCNNMethod</td>
+<td>算法</td>
+<td>图像帧</td>
+<td>人脸人头人体框、人脸关键点和姿态、人体关键点</td>
+</tr>
+<tr>
+<td>MOTMethod</td>
+<td>策略</td>
+<td>人脸框</td>
+<td>带有trackID的人脸框及消失目标集合</td>
+</tr>
+<tr>
+<td>MOTMethod</td>
+<td>策略</td>
+<td>人头框</td>
+<td>带有trackID的人脸框及消失目标集合</td>
+</tr>
+<tr>
+<td>MOTMethod</td>
+<td>策略</td>
+<td>人体框</td>
+<td>带有trackID的人脸框及消失目标集合</td>
+</tr>
+<tr>
+<td>MergeMethod</td>
+<td>策略</td>
+<td>人脸人头人体框、trackID</td>
+<td>融合后的人员ID</td>
+</tr>
+</tbody>
+</table><ul class="simple">
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/fasterrcnnmethod/README.html"><span class="doc">FasterRCNNMethod</span></a>：算法方法，我们采用MultiTask多任务实现方式，同时挂载<strong>人头检测</strong>，<strong>人脸检测</strong>，<strong>人体检测</strong>，<strong>人脸关键点</strong>，<strong>人脸姿态</strong>，<strong>人体关键点</strong>六个模型。它可以针对输入图片进行结构化，输出图片中每个目标的人脸人头人体框、人脸关键点和姿态、人体关键点.</p></li>
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/motmethod/README.html"><span class="doc">MOTMethod</span></a>：采用了基于IOU策略的MOT跟踪算法【&#64;todo待补充策略算法链接】，它对输入时序化的人脸框、人头框、人体框分别进行跟踪，输出带有trackID的人脸框、人头框、人体框和消失目标集合。</p></li>
+<li><p><a class="reference external" href="../../xsdk/common/xstream/methods/mergemethod/README">MergeMethod</a>：三框融合，它可以在跟踪过程中，考虑框之间遮挡，跳动，实现对单目标的人脸人头人体的融合，将独立跟踪的TrackID进行合并，为每个目标分配全局唯一的TrackID。</p></li>
+</ul>
+<p>关于人体结构化参考方案，详细参考<a class="reference internal" href="../../xsdk/solution_zoo/body/README.html"><span class="doc">README</span></a>。</p>
+</div>
+<div class="section" id="id5">
+<h2>人体行为分析参考方案<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>人体行为分析参考方案，我们核心目标是对人体进行检测以及行为分析。我们选取<strong>人头检测</strong>，<strong>人脸检测</strong>，<strong>人体检测</strong>，<strong>人体关键点</strong>， <strong>摔倒检测</strong>五个模型，并通过<strong>MOT人体跟踪、行为分析、三框融合</strong>实现对人体的检测与行为分析。</p>
+<p>其中使用Method如下所示：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>模块</th>
+<th>类型</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FasteRCNNMethod</td>
+<td>算法</td>
+<td>图像帧</td>
+<td>人脸人头人体框、人体关键点</td>
+</tr>
+<tr>
+<td>MOTMethod</td>
+<td>策略</td>
+<td>人脸框</td>
+<td>带有trackID的人脸框及消失目标集合</td>
+</tr>
+<tr>
+<td>MOTMethod</td>
+<td>策略</td>
+<td>人头框</td>
+<td>带有trackID的人脸框及消失目标集合</td>
+</tr>
+<tr>
+<td>MOTMethod</td>
+<td>策略</td>
+<td>人体框</td>
+<td>带有trackID的人脸框及消失目标集合</td>
+</tr>
+<tr>
+<td>MergeMethod</td>
+<td>策略</td>
+<td>人脸人头人体框、trackID</td>
+<td>融合后的人员ID</td>
+</tr>
+<tr>
+<td>CNNMethod</td>
+<td>算法</td>
+<td>人体框、人体关键点</td>
+<td>摔倒等行为属性</td>
+</tr>
+<tr>
+<td>BehaviorMethod</td>
+<td>策略</td>
+<td>人体框、人体关键点</td>
+<td>举手、站立、下蹲等行为属性</td>
+</tr>
+</tbody>
+</table><ul class="simple">
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/fasterrcnnmethod/README.html"><span class="doc">FasterRCNNMethod</span></a>：算法方法，我们采用MultiTask多任务实现方式。它可以针对输入图片进行结构化，输出图片中每个目标的人脸人头人体框、人体关键点。</p></li>
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/cnnmethod/README.html"><span class="doc">CNNMethod</span></a>：算法方法,挂载<strong>摔倒检测</strong>模型，实现人体摔倒的检测识别。</p></li>
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/motmethod/README.html"><span class="doc">MOTMethod</span></a>：采用了基于IOU策略的MOT跟踪算法【&#64;todo待补充策略算法链接】，它对输入时序化的人脸框、人头框、人体框分别进行跟踪，输出带有trackID的人脸框、人头框、人体框和消失目标集合。</p></li>
+<li><p><a class="reference external" href="../../xsdk/common/xstream/methods/mergemethod/README">MergeMethod</a>：三框融合，它可以在跟踪过程中，考虑框之间遮挡，跳动，实现对单目标的人脸人头人体的融合，将独立跟踪的TrackID进行合并，为每个目标分配全局唯一的TrackID。</p></li>
+<li><p><a class="reference external" href="../../xsdk/common/xstream/methods/behavior_method/README">BehaviorMethod</a>：根据人体关键点，分析是否举手、站立、下蹲等行为属性。</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>体感游戏参考方案<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>体感游戏参考方案，我们核心目标是通过分析人体的行为，与游戏进行互动。我们选取<strong>人头检测</strong>，<strong>人脸检测</strong>，<strong>人体检测</strong>，<strong>人脸关键点</strong>，<strong>人脸姿态</strong>，<strong>人体关键点</strong>，<strong>人体特征提取</strong>，<strong>人体行为分析</strong>等数个模型，实现对人体的检测与行为分析，从而控制游戏逻辑。目前支持CrappyBird、 PandaRun两款游戏，支持跳跃以及攻击两种行为。</p>
+<p>其中使用Method如下所示：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>模块</th>
+<th>类型</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FasteRCNNMethod</td>
+<td>算法</td>
+<td>图像帧</td>
+<td>人脸人头人体框、人脸关键点和姿态、人体关键点</td>
+</tr>
+<tr>
+<td>MOTMethod</td>
+<td>策略</td>
+<td>人脸框</td>
+<td>带有trackID的人脸框及消失目标集合</td>
+</tr>
+<tr>
+<td>CNNMethod</td>
+<td>算法</td>
+<td>图像帧、人体框</td>
+<td>人体特征</td>
+</tr>
+<tr>
+<td>CNNMethod</td>
+<td>算法</td>
+<td>人体特征</td>
+<td>人体行为</td>
+</tr>
+</tbody>
+</table><ul class="simple">
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/fasterrcnnmethod/README.html"><span class="doc">FasterRCNNMethod</span></a>：算法方法，我们采用MultiTask多任务实现方式，同时挂载<strong>人头检测</strong>，<strong>人脸检测</strong>，<strong>人体检测</strong>，<strong>人脸关键点</strong>，<strong>人脸姿态</strong>，<strong>人体关键点</strong>六个模型。它可以针对输入图片进行结构化，输出图片中每个目标的人脸人头人体框、人脸关键点和姿态、人体关键点.</p></li>
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/cnnmethod/README.html"><span class="doc">CNNMethod</span></a>：算法方法,挂载<strong>人体特征</strong>，<strong>人体行为</strong>模型，实现人体行为分析。</p></li>
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/motmethod/README.html"><span class="doc">MOTMethod</span></a>：采用了基于IOU策略的MOT跟踪算法，它对输入时序化的人脸框、人头框、人体框分别进行跟踪，输出带有trackID的人脸框、人头框、人体框和消失目标集合。</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>车辆结构化参考方案<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p><strong>本方案暂未对外开放</strong>
+车辆结构化参考方案是地平线在<a class="reference external" href="https://mp.weixin.qq.com/s/zom_sJ6qNNXQaXc4kK_0tw">车路协同</a>领域的交付沉淀，它支持功能如下：</p>
+<ol class="simple">
+<li><p>机动车相关检测：包括车辆，车牌，车前窗三种框检测，以及车体颜色，车牌颜色，车牌类型，车牌号的属性识别。</p></li>
+<li><p>非机动车的检测和行人检测</p></li>
+<li><p>机动车，非机动车，行人的跟踪以及框级别的融合</p></li>
+</ol>
+<p>整体效果图如下所示：</p>
+<p><img alt="框架" src="../../_images/changsha.jpg" /></p>
+<p>其中使用XStream内置Method如下所示：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>模块</th>
+<th>类型</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FasteRCNNMethod</td>
+<td>算法</td>
+<td>图像帧</td>
+<td>机动车、非机动车、行人、车牌、车前窗、车牌颜色、车牌类型检测</td>
+</tr>
+<tr>
+<td>MOTMethod</td>
+<td>策略</td>
+<td>机动车框、非机动车框、行人框、车前窗框</td>
+<td>带有trackID的框及消失目标集合</td>
+</tr>
+<tr>
+<td>CNNMethod</td>
+<td>算法</td>
+<td>图像帧、机动车框、车牌框</td>
+<td>车颜色、车型、车牌号识别</td>
+</tr>
+<tr>
+<td>VoteMethod</td>
+<td>策略</td>
+<td>待投票目标</td>
+<td>按照Tracklet进行投票的结果</td>
+</tr>
+</tbody>
+</table><ul class="simple">
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/fasterrcnnmethod/README.html"><span class="doc">FasterRCNNMethod</span></a>：算法方法，我们采用MultiTask多任务实现方式。它可以针对输入图片进行结构化，检测图片中的机动车、非机动车、行人、车前窗、车牌、车牌颜色、车牌类型。</p></li>
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/motmethod/README.html"><span class="doc">MOTMethod</span></a>：采用了基于IOU策略的MOT跟踪算法【&#64;todo待补充策略算法链接】，它对输入时序化的机动车框、非机动车框、行人框、车前窗框分别进行跟踪，输出带有trackID的框和消失目标集合。</p></li>
+<li><p><a class="reference internal" href="../../xsdk/common/xstream/methods/cnnmethod/README.html"><span class="doc">CNNMethod</span></a>：算法方法,挂载<strong>车型识别</strong>，<strong>车颜色识别</strong>，<strong>车牌号识别</strong>三个模型，实现对机动车进行车体颜色、车型的识别，针对车牌进行车牌号识别。</p></li>
+<li><p><a class="reference external" href="../../xsdk/common/xstream/methods/vote_method/README">VoteMethod</a>：针对一个Tracklet里面的多张图片的属性进行投票，支持<strong>多数投票</strong>等投票策略。在车辆结构化方案中，我们对车辆类型，车辆颜色，车牌颜色进行众数投票，基于多帧数据，来提高最终识别的准确性。</p></li>
+</ul>
+<p>该参考方案也自定义以下策略Method：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>模块</th>
+<th>类型</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FilterSkipFrameMethod</td>
+<td>策略</td>
+<td>机动车框、车牌框</td>
+<td>跳帧过滤后的框</td>
+</tr>
+<tr>
+<td>VehiclePlateMatchMethod</td>
+<td>策略</td>
+<td>机动车框、车牌框</td>
+<td>融合后的机动车框与车牌框</td>
+</tr>
+<tr>
+<td>PlateVoteMethod</td>
+<td>策略</td>
+<td>车牌号</td>
+<td>投票选择后的车牌号</td>
+</tr>
+</tbody>
+</table><p>完整的Workflow结构图如下所示：</p>
+<p><img alt="框架" src="../../_images/vehicle.png" /></p>
+<p>关于车辆结构化参考方案，详细参考<a class="reference internal" href="../../xsdk/solution_zoo/vehicle/README.html"><span class="doc">README</span></a>。</p>
+</div>
+<div class="section" id="id8">
+<h2>手势识别参考方案<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>手势识别是互动娱乐、智能车载等领域中的常用功能之一。AI-Express 2.4.0版本中，结合地平线基于序列的行为识别模型，给出了手势识别参考方案。方案可以参考：https://developer.horizon.ai/forum/id=5f30f806bec8bc98cb72b288</p>
+</div>
+<div class="section" id="ai">
+<h2>AI盒子场景参考方案<a class="headerlink" href="#ai" title="永久链接至标题">¶</a></h2>
+<p>在一些AI盒子等复合应用场景，需要同时支持多路输入和多Workflow数据流，并可以通过配置文件来控制每一路输入与Workflow之间的映射关系。</p>
+<p>如下实例：</p>
+<p><img alt="框架" src="../../_images/multiInput_multiworkflow.png" /></p>
+<p>视频流1配置为进行人脸结构化和人体结构化，而视频流2仅配置进行人体结构化。</p>
+<p>针对这种负责场景，AI Express支持灵活配置视频流的路数，workflow的个数以及视频流与workflow之间的映射关系。</p>
+<p>注意：多路输入和多Workflow数据流方案，同一路视频在各个workflow中的智能化计算流程是完全独立。如果多个workflow有共同Method，会被同时计算多次，不支持Workflow间的计算结果共享。</p>
+<p>关于多路输入和多Workflow数据流方案，详细参考<a class="reference internal" href="../../xsdk/solution_zoo/face_body_multisource/README.html"><span class="doc">README</span></a> 以及 https://developer.horizon.ai/forum/id=5f2be161740aaf0beb31234a</p>
+<p>AI盒子场景，添加了一个示例，通过RTSP协议从IPC中获取4路1080P的264码流，在X3上硬件解码，然后送入网络模型进行分析，图像与检测结果通过vo模块输出，显示器通过HDMI接口连接到X3板子就可以看到实际效果。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

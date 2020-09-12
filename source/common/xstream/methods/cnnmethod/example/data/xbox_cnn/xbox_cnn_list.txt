@@ -1,0 +1,1 @@
+./data/xbox_cnn/body.jpg 112.0 6.0 280.0 558.0

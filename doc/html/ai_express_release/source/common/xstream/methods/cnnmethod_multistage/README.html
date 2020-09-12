@@ -1,0 +1,804 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cnnmethod_multistage &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/language_data.js"></script>
+        <script src="../../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>cnnmethod_multistage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../_sources/ai_express_release/source/common/xstream/methods/cnnmethod_multistage/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cnnmethod-multistage">
+<h1>cnnmethod_multistage<a class="headerlink" href="#cnnmethod-multistage" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>背景<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>CNNMethod主要用于人脸关键点，人脸朝向，人脸识别，活体检测等，通过前处理和后处理的组合，输出上层业务逻辑的需求。CNNMethod_multistage将CNN前后处理拆分成两个独立的method，前处理的主要目的是对输入的数据预处理并送进BPU中得到CNN网络的输出结果，即预处理+预测过程；后处理针对模型不同，将CNN网络输出结果封装为业务数据。大部分情况下前处理是可以复用的，将CNNMethod拆分为前处理和后处理两个Method，开发者可以针对不同的模型自行开发对应的后处理程序使用。
+因此在xstream中执行CNN模型的相关workflow如下：
+<img alt="cnnmethod_workflow" src="../../../../../../_images/cnn.png" /></p>
+<p>目前程序已实现的前处理和后处理method包括下列几种：</p>
+<ul class="simple">
+<li><p>前处理：CNNLmkPreMethod、CNNImgPreMethod、CNNRectPreMethod</p></li>
+<li><p>后处理：CNNLmkposePostMethod、CNNAgegenderPostMethod、CNNAntispfPostMethod、CNNQualityPostMethod、CNNFeaturePostMethod</p></li>
+</ul>
+</div>
+<div class="section" id="method">
+<h2>前处理method<a class="headerlink" href="#method" title="永久链接至标题">¶</a></h2>
+<div class="section" id="cnnlmkpremethod-lmk">
+<h3>CNNLmkPreMethod（lmk+抓拍）<a class="headerlink" href="#cnnlmkpremethod-lmk" title="永久链接至标题">¶</a></h3>
+<p>CNNLmkPreMethod把输入中的每张人脸图片，利用关键点信息完成仿射变换之后送给BPU预测，要注意该BPU接口要求生成的hbm模型对应的输入类型是”-i pyramid”。</p>
+<p>该前处理的数据流如下表所示：</p>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>snap_list</td>
+<td>抓拍图像以及人脸关键点，类型为BaseDataVector</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>run_data</td>
+<td>当前模型输出结果以及模型信息，类型为CNNMethod的内置数据结构CNNPredictorOutputData</td>
+</tr>
+</tbody>
+</table><p>CNNLmkPreMethod的输入数据封装，具体可参考example/do_fb_feature.cpp。</p>
+</div>
+<div class="section" id="cnnrectpremethod-roi-img">
+<h3>CNNRectPreMethod（roi+img）<a class="headerlink" href="#cnnrectpremethod-roi-img" title="永久链接至标题">¶</a></h3>
+<p>CNNRectPreMethod将输入的一组矩形框resize到模型输入大小，然后利用BPU单元完成预测过程；需要注意的是该前处理过程resize变换是利用BPU上硬件pymraid+resizer单元实现，与软件（如opencv、libyuv）scale过程有差异，硬件单元处理性能较高，但同时会给算法数值一致性验证带来困扰。该method要求生成的hbm模型对应的输入类型是”-i resizer”</p>
+<p>该前处理的数据流如下所示：</p>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>face_box</td>
+<td>需要做预测的检测框</td>
+</tr>
+<tr>
+<td>1</td>
+<td>pyramid</td>
+<td>图像的金字塔数据</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>run_data</td>
+<td>当前模型输出结果以及模型信息</td>
+</tr>
+</tbody>
+</table><p>其中输入数据”face_box”的数据结构类型是BaseDataVector，”face_box”内包括BBox类型的roi；输入数据”pyramid”的数据结构类型是ImageFrame，包含待处理的PymImageFrame类型图像；输出数据”run_data”的数据结构类型是CNNMethod的内置数据结构CNNPredictorOutputData，包括CNN模型nhwc信息，以及模型输出结果mxnet_output等，以输出到后处理中封装为对应的业务数据。CNNRectPreMethod前处理的输入数据封装，具体可参考example/do_fb_rect_cnn.cpp。</p>
+</div>
+<div class="section" id="cnnimgpremethod-roi-img">
+<h3>CNNImgPreMethod（roi+img）<a class="headerlink" href="#cnnimgpremethod-roi-img" title="永久链接至标题">¶</a></h3>
+<p>该前处理的输入数据与CNNRectPreMethod相同，与CNNRectInputMethod的区别主要是检测框到模型输入大小的resize变换是通过软件实现的（调用第三方开源库opencv或者libyuv），软件过程虽然性能会下降，但是优点在于可以与算法训练的resize变换保持一致，从而保证了算法数值一致性验证。该Method要求生成的hbm模型对应的输入类型是”-i pyramid”。</p>
+<p><strong>注：前处理method包括预测CNN网络输出结果的过程，调用的BPU接口与生成模型的方式相关联，配置的前处理方式应与生成模型匹配。</strong></p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>后处理method<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>后处理将模型输出的nhwc维度的数据封装为模型对应的业务数据。</p>
+<div class="section" id="cnnfeaturepostmethod">
+<h3>CNNFeaturePostMethod<a class="headerlink" href="#cnnfeaturepostmethod" title="永久链接至标题">¶</a></h3>
+<p>该后处理的数据流如下所示：</p>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>run_data</td>
+<td>当前模型的输出结果以及模型信息</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>face_feature</td>
+<td>人脸特征值</td>
+</tr>
+</tbody>
+</table><p>该后处理的输入是前处理Method的输出数据结构，输出数据”face_feature”的类型是BaseDataVector，定义为”vector”的原因是前处理输入为snap_list，其中包含多个跟踪目标的抠图信息，且每个跟踪目标也可能包含多张抠图。BaseDataVector内包含的基本数据结构是hobot::vision::Feature（定义于vision_type），输出人脸特征向量。</p>
+<p><strong>对输出人脸特征数据进行处理的sample可参考example/do_fb_feature.cpp中的函数PrintFaceFeature。</strong></p>
+</div>
+<div class="section" id="cnnlmkposepostmethod">
+<h3>CNNLmkposePostMethod<a class="headerlink" href="#cnnlmkposepostmethod" title="永久链接至标题">¶</a></h3>
+<p>该后处理的数据流如下图所示：</p>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>run_data</td>
+<td>当前模型的输出结果以及模型信息</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>lmk</td>
+<td>人脸关键点</td>
+</tr>
+<tr>
+<td>1</td>
+<td>pose</td>
+<td>人脸朝向</td>
+</tr>
+</tbody>
+</table><p>该后处理Method输出lmk和pose信息。由于单张图像可能存在多个人脸，输出数据”lmk”和”pose”的基本数据类型是BaseDataVector，”lmk”内包含的数据结构结构是hobot::vision::Landmarks，”pose”内的数据结构是hobot::vision::Pose3D，都定义于vision_type。</p>
+<p><strong>对输出人脸关键点以及人脸朝向数据进行处理的sample可参考example/do_fb_rect_cnn.cpp中的函数DumpPoseLmk。</strong></p>
+</div>
+<div class="section" id="cnnqualitypostmethod">
+<h3>CNNQualityPostMethod<a class="headerlink" href="#cnnqualitypostmethod" title="永久链接至标题">¶</a></h3>
+<p>该后处理的数据流如下所示：</p>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>run_data</td>
+<td>当前模型的输出结果以及模型信息</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Blur</td>
+<td>清晰度</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Brightness</td>
+<td>亮度</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Eye_Abnormalities</td>
+<td>眼睛表情</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mouth_Abnormal</td>
+<td>嘴部表情</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Left_Eye</td>
+<td>左眼可见区域</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Right_Eye</td>
+<td>右眼可见区域</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Left_Brow</td>
+<td>左眉毛可见区域</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Right_Brow</td>
+<td>右眉毛可见区域</td>
+</tr>
+<tr>
+<td>8</td>
+<td>ForeHead</td>
+<td>额头可见区域</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Left_Cheek</td>
+<td>左脸颊可见区域</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Right_Cheek</td>
+<td>右脸颊可见区域</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Nose</td>
+<td>鼻子可见区域</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Mouth</td>
+<td>嘴部可见区域</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Jaw</td>
+<td>下巴可见区域</td>
+</tr>
+</tbody>
+</table><p>该method为人脸质量模型后处理过程，通过人脸质量模型可以预测人脸清晰度等质量信息，从而可以有效地过滤一些模糊、遮挡以及一些大角度的人脸图像。该后处理Method输出人脸质量信息，包括”blur”、”brightness”、”eye_abnormalities”、”mouth_abnormal”、”left_eye”、”right_eye”、”left_brow”、”right_brow”、”forehead”、”left_cheek”、”right_check”、”nose”、”mouse”、”jaw”14个维度的质量信息。输出的数据结构都是BaseDataVector，内部包含的基本数据类型都是hobot::vision::Attribute，定义于vision_type。</p>
+<p><strong>对输出人脸质量进行处理的sample可参考example/do_fb_rect_cnn.cpp中的函数DumpFaceQuality。</strong></p>
+</div>
+<div class="section" id="cnnagegenderpostmethod">
+<h3>CNNAgegenderPostMethod<a class="headerlink" href="#cnnagegenderpostmethod" title="永久链接至标题">¶</a></h3>
+<p>该后处理的数据流如下所示：</p>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>run_data</td>
+<td>当前模型的输出结果以及模型信息</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Age</td>
+<td>年龄</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Gender</td>
+<td>性别</td>
+</tr>
+</tbody>
+</table><p>该后处理输出年龄”age”、性别”gender”信息，输出的数据结构都是BaseDataVector，内部包含的基本数据类型分别是hobot::vision::Age，hobot::vision::Gender，定义于vision_type。</p>
+<p><strong>对输出年龄性别进行处理的sample可参考example/do_fb_rect_cnn.cpp中的函数DumpAgeGender。</strong></p>
+</div>
+<div class="section" id="cnnantispfpostmethod">
+<h3>CNNAntispfPostMethod<a class="headerlink" href="#cnnantispfpostmethod" title="永久链接至标题">¶</a></h3>
+<p>该后处理的数据流如下所示：</p>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>run_data</td>
+<td>当前模型的输出结果以及模型信息</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>anti_spf</td>
+<td>活体值，包括value和score</td>
+</tr>
+</tbody>
+</table><p>该后处理输出活体检测信息，输出的数据结构是BaseDataVector，内部包含的基本数据类型是hobot::vision::Attribute，定义于vision_type。</p>
+<p><strong>对输出活体信息进行处理的sample可参考example/do_fb_rect_cnn.cpp中的函数DumpAntiSpf。</strong></p>
+</div>
+</div>
+<div class="section" id="json-sample">
+<h2>json sample文件<a class="headerlink" href="#json-sample" title="永久链接至标题">¶</a></h2>
+<div class="section" id="rect-lmkpose-rectpre-lmkposepost">
+<h3>Rect前处理+Lmkpose后处理 RectPre_LmkposePost<a class="headerlink" href="#rect-lmkpose-rectpre-lmkposepost" title="永久链接至标题">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pyramid&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;lmk&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pose&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pyramid&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;face_box&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;rect_input&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CNNRectPreMethod&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pyramid&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;cnn_run_data&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;method_conf/pose_lmk.json&quot;</span>
+    <span class="p">},</span>
+	<span class="p">{</span>
+      <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;lmkpose_post&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CNNLmkposePostMethod&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;cnn_run_data&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;lmk&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pose&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;method_conf/pose_lmk.json&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lmk-feature-lmkpre-featurepost">
+<h3>Lmk前处理+Feature后处理 LmkPre_FeaturePost<a class="headerlink" href="#lmk-feature-lmkpre-featurepost" title="永久链接至标题">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;snap_list&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;face_feature&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>                                  
+      <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;lmk_pre&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CNNLmkPreMethod&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>  
+        <span class="s2">&quot;snap_list&quot;</span>
+      <span class="p">],</span>          
+      <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>    
+        <span class="s2">&quot;cnn_run_data&quot;</span>
+      <span class="p">],</span>                                              
+      <span class="s2">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;method_conf/feature.json&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;feature_post&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CNNFeaturePostMethod&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;cnn_run_data&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_feature&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;method_conf/feature.json&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="img-quality-imgpre-qualitypost">
+<h3>Img前处理+Quality后处理 ImgPre_QualityPost<a class="headerlink" href="#img-quality-imgpre-qualitypost" title="永久链接至标题">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pyramid&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;blur&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;brightness&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;eye_abnormalities&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mouth_abnormal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;left_eye&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;right_eye&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;left_brow&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;right_brow&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;forehead&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;left_cheek&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;right_check&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nose&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mouse&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;jaw&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;img_pre&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CNNImgPreMethod&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pyramid&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;cnn_run_data&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;method_conf/face_quality.json&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;quality_post&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CNNQualityPostMethod&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;cnn_run_data&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;blur&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;brightness&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;eye_abnormalities&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mouth_abnormal&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;left_eye&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;right_eye&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;left_brow&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;right_brow&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;forehead&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;left_cheek&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;right_check&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nose&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mouse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;jaw&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;method_conf/face_quality.json&quot;</span>
+    <span class="p">}</span> 
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rect-agegender-rectpre-agegenderpost">
+<h3>Rect前处理+Agegender后处理 RectPre_AgegenderPost<a class="headerlink" href="#rect-agegender-rectpre-agegenderpost" title="永久链接至标题">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pyramid&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gender&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pyramid&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;face_box&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;rect_pre&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CNNRectPreMethod&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pyramid&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;cnn_run_data&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;method_conf/age_gender.json&quot;</span>
+    <span class="p">},</span>
+	<span class="p">{</span>
+      <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;agegender_post&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CNNAgegenderPostMethod&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;cnn_run_data&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;gender&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;method_conf/age_gender.json&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rect-antispf-rectpre-antispfpost">
+<h3>Rect前处理+Antispf后处理 RectPre_AntispfPost<a class="headerlink" href="#rect-antispf-rectpre-antispfpost" title="永久链接至标题">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pyramid&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;cnn_anti_spf_bgr&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;rect_pre&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CNNRectPreMethod&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pyramid&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;cnn_run_data&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;method_conf/anti_spf.json&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;antispf_post&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CNNAntispfPostMethod&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;cnn_run_data&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;cnn_anti_spf_bgr&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;norm_rois&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;method_conf/anti_spf.json&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

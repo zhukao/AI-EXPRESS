@@ -1,0 +1,868 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>介绍 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>介绍</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/BuildAll/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>AIExpress 统一编译开发测试指南</p>
+<!-- TOC --><ul class="simple">
+<li><p><a class="reference external" href="#%E4%BB%8B%E7%BB%8D">介绍</a></p></li>
+<li><p><a class="reference external" href="#%E5%BC%80%E5%8F%91">开发</a></p>
+<ul>
+<li><p><a class="reference external" href="#%E5%88%9B%E5%BB%BA%E7%BB%9F%E4%B8%80%E7%BC%96%E8%AF%91%E5%B7%A5%E7%A8%8B">创建统一编译工程</a></p></li>
+<li><p><a class="reference external" href="#%E5%87%86%E5%A4%87%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE">准备交叉编译工具链</a></p></li>
+<li><p><a class="reference external" href="#%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91">代码编译</a></p></li>
+<li><p><a class="reference external" href="#%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9">代码修改</a></p>
+<ul>
+<li><p><a class="reference external" href="#%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF">创建本地分支</a></p></li>
+<li><p><a class="reference external" href="#%E4%BF%AE%E6%94%B9%E4%BB%A3%E7%A0%81">修改代码</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#%E4%BB%A3%E7%A0%81%E8%AF%84%E5%AE%A1">代码评审</a></p></li>
+<li><p><a class="reference external" href="#%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4">代码提交</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#%E6%B5%8B%E8%AF%95">测试</a></p>
+<ul>
+<li><p><a class="reference external" href="#%E5%88%9B%E5%BB%BA%E9%83%A8%E7%BD%B2%E5%8C%85">创建部署包</a></p></li>
+<li><p><a class="reference external" href="#%E4%B8%8A%E6%9D%BF%E8%BF%90%E8%A1%8C">上板运行</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#%E8%A6%86%E7%9B%96%E7%8E%87%E7%BB%9F%E8%AE%A1">覆盖率统计</a></p>
+<ul>
+<li><p><a class="reference external" href="#%E7%BC%96%E8%AF%91">编译</a></p></li>
+<li><p><a class="reference external" href="#%E4%B8%8A%E6%9D%BF%E8%BF%90%E8%A1%8C-1">上板运行</a></p></li>
+<li><p><a class="reference external" href="#%E7%94%9F%E6%88%90%E6%8A%A5%E8%A1%A8">生成报表</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#%E5%AF%B9%E5%A4%96%E5%8F%91%E7%89%88">对外发版</a></p>
+<ul>
+<li><p><a class="reference external" href="#%E6%89%93tag">打tag</a></p></li>
+<li><p><a class="reference external" href="#%E6%89%93%E5%8C%85">打包</a></p></li>
+<li><p><a class="reference external" href="#%E7%BC%96%E8%AF%91-1">编译</a></p></li>
+<li><p><a class="reference external" href="#%E9%83%A8%E7%BD%B2">部署</a></p></li>
+<li><p><a class="reference external" href="#%E8%BF%90%E8%A1%8C">运行</a></p></li>
+<li><p><a class="reference external" href="#%E4%BD%BF%E7%94%A8%E5%8F%91%E7%89%88%E5%8C%85%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E6%B5%8B%E8%AF%95">使用发版包进行开发及测试</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a></p>
+<ul>
+<li><p><a class="reference external" href="#%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%E7%9B%B8%E5%85%B3">开发流程相关</a></p>
+<ul>
+<li><p><a class="reference external" href="#arc-land-%E6%8A%A5-no-pushable-remote-iot-exists">arc land 报 No pushable remote “iot” exists</a></p></li>
+<li><p><a class="reference external" href="#cmake-%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84">cmake 工程结构</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#%E7%A1%AC%E4%BB%B6%E7%9B%B8%E5%85%B3">硬件相关</a></p>
+<ul>
+<li><p><a class="reference external" href="#hsp2610%E4%B8%B2%E5%8F%A3%E8%AF%86%E5%88%AB%E4%B8%8D%E5%87%BA%E6%9D%A5">hsp2610串口识别不出来</a></p></li>
+<li><p><a class="reference external" href="#cam-%E6%8A%A5%E9%94%99">CAM 报错</a></p></li>
+<li><p><a class="reference external" href="#iar-%E6%8A%A5%E9%94%99">IAR 报错</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3">应用开发相关</a></p>
+<ul>
+<li><p><a class="reference external" href="#%E4%BD%BF%E7%94%A8valgrind">使用valgrind</a></p></li>
+<li><p><a class="reference external" href="#gdbvalgrind%E8%B0%83%E8%AF%95%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E8%A2%ABkilled%E6%8E%89">gdb/valgrind调试应用程序被killed掉</a></p></li>
+<li><p><a class="reference external" href="#valgrind%E8%B7%91%E7%A8%8B%E5%BA%8Fload%E6%A8%A1%E5%9E%8B%E5%A4%B1%E8%B4%A5">valgrind跑程序load模型失败</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC --><div class="section" id="id1">
+<h1>介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>git-repo是一个基于git的仓库管理工具，可对多个git仓库同时管理，由一系列python脚本组成。</p>
+<p>目前使用内部维护版本 <code class="docutils literal notranslate"><span class="pre">http://gitlab.hobot.cc/iot/devices/x2solution/git-repo</span></code></p>
+<p>git-repo需要一个manifest配置文件，里面列出项目需要的仓库及所需的分支或者tag信息，
+这些配置文件存到
+<code class="docutils literal notranslate"><span class="pre">http://gitlab.hobot.cc/iot/devices/x2solution/manifest</span></code> 仓库里。</p>
+<p>BuildAll repo是基于cmake + gradle 的统一编译环境，无法做源码依赖的均使用gradle做二进制依赖，正式发版时直接将gradle依赖拷贝到发版包里。</p>
+<p>BuildAll repo里包含一系列编译、测试、部署、打包脚本供使用，可分为
+<code class="docutils literal notranslate"><span class="pre">BuildAll</span> <span class="pre">开发环境</span></code>和<code class="docutils literal notranslate"><span class="pre">ai_express_release发版包环境</span></code>两类：</p>
+<ul class="simple">
+<li><p>BuildAll 开发环境</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>文件名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>README.md</td>
+<td>开发环境指导文档</td>
+</tr>
+<tr>
+<td>make.sh</td>
+<td>开发环境编译</td>
+</tr>
+<tr>
+<td>package.sh</td>
+<td>创建发版包</td>
+</tr>
+<tr>
+<td>deploy.sh</td>
+<td>创建上板测试用部署包</td>
+</tr>
+<tr>
+<td>run.sh</td>
+<td>在板子上运行测试程序</td>
+</tr>
+<tr>
+<td>build_coverage_test.sh</td>
+<td>编译带有覆盖率信息的可执行程序和库</td>
+</tr>
+<tr>
+<td>run_coverage_test.sh</td>
+<td>在板子上运行测试程序并生成覆盖率统计信息</td>
+</tr>
+<tr>
+<td>generate_coverage_report.sh</td>
+<td>生成代码覆盖率报告</td>
+</tr>
+<tr>
+<td>download_model.sh</td>
+<td>下载发版包所需模型</td>
+</tr>
+<tr>
+<td>download_xstream_model.sh</td>
+<td>下载自测所需模型</td>
+</tr>
+</tbody>
+</table><ul class="simple">
+<li><p>ai_express_release发版包环境</p></li>
+</ul>
+<p>在调用<code class="docutils literal notranslate"><span class="pre">package.sh</span></code>创建发版包的过程中，以下文件会被重命名为<code class="docutils literal notranslate"><span class="pre">README.md</span></code>等。</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>文件名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>README_external.md</td>
+<td>指导文档</td>
+</tr>
+<tr>
+<td>build.sh_external</td>
+<td>代码编译</td>
+</tr>
+<tr>
+<td>deploy.sh_external</td>
+<td>创建上板测试用部署包</td>
+</tr>
+<tr>
+<td>run_external.sh</td>
+<td>在板子上运行测试程序</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id2">
+<h1>开发<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id3">
+<h2>创建统一编译工程<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 新建一个项目，比如xstream-all
+[ruoting@gpu03 repos]$ mkdir xstream_all
+[ruoting@gpu03 repos]$ cd xstream_all/
+[ruoting@gpu03 xstream_all]$ repo init -u http://gitlab.hobot.cc/iot/devices/x2solution/manifest.git -m solution_zoo.xml
+Get /home/ruoting/docker_share/git-repo/.git
+remote: Counting objects: 4224, done.
+......
+Your identity is: ruoting &lt;ruoting.ding@horizon.ai&gt;
+If you want to change this, please re-run &#39;repo init&#39; with --config-name
+
+repo has been initialized in /home/ruoting/docker_share/repos/xstream_all
+</pre></div>
+</div>
+<p>初始化完后，<code class="docutils literal notranslate"><span class="pre">.repo/manifest.xml</span></code>文件指向了我们希望使用的solution_zoo.xml。如果后续想要本地修改manifest配置文件，可直接修改它。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ruoting@gpu03 xstream_all]$ ll .repo/manifest.xml
+lrwxrwxrwx 1 ruoting ruoting 26 Mar 11 10:49 .repo/manifest.xml -&gt; manifests/solution_zoo.xml
+</pre></div>
+</div>
+<p>接着执行<code class="docutils literal notranslate"><span class="pre">repo</span> <span class="pre">sync</span></code>拉取代码</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ruoting@gpu03 xstream_all]$ repo sync
+......
+Fetching projects: 100% (6/6)
+Fetching projects: 100% (6/6), done.
+......
+Syncing work tree: 100% (6/6), done.
+
+[ruoting@gpu03 xstream_all]$ ls
+BuildAll  common  x2_prebuilt  xsdk
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>准备交叉编译工具链<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>需提前准备好交叉编译工具链，默认路径如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake_c_compiler</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="n">linaro</span><span class="o">-</span><span class="mf">6.5</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">2018.12</span><span class="o">-</span><span class="n">x86_64_aarch64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">-</span><span class="n">gcc</span>
+<span class="n">cmake_cxx_compiler</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="n">linaro</span><span class="o">-</span><span class="mf">6.5</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">2018.12</span><span class="o">-</span><span class="n">x86_64_aarch64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">-</span><span class="n">g</span><span class="o">++</span>
+</pre></div>
+</div>
+<p>如果交叉编译工具链地址变动，需同步修改build.property.local.aarch64</p>
+</div>
+<div class="section" id="id5">
+<h2>代码编译<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>执行如下命令，编译出来的可执行文件和库在build/bin和build/lib目录下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">BuildAll</span><span class="o">/</span><span class="n">make</span><span class="o">.</span><span class="n">sh</span> <span class="n">x2</span><span class="o">|</span><span class="n">x3</span><span class="o">|</span><span class="nb">all</span> <span class="n">release</span><span class="o">|</span><span class="n">debug</span><span class="o">|</span><span class="n">coverage</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>release 编译release版本，使用默认优化等级</p></li>
+<li><p>debug 编译带有debug信息、使用Og等级的优化选项</p></li>
+<li><p>coverage编译debug版本，并且打开覆盖率统计选项。</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>代码修改<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>下面以修改BuildAll repo为例：</p>
+<div class="section" id="id7">
+<h3>创建本地分支<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ruoting@gpu03 xstream_all]$ cd BuildAll/
+## m/master指向了我们使用的iot/solution_zoo
+[ruoting@gpu03 BuildAll]$ git checkout -b dev m/master
+Branch dev set up to track remote branch solution_zoo from iot.
+Switched to a new branch &#39;dev&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>修改代码<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ruoting@gpu03 BuildAll]$ vi README.md
+[ruoting@gpu03 BuildAll]$ git add README.md
+[ruoting@gpu03 BuildAll]$ git commit -m &quot;add how-to-coding&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>代码评审<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>如果修改的是源码，则需要重新编译程序，进入<a class="reference external" href="#%E6%B5%8B%E8%AF%95">测试</a>环节进行上板验证。编译&amp;测试都OK后，就可以进入代码评审环节：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ruoting@gpu03 BuildAll]$ arc diff
+Linting...
+No paths are lintable.
+Running unit tests...
+No unit test engine is configured for this project.
+ SKIP STAGING  Unable to determine repository for this change.
+Updating commit message...
+Created a new Differential revision:
+        Revision URI: https://cr.hobot.cc/D33632
+
+Included changes:
+  M       README.md
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>代码提交<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>cr accept后就可以提交</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ruoting@gpu03 BuildAll]$ arc land
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h1>测试<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id12">
+<h2>创建部署包<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<p>在统一编译工程目录下，执行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">BuildAll</span><span class="o">/</span><span class="n">deploy</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>脚本执行完生成deploy_dev部署文件夹。
+目前该部署包里的测试用例较少，需要继续补充：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>run.sh</td>
+<td>运行脚本</td>
+</tr>
+<tr>
+<td>models</td>
+<td>模型</td>
+</tr>
+<tr>
+<td>lib</td>
+<td>二进制依赖库</td>
+</tr>
+<tr>
+<td>configs</td>
+<td>vio 配置文件</td>
+</tr>
+<tr>
+<td>body_solution</td>
+<td>人体解决方案测试用例</td>
+</tr>
+<tr>
+<td>face_solution</td>
+<td>人脸解决方案测试用例</td>
+</tr>
+<tr>
+<td>vehicle_solution</td>
+<td>车辆解决方案测试用例</td>
+</tr>
+<tr>
+<td>face_body_multisource</td>
+<td>多路输入多workflow解决方案</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>method测试用例集合</td>
+</tr>
+<tr>
+<td>vision_type</td>
+<td>vision_type测试用例</td>
+</tr>
+<tr>
+<td>image_tools</td>
+<td>image_tools测试用例</td>
+</tr>
+<tr>
+<td>## 上板运行</td>
+<td></td>
+</tr>
+<tr>
+<td>```</td>
+<td></td>
+</tr>
+<tr>
+<td>sh run.sh face</td>
+<td>body</td>
+</tr>
+<tr>
+<td>```</td>
+<td></td>
+</tr>
+<tr>
+<td>一个运行case如下：</td>
+<td></td>
+</tr>
+<tr>
+<td>```</td>
+<td></td>
+</tr>
+<tr>
+<td>root@X2_96BOARD:/userdata/data/repos/xstream_all/deploy_dev# sh run.sh grading_method</td>
+<td></td>
+</tr>
+<tr>
+<td>[==========] Running 1 test from 1 test case.</td>
+<td></td>
+</tr>
+<tr>
+<td>[----------] Global test environment set-up.</td>
+<td></td>
+</tr>
+<tr>
+<td>[----------] 1 test from XStreamGradingMethodTest</td>
+<td></td>
+</tr>
+<tr>
+<td>[ RUN      ] XStreamGradingMethodTest.GradingTest</td>
+<td></td>
+</tr>
+<tr>
+<td>[       OK ] XStreamGradingMethodTest.GradingTest (1006 ms)</td>
+<td></td>
+</tr>
+<tr>
+<td>[----------] 1 test from XStreamGradingMethodTest (1006 ms total)</td>
+<td></td>
+</tr>
+<tr>
+<td>[----------] Global test environment tear-down</td>
+<td></td>
+</tr>
+<tr>
+<td>[==========] 1 test from 1 test case ran. (1006 ms total)</td>
+<td></td>
+</tr>
+<tr>
+<td>[  PASSED  ] 1 test.</td>
+<td></td>
+</tr>
+<tr>
+<td>```</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="section" id="id13">
+<h1>覆盖率统计<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id14">
+<h2>编译<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<p>编译带有覆盖率统计信息的可执行程序</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">BuildAll</span><span class="o">/</span><span class="n">build_coverage_test</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>该脚本会为每个源文件输出一个配套的gcno文件，以xstream-framework为例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[root@gpu03 xstream_all]$ ls build/xsdk/common/xstream/framework/CMakeFiles/xstream-framework.dir/src/*.gcno
+build/xsdk/common/xstream/framework/CMakeFiles/xstream-framework.dir/src/method.cpp.gcno
+build/xsdk/common/xstream/framework/CMakeFiles/xstream-framework.dir/src/method_manager.cpp.gcno
+build/xsdk/common/xstream/framework/CMakeFiles/xstream-framework.dir/src/node.cpp.gcno
+build/xsdk/common/xstream/framework/CMakeFiles/xstream-framework.dir/src/profiler.cpp.gcno
+build/xsdk/common/xstream/framework/CMakeFiles/xstream-framework.dir/src/scheduler.cpp.gcno
+build/xsdk/common/xstream/framework/CMakeFiles/xstream-framework.dir/src/thread_pool.cpp.gcno
+build/xsdk/common/xstream/framework/CMakeFiles/xstream-framework.dir/src/xstream_config.cpp.gcno
+build/xsdk/common/xstream/framework/CMakeFiles/xstream-framework.dir/src/xstream.cpp.gcno
+build/xsdk/common/xstream/framework/CMakeFiles/xstream-framework.dir/src/xstream_data.cpp.gcno
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>上板运行<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h2>
+<p>为了统计方便，我们假定用户将整个工程都通过NFS挂载到开发板上了，打开BuildAll/run_coverage_test.sh文件，根据个人实际开发环境配置，可灵活传递GCOV_PREFIX_STRIP变量的值。</p>
+<blockquote>
+<div><p>GCOV_PREFIX_STRIP是一个整数，用于设置开发环境代码目录树中，有几级目录需要被裁剪掉</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">run_coverage_test.sh</span></code>脚本里包含所有测试用例的运行环境设置&amp;执行命令，运行该脚本，获得测试用例覆盖率统计文件</p>
+<p>其中solution解决方案（face solution &amp; body solution &amp; vehicle solution）都是实时拉码流运行的，建议在开发板摄像头先放置人脸照片/人体照片/车辆照片来模拟真实场景，提高覆盖率。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sh</span> <span class="n">BuildAll</span><span class="o">/</span><span class="n">run_coverage_test</span><span class="o">.</span><span class="n">sh</span> <span class="n">GCOV_PREFIX_STRIP变量的值</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>生成报表<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
+<p>返回开发环境，运行<code class="docutils literal notranslate"><span class="pre">generate_coverage_report.sh</span></code>脚本即可在当前路径下获得coverage_build.zip覆盖率报告，里面包含详细的行覆盖率和函数覆盖率，一般要求函数覆盖率要达到85%以上。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">BuildAll</span><span class="o">/</span><span class="n">generate_coverage_report</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id17">
+<h1>对外发版<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h1>
+<div class="section" id="tag">
+<h2>打tag<a class="headerlink" href="#tag" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>发版前确认好系统镜像版本，镜像确定后，参与发版的全体研发同学统一更新镜像，CI/CD的板子也换镜像。</p></li>
+<li><p>对<a class="reference external" href="http://gitlab.hobot.cc/iot/devices/x2solution/BuildAll">BuildAll</a>,<a class="reference external" href="http://gitlab.hobot.cc/iot/xsdk/common">common</a>,<a class="reference external" href="http://gitlab.hobot.cc/iot/xsdk/solution_zoo">solution_zoo</a>, <a class="reference external" href="http://gitlab.hobot.cc/iot/devices/x2solution/x2_prebuilt">x2_prebuilt</a>, <a class="reference external" href="http://gitlab.hobot.cc/iot/xsdk/x3_prebuilt">x3_prebuilt</a>, <a class="reference external" href="http://gitlab.hobot.cc/iot/xsdk/viowrapper">VioWrapper</a>代码仓库创建tag，Release notes注明版本变更内容。创建tag name建议：</p>
+<ul>
+<li><p>内部发版前测试：以发布版本2.0.0为例，先打一个AIEXPRESS-V2.0.0-RC0，然后进行打包、编译、部署、运行。如果有问题，解决后，再创建AIEXPRESS-V2.0.0-RC1，RC序号依次累计。</p></li>
+<li><p>正式发版：打一个AIEXPRESS-V2.0.0，发版。</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id18">
+<h2>打包<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>编译不开源的库，如bpu_predict,ipc_tracking等。为保证有权限执行脚本，建议使用sudo权限执行一下脚本.
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">bash</span> <span class="pre">BuildAll/make.sh</span> <span class="pre">all</span> <span class="pre">release</span></code></p></li>
+<li><p>打包，创建ai_express_release发版包
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">bash</span> <span class="pre">BuildAll/package.sh</span></code></p></li>
+<li><p>生成文档，在ai_express_release/doc创建html格式的文档
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">bash</span> <span class="pre">BuildAll/generate_doc.sh</span></code></p>
+<ul>
+<li><p>准备条件，安装pip <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python-pip</span></code></p></li>
+<li><p>安装文档生软件Sphinx <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-U</span> <span class="pre">Sphinx</span></code></p></li>
+<li><p>安装Sphinx插件recommonmark用于转化markdown语法的*.md文件<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">recommonmark</span></code></p></li>
+<li><p>安装Sphinx插件sphinx-markdown-tables用于转化markdown中的表格<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sphinx-markdown-tables</span></code></p></li>
+<li><p>安装Sphinx插件sphinx-rtd-theme用于使用sphinx-rtd-theme样式<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sphinx-rtd-theme</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id19">
+<h2>编译<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>在生成的发布包中，可以直接运行<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">bash</span> <span class="pre">./build.sh</span></code>，完成整个开发包的编译。</p></li>
+<li><p>如果您开发了自己的method, 或者其他solution方案，请在代码所在路径的CMakeLists.txt中增加对应的编译命令。</p></li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h2>部署<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>在编译完成后，执行<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">bash</span> <span class="pre">./deploy.sh</span></code>, 会在根目录下生成deploy目录。</p></li>
+<li><p>请将deploy目录完整拷贝到X2板子上。</p></li>
+</ul>
+</div>
+<div class="section" id="id21">
+<h2>运行<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>deploy中有run.sh，运行这个脚本，可以运行软件包中默认提供的几个solution方案。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">usage:</span> <span class="pre">sh</span> <span class="pre">run.sh</span> <span class="pre">[</span> <span class="pre">face</span> <span class="pre">|</span> <span class="pre">body</span> <span class="pre">|</span> <span class="pre">vehicle</span> <span class="pre">]</span></code></p></li>
+<li><p>如果您自己开发了solution，可以参考run.sh设置启动脚本。</p></li>
+<li><p>关键点:</p>
+<ul>
+<li><p>将deploy/lib加入到LD_LIBRARY_PATH， 设置<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">LD_LIBRARY_PATH=./lib/</span></code>。</p></li>
+<li><p>设置如<code class="docutils literal notranslate"><span class="pre">./configs/vio_config.json.96board</span> <span class="pre">./body_solution/configs/body_solution.json</span> <span class="pre">-i</span></code>这样的运行参数,其中vio_config.json.96board是96board的配置， ./body_solution/configs/body_solution.json是solution的配置。</p></li>
+</ul>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">ai_express_release</span></code>发版包包含如下几个部分：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th align="right">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>README.md</td>
+<td align="right">介绍文档</td>
+</tr>
+<tr>
+<td>source</td>
+<td align="right">源码</td>
+</tr>
+<tr>
+<td>deps</td>
+<td align="right">依赖库</td>
+</tr>
+<tr>
+<td>models</td>
+<td align="right">模型</td>
+</tr>
+<tr>
+<td>doc</td>
+<td align="right">文档</td>
+</tr>
+<tr>
+<td>build.sh</td>
+<td align="right">编译脚本</td>
+</tr>
+<tr>
+<td>deploy.sh</td>
+<td align="right">部署脚本</td>
+</tr>
+<tr>
+<td>run.sh</td>
+<td align="right">部署包运行脚本</td>
+</tr>
+<tr>
+<td>CMakeLists.txt</td>
+<td align="right">cmake配置文件</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id22">
+<h2>使用发版包进行开发及测试<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h2>
+<p>请查看发版包下的README.md文件</p>
+</div>
+</div>
+<div class="section" id="id23">
+<h1>常见问题<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id24">
+<h2>开发流程相关<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h2>
+<div class="section" id="arc-land-no-pushable-remote-iot-exists">
+<h3>arc land 报 No pushable remote “iot” exists<a class="headerlink" href="#arc-land-no-pushable-remote-iot-exists" title="永久链接至标题">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ruoting@gpu03 BuildAll]$ arc land
+Landing current branch &#39;dev&#39;.
+ TARGET  Landing onto &quot;solution_zoo&quot;, selected by following tracking branches upstream to the closest remote.
+ REMOTE  Using remote &quot;iot&quot;, selected by following tracking branches upstream to the closest remote.
+ Exception
+No pushable remote &quot;iot&quot; exists. Use the &quot;--remote&quot; flag to choose a valid, pushable remote to land changes onto.
+(Run with `--trace` for a full exception trace.)
+</pre></div>
+</div>
+<p>可能是因为git 版本太低（centos7.4.5 自带 git version 1.8.3.1），
+可以考虑
+到https://mirrors.edge.kernel.org/pub/software/scm/git/ 下载一个较新版本，编译成功后将可执行程序路径加到PATH里，比如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export PATH=~/tools/git/git-2.26.0-rc1/bin-wrappers:/$PATH
+</pre></div>
+</div>
+<p>再次执行arc land 即可成功。</p>
+</div>
+<div class="section" id="cmake">
+<h3>cmake 工程结构<a class="headerlink" href="#cmake" title="永久链接至标题">¶</a></h3>
+<p>基于http://gitlab.hobot.cc/ptd/cp/devops/hobotclitools
+，每个工程下的<code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>建议以如下结构组织:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>set(SOURCE_FILES
+        src/myapi.cpp
+        include/${module_name}/myapi.h
+        )
+
+add_library(${module_name} SHARED|STATIC ${SOURCE_FILES})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id25">
+<h2>硬件相关<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h2>
+<div class="section" id="hsp2610">
+<h3>hsp2610串口识别不出来<a class="headerlink" href="#hsp2610" title="永久链接至标题">¶</a></h3>
+<p>安装PL2303驱动</p>
+</div>
+<div class="section" id="cam">
+<h3>CAM 报错<a class="headerlink" href="#cam" title="永久链接至标题">¶</a></h3>
+<p>找系统软件王芬芬支持</p>
+</div>
+<div class="section" id="iar">
+<h3>IAR 报错<a class="headerlink" href="#iar" title="永久链接至标题">¶</a></h3>
+<p>找系统软件郭睿支持</p>
+</div>
+</div>
+<div class="section" id="id26">
+<h2>应用开发相关<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h2>
+<div class="section" id="valgrind">
+<h3>使用valgrind<a class="headerlink" href="#valgrind" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>获取工具：<code class="docutils literal notranslate"><span class="pre">\\bjnas\bjnas\智能IoT产品线\智能IoT研发部\XExpress\开发工具\prerootfs.tar</span></code></p></li>
+<li><p>将prerootfs.tar拷贝到开发板挂载的nfs上,解压缩</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ruoting@gpu03 docker_share]$ tar -xf prerootfs.tar
+[ruoting@gpu03 docker_share]$ ls prerootfs
+bin  dev  etc  home  lib  mnt  proc  run  sbin  sys  tmp  usr  var
+[ruoting@gpu03 docker_share]$ ls prerootfs/usr/bin/valgrind
+prerootfs/usr/bin/valgrind
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>登陆开发板，配置环境变量&amp;运行</p></li>
+</ul>
+<p>以prerootfs挂载到了<code class="docutils literal notranslate"><span class="pre">/mnt/share_ruoting/prerootfs</span></code>为例，修改run.sh如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export PATH=/mnt/share_ruoting/prerootfs/usr/bin:$PATH
+export VALGRIND_LIB=/mnt/share_ruoting/prerootfs/usr/lib/valgrind
+VALGRIND_OPTS=&quot;--leak-check=full --show-leak-kinds=definite --log-file=valgrind.txt --track-fds=yes&quot;
+valgrind $VALGRIND_OPTS ./vehicle_solution/vehicle_solution $vio_cfg_file ./vehicle_solution/configs/smart_config.json -i
+</pre></div>
+</div>
+<p>打开valgrind.txt可查看结果。</p>
+</div>
+<div class="section" id="gdb-valgrindkilled">
+<h3>gdb/valgrind调试应用程序被killed掉<a class="headerlink" href="#gdb-valgrindkilled" title="永久链接至标题">¶</a></h3>
+<p>执行<code class="docutils literal notranslate"><span class="pre">memstat</span></code>查看系统内存分布情况，以
+<code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">X2_96BOARD</span> <span class="pre">4.14.74</span> <span class="pre">#12</span> <span class="pre">SMP</span> <span class="pre">PREEMPT</span> <span class="pre">Thu</span> <span class="pre">Nov</span> <span class="pre">14</span> <span class="pre">21:18:15</span> <span class="pre">PST</span> <span class="pre">2019</span> <span class="pre">aarch64</span> <span class="pre">GNU/Linux</span></code>
+为例：96board总共1G物理内存，其中776M都分配给了ion,应用可用内存仅187M。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@X2_96BOARD</span><span class="p">:</span><span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">share_ruoting</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">xstream_all</span><span class="o">/</span><span class="n">deploy_dev</span><span class="c1"># free</span>
+             <span class="n">total</span>       <span class="n">used</span>       <span class="n">free</span>     <span class="n">shared</span>    <span class="n">buffers</span>     <span class="n">cached</span>
+<span class="n">Mem</span><span class="p">:</span>        <span class="mi">191944</span>      <span class="mi">46992</span>     <span class="mi">144952</span>        <span class="mi">568</span>        <span class="mi">536</span>       <span class="mi">7924</span>
+<span class="o">-/+</span> <span class="n">buffers</span><span class="o">/</span><span class="n">cache</span><span class="p">:</span>      <span class="mi">38532</span>     <span class="mi">153412</span>
+<span class="n">Swap</span><span class="p">:</span>            <span class="mi">0</span>          <span class="mi">0</span>          <span class="mi">0</span>
+<span class="n">root</span><span class="nd">@X2_96BOARD</span><span class="p">:</span><span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">share_ruoting</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">xstream_all</span><span class="o">/</span><span class="n">deploy_dev</span><span class="c1"># memstat</span>
+<span class="o">----------------------------------------------------</span>
+<span class="n">address</span>    <span class="n">size</span><span class="p">(</span><span class="nb">hex</span><span class="p">)</span>  <span class="n">size</span> <span class="n">name</span>
+<span class="o">----------</span> <span class="o">----------</span> <span class="o">----</span> <span class="o">&lt;</span><span class="n">reserved</span> <span class="n">dts</span><span class="o">&gt;-----------</span>
+<span class="mh">0x02000000</span> <span class="mh">0x00080000</span> <span class="mi">512</span><span class="n">K</span> <span class="n">bifbase_reserved</span><span class="p">(</span><span class="n">nomap</span><span class="p">)</span>
+<span class="mh">0x02080000</span> <span class="mh">0x00040000</span> <span class="mi">256</span><span class="n">K</span> <span class="n">ramoops</span>
+<span class="mh">0x020C0000</span> <span class="mh">0x0003F000</span> <span class="mi">252</span><span class="n">K</span> <span class="n">fc_reserved</span>
+<span class="mh">0x020FF000</span> <span class="mh">0x00001000</span>   <span class="mi">4</span><span class="n">K</span> <span class="n">sw_reserved</span><span class="p">(</span><span class="n">nomap</span><span class="p">)</span>
+<span class="mh">0x02100000</span> <span class="mh">0x02000000</span>  <span class="mi">32</span><span class="n">M</span> <span class="n">iar_reserved</span><span class="p">(</span><span class="n">nomap</span><span class="p">)</span>
+<span class="mh">0x04100000</span> <span class="mh">0x30800000</span> <span class="mi">776</span><span class="n">M</span> <span class="n">ion_reserved</span>
+<span class="o">----------</span> <span class="o">----------</span> <span class="o">----</span> <span class="o">&lt;</span><span class="n">memory</span> <span class="n">cal</span><span class="o">&gt;-------------</span>
+<span class="o">-</span>          <span class="o">-</span>      <span class="mi">1015292</span><span class="n">K</span> <span class="nb">map</span><span class="o">-</span><span class="n">memory</span><span class="p">(</span><span class="n">reserved</span><span class="o">+</span><span class="n">others</span><span class="p">)</span>
+<span class="o">-</span>          <span class="o">-</span>        <span class="mi">33284</span><span class="n">K</span> <span class="n">nomap</span><span class="o">-</span><span class="n">memory</span><span class="p">(</span><span class="n">see</span><span class="p">:</span><span class="n">dts</span><span class="p">)</span>
+<span class="o">----------</span> <span class="o">----------</span> <span class="o">----</span> <span class="o">-------------------------</span>
+<span class="mh">0x00000000</span> <span class="mh">0x40000000</span>   <span class="mi">1</span><span class="n">G</span> <span class="n">X2_96BOARD</span>
+<span class="o">----------------------------------------------------</span>
+</pre></div>
+</div>
+<p>ion_reserved是isp、ipu、bpu预留物理内存，可根据实际情况进入uboot调整：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hobot</span><span class="o">&gt;</span><span class="n">setenv</span> <span class="n">ion_size</span> <span class="s1">&#39;256&#39;</span>
+<span class="n">Hobot</span><span class="o">&gt;</span><span class="n">saveenv</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="valgrindload">
+<h3>valgrind跑程序load模型失败<a class="headerlink" href="#valgrindload" title="永久链接至标题">¶</a></h3>
+<p>和<a class="reference external" href="#gdbvalgrind%E8%B0%83%E8%AF%95%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E8%A2%ABkilled%E6%8E%89">gdb/valgrind调试应用程序被killed掉</a> 情况相反，预留给ion的物理内存太小，可进入uboot加大ion_size试试。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

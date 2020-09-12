@@ -1,0 +1,17 @@
+{
+  "cam_type": "mono",
+  "data_source": "jpeg_image_list",
+  "max_vio_buffer": 7,
+  "ts_type": "frame_id",
+  "file_path": "name.list",
+  "pad_width": 1280,
+  "pad_height": 720,
+  "vio_cfg_file": {
+    "ipc_camera": "configs/vio/hb_vio.json",
+    "panel_camera": "configs/vio/panel_camera.json.96board",
+    "jpeg_image_list": "configs/vio/vio_onsemi0230_fb_720p.json",
+    "nv12_image_list": "configs/vio/vio_onsemi0230_fb_720p.json",
+    "image": "configs/vio/vio_onsemi0230_fb_720p.json"
+  }
+}
+support 720p hg, 720p camera is not tested

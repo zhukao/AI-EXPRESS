@@ -1,0 +1,17 @@
+# CreateGPUModelStage
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**attachments** | **list[str]** | gpu model&#39;s attachment file in: body | [optional] 
+**bucket_json_path** | **str** | gpu model&#39;s json file path in bucket, such as dmpv2://test/xxx.json in: body | [optional] 
+**bucket_param_path** | **str** | gpu model&#39;s param file path in bucket, such as dmpv2://test/xxx.params in: body | [optional] 
+**local_json_path** | **str** | gpu model&#39;s json file in: body | [optional] 
+**local_param_path** | **str** | gpu model&#39;s param file in: body | [optional] 
+**remote_json_path** | **str** | gpu model&#39;s json file path in hdfs in: body | [optional] 
+**remote_param_path** | **str** | gpu model&#39;s param file path in hdfs in: body | [optional] 
+**stage** | **str** | gpu model&#39;s stage, currently support Float WithBN WithoutBN IntInference and Others in: body | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

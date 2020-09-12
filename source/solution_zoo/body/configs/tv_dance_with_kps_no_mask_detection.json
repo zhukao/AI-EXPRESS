@@ -1,0 +1,155 @@
+{
+  "inputs": [
+    "image"
+  ],
+  "outputs": [
+    "image",
+    "body_final_box",
+    "head_final_box",
+    "face_final_box",
+    "hand_final_box",
+    "kps",
+    "hand_lmk",
+    "gesture_vote",
+    "hand_disappeared_track_id_list",
+    "bound_rect_filter"
+  ],
+  "workflow": [
+    {
+      "thread_count": 3,
+      "method_type": "FasterRCNNMethod",
+      "unique_name": "multi_task",
+      "inputs": [
+        "image"
+      ],
+      "outputs": [
+        "body_box",
+        "head_box",
+        "face_box",
+        "hand_box",
+        "kps"
+      ],
+      "method_config_file": "multitask_with_hand_without_mask.json"
+    },
+    {
+      "method_type": "FilterMethod",
+      "unique_name": "box_filter",
+      "inputs": ["face_box", "head_box", "body_box", "kps", "hand_box"],
+      "outputs": ["box_filter_info", "face_box_after_filter", "head_box_after_filter", "body_box_after_filter", "kps_after_filter","hand_box_after_filter", "bound_rect_filter"],
+      "method_config_file": "tv_dance_with_kps_no_mask_box_filter_config.json"
+    },
+    {
+      "thread_count": 1,
+      "method_type": "MOTMethod",
+      "unique_name": "face_mot",
+      "inputs": [
+        "face_box_after_filter"
+      ],
+      "outputs": [
+        "face_bbox_list",
+        "face_disappeared_track_id_list"
+      ],
+      "method_config_file": "iou_method_param.json"
+    },
+    {
+      "thread_count": 1,
+      "method_type": "MOTMethod",
+      "unique_name": "head_mot",
+      "inputs": [
+        "head_box_after_filter"
+      ],
+      "outputs": [
+        "head_bbox_list",
+        "head_disappeared_track_id_list"
+      ],
+      "method_config_file": "iou_method_param.json"
+    },
+    {
+      "thread_count": 1,
+      "method_type": "MOTMethod",
+      "unique_name": "body_mot",
+      "inputs": [
+        "body_box_after_filter"
+      ],
+      "outputs": [
+        "body_bbox_list",
+        "body_disappeared_track_id_list"
+      ],
+      "method_config_file": "iou_method_param.json"
+    },
+    {
+      "thread_count": 1,
+      "method_type": "MOTMethod",
+      "unique_name": "hand_mot",
+      "inputs": [
+        "image",
+        "hand_box_after_filter"
+      ],
+      "outputs": [
+        "hand_final_box",
+        "hand_disappeared_track_id_list"
+      ],
+      "method_config_file": "iou2_method_param.json"
+    },
+    {
+      "thread_count": 1,
+      "method_type": "MergeMethod",
+      "unique_name": "merge_method",
+      "inputs": [
+        "face_bbox_list",
+        "head_bbox_list",
+        "body_bbox_list",
+        "face_disappeared_track_id_list",
+        "head_disappeared_track_id_list",
+        "body_disappeared_track_id_list"
+      ],
+      "outputs": [
+        "face_final_box",
+        "head_final_box",
+        "body_final_box",
+        "disappeared_track_id"
+      ],
+      "method_config_file": "merge_head_body.json"
+    },
+    {
+      "method_type": "CNNMethod",
+      "unique_name": "hand_lmk",
+      "thread_count": 3,
+      "inputs": [
+        "hand_final_box",
+        "image"
+      ],
+      "outputs": [
+        "hand_lmk"
+      ],
+      "method_config_file": "hand_lmk.json"
+    },
+    {
+      "method_type": "CNNMethod",
+      "unique_name": "gesture_recog",
+      "thread_count": 3,
+      "inputs": [
+        "hand_final_box",
+        "hand_lmk",
+        "hand_disappeared_track_id_list"
+      ],
+      "outputs": [
+        "gesture"
+      ],
+      "method_config_file": "gesture_det.json"
+    },
+    {
+      "method_type": "VoteMethod",
+      "unique_name": "gesture_voting",
+      "inputs": [
+        "hand_final_box",
+        "hand_disappeared_track_id_list",
+        "gesture"
+      ],
+      "outputs": [
+        "gesture_vote"
+      ],
+      "method_config_file": "gesture_voting.json"
+    }
+  ]
+}

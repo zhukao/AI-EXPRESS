@@ -1,0 +1,87 @@
+# 版本说明  版本 2.3.0
+
+<h2>        任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-428'>XPPXROC-428</a>] -         说明AI Express的测试覆盖率统计规则
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-446'>XPPXROC-446</a>] -         AI开发者教程-摔倒检测
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-447'>XPPXROC-447</a>] -         AI开发者教程-体感游戏
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-449'>XPPXROC-449</a>] -         X3类海思接口回灌
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-456'>XPPXROC-456</a>] -         AI Express 项目开源
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-459'>XPPXROC-459</a>] -         uvc集成系统软件的uvc库
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-462'>XPPXROC-462</a>] -         ai-express发布包同时支持x2与x3版本
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-465'>XPPXROC-465</a>] -         s5kgm1 sensor，集成isp的校准文件
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-466'>XPPXROC-466</a>] -         区别x3 1080P/2160P/4000x3000分辨率，配置文件互相影响的问题
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-467'>XPPXROC-467</a>] -         X3 vio buffer的数量设置的方法验证
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-468'>XPPXROC-468</a>] -         CNNmethod以及fasterrcnnmethod，去除hbrt接口的依赖
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-469'>XPPXROC-469</a>] -         solution添加骨骼点过滤
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-470'>XPPXROC-470</a>] -         uvc，明确同步的时间戳信息
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-471'>XPPXROC-471</a>] -         web 统一客户端，支持分割
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-472'>XPPXROC-472</a>] -         统一客户端，分割结果展示的确认
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-475'>XPPXROC-475</a>] -         ai-express代码、模型以及配置中去除外部客户信息
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-476'>XPPXROC-476</a>] -         奥威亚-xwarehouse特征比较相似度为0
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-477'>XPPXROC-477</a>] -         人体solution需要增加过滤模块
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-478'>XPPXROC-478</a>] -         年龄性别输出增加平滑策略
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-479'>XPPXROC-479</a>] -         web 统一客户端-适配年龄、性别、车辆等属性的value_string输出
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-481'>XPPXROC-481</a>] -         统一客户端——分割结果展示详细设计
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-482'>XPPXROC-482</a>] -         ai-express适配芯片工具链3.6版本
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-483'>XPPXROC-483</a>] -         展示端使用融合后的id
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-484'>XPPXROC-484</a>] -         smart msg序列化时，以body为Target进行融合
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-487'>XPPXROC-487</a>] -         开发者社区 整理AI-EXPRESS 示例使用的教程
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-490'>XPPXROC-490</a>] -         uvcplugin代码风格整理
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-491'>XPPXROC-491</a>] -         behavior solution，向前端传输人体分割结果
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-492'>XPPXROC-492</a>] -         体感游戏适配新的数据格式
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-495'>XPPXROC-495</a>] -         AiExpress适配系统软件0706系统镜像
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-504'>XPPXROC-504</a>] -         更新开发者社区ai-express doc文档
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-506'>XPPXROC-506</a>] -         跟进奥威亚反馈的x2 multisource有内存泄漏
+</li>
+</ul>
+                                        
+<h2>        子任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-282'>XPPXROC-282</a>] -         确认X3J3硬件形态
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-377'>XPPXROC-377</a>] -         X3 JPEG编码功能
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-444'>XPPXROC-444</a>] -         X3 回灌hb_vio_free_info 接口失败
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-448'>XPPXROC-448</a>] -         behavior solution, 长稳出现内存访问异常
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-464'>XPPXROC-464</a>] -         websocketplugin 输出的视频顺序不对
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-474'>XPPXROC-474</a>] -         基于x3媒体库进行本地回灌
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-489'>XPPXROC-489</a>] -         修复face_body_multisource运行crash
+</li>
+</ul>

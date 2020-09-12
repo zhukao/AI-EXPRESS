@@ -1,0 +1,16 @@
+# AppendPRReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**gpu_model_name** | **str** | gpu model name in: body | [optional] 
+**gpu_model_version** | **str** | gpu model version, if not set, it will use the lastest version in: body | [optional] 
+**name** | **str** | pr related dataset name in: body | 
+**pr_job_cluster** | **str** | pr result of gpu cluster in: body | [optional] 
+**pr_job_id** | **int** | pr result of gpu cluster predict job id in: body | [optional] 
+**remote_path** | **str** | upload pr file path in aidi gpfs in: body | 
+**version** | **str** | pr version, if not set, aidi will incre in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

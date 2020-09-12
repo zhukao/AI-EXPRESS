@@ -1,0 +1,39 @@
+{
+  "inputs": [
+    "face_box",
+    "head_box",
+    "body_box",
+    "body_kps",
+    "disappeared_head_id",
+    "disappeared_face_id",
+    "disappeared_body_id"
+  ],
+  "outputs": [
+    "merged_face_box",
+    "merged_head_box",
+    "merged_body_box",
+    "merged_disappeared_id"
+  ],
+  "workflow": [
+    {
+      "unique_name": "merge_method",
+      "method_type": "MergeMethod",
+      "inputs": [
+        "face_box",
+        "head_box",
+        "body_box",
+        "disappeared_face_id",
+        "disappeared_head_id",
+        "disappeared_body_id",
+        "body_kps"
+      ],
+      "outputs": [
+        "merged_face_box",
+        "merged_head_box",
+        "merged_body_box",
+        "merged_disappeared_id"
+      ],
+      "method_config_file": "merge_head_body.json"
+    }
+  ]
+}

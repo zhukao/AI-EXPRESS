@@ -1,0 +1,1042 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>XStream模型与策略开发 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="XProto用户手册" href="xproto.html" />
+    <link rel="prev" title="XStream高级特性" href="xstream_more.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">XStream模型与策略开发</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">整体综述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">模型集成</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.模型编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2. 模型集成</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fasterrcnnmethod">2.1 FasterRCNNMethod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cnnmethod">2.2 CNNMethod</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3. 一致性验证</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">策略开发</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">1. 综述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#motmethod">2. motmethod</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">2.1 输入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">2.2 输出</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">2.3 补充说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">2.4 配置文件参数</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#filtermethod">3. filtermethod</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">3.1 输入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">3.2 输出</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">3.3 补充说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">3.4 配置文件参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">回灌流程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">1. 背景</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">2. 回灌的意义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">3. 如何回灌</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>XStream模型与策略开发</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/BuildAll/doc/xstream_ai.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="xstream">
+<h1>XStream模型与策略开发<a class="headerlink" href="#xstream" title="永久链接至标题">¶</a></h1>
+<p>本文主要介绍XStream内置的算法Method和策略Method，以及解释如何基于这些Method进行业务开发。</p>
+<div class="section" id="id1">
+<h2>整体综述<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>智能业务中method类型通常可以分为两类：</p>
+<ol class="simple">
+<li><p>算法method：该类method主要完成load模型、前处理并送给BPU完成预测、获取预测结果、完成结果解析等。</p></li>
+<li><p>策略method:　该类method无算法模型相关处理，是业务相关的策略模型，如过滤策略method、融合策略method、优选策略method等。</p></li>
+</ol>
+<p>在基于XStream完成模型集成或者策略开发中，需要遵循一下原则：</p>
+<ul class="simple">
+<li><p>针对算法模型集成：</p>
+<ul>
+<li><p>XStream提供了FasterRCNNMethod用于处理FasterRCNN多任务模型的集成，用户可以通过json配置复用内置的后处理类型(如输出检测框目标)或者添加特性后处理模块支持自己的多任务模型；</p></li>
+<li><p>XStream提供了CNNMethod用于通用的cnn分类模型集成，其中预实现了一些模型的前后处理方法，用户可以复用这些方法，也可以基于此拓展支持新的cnn模型的集成。</p></li>
+</ul>
+</li>
+<li><p>针对策略开发：</p>
+<ul>
+<li><p>XStream提供了高性能、基于IOU的通用目标跟踪策略MOTMethod，用户可以直接复用该方法支持自己的目标跟踪。</p></li>
+<li><p>XStream也提供了其他比较常用的策略模块如针对检测框的过滤策略模块FilterMethod，以及针对人脸抓拍识别、人体、车辆视频结构化等业务相关的算法策略模块。</p></li>
+</ul>
+</li>
+<li><p>针对计算机视觉应用常用的数据类型定义在xsdk/common/vision_type中，其中定义了视频帧(Frame)、检测框(BBox)、关键点(landmark或skeletion)、属性定义（age 或者gender）等常用数据类型，用户应该尽量复用这里定义的数据类型。</p></li>
+<li><p>针对一组目标（如来自同一帧的检测框）模型处理或者算法策略，为了便于来自多个method针对同一组目标的处理结果的融合，method的实现通常需要保证输入和输出目标数量不变，例如：输入的类型是人脸框，框的数量是5，输出类型是关键点，那么关键点的数量一定也是5，如果有些检测框因为大小或算力限制被过滤掉，输出结果可以置默认值或者非法状态，而不是不返回结果。</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>模型集成<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>以检测年龄性别为例，简述X2模型编译和集成验证流程。</p>
+<div class="section" id="id3">
+<h3>1.模型编译<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>模型编译与一致性验证是基于地平线AI工具链的HBDK编译工具链，相关内容请参考AI工具链产品文档http://hbdk.hobot.cc/cc/。</p>
+<p>下面按照年龄和性别两个模型来演示如何对这两个模型分别进行编译和整体打包。编译人脸检测和年龄性别模型的命令如下：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>hbdk-cc --march x2 -m ./multitask-1-absorb-bn-ft-1-x2-hobot-predict-symbol-x2-0.3.json -p ./multitask-1-absorb-bn-ft-1-x2-hobot-predict-0010-x2-0.3.params  -s 1x540x960x3 --pyramid-stride <span class="m">960</span> -o faceDet.hbm -i pyramid --O2
+
+hbdk-cc --march x2 -m model-absorb-bn-ft-hobot-predict-symbol.json -p model-absorb-bn-ft-hobot-predict-0121.params  -s 1x128x128x3  -o faceAgeGender.hbm -i
+
+resizer --O2
+</pre></div>
+</div>
+<p>输入来自resizer的模型需要添加 –enable-dbg-dump_input_td 才能在后续一致性验证中使用hbdk-model-verifier工具。要注意在后续使用中使用编译时指定的名字（-o），否则会出现load model info failed等错误。</p>
+<p>完成单个模型的编译后，运行如下命令将它们打包</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>hbdk-pack faceDet.hbm faceAgeGender.hbm -o AgeGender.hbm
+</pre></div>
+</div>
+<p>最后生成的<code class="docutils literal notranslate"><span class="pre">AgeGender.hbm</span></code>即为我们可以部署到地平线芯片上的模型打包文件。</p>
+</div>
+<div class="section" id="id4">
+<h3>2. 模型集成<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>现有的模型集成是通xstream-methods实现的。method中通常包含了模型推理的三大部分：前处理，模型推理，和后处理。通常，对于已经发布的模型，可以直接使用现有的methods进行集成。但使用新发布的模型时，可能还需要进行前、后处理的适配和bpu-predict接口的配置。这个过程中，需要遵从的原则就是：和算法的同学对齐。</p>
+<p>在年龄性别预测的例子中，需要用到FasterRCNNMethod和CNNMethod进行模型集成。</p>
+<div class="section" id="fasterrcnnmethod">
+<h4>2.1 FasterRCNNMethod<a class="headerlink" href="#fasterrcnnmethod" title="永久链接至标题">¶</a></h4>
+<p>FasterRCNNMethod主要是对fasterrcnn检测算法模型的集成。通常，FasterRCNNMethod的输入是类型为PymImageFrame或CVImageFrame的图像。前处理将method输入resize成模型输入大小并做格式转换，模型推理通过调用BPU_runModelFromPyramid或BPU_runModelFromImage实现，后处理主要是对多种输出的解析。</p>
+<p>集成时，首先要与算法同学确认模型每层的输出是什么，更改配置文件中的model_out_sequence进行适配。可以通过binut_getOutputLayerNum(), binut_getModelOutputInfo()等接口获取有关模型输出的信息。此外还需要确认是否需要扩充method中定义的输出类型FasterRCNNBranchOutType和FasterRCNNOutMsg。</p>
+<p>FasterRCNNMethod配置文件：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;in_msg_type&quot;</span><span class="p">:</span> <span class="s2">&quot;pyramid_image&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;net_info&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;model_name&quot;</span><span class="p">:</span> <span class="s2">&quot;faceDet&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;model_version&quot;</span><span class="p">:</span> <span class="s2">&quot;x2-rc-0.2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;model_out_sequence&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;face_box&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bbox&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;model_input_width&quot;</span><span class="p">:</span> <span class="mi">960</span><span class="p">,</span>
+    <span class="nt">&quot;model_input_height&quot;</span><span class="p">:</span> <span class="mi">540</span><span class="p">,</span>
+    <span class="nt">&quot;pyramid_layer&quot;</span><span class="p">:</span> <span class="mi">4</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;method_outs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_box&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;bpu_config_path&quot;</span><span class="p">:</span> <span class="s2">&quot;../configs/bpu_config.json&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;model_file_path&quot;</span><span class="p">:</span> <span class="s2">&quot;../models/AgeGender.hbm&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="k">class</span> <span class="nc">FasterRCNNBranchOutType</span> <span class="p">{</span>
+  <span class="n">BBOX</span><span class="p">,</span>
+  <span class="n">KPS</span><span class="p">,</span>
+  <span class="n">MASK</span><span class="p">,</span>
+  <span class="n">REID</span><span class="p">,</span>
+  <span class="n">LMKS2_LABEL</span><span class="p">,</span>
+  <span class="n">LMKS2_OFFSET</span><span class="p">,</span>
+  <span class="n">LMKS1</span><span class="p">,</span>
+  <span class="n">POSE_3D</span><span class="p">,</span>
+  <span class="n">PLATE_COLOR</span><span class="p">,</span>
+  <span class="n">PLATE_ROW</span><span class="p">,</span>
+  <span class="n">INVALID</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="n">FasterRCNNOutMsg</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BBox</span><span class="o">&gt;&gt;</span> <span class="n">boxes</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Landmarks</span><span class="o">&gt;&gt;</span> <span class="n">landmarks</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Feature</span><span class="o">&gt;&gt;</span> <span class="n">features</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Segmentation</span><span class="o">&gt;&gt;</span> <span class="n">segmentations</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Pose3D</span><span class="o">&gt;&gt;</span> <span class="n">poses</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Attribute</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&gt;</span> <span class="n">attributes</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>关于FasterRCNNMethod，详细请参见<a class="reference internal" href="../../xsdk/common/xstream/methods/fasterrcnnmethod/README.html"><span class="doc">README</span></a></p>
+</div>
+<div class="section" id="cnnmethod">
+<h4>2.2 CNNMethod<a class="headerlink" href="#cnnmethod" title="永久链接至标题">¶</a></h4>
+<p>年龄性别的预测，人脸识别等任务都是通过CNNMethod集成的。CNNMethod承载着多种不同的任务，所以其中的前后处理方式也是多样的。CNNMethod的输入和前后处理方式虽然多样，但使用哪个接口和前后处理方式都是可配置的。</p>
+<p>CNNMethod配置文件</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;model_name&quot;: &quot;faceAgeGender&quot;,
+  &quot;model_file_path&quot;: &quot;../models/AgeGender.hbm&quot;,
+  &quot;bpu_config_path&quot;: &quot;../configs/bpu_config.json&quot;,
+  &quot;in_msg_type&quot;: &quot;img&quot;,               # 输入类型，决定前处理方式和使用的bpu-predict接口
+  &quot;post_fn&quot;: &quot;age_gender&quot;,            # 后处理函数
+  &quot;norm_method&quot;: &quot;norm_by_nothing&quot;,   # normalize方法，需要和算法对齐
+  &quot;output_size&quot;: 2,
+  &quot;output_names&quot;: [
+    &quot;cnn_age&quot;,
+    &quot;cnn_gender&quot;
+  ]
+}
+</pre></div>
+</div>
+<p>关于CNNMethod，详细请参见<a class="reference internal" href="../../xsdk/common/xstream/methods/cnnmethod/README.html"><span class="doc">CNNMethod单任务</span></a>，或<a class="reference internal" href="../../xsdk/common/xstream/methods/cnnmethod_multistage/README.html"><span class="doc">CNNMethod多任务</span></a>。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>3. 一致性验证<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>模型集成后，可以通过跑method中的UT或samples简单验证模型编译和集成是否存在问题。为了保证算法的结果能够准确的体现在产品上，还需要进行一致性验证。一致性验证分为三类：数值一致性，单图一致性，和指标一致性。</p>
+<ul class="simple">
+<li><p>数值一致性：使用相同的输入，验证模型在BPU上运行的结果是否与在CPU/GPU上运行的结果一致。通过验证数值一致性，可以检查模型或模型编译是否存在问题。验证数值一致性要使用AI工具链中的hbdk-model-verifier工具。</p></li>
+<li><p>单图一致性：输入一张图，验证在单一模型通路或全流程下输出是否正确。通过验证单图一致性，可以检查前后处理是否存在问题。</p></li>
+<li><p>指标一致性：输入一批图，验证在单一模型通路或全流程下的指标是否一致。有时因为所使用的平台的不同，数值一致性不能完全对得上。通过验证指标一致性，可以确认系统是否可用。</p></li>
+</ul>
+<p>一致性验证过程需要和算法同学一起配合进行。验证前需要共同确定通路，检查依赖库是否相同。需要从算法同学处获得测试集，UT，数据处理脚本等。验证过程中要dump出中间结果和最终结果，并与算法同学在相同流程下得出的结果进行比较。</p>
+<p><img alt="Algorithm-consistency" src="../../_images/Algorithm-consistency.png" /></p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>策略开发<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id7">
+<h3>1. 综述<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>该类method无算法模型相关处理，是纯算法或者业务相关的策略模型，如过滤策略method、融合策略method、优选策略method等;<br />XStream预支持了MOTMethod，FilterMethod等Method，其中</p>
+<ul class="simple">
+<li><p>MOTMethod提供了高性能、基于IOU的通用目标跟踪策略，用户可以直接复用该方法支持自己的目标跟踪。</p></li>
+<li><p>FilterMethod提供了其他比较常用的策略模块如针对检测框的过滤策略模块，以及针对人脸抓拍识别、人体、车辆视频结构化等业务相关的算法策略模块。</p></li>
+</ul>
+<p>其他更多的Method，请直接参考源码目录<code class="docutils literal notranslate"><span class="pre">solution_zoo/xstream/methods</span></code>.</p>
+</div>
+<div class="section" id="motmethod">
+<h3>2. motmethod<a class="headerlink" href="#motmethod" title="永久链接至标题">¶</a></h3>
+<p>多目标跟踪Method，用于检测框的跟踪、ID分配。</p>
+<div class="section" id="id8">
+<h4>2.1 输入<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="left">Slot</th>
+<th align="left">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">0</td>
+<td align="left">XStreamBBox_list</td>
+<td align="center">必要项</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id9">
+<h4>2.2 输出<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="left">Slot</th>
+<th align="left">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">0</td>
+<td align="left">XStreamBBox_list</td>
+<td align="center">带track_id</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">XStreamUint32_List</td>
+<td align="center">disappeared_track_id_list</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id10">
+<h4>2.3 补充说明<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p>内部有状态机来存储每个tracklet。</p></li>
+<li><p>该Method支持workflow多实例，method_info.is_thread_safe_ = false，method_info.is_need_reorder = true。</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h4>2.4 配置文件参数<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="left">字段</th>
+<th align="left">描述</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">tracker_type</td>
+<td align="left">MOT工作模式，目前仅支持IOU based MOT</td>
+<td align="center">IOU</td>
+</tr>
+<tr>
+<td align="left">device</td>
+<td align="left">设备名称，若设置为X1，最大track_id为255，用以比对一致性</td>
+<td align="center">X2</td>
+</tr>
+<tr>
+<td align="left">update_no_target_predict</td>
+<td align="left">无检测框输入更新状态机track预测框，设置为true对主体连续运动且有遮挡的场景效果好，设置为false对主体不移动且有遮挡的场景效果好</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="left">support_hungarian</td>
+<td align="left">匈牙利匹配开关，打开匈牙利匹配id召回多，准确率下降；关闭则id召回少，准确率提升</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="left">need_check_merge</td>
+<td align="left">每组输入框IOU大于一定阈值做融合，该操作会影响输出数量，检测框融合多在检测模块完成，一般情况置为false</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="left">noriginal_bbox</td>
+<td align="left">是否使用卡尔曼滤波器预测框，true为不使用，输出原始框坐标</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="left">max_track_target_num</td>
+<td align="left">状态机保存最大track数</td>
+<td align="center">512</td>
+</tr>
+<tr>
+<td align="left">max_det_target_num</td>
+<td align="left">输入框最大计算数</td>
+<td align="center">512</td>
+</tr>
+<tr>
+<td align="left">vanish_frame_count</td>
+<td align="left">消失帧数</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="left">time_gap</td>
+<td align="left">帧间隔时间</td>
+<td align="center">40</td>
+</tr>
+</tbody>
+</table><p>关于motmethod，详细请参见<a class="reference internal" href="../../xsdk/common/xstream/methods/motmethod/README.html"><span class="doc">README</span></a></p>
+</div>
+</div>
+<div class="section" id="filtermethod">
+<h3>3. filtermethod<a class="headerlink" href="#filtermethod" title="永久链接至标题">¶</a></h3>
+<p>过滤Method，用于检测框的过滤，未通过过滤条件的bbox会被标记为FIlTERED状态。</p>
+<div class="section" id="id12">
+<h4>3.1 输入<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="left">Slot</th>
+<th align="left">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">0</td>
+<td align="left">XStreamDisappeared_id</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">XStreamBBox_list</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">XStreamPose3D_list</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">XStreamLandmarks_list</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">blur</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">brightness</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left">eye_abnormalities</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left">mouth_abnormal</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left">left_eye</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left">right_eye</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left">left_brow</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left">right_brow</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left">forehead</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">13</td>
+<td align="left">left_cheek</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">14</td>
+<td align="left">right_cheek</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">15</td>
+<td align="left">nose</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">16</td>
+<td align="left">mouth</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">17</td>
+<td align="left">jaw</td>
+<td align="center">可选项</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id13">
+<h4>3.2 输出<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="left">Slot</th>
+<th align="left">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">0</td>
+<td align="left">filter_info</td>
+<td align="center">过滤错误码</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">XStreamDisappeared_id</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">XStreamBBox_list</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">XStreamPose3D_list</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">XStreamLandmarks_list</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">blur</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left">brightness</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left">eye_abnormalities</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left">mouth_abnormal</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left">left_eye</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left">right_eye</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left">right_brow</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left">forehead</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">13</td>
+<td align="left">left_cheek</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">14</td>
+<td align="left">right_cheek</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">15</td>
+<td align="left">nose</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">16</td>
+<td align="left">mouth</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="left">17</td>
+<td align="left">jaw</td>
+<td align="center">可选项</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id14">
+<h4>3.3 补充说明<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p>对于不同的可选项可以自由组合，但是此method的输入必须大于等于1。例如对于智能帧过滤可以只输入box相关数据，对于抓拍帧需要输入disappeared_id、box、pose、landmark等</p></li>
+<li><p>内部无状态机，该Method支持workflow多实例，method_info.is_thread_safe_ = true，method_info.is_need_reorder = false。</p></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h4>3.4 配置文件参数<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="left">字段</th>
+<th align="left">描述</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">image_width</td>
+<td align="left">视频帧宽度</td>
+<td align="center">1920</td>
+</tr>
+<tr>
+<td align="left">image_height</td>
+<td align="left">视频帧高度</td>
+<td align="center">1080</td>
+</tr>
+<tr>
+<td align="left">face_size_thr</td>
+<td align="left">人脸检测框大小阈值</td>
+<td align="center">72</td>
+</tr>
+<tr>
+<td align="left">head_size_thr</td>
+<td align="left">人头检测框大小阈值</td>
+<td align="center">72</td>
+</tr>
+<tr>
+<td align="left">body_size_thr</td>
+<td align="left">人体检测框大小阈值</td>
+<td align="center">72</td>
+</tr>
+<tr>
+<td align="left">face_pv_thr</td>
+<td align="left">人脸置信度阈值</td>
+<td align="center">0.98</td>
+</tr>
+<tr>
+<td align="left">head_pv_thr</td>
+<td align="left">人头置信度阈值</td>
+<td align="center">0.98</td>
+</tr>
+<tr>
+<td align="left">body_pv_thr</td>
+<td align="left">人体置信度阈值</td>
+<td align="center">0.98</td>
+</tr>
+<tr>
+<td align="left">face_expand_scale</td>
+<td align="left">人脸外扩系数，用以过滤外扩出边界的检测框</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="left">head_expand_scale</td>
+<td align="left">人头外扩系数，用以过滤外扩出边界的检测框</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="left">body_expand_scale</td>
+<td align="left">人体外扩系数，用以过滤外扩出边界的检测框</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="left">max_box_counts</td>
+<td align="left">最大检测框数，设置为0不对检测框数目作过滤</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">filter_with_frontal_thr</td>
+<td align="left">是否使用总体阈值进行过滤</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="left">frontal_pitch_thr</td>
+<td align="left">正侧椭球pitch阈值</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="left">frontal_yaw_thr</td>
+<td align="left">正侧椭球yaw阈值</td>
+<td align="center">40</td>
+</tr>
+<tr>
+<td align="left">frontal_roll_thr</td>
+<td align="left">正侧椭球roll阈值</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">frontal_thr</td>
+<td align="left">正侧脸阈值</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="left">quality_thr</td>
+<td align="left">清晰度阈值，越小越好</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">lmk_thr</td>
+<td align="left">人脸坐标阈值</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">lmk_filter_num</td>
+<td align="left">人脸坐标点过滤数量</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">bound_thr_w</td>
+<td align="left">视频帧宽边界</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="left">bound_thr_h</td>
+<td align="left">视频帧高边界</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="left">black_area_iou_thr</td>
+<td align="left">黑名单区域iou阈值</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">black_area_list</td>
+<td align="left">黑名单区域，例如可配置为[[10, 10, 30, 30], [40, 40, 50, 50]]即为在两个黑名单区域被过滤</td>
+<td align="center">[]</td>
+</tr>
+<tr>
+<td align="left">white_area_list</td>
+<td align="left">白名单区域</td>
+<td align="center">[]</td>
+</tr>
+<tr>
+<td align="left">brightness_min</td>
+<td align="left">亮度过滤最小值</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">brightness_max</td>
+<td align="left">亮度过滤最大值</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">abnormal_thr</td>
+<td align="left">行为异常遮挡阈值，越小表示行为较为正常</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">filter_status</td>
+<td align="left">过滤结果状态设定，0：有效，1：被过滤，2：不可见，3：消失，4：无效</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">age_min</td>
+<td align="left">年龄最小值</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">age_max</td>
+<td align="left">年龄最大值</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="left">age_thr</td>
+<td align="left">年龄阈值</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">stop_id</td>
+<td align="left">停止输出ID值</td>
+<td align="center">-1</td>
+</tr>
+<tr>
+<td align="left">left_eye_occluded_thr</td>
+<td align="left">左眼遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">right_brow_occluded_thr</td>
+<td align="left">右眼遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">forehead_occluded_thr</td>
+<td align="left">前额遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">left_cheek_occluded_thr</td>
+<td align="left">左脸遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">right_cheek_occluded_thr</td>
+<td align="left">右脸遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">nose_occluded_thr</td>
+<td align="left">鼻子遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">mouth_occluded_thr</td>
+<td align="left">嘴巴遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">jaw_occluded_thr</td>
+<td align="left">下巴遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">input_slot</td>
+<td align="left">输入数据的信息，表明每个数据的名称、类型、分组</td>
+<td align="center">已有分类：id,bbox,Pose3D,landmark等，与vision type中类型一一对应，已有分组：none,face,head,body,当需要添加新的分离与分组时，需要确定代码中是否支持</td>
+</tr>
+<tr>
+<td align="left">err_description</td>
+<td align="left">错误码描述，对应字段设置为多少filter_info输出对应的错误码</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table><p>关于filtermethod，详细请参见<a class="reference internal" href="../../xsdk/solution_zoo/xstream/methods/filtermethod/README.html"><span class="doc">README</span></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>回灌流程<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id17">
+<h3>1. 背景<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<p>在XProto中，smartplugin示例smart_main.cpp基于smartplugin和vioplugin运行workflow，验证和展示method能力。目前vio有两种输入方式，一种是通过sensor从真实场景获取图像，另一种是在cp端采用回灌方式输入用户预先准备的图片。</p>
+</div>
+<div class="section" id="id18">
+<h3>2. 回灌的意义<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<p>回灌就是阻断从sensor获取图片的路径，改为输入用户预先准备的图片。这样保证了每次的输入都是相同的，便于算法效果验证。另外，回灌也是人脸识别应用场景中本地图片注册入库的输入方法。</p>
+</div>
+<div class="section" id="id19">
+<h3>3. 如何回灌<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<p>在smart_main.cpp程序中会读取vio配置vio_config.json，根据配置选择输入方式。当前配置内容如下：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+ // 镜头类型，单目或双目
+  &quot;cam_type&quot;: &quot;mono&quot;,
+  // 输入源类型:
+  // ipc_camera：ipc等后接场景，输入通常为bt1120
+  // panel_camera: 面板机等前接场景，输入通常为mipi
+  // jpeg_image_list:jpeg格式的回灌图片
+  // nv12_image_list:nv12格式回灌图片
+  &quot;data_source&quot;: &quot;ipc_camera&quot;,
+  // 控制Vio送数上限，最大缓存数量
+  &quot;max_vio_buffer&quot;: 3,
+  // vio时间戳类型：
+  // input_coded: 通过y图的前16个字节的编码获得时间戳，通常用于ipc等后接场景
+  // frame_id: 读取vio数据结构的frame_id字段作为时间戳，96board等使用该配置
+  // raw_ts: 读取vio数据结构中的timestamp字段作为时间戳，面板机standalone方案使用该类型
+  &quot;ts_type&quot;: &quot;input_coded&quot;,
+  // 回灌name.list
+  &quot;file_path&quot;: &quot;name.list&quot;,
+  // jpeg回灌时图片对齐参数
+  &quot;pad_width&quot;: 1920,
+  &quot;pad_height&quot;: 1080,
+  // 回灌每帧时间间隔，单位是ms
+  &quot;interval&quot;: 20,
+  // jpeg和nv12 name list是否支持循环回灌
+  // name_list_loop等于1，支持循环回灌；name_list_loop等于0，只回灌一轮
+  &quot;name_list_loop&quot;: 1,
+  // 对应每种输入源的详细配置文件
+  &quot;vio_cfg_file&quot;: {
+    &quot;ipc_camera&quot;: &quot;configs/vio/hb_vio.json&quot;,
+    &quot;panel_camera&quot;: &quot;configs/vio/panel_camera.json&quot;,
+    &quot;jpeg_image_list&quot;: &quot;configs/vio/vio_onsemi0230_fb.json&quot;,
+    &quot;nv12_image_list&quot;: &quot;configs/vio/vio_onsemi0230_fb.json&quot;,
+    &quot;image&quot;: &quot;configs/vio/vio_onsemi0230_fb.json&quot;
+  }
+}
+关于interval和name_list字段有如下注意事项：
+1）interval字段：
+   a）针对于x2系统，目前只有cached image list方式支持，jpeg和nv12回灌方式无此字段
+   b）针对于x3系统，原生接口和海思接口三种回灌方式（cache image list、jpeg、nv12)均支持
+2）name_list_loop字段：
+   a）针对于x2系统，不支持此功能
+   b）针对于x3系统，原生接口和海思接口均支持此功能
+</pre></div>
+</div>
+<p>举一例说明如何进行回灌测试，如果用户需要回灌3张jpeg图片，图片在./configs/picture下。</p>
+<ul>
+<li><p>首先到./configs/picture下生成图片列表文件，执行以下命令：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ls <span class="p">|</span> sed <span class="s2">&quot;s:^:`pwd`/:&quot;</span> &gt; ../name.list
+</pre></div>
+</div>
+<p>将图片路径保存在./configs/name.list</p>
+</li>
+<li><p>修改vio_config.json文件，vio_config.json配置文件修改如下</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;cam_type&quot;</span><span class="p">:</span> <span class="s2">&quot;mono&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;data_source&quot;</span><span class="p">:</span> <span class="s2">&quot;jpeg_image_list&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;max_vio_buffer&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="nt">&quot;ts_type&quot;</span><span class="p">:</span> <span class="s2">&quot;frame_id&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;file_path&quot;</span><span class="p">:</span> <span class="s2">&quot;configs/name.list&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;pad_width&quot;</span><span class="p">:</span> <span class="mi">1920</span><span class="p">,</span>
+  <span class="nt">&quot;pad_height&quot;</span><span class="p">:</span> <span class="mi">1080</span><span class="p">,</span>
+  <span class="nt">&quot;vio_cfg_file&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;jpeg_image_list&quot;</span><span class="p">:</span> <span class="s2">&quot;configs/vio/vio_onsemi0230_fb.json&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>执行./smart_main ./config/smart_config.json即可进行回灌测试。</p></li>
+<li><p>支持回灌方式说明：</p></li>
+</ul>
+<ul class="simple">
+<li><p>针对于x2系统。支持 cached image list、jpeg image list、nv12 image list这三种回灌方式</p></li>
+<li><p>针对于x3系统(原生vio接口和海思vio接口)。支持cached image list、jpeg image list、nv12 image list这三种回灌方式</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

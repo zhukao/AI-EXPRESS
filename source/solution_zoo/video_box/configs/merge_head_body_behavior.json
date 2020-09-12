@@ -1,0 +1,11 @@
+{
+  "merge_type": "head_body",
+  "use_kps": true,
+  "double_thresh_flag": false,
+  "match_threshold": 0.4,
+  "valid_kps_score_thresh": 0.2,
+  "kps_cnt_threshold": 0.5,
+  "conflict_threshold": 0.8,
+  "head_extend_ratio": 0.05,
+  "desp": "match_threshold 是IOT重合区域占比的阈值"
+}

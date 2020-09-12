@@ -1,0 +1,537 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>repo Manifest Format &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>repo Manifest Format</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/.repo/repo/docs/manifest-format.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="repo-manifest-format">
+<h1>repo Manifest Format<a class="headerlink" href="#repo-manifest-format" title="永久链接至标题">¶</a></h1>
+<p>A repo manifest describes the structure of a repo client; that is
+the directories that are visible and where they should be obtained
+from with git.</p>
+<p>The basic structure of a manifest is a bare Git repository holding
+a single <code class="docutils literal notranslate"><span class="pre">default.xml</span></code> XML file in the top level directory.</p>
+<p>Manifests are inherently version controlled, since they are kept
+within a Git repository.  Updates to manifests are automatically
+obtained by clients during <code class="docutils literal notranslate"><span class="pre">repo</span> <span class="pre">sync</span></code>.</p>
+<p>[TOC]</p>
+<div class="section" id="xml-file-format">
+<h2>XML File Format<a class="headerlink" href="#xml-file-format" title="永久链接至标题">¶</a></h2>
+<p>A manifest XML file (e.g. <code class="docutils literal notranslate"><span class="pre">default.xml</span></code>) roughly conforms to the
+following DTD:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE manifest [</span>
+<span class="cp">  &lt;!ELEMENT manifest (notice?,</span>
+<span class="cp">                      remote*,</span>
+<span class="cp">                      default?,</span>
+<span class="cp">                      manifest-server?,</span>
+<span class="cp">                      remove-project*,</span>
+<span class="cp">                      project*,</span>
+<span class="cp">                      extend-project*,</span>
+<span class="cp">                      repo-hooks?,</span>
+<span class="cp">                      include*)&gt;</span>
+
+  <span class="cp">&lt;!ELEMENT notice (#PCDATA)&gt;</span>
+
+  <span class="cp">&lt;!ELEMENT remote EMPTY&gt;</span>
+  <span class="cp">&lt;!ATTLIST remote name         ID    #REQUIRED&gt;</span>
+  <span class="cp">&lt;!ATTLIST remote alias        CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST remote fetch        CDATA #REQUIRED&gt;</span>
+  <span class="cp">&lt;!ATTLIST remote pushurl      CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST remote review       CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST remote revision     CDATA #IMPLIED&gt;</span>
+
+  <span class="cp">&lt;!ELEMENT default EMPTY&gt;</span>
+  <span class="cp">&lt;!ATTLIST default remote      IDREF #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST default revision    CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST default dest-branch CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST default upstream    CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST default sync-j      CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST default sync-c      CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST default sync-s      CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST default sync-tags   CDATA #IMPLIED&gt;</span>
+
+  <span class="cp">&lt;!ELEMENT manifest-server EMPTY&gt;</span>
+  <span class="cp">&lt;!ATTLIST manifest-server url CDATA #REQUIRED&gt;</span>
+
+  <span class="cp">&lt;!ELEMENT project (annotation*,</span>
+<span class="cp">                     project*,</span>
+<span class="cp">                     copyfile*,</span>
+<span class="cp">                     linkfile*)&gt;</span>
+  <span class="cp">&lt;!ATTLIST project name        CDATA #REQUIRED&gt;</span>
+  <span class="cp">&lt;!ATTLIST project path        CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST project remote      IDREF #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST project revision    CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST project dest-branch CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST project groups      CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST project sync-c      CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST project sync-s      CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST project sync-tags   CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST project upstream CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST project clone-depth CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST project force-path CDATA #IMPLIED&gt;</span>
+
+  <span class="cp">&lt;!ELEMENT annotation EMPTY&gt;</span>
+  <span class="cp">&lt;!ATTLIST annotation name  CDATA #REQUIRED&gt;</span>
+  <span class="cp">&lt;!ATTLIST annotation value CDATA #REQUIRED&gt;</span>
+  <span class="cp">&lt;!ATTLIST annotation keep  CDATA &quot;true&quot;&gt;</span>
+
+  <span class="cp">&lt;!ELEMENT copyfile EMPTY&gt;</span>
+  <span class="cp">&lt;!ATTLIST copyfile src  CDATA #REQUIRED&gt;</span>
+  <span class="cp">&lt;!ATTLIST copyfile dest CDATA #REQUIRED&gt;</span>
+
+  <span class="cp">&lt;!ELEMENT linkfile EMPTY&gt;</span>
+  <span class="cp">&lt;!ATTLIST linkfile src CDATA #REQUIRED&gt;</span>
+  <span class="cp">&lt;!ATTLIST linkfile dest CDATA #REQUIRED&gt;</span>
+
+  <span class="cp">&lt;!ELEMENT extend-project EMPTY&gt;</span>
+  <span class="cp">&lt;!ATTLIST extend-project name CDATA #REQUIRED&gt;</span>
+  <span class="cp">&lt;!ATTLIST extend-project path CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST extend-project groups CDATA #IMPLIED&gt;</span>
+  <span class="cp">&lt;!ATTLIST extend-project revision CDATA #IMPLIED&gt;</span>
+
+  <span class="cp">&lt;!ELEMENT remove-project EMPTY&gt;</span>
+  <span class="cp">&lt;!ATTLIST remove-project name  CDATA #REQUIRED&gt;</span>
+
+  <span class="cp">&lt;!ELEMENT repo-hooks EMPTY&gt;</span>
+  <span class="cp">&lt;!ATTLIST repo-hooks in-project CDATA #REQUIRED&gt;</span>
+  <span class="cp">&lt;!ATTLIST repo-hooks enabled-list CDATA #REQUIRED&gt;</span>
+
+  <span class="cp">&lt;!ELEMENT include EMPTY&gt;</span>
+  <span class="cp">&lt;!ATTLIST include name CDATA #REQUIRED&gt;</span>
+]&gt;
+</pre></div>
+</div>
+<p>A description of the elements and their attributes follows.</p>
+<div class="section" id="element-manifest">
+<h3>Element manifest<a class="headerlink" href="#element-manifest" title="永久链接至标题">¶</a></h3>
+<p>The root element of the file.</p>
+</div>
+<div class="section" id="element-remote">
+<h3>Element remote<a class="headerlink" href="#element-remote" title="永久链接至标题">¶</a></h3>
+<p>One or more remote elements may be specified.  Each remote element
+specifies a Git URL shared by one or more projects and (optionally)
+the Gerrit review server those projects upload changes through.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">name</span></code>: A short name unique to this manifest file.  The
+name specified here is used as the remote name in each project’s
+.git/config, and is therefore automatically available to commands
+like <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">alias</span></code>: The alias, if specified, is used to override
+<code class="docutils literal notranslate"><span class="pre">name</span></code> to be set as the remote name in each project’s .git/config.
+Its value can be duplicated while attribute <code class="docutils literal notranslate"><span class="pre">name</span></code> has to be unique
+in the manifest file. This helps each project to be able to have
+same remote name which actually points to different remote url.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">fetch</span></code>: The Git URL prefix for all projects which use
+this remote.  Each project’s name is appended to this prefix to
+form the actual URL used to clone the project.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">pushurl</span></code>: The Git “push” URL prefix for all projects
+which use this remote.  Each project’s name is appended to this
+prefix to form the actual URL used to “git push” the project.
+This attribute is optional; if not specified then “git push”
+will use the same URL as the <code class="docutils literal notranslate"><span class="pre">fetch</span></code> attribute.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">review</span></code>: Hostname of the Gerrit server where reviews
+are uploaded to by <code class="docutils literal notranslate"><span class="pre">repo</span> <span class="pre">upload</span></code>.  This attribute is optional;
+if not specified then <code class="docutils literal notranslate"><span class="pre">repo</span> <span class="pre">upload</span></code> will not function.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">revision</span></code>: Name of a Git branch (e.g. <code class="docutils literal notranslate"><span class="pre">master</span></code> or
+<code class="docutils literal notranslate"><span class="pre">refs/heads/master</span></code>). Remotes with their own revision will override
+the default revision.</p>
+</div>
+<div class="section" id="element-default">
+<h3>Element default<a class="headerlink" href="#element-default" title="永久链接至标题">¶</a></h3>
+<p>At most one default element may be specified.  Its remote and
+revision attributes are used when a project element does not
+specify its own remote or revision attribute.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">remote</span></code>: Name of a previously defined remote element.
+Project elements lacking a remote attribute of their own will use
+this remote.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">revision</span></code>: Name of a Git branch (e.g. <code class="docutils literal notranslate"><span class="pre">master</span></code> or
+<code class="docutils literal notranslate"><span class="pre">refs/heads/master</span></code>).  Project elements lacking their own
+revision attribute will use this revision.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">dest-branch</span></code>: Name of a Git branch (e.g. <code class="docutils literal notranslate"><span class="pre">master</span></code>).
+Project elements not setting their own <code class="docutils literal notranslate"><span class="pre">dest-branch</span></code> will inherit
+this value. If this value is not set, projects will use <code class="docutils literal notranslate"><span class="pre">revision</span></code>
+by default instead.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">upstream</span></code>: Name of the Git ref in which a sha1
+can be found.  Used when syncing a revision locked manifest in
+-c mode to avoid having to sync the entire ref space. Project elements
+not setting their own <code class="docutils literal notranslate"><span class="pre">upstream</span></code> will inherit this value.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">sync-j</span></code>: Number of parallel jobs to use when synching.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">sync-c</span></code>: Set to true to only sync the given Git
+branch (specified in the <code class="docutils literal notranslate"><span class="pre">revision</span></code> attribute) rather than the
+whole ref space.  Project elements lacking a sync-c element of
+their own will use this value.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">sync-s</span></code>: Set to true to also sync sub-projects.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">sync-tags</span></code>: Set to false to only sync the given Git
+branch (specified in the <code class="docutils literal notranslate"><span class="pre">revision</span></code> attribute) rather than
+the other ref tags.</p>
+</div>
+<div class="section" id="element-manifest-server">
+<h3>Element manifest-server<a class="headerlink" href="#element-manifest-server" title="永久链接至标题">¶</a></h3>
+<p>At most one manifest-server may be specified. The url attribute
+is used to specify the URL of a manifest server, which is an
+XML RPC service.</p>
+<p>The manifest server should implement the following RPC methods:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GetApprovedManifest</span><span class="p">(</span><span class="n">branch</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Return a manifest in which each project is pegged to a known good revision
+for the current branch and target. This is used by repo sync when the
+–smart-sync option is given.</p>
+<p>The target to use is defined by environment variables TARGET_PRODUCT
+and TARGET_BUILD_VARIANT. These variables are used to create a string
+of the form $TARGET_PRODUCT-$TARGET_BUILD_VARIANT, e.g. passion-userdebug.
+If one of those variables or both are not present, the program will call
+GetApprovedManifest without the target parameter and the manifest server
+should choose a reasonable default target.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GetManifest</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Return a manifest in which each project is pegged to the revision at
+the specified tag. This is used by repo sync when the –smart-tag option
+is given.</p>
+</div>
+<div class="section" id="element-project">
+<h3>Element project<a class="headerlink" href="#element-project" title="永久链接至标题">¶</a></h3>
+<p>One or more project elements may be specified.  Each element
+describes a single Git repository to be cloned into the repo
+client workspace.  You may specify Git-submodules by creating a
+nested project.  Git-submodules will be automatically
+recognized and inherit their parent’s attributes, but those
+may be overridden by an explicitly specified project element.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">name</span></code>: A unique name for this project.  The project’s
+name is appended onto its remote’s fetch URL to generate the actual
+URL to configure the Git remote with.  The URL gets formed as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${remote_fetch}/${project_name}.git
+</pre></div>
+</div>
+<p>where ${remote_fetch} is the remote’s fetch attribute and
+${project_name} is the project’s name attribute.  The suffix “.git”
+is always appended as repo assumes the upstream is a forest of
+bare Git repositories.  If the project has a parent element, its
+name will be prefixed by the parent’s.</p>
+<p>The project name must match the name Gerrit knows, if Gerrit is
+being used for code reviews.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">path</span></code>: An optional path relative to the top directory
+of the repo client where the Git working directory for this project
+should be placed.  If not supplied the project name is used.
+If the project has a parent element, its path will be prefixed
+by the parent’s.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">remote</span></code>: Name of a previously defined remote element.
+If not supplied the remote given by the default element is used.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">revision</span></code>: Name of the Git branch the manifest wants
+to track for this project.  Names can be relative to refs/heads
+(e.g. just “master”) or absolute (e.g. “refs/heads/master”).
+Tags and/or explicit SHA-1s should work in theory, but have not
+been extensively tested.  If not supplied the revision given by
+the remote element is used if applicable, else the default
+element is used.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">dest-branch</span></code>: Name of a Git branch (e.g. <code class="docutils literal notranslate"><span class="pre">master</span></code>).
+When using <code class="docutils literal notranslate"><span class="pre">repo</span> <span class="pre">upload</span></code>, changes will be submitted for code
+review on this branch. If unspecified both here and in the
+default element, <code class="docutils literal notranslate"><span class="pre">revision</span></code> is used instead.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">groups</span></code>: List of groups to which this project belongs,
+whitespace or comma separated.  All projects belong to the group
+“all”, and each project automatically belongs to a group of
+its name:<code class="docutils literal notranslate"><span class="pre">name</span></code> and path:<code class="docutils literal notranslate"><span class="pre">path</span></code>.  E.g. for
+<project name="monkeys" path="barrel-of"/>, that project
+definition is implicitly in the following manifest groups:
+default, name:monkeys, and path:barrel-of.  If you place a project in the
+group “notdefault”, it will not be automatically downloaded by repo.
+If the project has a parent element, the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">path</span></code> here
+are the prefixed ones.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">sync-c</span></code>: Set to true to only sync the given Git
+branch (specified in the <code class="docutils literal notranslate"><span class="pre">revision</span></code> attribute) rather than the
+whole ref space.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">sync-s</span></code>: Set to true to also sync sub-projects.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">upstream</span></code>: Name of the Git ref in which a sha1
+can be found.  Used when syncing a revision locked manifest in
+-c mode to avoid having to sync the entire ref space.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">clone-depth</span></code>: Set the depth to use when fetching this
+project.  If specified, this value will override any value given
+to repo init with the –depth option on the command line.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">force-path</span></code>: Set to true to force this project to create the
+local mirror repository according to its <code class="docutils literal notranslate"><span class="pre">path</span></code> attribute (if supplied)
+rather than the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute.  This attribute only applies to the
+local mirrors syncing, it will be ignored when syncing the projects in a
+client working directory.</p>
+</div>
+<div class="section" id="element-extend-project">
+<h3>Element extend-project<a class="headerlink" href="#element-extend-project" title="永久链接至标题">¶</a></h3>
+<p>Modify the attributes of the named project.</p>
+<p>This element is mostly useful in a local manifest file, to modify the
+attributes of an existing project without completely replacing the
+existing project definition.  This makes the local manifest more robust
+against changes to the original manifest.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">path</span></code>: If specified, limit the change to projects checked out
+at the specified path, rather than all projects with the given name.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">groups</span></code>: List of additional groups to which this project
+belongs.  Same syntax as the corresponding element of <code class="docutils literal notranslate"><span class="pre">project</span></code>.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">revision</span></code>: If specified, overrides the revision of the original
+project.  Same syntax as the corresponding element of <code class="docutils literal notranslate"><span class="pre">project</span></code>.</p>
+</div>
+<div class="section" id="element-annotation">
+<h3>Element annotation<a class="headerlink" href="#element-annotation" title="永久链接至标题">¶</a></h3>
+<p>Zero or more annotation elements may be specified as children of a
+project element. Each element describes a name-value pair that will be
+exported into each project’s environment during a ‘forall’ command,
+prefixed with REPO__.  In addition, there is an optional attribute
+“keep” which accepts the case insensitive values “true” (default) or
+“false”.  This attribute determines whether or not the annotation will
+be kept when exported with the manifest subcommand.</p>
+</div>
+<div class="section" id="element-copyfile">
+<h3>Element copyfile<a class="headerlink" href="#element-copyfile" title="永久链接至标题">¶</a></h3>
+<p>Zero or more copyfile elements may be specified as children of a
+project element. Each element describes a src-dest pair of files;
+the “src” file will be copied to the “dest” place during <code class="docutils literal notranslate"><span class="pre">repo</span> <span class="pre">sync</span></code>
+command.
+“src” is project relative, “dest” is relative to the top of the tree.</p>
+</div>
+<div class="section" id="element-linkfile">
+<h3>Element linkfile<a class="headerlink" href="#element-linkfile" title="永久链接至标题">¶</a></h3>
+<p>It’s just like copyfile and runs at the same time as copyfile but
+instead of copying it creates a symlink.</p>
+</div>
+<div class="section" id="element-remove-project">
+<h3>Element remove-project<a class="headerlink" href="#element-remove-project" title="永久链接至标题">¶</a></h3>
+<p>Deletes the named project from the internal manifest table, possibly
+allowing a subsequent project element in the same manifest file to
+replace the project with a different source.</p>
+<p>This element is mostly useful in a local manifest file, where
+the user can remove a project, and possibly replace it with their
+own definition.</p>
+</div>
+<div class="section" id="element-include">
+<h3>Element include<a class="headerlink" href="#element-include" title="永久链接至标题">¶</a></h3>
+<p>This element provides the capability of including another manifest
+file into the originating manifest.  Normal rules apply for the
+target manifest to include - it must be a usable manifest on its own.</p>
+<p>Attribute <code class="docutils literal notranslate"><span class="pre">name</span></code>: the manifest to include, specified relative to
+the manifest repository’s root.</p>
+</div>
+</div>
+<div class="section" id="local-manifests">
+<h2>Local Manifests<a class="headerlink" href="#local-manifests" title="永久链接至标题">¶</a></h2>
+<p>Additional remotes and projects may be added through local manifest
+files stored in <code class="docutils literal notranslate"><span class="pre">$TOP_DIR/.repo/local_manifests/*.xml</span></code>.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls .repo/local_manifests
+local_manifest.xml
+another_local_manifest.xml
+
+$ cat .repo/local_manifests/local_manifest.xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;manifest&gt;
+  &lt;project path=&quot;manifest&quot;
+           name=&quot;tools/manifest&quot; /&gt;
+  &lt;project path=&quot;platform-manifest&quot;
+           name=&quot;platform/manifest&quot; /&gt;
+&lt;/manifest&gt;
+</pre></div>
+</div>
+<p>Users may add projects to the local manifest(s) prior to a <code class="docutils literal notranslate"><span class="pre">repo</span> <span class="pre">sync</span></code>
+invocation, instructing repo to automatically download and manage
+these extra projects.</p>
+<p>Manifest files stored in <code class="docutils literal notranslate"><span class="pre">$TOP_DIR/.repo/local_manifests/*.xml</span></code> will
+be loaded in alphabetical order.</p>
+<p>Additional remotes and projects may also be added through a local
+manifest, stored in <code class="docutils literal notranslate"><span class="pre">$TOP_DIR/.repo/local_manifest.xml</span></code>. This method
+is deprecated in favor of using multiple manifest files as mentioned
+above.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">$TOP_DIR/.repo/local_manifest.xml</span></code> exists, it will be loaded before
+any manifest files stored in <code class="docutils literal notranslate"><span class="pre">$TOP_DIR/.repo/local_manifests/*.xml</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

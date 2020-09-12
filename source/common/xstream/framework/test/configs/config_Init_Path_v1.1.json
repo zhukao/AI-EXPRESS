@@ -1,0 +1,22 @@
+{
+    "version": "1.1",
+    "workflows": [
+      {
+        "name": "main",
+			  "type": "workflow",
+			  "inputs": ["global_in"],
+		  	"outputs": ["global_out"],
+		  	"workflow": [
+          {
+            "type": "node",
+            "thread_count": 3,
+            "method_type": "TestInitMethod",
+            "unique_name": "test_method",
+            "inputs": ["global_in"],
+            "outputs": ["global_out"],
+            "method_config": "@include: ./method_config_file.json"
+          }
+        ]
+      }
+    ]
+}

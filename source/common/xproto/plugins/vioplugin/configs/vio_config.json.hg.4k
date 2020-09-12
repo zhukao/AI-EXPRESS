@@ -1,0 +1,22 @@
+{
+  "cam_type": "mono",
+  "data_source": "x2_4k",
+  "max_vio_buffer": 7,
+  "ts_type": "frame_id",
+  "file_path": "configs/vio_hg/name.list",
+  "image_list": ["face_body_multisource/configs/images/image-001.jpeg", "face_body_multisource/configs/images/image-002.jpeg", "face_body_multisource/configs/images/image-001.jpeg", "face_body_multisource/configs/images/image-002.jpeg"],
+  "interval": 20,
+  "pad_width": 1920,
+  "pad_height": 1080,
+  "is_4k": 1,
+  "4k_file": "configs/picture/4k.jpg",
+  "vio_cfg_file": {
+    "ipc_camera": "configs/vio/hb_vio.json",
+    "panel_camera": "configs/vio/panel_camera.json.96board",
+    "jpeg_image_list": "configs/vio/vio_onsemi0230_fb.json",
+    "nv12_image_list": "configs/vio/vio_onsemi0230_fb.json",
+    "x2_4k": "configs/vio/vio_mipi2160p.json",
+    "image": "configs/vio/vio_onsemi0230_fb.json",
+    "cached_image_list": "configs/vio/vio_onsemi0230_fb.json"
+  }
+}

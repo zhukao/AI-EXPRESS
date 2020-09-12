@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>smart plugin sample &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/language_data.js"></script>
+        <script src="../../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>smart plugin sample</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../_sources/xsdk/common/xproto/plugins/smartplugin/sample/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="smart-plugin-sample">
+<h1>smart plugin sample<a class="headerlink" href="#smart-plugin-sample" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>背景<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>smart_main.cpp基于smartplugin和vioplugin运行workflow，验证和展示method能力。目前vio有两种输入方式，一种是通过sensor从真实场景获取图像，另一种是在cp端采用回灌方式输入用户预先准备的图片。</p>
+</div>
+<div class="section" id="id2">
+<h2>回灌的意义<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>回灌就是阻断从sensor获取图片的路径，改为输入用户预先准备的图片。这样保证了每次的输入都是相同的，便于算法效果验证。另外，回灌也是人脸识别应用场景中本地图片注册入库的输入方法。</p>
+</div>
+<div class="section" id="id3">
+<h2>如何回灌<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>在smart_main.cpp程序中会读取vio配置vio_config.json，根据配置选择输入方式。当前配置内容如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+ // 镜头类型，单目或双目
+  &quot;cam_type&quot;: &quot;mono&quot;,
+  // 输入源类型:
+  // ipc_camera：ipc等后接场景，输入通常为bt1120
+  // panel_camera: 面板机等前接场景，输入通常为mipi
+  // jpeg_image_list:jpeg格式的回灌图片
+  // nv12_image_list:nv12格式回灌图片
+  &quot;data_source&quot;: &quot;ipc_camera&quot;,
+  // 控制Vio送数上限，最大缓存数量
+  &quot;max_vio_buffer&quot;: 3,
+  // vio时间戳类型：
+  // input_coded: 通过y图的前16个字节的编码获得时间戳，通常用于ipc等后接场景
+  // frame_id: 读取vio数据结构的frame_id字段作为时间戳，96board等使用该配置
+  // raw_ts: 读取vio数据结构中的timestamp字段作为时间戳，面板机standalone方案使用该类型
+  &quot;ts_type&quot;: &quot;input_coded&quot;,
+  // 回灌name.list
+  &quot;file_path&quot;: &quot;name.list&quot;,
+  // jpeg回灌时图片对齐参数
+  &quot;pad_width&quot;: 1920,
+  &quot;pad_height&quot;: 1080,
+  // 对应每种输入源的详细配置文件
+  &quot;vio_cfg_file&quot;: {
+    &quot;ipc_camera&quot;: &quot;configs/vio/hb_vio.json&quot;,
+    &quot;panel_camera&quot;: &quot;configs/vio/panel_camera.json&quot;,
+    &quot;jpeg_image_list&quot;: &quot;configs/vio/vio_onsemi0230_fb.json&quot;,
+    &quot;nv12_image_list&quot;: &quot;configs/vio/vio_onsemi0230_fb.json&quot;,
+    &quot;image&quot;: &quot;configs/vio/vio_onsemi0230_fb.json&quot;
+  }
+}
+</pre></div>
+</div>
+<p>举一例说明如何进行回灌测试，如果用户需要回灌3张jpeg图片，图片在./configs/picture下,如图所示：</p>
+<p><img alt="picture" src="xsdk/common/xproto/plugins/smartplugin/sample/./doc/images/picture_dir.png" /></p>
+<ul class="simple">
+<li><p>1）首先到./configs/picture下生成图片列表文件，执行以下命令：
+ls | sed “s:^:<code class="docutils literal notranslate"><span class="pre">pwd</span></code>/:” &gt; ../name.list
+将图片路径保存在./configs/name.list,结果如图:</p></li>
+</ul>
+<p><img alt="namelist" src="xsdk/common/xproto/plugins/smartplugin/sample/./doc/images/namelist.png" /></p>
+<ul class="simple">
+<li><p>2）修改vio_config.json文件
+vio_coonfig.json配置文件修改如下</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;cam_type&quot;</span><span class="p">:</span> <span class="s2">&quot;mono&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;data_source&quot;</span><span class="p">:</span> <span class="s2">&quot;jpeg_image_list&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;max_vio_buffer&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="s2">&quot;ts_type&quot;</span><span class="p">:</span> <span class="s2">&quot;frame_id&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;file_path&quot;</span><span class="p">:</span> <span class="s2">&quot;configs/name.list&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pad_width&quot;</span><span class="p">:</span> <span class="mi">1920</span><span class="p">,</span>
+  <span class="s2">&quot;pad_height&quot;</span><span class="p">:</span> <span class="mi">1080</span><span class="p">,</span>
+  <span class="s2">&quot;vio_cfg_file&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;jpeg_image_list&quot;</span><span class="p">:</span> <span class="s2">&quot;configs/vio/vio_onsemi0230_fb.json&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>3）执行./smart_main ./config/smart_config.json即可进行回灌测试。</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

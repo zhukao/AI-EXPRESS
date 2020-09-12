@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SnapshotMethod &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>SnapshotMethod</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/xsdk/solution_zoo/xstream/methods/snapshotmethod/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="snapshotmethod">
+<h1>SnapshotMethod<a class="headerlink" href="#snapshotmethod" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>抓拍Method，用于人脸优选、抠图。</p>
+</div>
+<div class="section" id="id2">
+<h2>输入<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Slot</th>
+<th align="center">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">img_frame</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">box_list</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">select_score_list</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">disappeared_track_id_list</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">userdata_list1</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">userdata_list2</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">userdata_list...</td>
+<td align="center">可选项</td>
+</tr>
+</tbody>
+</table><p>从slot4开始，可输入userdata_list，要求list的数目要和slot1中box_list数目对齐，用以透传用户数据，位于snap_list中</p>
+</div>
+<div class="section" id="id3">
+<h2>输出<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Slot</th>
+<th align="center">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">snap_list</td>
+<td align="center">带track_id</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">snap_state</td>
+<td align="center">带track_id</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id4">
+<h2>补充说明<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>内部有状态机来存储每个track的抓拍信息</p></li>
+<li><p>该Method支持workflow多实例，method_info.is_thread_safe_ = false，method_info.is_need_reorder = true。</p></li>
+</ul>
+</div>
+<div class="section" id="update-history">
+<h2>Update History<a class="headerlink" href="#update-history" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Date</th>
+<th align="center">Ver.</th>
+<th align="center">Change Log</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">20191012</td>
+<td align="center">N/A</td>
+<td align="center">增加了抓拍上报类型，修改配置文件vanish_post_flag字段为report_flushed_track_flag，增加了上报非该帧目标的选项</td>
+</tr>
+<tr>
+<td align="center">20200106</td>
+<td align="center">N/A</td>
+<td align="center">修复抓拍状态上报问题</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id5">
+<h2>配置文件参数<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">字段</th>
+<th align="center">描述</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">snapshot_type</td>
+<td align="center">抓拍工作模式，first_num_best为最优图抓拍，crop为抠图抓拍</td>
+<td align="center">first_num_best</td>
+</tr>
+<tr>
+<td align="center">scale_rate</td>
+<td align="center">外扩系数</td>
+<td align="center">1.6</td>
+</tr>
+<tr>
+<td align="center">need_resize</td>
+<td align="center">是否需要对抓拍图resize：置为true根据output_width和output_height输出外扩后的resize图像，置为false输出快扩后的原图</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">output_width</td>
+<td align="center">抓拍图输出宽度，仅当need_resize为true生效</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="center">output_height</td>
+<td align="center">抓拍图输出高度，仅当need_resize为true生效</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="center">update_steps</td>
+<td align="center">更新步长，新抓拍得分 - update_steps &gt; 状态机抓拍图得分才更新状态机抓拍图</td>
+<td align="center">50</td>
+</tr>
+<tr>
+<td align="center">snaps_per_track</td>
+<td align="center">每个track抓拍张数</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">max_tracks</td>
+<td align="center">状态机保留最大track数</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="center">max_crop_num_per_frame</td>
+<td align="center">每帧最大抠图数</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">smoothing_frame_range</td>
+<td align="center">avg_crop_num_per_frame计算帧数</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">avg_crop_num_per_frame</td>
+<td align="center">平均每帧抠图数</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">begin_post_frame_thr</td>
+<td align="center">开始抓拍帧数阈值</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">reshape_value</td>
+<td align="center">重抓拍数，当reshape_value &gt; begin_post_frame_thr才会开启重抓拍，默认关闭</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">snapshot_state_enable</td>
+<td align="center">抓拍状态输出结果使能</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="center">save_original_image_frame</td>
+<td align="center">是否保持原始图像帧数据：置为true，抓拍图里的origin_image_frame会被赋值原始图像帧引用，置为false会重新构造一个未包含原始图像帧数据的ImageFrame</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">report_flushed_track_flag</td>
+<td align="center">是否在外部flush track时触发抓拍</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="center">out_date_target_post_flag</td>
+<td align="center">是否允许上报非该帧目标</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">repeat_post_flag</td>
+<td align="center">同一个track是否希望多次被不同触发条件上报</td>
+<td align="center">false</td>
+</tr>
+</tbody>
+</table><p>out_date_target_post_flag:</p>
+<p>false: 只上报当前帧 &amp;&amp; 通过过滤的框（面板机场景采用该方案）</p>
+<p>true: 上报所有触发抓拍的目标，该目标可能在当前帧，但是被过滤掉（X1的IPC已经采用该方案）</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

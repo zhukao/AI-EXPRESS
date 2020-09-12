@@ -1,0 +1,61 @@
+{
+    "inputs": [
+      "face_box",
+      "pyramid"
+    ],
+    "outputs": [
+      "face_box",
+      "blur",
+      "brightness",
+      "eye_abnormalities",
+      "mouth_abnormal",
+      "left_eye",
+      "right_eye",
+      "left_brow",
+      "right_brow",
+      "forehead",
+      "left_cheek",
+      "right_check",
+      "nose",
+      "mouse",
+      "jaw"
+    ],
+    "workflow": [
+      {
+        "unique_name": "img_pre",
+        "method_type": "CNNImgPreMethod",
+        "inputs": [
+          "face_box",
+          "pyramid"
+        ],
+        "outputs": [
+          "cnn_run_data"
+        ],
+        "method_config_file": "method_conf/face_quality.json"
+      },
+      {
+        "unique_name": "quality_post",
+        "method_type": "CNNQualityPostMethod",
+        "inputs": [
+          "cnn_run_data"
+        ],
+        "outputs": [
+          "blur",
+          "brightness",
+          "eye_abnormalities",
+          "mouth_abnormal",
+          "left_eye",
+          "right_eye",
+          "left_brow",
+          "right_brow",
+          "forehead",
+          "left_cheek",
+          "right_check",
+          "nose",
+          "mouse",
+          "jaw"
+        ],
+        "method_config_file": "method_conf/face_quality.json"
+      } 
+    ]
+  }

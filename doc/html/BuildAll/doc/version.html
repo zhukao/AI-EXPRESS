@@ -1,0 +1,544 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Release Notes &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="版权声明" href="copyright.html" />
+    <link rel="prev" title="常见问题" href="faq.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">常见问题</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v2-4-0">V2.4.0版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#release-date">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-3-1">V2.3.1版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-3-0">V2.3.0版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bugfixs">Bugfixs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-2-2">V2.2.2版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Bugfixs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-2-1">V2.2.1版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Bugfixs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-2-0">V2.2.0版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-1-0">V2.1.0版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Bugfixs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-0-1">v2.0.1版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Bugfixs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-0-0">v2.0.0版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">Bugfixs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-0-0">v1.0.0版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">Bugfixs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-9-5">v0.9.5版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id25">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">Bugfixs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-9-4">v0.9.4版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id28">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">Bugfixs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-9-0">v0.9.0版本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id31">Release Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">Bugfixs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Release Notes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/BuildAll/doc/version.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="release-notes">
+<h1>Release Notes<a class="headerlink" href="#release-notes" title="永久链接至标题">¶</a></h1>
+<div class="section" id="v2-4-0">
+<h2>V2.4.0版本<a class="headerlink" href="#v2-4-0" title="永久链接至标题">¶</a></h2>
+<div class="section" id="release-date">
+<h3>Release Date<a class="headerlink" href="#release-date" title="永久链接至标题">¶</a></h3>
+<p>2020/08/11</p>
+</div>
+<div class="section" id="features">
+<h3>Features<a class="headerlink" href="#features" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>升级bpu-predict，与芯片基础工具链3.7.0版本对齐</p></li>
+<li><p>升级系统镜像至0808版本</p></li>
+<li><p>支持接入usb camera</p></li>
+<li><p>完善usb camera功能，支持分辨率与图像格式动态切换、修复uvc相关稳定性问题</p></li>
+<li><p>使用Python接口，对接AIDI平台</p></li>
+<li><p>X3小板子支持接入os8a10 这款mipi sensor</p></li>
+<li><p>X3小板子支持接入usb camera</p></li>
+<li><p>新增手检测、手关键点检测、手势识别，新增手势识别solution</p></li>
+<li><p>新增多路视频盒子solution</p></li>
+<li><p>web客户端优化：优化人体分割的展示效果、新增预测的得分显示</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-3-1">
+<h2>V2.3.1版本<a class="headerlink" href="#v2-3-1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id1">
+<h3>Release Date<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<p>2020/07/31</p>
+</div>
+<div class="section" id="id2">
+<h3>Features<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>支持X3 bpu-predict新接口</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-3-0">
+<h2>V2.3.0版本<a class="headerlink" href="#v2-3-0" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h3>Release Date<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>2020/07/10</p>
+</div>
+<div class="section" id="id4">
+<h3>Features<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>支持X3类海思接口回灌</p></li>
+<li><p>Web统一展示端重构优化，Target属性增加value_string输出，分割结果展示</p></li>
+<li><p>支持X3 JPEG编码功能</p></li>
+<li><p>AI Express 项目开源，X2与X3整体打包在一起、去除代码、模型以及配置中的一些外部客户信息</p></li>
+<li><p>更新uvc库</p></li>
+<li><p>模型预测，只依赖bpu-predict对外数据结构与接口，去掉对hbrt接口的直接调用，以及bpu-predict部分内部接口的调用</p></li>
+<li><p>升级bpu-predict，与芯片基础工具链3.6.0版本对齐</p></li>
+</ul>
+</div>
+<div class="section" id="bugfixs">
+<h3>Bugfixs<a class="headerlink" href="#bugfixs" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>修复xwarehouse示例中特征比较相似度为0的问题</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-2-2">
+<h2>V2.2.2版本<a class="headerlink" href="#v2-2-2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id5">
+<h3>Release Date<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>2020/07/01</p>
+</div>
+<div class="section" id="id6">
+<h3>Features<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>vehicle solution定制化开发：新增V2版本多任务和车型模型，新增V2版本workflow</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>Bugfixs<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>无</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-2-1">
+<h2>V2.2.1版本<a class="headerlink" href="#v2-2-1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id8">
+<h3>Release Date<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>2020/06/19</p>
+</div>
+<div class="section" id="id9">
+<h3>Features<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>USB Camera功能稳定性优化: 支持将X3开发板，通过USB接口接到AP上，AP通过UVC/HID拿到图像与智能结果</p></li>
+<li><p>添加年龄、性别、口罩模型：在face_solution、body_solution中添加年龄性别以及口罩检测，支持X2与X3</p></li>
+<li><p>框架层面支持json初始化Method：具体Method的初始化实现后续支持</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>Bugfixs<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>修复solution退出问题：修复程序退出不能完全释放资源</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-2-0">
+<h2>V2.2.0版本<a class="headerlink" href="#v2-2-0" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id11">
+<h3>Release Date<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>2020/06/13</p>
+</div>
+<div class="section" id="id12">
+<h3>Features<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>适配X3模型: 基于hbdk3.7.10，提供X3版本模型;基于bpu-predict master分支，bpu-predict第一套接口进行模型预测;适配FasterRCNNMethod以及CNNMethod等预测Method，同时支持X2与X3;适配SSDMethod，同时支持X2和X3</p></li>
+<li><p>适配X3 VIO: 支持X3系统软件原生vio接口，获取camera图像以及图像回灌;支持X3媒体库接口获取camera图像;适配imx327（1080p），os8a10(2160p)，s5kgm（2160p与4000x3000);封装VIOWrapper，支持X2/X3接口统一调用</p></li>
+<li><p>现有Solution支持X3平台: 现有face_solution， face_recog solution，body solution, vehicle solution， face_body_multisource能够正常在X3上运行</p></li>
+<li><p>web统一客户端: 现有solution的结果展示切换到web 统一客户端， 能够显示视频、检测结果、属性分类、关键点结果</p></li>
+<li><p>新增人体行为分析solution: 集成人体多任务检测，人体摔倒模型，支持举手、站立、下蹲等策略分析。支持X2与X3</p></li>
+<li><p>新增体感游戏solution: 集成人体多任务检测，人体特征提取，人体行为三个模型，web客户端展示游戏界面，支持CrappyBird和PandaRun两个游戏。支持X2与X3</p></li>
+<li><p>新增USB Camera功能: 支持将X3开发板，通过USB接口接到AP上，AP通过UVC/HID拿到图像与智能结果。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-1-0">
+<h2>V2.1.0版本<a class="headerlink" href="#v2-1-0" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id13">
+<h3>Release Date<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>2020/05/08</p>
+</div>
+<div class="section" id="id14">
+<h3>Features<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>各个功能模块新增测试用例，提升代码覆盖率。</p></li>
+<li><p>重构XStream Profile功能模块，完善profile能力，支持profile结果可视化查看。</p></li>
+<li><p>新增xproto python api、 xstream python api。</p></li>
+<li><p>提供PC端展示工具，可以直观展示solution zoo运行结果。</p></li>
+<li><p>完善子模块readme。</p></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h3>Bugfixs<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+</div>
+<div class="section" id="v2-0-1">
+<h2>v2.0.1版本<a class="headerlink" href="#v2-0-1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id16">
+<h3>Release Date<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p>2020/04/30</p>
+</div>
+<div class="section" id="id17">
+<h3>Features<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>将hbrt运行时库从3.3.5升级到3.5.3最新版本。</p></li>
+<li><p>将依赖的模型使用hbdk-cc 3.7.10重新编译。</p></li>
+<li><p>solution_zoo中新增ssdmethod，用于ssd模型的运行。model zoo中提供了ssd模型，发布包中提供了SSDMethod的源码以及测试程序。客户可以基于工具链3.4.0，自行训练ssd模型。</p></li>
+<li><p>xproto中新增hbipcplugin的代码。</p></li>
+</ul>
+</div>
+<div class="section" id="id18">
+<h3>Bugfixs<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+</div>
+<div class="section" id="v2-0-0">
+<h2>v2.0.0版本<a class="headerlink" href="#v2-0-0" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id19">
+<h3>Release Date<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<p>2020/04/10</p>
+</div>
+<div class="section" id="id20">
+<h3>Features<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>XRoc&amp;XPP整体升级为AI Express应用开发中间件，并纳入OpenExplorer天工开物AI开发平台体系。</p></li>
+<li><p>支持多通道输入多Workflow数据流方案，并新增AI盒子场景参考方案。</p></li>
+<li><p>人脸结构化参考方案升级，新增人脸识别workflow</p></li>
+<li><p>新增两个工具集：数据流可视化工具和python-workflow构建工具。</p></li>
+</ul>
+</div>
+<div class="section" id="id21">
+<h3>Bugfixs<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+</div>
+<div class="section" id="v1-0-0">
+<h2>v1.0.0版本<a class="headerlink" href="#v1-0-0" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id22">
+<h3>Release Date<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<p>2020/03/20</p>
+</div>
+<div class="section" id="id23">
+<h3>Features<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>支持基于hobotsdk engine的XRoc-framework.</p></li>
+<li><p>重构vehicle相关CNN处理，添加了VehicleImgInputPredictor前处理方式．</p></li>
+<li><p>扩充CNN前处理Normalize方式，以支持vehicle相关CNN.</p></li>
+<li><p>补充vehicle solution UT测试用例.</p></li>
+<li><p>文档完善．</p></li>
+</ul>
+</div>
+<div class="section" id="id24">
+<h3>Bugfixs<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>解决车辆因模型重复load，无法平滑退出的问题．</p></li>
+<li><p>清理子repo冗余cmake标志．</p></li>
+<li><p>单目情况下将96board vio可用slot数量从３改为７，以降低丢帧率．</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v0-9-5">
+<h2>v0.9.5版本<a class="headerlink" href="#v0-9-5" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id25">
+<h3>Release Date<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
+<p>2020/03/19</p>
+</div>
+<div class="section" id="id26">
+<h3>Features<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>智能生态沉淀：vehicle Solution方案更新多任务模型．</p></li>
+</ul>
+</div>
+<div class="section" id="id27">
+<h3>Bugfixs<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+</div>
+<div class="section" id="v0-9-4">
+<h2>v0.9.4版本<a class="headerlink" href="#v0-9-4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id28">
+<h3>Release Date<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
+<p>2020/03/06</p>
+</div>
+<div class="section" id="id29">
+<h3>Features<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>智能生态沉淀：增加vehicle Solution方案．</p></li>
+</ul>
+</div>
+<div class="section" id="id30">
+<h3>Bugfixs<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+</div>
+<div class="section" id="v0-9-0">
+<h2>v0.9.0版本<a class="headerlink" href="#v0-9-0" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id31">
+<h3>Release Date<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
+<p>2020/02/29</p>
+</div>
+<div class="section" id="id32">
+<h3>Features<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>智能生态沉淀：提供人脸抓拍识别，人体检测及关键点Solution方案供用户参考．</p></li>
+<li><p>开源XStream framework, XProto framework等.</p></li>
+<li><p>提供Method zoo，其中包含FasterrcnnMethod、CNNMethod等模型处理方法，及人脸、人体Solution相关策略方法．</p></li>
+<li><p>提供XProto Plugins, 其中包括VioPlugin（Vio处理模块）、SmartPlugin(智能处理模块)等．</p></li>
+<li><p>组织AI Express相关文档．</p></li>
+<li><p>提供96board　cp定制镜像，以支持hbdk3.</p></li>
+<li><p>构建基于CMake的源码依赖编译框架．</p></li>
+</ul>
+</div>
+<div class="section" id="id33">
+<h3>Bugfixs<a class="headerlink" href="#id33" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

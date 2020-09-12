@@ -1,0 +1,23 @@
+{
+    "max_running_count": 10000,
+    "inputs": [
+      "global_in"
+    ],
+    "outputs": [
+      "global_out"
+    ],
+    "workflow": [
+      {
+        "thread_count": 3,
+        "method_type": "TestInitMethod",
+        "unique_name": "test_method",
+        "inputs": [
+          "global_in"
+        ],
+        "outputs": [
+          "global_out"
+        ],
+        "method_config_file": "method_config_file.json"
+      }
+    ]
+  }

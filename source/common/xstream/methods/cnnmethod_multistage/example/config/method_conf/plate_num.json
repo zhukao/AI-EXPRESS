@@ -1,0 +1,14 @@
+{
+  "model_name": "plate_num_v2.0",
+  "model_file_path": "../models/plate_num_v2.0.hbm",
+  "bpu_config_path": "../configs/bpu_config.json",
+  "in_msg_type": "img",
+  "post_fn": "plate_num",
+  "norm_method": "norm_by_nothing",
+  "filter_method": "no_filter",
+  "expand_scale": 1,
+  "output_size": 1,
+  "output_names": ["plate_num"],
+  "enable_conformance_test": 0,
+  "conformance_log_file": "plate_info.log"
+}

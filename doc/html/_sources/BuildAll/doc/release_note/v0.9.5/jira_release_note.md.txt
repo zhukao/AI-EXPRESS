@@ -1,0 +1,8 @@
+# 版本说明  版本 0.9.5
+                                                                                         
+<h2>        任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-272'>XPPXROC-272</a>] -         集成新的车辆检测模型
+</li>
+</ul>

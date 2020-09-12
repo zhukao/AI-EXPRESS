@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>aidi_userauth &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>aidi_userauth</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/models/aidi-openapi/userauth/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="aidi-userauth">
+<h1>aidi_userauth<a class="headerlink" href="#aidi-userauth" title="永久链接至标题">¶</a></h1>
+<p>the purpose of this application is to provide an application that is using plain go code to define an API  This should demonstrate all the possible comment annotations that are available to turn go code into a fully compliant swagger 2.0 spec</p>
+<p>This Python package is automatically generated by the <a class="reference external" href="https://github.com/swagger-api/swagger-codegen">Swagger Codegen</a> project:</p>
+<ul class="simple">
+<li><p>API version: 0.0.1</p></li>
+<li><p>Package version: 1.0.1</p></li>
+<li><p>Build package: io.swagger.codegen.languages.PythonClientCodegen</p></li>
+</ul>
+<div class="section" id="requirements">
+<h2>Requirements.<a class="headerlink" href="#requirements" title="永久链接至标题">¶</a></h2>
+<p>Python 2.7 and 3.4+</p>
+</div>
+<div class="section" id="installation-usage">
+<h2>Installation &amp; Usage<a class="headerlink" href="#installation-usage" title="永久链接至标题">¶</a></h2>
+<div class="section" id="pip-install">
+<h3>pip install<a class="headerlink" href="#pip-install" title="永久链接至标题">¶</a></h3>
+<p>If the python package is hosted on Github, you can install directly from Github</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
+</pre></div>
+</div>
+<p>(you may need to run <code class="docutils literal notranslate"><span class="pre">pip</span></code> with root permission: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git</span></code>)</p>
+<p>Then import the package:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">aidi_userauth</span> 
+</pre></div>
+</div>
+</div>
+<div class="section" id="setuptools">
+<h3>Setuptools<a class="headerlink" href="#setuptools" title="永久链接至标题">¶</a></h3>
+<p>Install via <a class="reference external" href="http://pypi.python.org/pypi/setuptools">Setuptools</a>.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python setup.py install --user
+</pre></div>
+</div>
+<p>(or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code> to install the package for all users)</p>
+<p>Then import the package:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">aidi_userauth</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="永久链接至标题">¶</a></h2>
+<p>Please follow the <a class="reference external" href="#installation--usage">installation procedure</a> and then run the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">aidi_userauth</span>
+<span class="kn">from</span> <span class="nn">aidi_userauth.rest</span> <span class="kn">import</span> <span class="n">ApiException</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="c1"># Configure API key authorization: api_key</span>
+<span class="n">configuration</span> <span class="o">=</span> <span class="n">aidi_userauth</span><span class="o">.</span><span class="n">Configuration</span><span class="p">()</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s1">&#39;X-Forwarded-User&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;YOUR_API_KEY&#39;</span>
+<span class="c1"># Uncomment below to setup prefix (e.g. Bearer) for API key, if needed</span>
+<span class="c1"># configuration.api_key_prefix[&#39;X-Forwarded-User&#39;] = &#39;Bearer&#39;</span>
+
+<span class="c1"># create an instance of the API class</span>
+<span class="n">api_instance</span> <span class="o">=</span> <span class="n">aidi_userauth</span><span class="o">.</span><span class="n">UserinfoApi</span><span class="p">(</span><span class="n">aidi_userauth</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">))</span>
+<span class="n">body</span> <span class="o">=</span> <span class="n">aidi_userauth</span><span class="o">.</span><span class="n">BaseReq</span><span class="p">()</span> <span class="c1"># BaseReq |  (optional)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Get user detailed info.</span>
+    <span class="n">api_response</span> <span class="o">=</span> <span class="n">api_instance</span><span class="o">.</span><span class="n">get_user_info</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">)</span>
+    <span class="n">pprint</span><span class="p">(</span><span class="n">api_response</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ApiException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exception when calling UserinfoApi-&gt;get_user_info: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="documentation-for-api-endpoints">
+<h2>Documentation for API Endpoints<a class="headerlink" href="#documentation-for-api-endpoints" title="永久链接至标题">¶</a></h2>
+<p>All URIs are relative to <em>http://aidi.hobot.cc/api</em></p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Class</th>
+<th>Method</th>
+<th>HTTP request</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>UserinfoApi</em></td>
+<td><a href="docs/UserinfoApi.md#get_user_info"><strong>get_user_info</strong></a></td>
+<td><strong>GET</strong> /auth/v1/useradmin/userinfo</td>
+<td>Get user detailed info.</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="documentation-for-models">
+<h2>Documentation For Models<a class="headerlink" href="#documentation-for-models" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="docs/APIResult.html"><span class="doc">APIResult</span></a></p></li>
+<li><p><a class="reference internal" href="docs/BaseReq.html"><span class="doc">BaseReq</span></a></p></li>
+<li><p><a class="reference internal" href="docs/Status.html"><span class="doc">Status</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="documentation-for-authorization">
+<h2>Documentation For Authorization<a class="headerlink" href="#documentation-for-authorization" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="api-key">
+<h2>api_key<a class="headerlink" href="#api-key" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Type</strong>: API key</p></li>
+<li><p><strong>API key parameter name</strong>: X-Forwarded-User</p></li>
+<li><p><strong>Location</strong>: HTTP header</p></li>
+</ul>
+</div>
+<div class="section" id="author">
+<h2>Author<a class="headerlink" href="#author" title="永久链接至标题">¶</a></h2>
+<p>nuo.xu&#64;horizon.ai</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

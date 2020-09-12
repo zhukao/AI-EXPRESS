@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Smart Plugin &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Smart Plugin</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/xsdk/common/xproto/plugins/smartplugin/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="smart-plugin">
+<h1>Smart Plugin<a class="headerlink" href="#smart-plugin" title="永久链接至标题">¶</a></h1>
+<p>Getting Started with smartplugin</p>
+<div class="section" id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>Smartplugin是基于XStream通用sdk接口开发的通用智能化sdk运行框架。
+Smartplugin监听viomessage，调用XStream通用sdk接口得到智能化结果，并把智能化结果以protobuf的方式序列化之后以smartmessage的消息格式发送到总线(xproto)。</p>
+</div>
+<div class="section" id="id2">
+<h2>定制开发<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>定制开发需要三步：</p>
+<ol class="simple">
+<li><p>根据自己的智能化应用需要依赖的XStream method更新build.properties文件及src/xstream/method_factory.cpp;</p></li>
+<li><p>根据自己的智能化应用需要输出的智能化结果重写protobuf串行化，即重新实现SmartMessage的Serialize方法。
+master分支提供了串行化输出的人脸检测框的sample程序，标准化的protobuf协议在repo xproto_msgtype/include/xproto_msgtype/protobuf/proto/x2.proto。</p></li>
+</ol>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">CustomSmartMessage</span><span class="o">::</span><span class="n">Serialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// serialize smart message using defined smart protobuf.</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">proto_str</span><span class="p">;</span>
+  <span class="n">x2</span><span class="o">::</span><span class="n">FrameMessage</span> <span class="n">proto_frame_message</span><span class="p">;</span>
+  <span class="k">auto</span> <span class="n">smart_msg</span> <span class="o">=</span> <span class="n">proto_frame_message</span><span class="p">.</span><span class="n">mutable_smart_msg_</span><span class="p">();</span>
+  <span class="n">smart_msg</span><span class="o">-&gt;</span><span class="n">set_timestamp_</span><span class="p">(</span><span class="n">time_stamp</span><span class="p">);</span>
+  <span class="n">smart_msg</span><span class="o">-&gt;</span><span class="n">set_error_code_</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="c1">// user-defined output parsing declaration.</span>
+  <span class="n">HobotXStream</span><span class="o">::</span><span class="n">BaseDataVector</span> <span class="o">*</span><span class="n">face_boxes</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">output</span> <span class="p">:</span> <span class="n">smart_result</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">output</span><span class="o">-&gt;</span><span class="n">name_</span> <span class="o">==</span> <span class="s">&quot;face_bbox_list&quot;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">face_boxes</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">HobotXStream</span><span class="o">::</span><span class="n">BaseDataVector</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">face_boxes</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">face_box</span> <span class="o">=</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">static_pointer_cast</span><span class="o">&lt;</span><span class="n">HobotXStream</span><span class="o">::</span><span class="n">XStreamData</span><span class="o">&lt;</span><span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+                <span class="n">face_boxes</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="n">LOGD</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;x1: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">face_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">x1</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; y1: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">face_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">y1</span>
+             <span class="o">&lt;&lt;</span> <span class="s">&quot; x2: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">face_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">x2</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; y2: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">face_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">y2</span>
+             <span class="o">&lt;&lt;</span> <span class="s">&quot; track_id: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">face_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+        <span class="k">auto</span> <span class="n">target</span> <span class="o">=</span> <span class="n">smart_msg</span><span class="o">-&gt;</span><span class="n">add_targets_</span><span class="p">();</span>
+        <span class="n">target</span><span class="o">-&gt;</span><span class="n">set_type_</span><span class="p">(</span><span class="s">&quot;face&quot;</span><span class="p">);</span>
+        <span class="n">target</span><span class="o">-&gt;</span><span class="n">set_track_id_</span><span class="p">(</span><span class="n">face_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+        <span class="k">auto</span> <span class="n">proto_box</span> <span class="o">=</span> <span class="n">target</span><span class="o">-&gt;</span><span class="n">add_boxes_</span><span class="p">();</span>
+        <span class="n">proto_box</span><span class="o">-&gt;</span><span class="n">set_type_</span><span class="p">(</span><span class="s">&quot;face&quot;</span><span class="p">);</span>
+        <span class="k">auto</span> <span class="n">point1</span> <span class="o">=</span> <span class="n">proto_box</span><span class="o">-&gt;</span><span class="n">mutable_top_left_</span><span class="p">();</span>
+        <span class="n">point1</span><span class="o">-&gt;</span><span class="n">set_x_</span><span class="p">(</span><span class="n">face_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">x1</span><span class="p">);</span>
+        <span class="n">point1</span><span class="o">-&gt;</span><span class="n">set_y_</span><span class="p">(</span><span class="n">face_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">y1</span><span class="p">);</span>
+        <span class="k">auto</span> <span class="n">point2</span> <span class="o">=</span> <span class="n">proto_box</span><span class="o">-&gt;</span><span class="n">mutable_bottom_right_</span><span class="p">();</span>
+        <span class="n">point2</span><span class="o">-&gt;</span><span class="n">set_x_</span><span class="p">(</span><span class="n">face_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">x2</span><span class="p">);</span>
+        <span class="n">point2</span><span class="o">-&gt;</span><span class="n">set_y_</span><span class="p">(</span><span class="n">face_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">y2</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">proto_frame_message</span><span class="p">.</span><span class="n">SerializeToString</span><span class="p">(</span><span class="o">&amp;</span><span class="n">proto_str</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">proto_str</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>将编译完成的库替换deploy/xprotocp_smart/lib/下的libsmartplugin.so。
+更新xstream workflow配置文件，默认为deploy/configs/smart_config.json</p></li>
+</ol>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
+      <span class="nt">&quot;xstream_workflow_file&quot;</span><span class="p">:</span> <span class="s2">&quot;configs/det_mot.json&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;enable_profile&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;profile_log_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/userdata/log/profile.txt&quot;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>xstream_workflow_file: 指定xstream workflow配置文件;</p></li>
+<li><p>enable_profile: 是否使能online profile，该feature是xstream支持的feature，如果method开发中包括了profile信息可通过该开关online使能;</p></li>
+<li><p>profile_log_path: online profile 日志输出路径。</p></li>
+</ul>
+<p>将xprotocp_smart部署包放在真机上，运行xproto_start.sh 即可启动智能化应用;</p>
+<p>其中，sample/smart_main.cpp即是主程序源码，主程序启动方式为：</p>
+<p><code class="docutils literal notranslate"><span class="pre">smart_main</span>&#160; <span class="pre">[-i/-d/-w/-f]</span> <span class="pre">xstream_config_file</span></code></p>
+<p>-i/-d/-w/-f 分别指定对应info、debug、warning、fatal日志等级。</p>
+</div>
+<div class="section" id="id3">
+<h2>智能数据解析说明<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>Protobuf数据格式定义见<code class="docutils literal notranslate"><span class="pre">common/xproto/msgtype/include/xproto_msgtype/protobuf/proto/x3.proto</span></code></p>
+<p>解析ProtoBuf智能数据FrameMessage，FrameMessage包括SmartFrameMessage、CaptureFrameMessage、StatisticsMessage、Image、Timestamp</p>
+<div class="section" id="smartframemessage">
+<h3>SmartFrameMessage<a class="headerlink" href="#smartframemessage" title="永久链接至标题">¶</a></h3>
+<p>SmartFrameMessage包括Timestamp、Error_Code和Target</p>
+<ol class="simple">
+<li><p>人体智能信息</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Target {
+  string type_;             // &quot;person&quot;
+  uint64 track_id_;         // track_id
+  repeated Box boxes_ = [{
+    string type_;           //  &quot;body&quot;、&quot;head&quot; 或 &quot;face&quot;，分别表示人脸框、人头框、人体框
+    Point top_left_;        // 框左上点坐标
+    Point bottom_right_;    // 框右下点坐标
+    float score;
+  }];
+  repeated Points points_ = [Points {
+    string type_;           // &quot;body_landmarks&quot;，表示人体骨骼点集合
+    repeated Point points_;
+  }];
+  repeated Attributes attributes_ = [{
+    string type_;           // &quot;age&quot;、&quot;gender&quot;、&quot;face_mask&quot;, 分别表示年龄、性别、口罩
+                            // &quot;fall&quot;、&quot;raise_hand&quot;、&quot;stand&quot;、&quot;squat&quot;, 分别表示摔倒、举手、站立和蹲下
+                            // &quot;action&quot;表示体感游戏
+
+    float value_;           // 属性对应的值
+    string value_string_;   // reserved
+    float score_;           // 置信度
+  }];
+}
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>车辆信息</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Target {
+  string type_;               // &quot;vehicle&quot;、&quot;vehicle_capture&quot;、&quot;vehicle_anomaly&quot;，分别表示车辆信息、抓拍车辆信息、抓拍车辆违法信息
+  uint64 track_id_;           // track_id
+  repeated Box boxes_ = [{
+    string type_;             // &quot;vehicle_box&quot; 表示车体框
+    Point top_left_;
+    Point bottom_right_;
+    float score;
+  }];
+
+  repeated Image imgs_ = [{   // 抓拍图像，仅抓拍车辆、抓拍违法车辆包含该信息
+    bytes buf_;               // 二进制图
+    string type_;             // &quot;jpg&quot;，图片类型
+    uint32 width_;            // 图像宽度
+    uint32 height_;           // 图像高度
+  }];
+
+  repeated Attributes attributes_ = [{
+    string type_;             // &quot;vehicle_type&quot;、&quot;vehicle_color&quot;、&quot;vehicle_lane_id&quot;、&quot;vehicle_speed&quot;，分别表示车辆类型、颜色、所在车道、车速
+                              // &quot;vehicle_anomalys_type&quot;，表示车辆违法类型，仅抓拍违法车辆包含该信息           
+
+    float value_;             // 属性对应的值
+    string value_string_;     // reserved
+    float score_;             // 置信度
+  }];
+
+  repeated Points points_ = [Points {
+    string type_;             // &quot;vehicle_key_points&quot;，表示车辆关键点
+                              // &quot;vehicle_location&quot;，表示车辆物理位置
+    repeated Point points_;
+  }];
+
+  repeated FloatArray float_arrays_ = [{
+    string type_;             // &quot;vehicle_gis&quot;，表示车辆gis信息
+    repeated float value_;
+  }];
+
+  repeated Target sub_targets_ = [{
+    string type_;             // &quot;plate&quot; 表示车牌
+    repeated Box boxes_ = [{
+      string type_;           // &quot;plate_box&quot; 表示车排框
+      Point top_left_;
+      Point bottom_right_;
+      float score;
+    }];
+
+    repeated Attributes attributes_ = [{
+      string type_;           // &quot;is_double_plate&quot;，表示双车牌
+                              // &quot;plate_num&quot;，表示车牌号
+                              // &quot;plate_color&quot;，表示车牌颜色
+                              // &quot;plate_type&quot;，表示车牌类型
+
+      float value_;           // 属性对应的值
+      string value_string_;   // reserved
+      float score_;           // 置信度
+    }];
+
+    repeated Points points_ = [Points {
+      string type_;           // &quot;plate_key_points&quot;，表示车排关键点
+      repeated Point points_;
+    }];
+  }];
+}
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>行人、非机动车信息</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Target {
+  string type_;           // &quot;person&quot;或&quot;no-motor&quot;
+  uint64 track_id_;       // track_id
+  repeated Box boxes_ = [{
+    string type_;         // &quot;person_box&quot;、&quot;no-motor_box&quot;，分别表示人体框、非机动车框
+    Point top_left_;
+    Point bottom_right_;
+    float score;
+  }];
+
+  repeated FloatArray float_arrays_ = [{
+    string type_;           // &quot;person_gis&quot;、&quot;no-motor_gis&quot;，分别表示行人、非机动车gis信息
+    repeated float value_;
+  }];
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="statisticsmessage">
+<h3>StatisticsMessage<a class="headerlink" href="#statisticsmessage" title="永久链接至标题">¶</a></h3>
+<ol class="simple">
+<li><p>车流统计信息</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>StatisticsMessage {
+   repeated Attributes attributes_ = [{
+      string type_;           // &quot;trafficflow_hour_index&quot;，表示时段
+                              // &quot;trafficflow_cycle_count&quot;，表示每个时段周期数
+                              // &quot;trafficflow_cycle_minute&quot;，表示第几个周期
+                              // &quot;trafficflow_vehicle_sum&quot;，表示总过车数
+                              // &quot;trafficflow_big_vehicle_sum&quot;，表示大车过车数
+                              // &quot;trafficflow_small_vehicle_sum&quot;，表示小车过车数
+                              // &quot;trafficflow_mean_speed&quot;，表示平均过车速度
+
+      float value_;           // 属性对应的值
+      string value_string_;   // reserved
+      float score_;           // 置信度
+    }];
+}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

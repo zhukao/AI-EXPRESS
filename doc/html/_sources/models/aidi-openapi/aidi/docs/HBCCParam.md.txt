@@ -1,0 +1,19 @@
+# HBCCParam
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**cc_extra_flags** | **str** | cc_extra_flags in: body | [optional] 
+**enable_independent_pe** | **bool** | enable_independent_pe in: body | [optional] 
+**framework** | **str** | framework in: body | [optional] 
+**hbcc_version** | **str** | hbdk version in: body | 
+**input_shape** | **str** | input_shape in: body | [optional] 
+**input_type** | **str** | input_type in: body | [optional] 
+**march** | **str** | march in: body | [optional] 
+**optimization_level** | **int** | optimization_level in: body | [optional] 
+**pe_num** | **int** | pe_num in: body | [optional] 
+**platform** | **str** | platform in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

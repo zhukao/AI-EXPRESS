@@ -1,0 +1,41 @@
+# 版本说明  版本 1.0.0
+
+<h2>        故事
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-79'>XPPXROC-79</a>] -         XRoc和hobotSDK框架融合
+</li>
+</ul>
+                                                                                                
+<h2>        任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-93'>XPPXROC-93</a>] -         XRoc&amp;HobotSDK融合框架实现
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-94'>XPPXROC-94</a>] -         method发布规范
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-213'>XPPXROC-213</a>] -         vehicle cnnmethod 与 method_zoo/cnnmethod融合
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-239'>XPPXROC-239</a>] -         测试覆盖率报告加入CICD
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-241'>XPPXROC-241</a>] -         Solution:vechile 单元测试用例补充完善
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-246'>XPPXROC-246</a>] -         发布版本cmake编译补充完整
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-247'>XPPXROC-247</a>] -         Normailize接口统一
+</li>
+</ul>
+                        
+<h2>        子任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-196'>XPPXROC-196</a>] -         拓展HobotSDK支持：数据按照Feed同步
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-197'>XPPXROC-197</a>] -         XRoc层基于hobotSDK重实现-最小demo
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-198'>XPPXROC-198</a>] -         基于新的Node实现+hobotsdk适配XRoc接口
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-207'>XPPXROC-207</a>] -         框架融合-Feature完善
+</li>
+</ul>
+        

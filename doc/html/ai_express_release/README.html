@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>XStream &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>XStream</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ai_express_release/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="xstream">
+<h1>XStream<a class="headerlink" href="#xstream" title="永久链接至标题">¶</a></h1>
+</div>
+<div class="section" id="id1">
+<h1>介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>XStream 发版包编译、运行介绍。</p>
+</div>
+<div class="section" id="id2">
+<h1>编译<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id3">
+<h2>编译环境<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>需提前准备好交叉编译工具链，默认路径如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="n">CMAKE_C_COMPILER</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="n">linaro</span><span class="o">-</span><span class="mf">6.5</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">2018.12</span><span class="o">-</span><span class="n">x86_64_aarch64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">-</span><span class="n">gcc</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="n">CMAKE_CXX_COMPILER</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="n">linaro</span><span class="o">-</span><span class="mf">6.5</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">2018.12</span><span class="o">-</span><span class="n">x86_64_aarch64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">-</span><span class="n">g</span><span class="o">++</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果交叉编译工具链地址变动，需同步修改CMakeLists.txt</p>
+</div>
+<div class="section" id="id4">
+<h2>编译命令<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>版本包提供了编译脚本build.sh。 AI-Express是支持X2与X3平台，编译的时候需要指定平台信息。具体编译如下<br />X3版本编译：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="n">x3</span>
+</pre></div>
+</div>
+<p>X2版本编译：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="n">x2</span>
+</pre></div>
+</div>
+<p>编译的可执行文件和库在build/bin和build/lib目录下</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>部署<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h1>
+<p>版本包提供了部署脚本deploy.sh，可将模型、可执行程序、库文件、配置文件以及测试图片整理到deploy目录中。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">deploy</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>该脚本会创建deploy部署包，包括如下几个部分：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th align="right">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lib</td>
+<td align="right">动态依赖库</td>
+</tr>
+<tr>
+<td>models</td>
+<td align="right">模型集合</td>
+</tr>
+<tr>
+<td>face_solution</td>
+<td align="right">人脸解决方案</td>
+</tr>
+<tr>
+<td>body_solution</td>
+<td align="right">人体解决方案</td>
+</tr>
+<tr>
+<td>face_body_multisource</td>
+<td align="right">多路输入多workflow解决方案</td>
+</tr>
+<tr>
+<td>ssd_test</td>
+<td align="right">ssd检测模型示例程序</td>
+</tr>
+<tr>
+<td>configs</td>
+<td align="right">vio 配置文件</td>
+</tr>
+<tr>
+<td>run.sh</td>
+<td align="right">运行脚本</td>
+</tr>
+</tbody>
+</table><p>将deploy目录拷贝到X2/x3开发板上就可以运行参考示例。</p>
+<p>此外，版本包中也提供了单元测试的部署脚本deploy_ut.sh，在Linux开发机上执行deploy_ut.sh</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deploy_ut.sh
+</pre></div>
+</div>
+<p>可将单元测试的可执行程序、解决方案可执行程序及模型、配置文件拷贝到deploy目录下。</p>
+<p>单元测试位于deploy/unit_test目录下，在开发板执行run_ut.sh即可运行单元测试脚本。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> deploy/unit_test
+sh run_ut.sh
+</pre></div>
+</div>
+<p>单元测试脚本包含人脸、人体等解决方案，以及每个模块的单元测试程序。</p>
+</div>
+<div class="section" id="id6">
+<h1>运行<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h1>
+<p>直接运行run.sh脚本即可运行指定的测试程序。默认使用x2 96baord配置，添加<code class="docutils literal notranslate"><span class="pre">2610</span></code>选项以在2610平台上运行。添加<code class="docutils literal notranslate"><span class="pre">x3dev</span></code>可以在x3平台上运行。各个测试程序的介绍及运行方法请参考相应源码目录下的README.md。<br />运行时，只需要在x2/x3设备上运行run.sh脚本，在PC上打开浏览器，看展示客户端即可。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sh</span> <span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="p">[</span> <span class="n">face</span> <span class="o">|</span> <span class="n">face_recog</span> <span class="o">|</span> <span class="n">body</span> <span class="o">|</span> <span class="n">xbox</span> <span class="o">|</span> <span class="n">behavior</span> <span class="o">|</span> <span class="n">video_box</span> <span class="o">|</span> <span class="n">gesture</span> <span class="o">|</span> <span class="n">tv_dance</span> <span class="o">|</span> <span class="n">face_body_multisource</span> <span class="o">|</span> <span class="n">ssd_test</span> <span class="p">]</span> <span class="p">[</span> <span class="mi">96</span><span class="n">board</span> <span class="o">|</span> <span class="mi">2610</span> <span class="o">|</span> <span class="n">x3dev</span> <span class="o">|</span> <span class="n">x3svb</span> <span class="p">]</span> <span class="p">[</span> <span class="n">imx327</span> <span class="o">|</span> <span class="n">os8a10</span> <span class="o">|</span> <span class="n">s5kgm</span><span class="p">(</span><span class="n">only</span> <span class="n">work</span> <span class="k">for</span> <span class="n">body</span> <span class="ow">and</span> <span class="n">behavior</span><span class="p">)</span> <span class="o">|</span> <span class="n">s5kgm_2160p</span> <span class="o">|</span> <span class="n">hg</span> <span class="o">|</span> <span class="n">usb_cam</span> <span class="p">]</span> <span class="p">[</span> <span class="n">cache</span> <span class="o">|</span> <span class="n">jpg</span> <span class="o">|</span> <span class="n">nv12</span> <span class="p">]</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>参考示例</th>
+<th>硬件平台</th>
+<th>camera方式运行</th>
+<th>回灌方式运行</th>
+<th>展示客户端</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>人脸抓拍</td>
+<td>x2 96board</td>
+<td>sh run.sh face 96board</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>人脸抓拍</td>
+<td>x2 面板机</td>
+<td>sh run.sh face 2610</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>人脸抓拍</td>
+<td>x3dev</td>
+<td>sh run.sh face x3dev  usb_cam/imx327/os8a10/s5kgm_2160p</td>
+<td>sh run.sh face x3dev  hg  cache/jpg/nv12</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>人脸抓拍</td>
+<td>x3svb</td>
+<td>sh run.sh face x3svb  usb_cam/os8a10</td>
+<td>sh run.sh face x3svb  hg  cache/jpg/nv12</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>人脸特征提取</td>
+<td>x2 96board</td>
+<td>sh run.sh face_recog 96board</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>人脸特征提取</td>
+<td>x2 面板机</td>
+<td>sh run.sh face_recog 2610</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>人脸特征提取</td>
+<td>x3dev</td>
+<td>sh run.sh face_recog x3dev  usb_cam/imx327/os8a10/s5kgm_2160p</td>
+<td>sh run.sh face_recog x3dev  hg  cache/jpg/nv12</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>人脸特征提取</td>
+<td>x3svb</td>
+<td>sh run.sh face_recog x3svb  usb_cam/os8a10</td>
+<td>sh run.sh face_recog x3svb  hg  cache/jpg/nv12</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>人体结构化</td>
+<td>x2 96board</td>
+<td>sh run.sh body 96board</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>人体结构化</td>
+<td>x2 面板机</td>
+<td>sh run.sh body 2610</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>人体结构化</td>
+<td>x3dev</td>
+<td>sh run.sh body x3dev  usb_cam/imx327/os8a10/s5kgm_2160p/s5kgm</td>
+<td>sh run.sh body x3dev  hg  cache/jpg/nv12</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>人体结构化</td>
+<td>x3svb</td>
+<td>sh run.sh body x3svb  usb_cam/os8a10</td>
+<td>sh run.sh body x3svb  hg  cache/jpg/nv12</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>行为分析</td>
+<td>x2 96board</td>
+<td>sh run.sh behavior 96board</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>行为分析</td>
+<td>x2 面板机</td>
+<td>sh run.sh behavior 2610</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>行为分析</td>
+<td>x3dev</td>
+<td>sh run.sh behavior x3dev  usb_cam/imx327/os8a10/s5kgm_2160p/s5kgm</td>
+<td>sh run.sh behavior x3dev  hg  cache/jpg/nv12</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>行为分析</td>
+<td>x3svb</td>
+<td>sh run.sh behavior x3svb  usb_cam/os8a10</td>
+<td>sh run.sh behavior x3svb  hg  cache/jpg/nv12</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>多路盒子</td>
+<td>x2 96board</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>多路盒子</td>
+<td>x2 面板机</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>多路盒子</td>
+<td>x3dev</td>
+<td>sh run.sh video_box x3dev</td>
+<td>不支持</td>
+<td>HDMI显示器观看</td>
+</tr>
+<tr>
+<td>多路盒子</td>
+<td>x3svb</td>
+<td>sh run.sh video_box x3svb</td>
+<td>不支持</td>
+<td>HDMI显示器观看</td>
+</tr>
+<tr>
+<td>手势识别</td>
+<td>x2 96board</td>
+<td>sh run.sh gesture 96board</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>手势识别</td>
+<td>x2 面板机</td>
+<td>sh run.sh gesture 2610</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>手势识别</td>
+<td>x3dev</td>
+<td>sh run.sh gesture x3dev  usb_cam/imx327/os8a10/s5kgm_2160p/s5kgm</td>
+<td>sh run.sh gesture x3dev  hg  cache/jpg/nv12</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>手势识别</td>
+<td>x3svb</td>
+<td>sh run.sh gesture x3svb  usb_cam/os8a10</td>
+<td>sh run.sh gesture x3dev  hg  cache/jpg/nv12</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>体感游戏</td>
+<td>x2 96board</td>
+<td>sh run.sh xbox 96board</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，可以查看智能结果；http://IP/CrappyBird 与 http://IP/PandaRun 打开游戏界面</td>
+</tr>
+<tr>
+<td>体感游戏</td>
+<td>x2 面板机</td>
+<td>sh run.sh xbox 2610</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，可以查看智能结果；http://IP/CrappyBird 与 http://IP/PandaRun 打开游戏界面</td>
+</tr>
+<tr>
+<td>体感游戏</td>
+<td>x3dev</td>
+<td>sh run.sh xbox x3dev  usb_cam/imx327/os8a10/s5kgm_2160p/s5kgm</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，可以查看智能结果；http://IP/CrappyBird 与 http://IP/PandaRun 打开游戏界面</td>
+</tr>
+<tr>
+<td>体感游戏</td>
+<td>x3svb</td>
+<td>sh run.sh xbox x3svb  usb_cam/os8a10</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，可以查看智能结果；http://IP/CrappyBird 与 http://IP/PandaRun 打开游戏界面</td>
+</tr>
+<tr>
+<td>多路输入</td>
+<td>x2 96board</td>
+<td>不支持</td>
+<td>sh run.sh face_body_multisource 96board</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>多路输入</td>
+<td>x2 面板机</td>
+<td>不支持</td>
+<td>sh run.sh face_body_multisource 2610</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>多路输入</td>
+<td>x3dev</td>
+<td>不支持</td>
+<td>sh run.sh face_body_multisource x3dev  imx327/os8a10/s5kgm_2160p</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>多路输入</td>
+<td>x3svb</td>
+<td>不支持</td>
+<td>sh run.sh face_body_multisource x3svb  os8a10</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>智慧电视</td>
+<td>x2 96board</td>
+<td>sh run.sh tv_dance 96board</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>智慧电视</td>
+<td>x2 面板机</td>
+<td>sh run.sh tv_dance 2610</td>
+<td>不支持</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>智慧电视</td>
+<td>x3dev</td>
+<td>sh run.sh tv_dance x3dev  usb_cam/imx327/os8a10/s5kgm_2160p/s5kgm</td>
+<td>sh run.sh tv_dance x3dev  hg  cache/jpg/nv12</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+<tr>
+<td>智慧电视</td>
+<td>x3svb</td>
+<td>sh run.sh tv_dance x3svb  usb_cam/os8a10</td>
+<td>sh run.sh tv_dance x3dev  hg  cache/jpg/nv12</td>
+<td>浏览器输入XJ3的IP地址，点击预览即可</td>
+</tr>
+</tbody>
+</table><div class="section" id="id7">
+<h2>硬件说明<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>| 开发板           |             备注                            |
+| ————–  | —————:                            |
+| 96board         | X2 96board开发板，demo中只配置了1080P的sensor  |
+| 2610            | X2 2610 原型机，demo中只配置了1080P的sensor    |
+| x3dev           | X3 开发板(大板子)，demo中适配了四种sensor，分别为imx327（1080P），os8a10（2160P），s5kgm（4000x3000）, s5kgm_2160p(2160P)， usb_cam(1080P)|
+| x3svb           | X3 开发板(小板子)，demo中适配了两种sensor：usb_cam(1080P)、os8a10（2160P)|</p>
+</div>
+<div class="section" id="x3-sensor">
+<h2>X3 Sensor说明<a class="headerlink" href="#x3-sensor" title="永久链接至标题">¶</a></h2>
+<p>当前AI-Express X3版本适配了四款sensor，分别是imx327， os8a10， s5kgm以及一款usb camera。运行X3示例前一定要确定自己sensor的类别.<br />X2面板机以及96board，sensor的分辨率均为1080P。
+| sensor类型      |     图像分辨率       |   备注   |
+| ———-     |     ————    | ——  |
+|imx327	| 1920 x 1080  | |
+|os8a10 | 3840 x 2160 | |
+|s5kgm_2160p| 3840 x 2160| |
+|s5kgm  | 4000 x 3000 | 只有body、behavior、xbox这三个solution支持4000x3000分辨率输入  |
+|usb_cam| 1920 x 1080 | 目前在x3小板子上测试通过，还会继续优化，usb_camera型号参考https://developer.horizon.ai/forum/id=5f312d96cc8b1e59c8581511</p>
+</div>
+<div class="section" id="id8">
+<h2>回灌方式说明<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>X3版本回灌支持3种模式，分别为cache， jpg与nv12这3个模式，区别如下：
+| 回灌方式      |     功能说明       |   回灌图像配置   |
+| ———-     |     ————    | ——  |
+|cache|预先将所有的jpg图像解码到内存中，回灌的时候不需要再进行图像解码操|图片列表配置在：configs/vio_config.json.x3dev.iot.hg中image_list字段|
+|jpg|依次读取图像，解码，回灌。若使用循环回灌方式，则每次回灌会单独读取图像解码一次|图片列表配置在：configs/vio_config.json.x3dev.iot.hg中配置的file_path，默认为configs/vio_hg/name.list|
+|nv12|和jpg的区别是回灌的图片是nv12的，只需要读取图像数据，不需要解码|图片列表配置在：configs/vio_config.json.x3dev。iot.hg中配置的file_path，默认为configs/vio_hg/name_nv12.list|</p>
+</div>
+</div>
+<div class="section" id="ai">
+<h1>AI社区相关资源<a class="headerlink" href="#ai" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id9">
+<h2>镜像烧录<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>X3小板子镜像烧录需要的工具以及烧录过程可以参考：https://developer.horizon.ai/forum/id=5f1aa3ee86cc4d95e81a73e6</p>
+</div>
+<div class="section" id="x3usb-camera">
+<h2>x3开发板接入usb camera<a class="headerlink" href="#x3usb-camera" title="永久链接至标题">¶</a></h2>
+<p>X3 接入usb camera，代替mipi camera。具体使用可以参考：https://developer.horizon.ai/forum/id=5f312d96cc8b1e59c8581511</p>
+</div>
+<div class="section" id="video-box">
+<h2>多路盒子video_box<a class="headerlink" href="#video-box" title="永久链接至标题">¶</a></h2>
+<p>多路盒子的solution，具体描述可以参考：https://developer.horizon.ai/forum/id=5f2be161740aaf0beb31234a</p>
+</div>
+<div class="section" id="behavior">
+<h2>行为分析behavior<a class="headerlink" href="#behavior" title="永久链接至标题">¶</a></h2>
+<p>行为分析solution，提供了摔倒检测的功能，功能搭建可以参考：https://developer.horizon.ai/forum/id=5efab48f38ca27ba028078dd</p>
+</div>
+<div class="section" id="id10">
+<h2>体感游戏<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>可以参考：https://developer.horizon.ai/forum/id=5ef05b412ab6590143c15d6a</p>
+</div>
+<div class="section" id="id11">
+<h2>手势识别<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<p>可以参考：https://developer.horizon.ai/forum/id=5f30f806bec8bc98cb72b288</p>
+</div>
+<div class="section" id="uvc-device">
+<h2>UVC Device<a class="headerlink" href="#uvc-device" title="永久链接至标题">¶</a></h2>
+<p>将X3作为UVC设备，通过USB接口接入android系统的硬件上，x3开发板通过uvc协议传输图像，通过HID协议传输智能结果。具体可以参考： https://developer.horizon.ai/forum/id=5f312a94cc8b1e59c858150c</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

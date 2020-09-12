@@ -1,0 +1,14 @@
+# CreateGPUModelReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**auth_info** | [**ResourceAddition**](ResourceAddition.md) |  | 
+**desc** | **str** | gpu model dir&#39;s description in: body | [optional] 
+**name** | **str** | gpu model dir&#39;s name in: body | 
+**tags** | **list[str]** | gpu model dir&#39;s tags in: body | [optional] 
+**task_type** | **str** | gpu model dir&#39;s tasktype in: body | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

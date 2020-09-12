@@ -1,0 +1,50 @@
+
+## Workflow
+
+1. Clone
+
+2. Install code style tools
+```bash
+pip install pre-commit==1.17.0
+apt install clang-format-9
+ln -s /usr/bin/clang-format-9 /usr/bin/clang-format
+```
+
+3. At your local repo root, run
+```bash
+pre-commit install
+```
+
+4. Make change to your code and test. You can run all the existing unittests by the following command:
+```bash
+# TODO
+unittest ...
+```
+
+Then commit your change to the local branch using `git commit`
+
+5. Make pull request:
+```bash
+arc diff
+```
+
+6. Change your code based on review comments. The new change should be added
+as NEW commit to your previous commits. Then you should update the revision
+```bash
+arc diff --update
+```
+
+7. Publish an accepted revision after review
+```bash
+arc land
+```
+
+## Coding standard
+
+We follow the coding style  [google-cpp-style]( https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/) . 
+And please comment all the public functions with the following style:
+
+```cpp
+TODO
+
+```

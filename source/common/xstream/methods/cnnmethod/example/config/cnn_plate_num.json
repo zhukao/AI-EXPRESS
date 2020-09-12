@@ -1,0 +1,26 @@
+{
+  "inputs": [
+    "face_box",
+    "pyramid"
+  ],
+  "outputs": [
+    "plate_num",
+    "pyramid",
+    "face_box"
+  ],
+  "workflow": [
+    {
+      "unique_name": "plate_num",
+      "method_type": "CNNMethod",
+      "inputs": [
+        "face_box",
+        "pyramid",
+        "face_box"
+      ],
+      "outputs": [
+        "plate_num"
+      ],
+      "method_config_file": "method_conf/plate_num.json"
+    }
+  ]
+}

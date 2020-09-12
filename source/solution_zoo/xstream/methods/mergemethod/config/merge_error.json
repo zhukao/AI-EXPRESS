@@ -1,0 +1,5 @@
+{
+  "merge_basis": "rgb and nir",
+  "match_threshold": 0.4,
+  "desp": "match_threshold 是IOU重合区域占比的阈值"
+}

@@ -1,0 +1,120 @@
+# aidi.PipelineApi
+
+All URIs are relative to *http://aidi.hobot.cc/api*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**get_pipe_line_param**](PipelineApi.md#get_pipe_line_param) | **GET** /pipeline/v1/retrieve | Get pipeline parameters from AIDI.
+[**set_pipe_line_param**](PipelineApi.md#set_pipe_line_param) | **POST** /pipeline/v1/submit | Submit pipeline parameter to AIDI.
+
+
+# **get_pipe_line_param**
+> APIResult get_pipe_line_param(id, name=name)
+
+Get pipeline parameters from AIDI.
+
+This will return all parameters from AIDI Platform.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.PipelineApi(aidi.ApiClient(configuration))
+id = 'id_example' # str | dag run id
+name = 'name_example' # str | dag name (optional)
+
+try:
+    # Get pipeline parameters from AIDI.
+    api_response = api_instance.get_pipe_line_param(id, name=name)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PipelineApi->get_pipe_line_param: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| dag run id | 
+ **name** | **str**| dag name | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_pipe_line_param**
+> APIResult set_pipe_line_param(body=body)
+
+Submit pipeline parameter to AIDI.
+
+This will submit pipeline related parameters to AIDI Platform.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi
+from aidi.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi.PipelineApi(aidi.ApiClient(configuration))
+body = aidi.SetPipeLineParamReq() # SetPipeLineParamReq |  (optional)
+
+try:
+    # Submit pipeline parameter to AIDI.
+    api_response = api_instance.set_pipe_line_param(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PipelineApi->set_pipe_line_param: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SetPipeLineParamReq**](SetPipeLineParamReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

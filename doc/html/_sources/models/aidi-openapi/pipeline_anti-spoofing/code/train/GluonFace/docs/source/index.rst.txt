@@ -1,0 +1,54 @@
+.. GluonFace documentation master file, created by
+   sphinx-quickstart on Tue Jul  9 16:53:58 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to GluonFace's documentation!
+=====================================
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Begin
+
+   intro
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: API
+   
+   api/basic_api
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Data API
+   
+   api/data/dataset
+   api/data/sampler
+   api/data/transform
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Model Zoo API
+
+   api/model_zoo/backbone
+   api/model_zoo/useful_block
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: NN API
+
+   api/nn/basic_layers
+   api/nn/loss
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

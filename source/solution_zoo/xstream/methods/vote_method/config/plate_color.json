@@ -1,0 +1,6 @@
+{
+  "type": "plate_color",
+  "plate_color": {
+    "max_slide_window_size": 50
+  }
+}

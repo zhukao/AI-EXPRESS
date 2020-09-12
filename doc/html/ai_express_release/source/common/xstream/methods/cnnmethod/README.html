@@ -1,0 +1,634 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cnnmethod &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/language_data.js"></script>
+        <script src="../../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>cnnmethod</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../_sources/ai_express_release/source/common/xstream/methods/cnnmethod/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cnnmethod">
+<h1>cnnmethod<a class="headerlink" href="#cnnmethod" title="永久链接至标题">¶</a></h1>
+<div class="section" id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="永久链接至标题">¶</a></h2>
+<p>cnn预测Method。目前支持人脸特征、3dpose、lmk、双目活体、人脸质量、年龄、性别、车型、车颜色、车牌号、摔倒等模型。</p>
+</div>
+<div class="section" id="build">
+<h2>Build<a class="headerlink" href="#build" title="永久链接至标题">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># sh cicd/scripts/build_linux.sh, 默认编译release版，sh cicd/scripts/build_linux.sh debug 编译debug版</span>
+<span class="c1"># 打包example程序与依赖的库：sh cicd/scripts/copy_runtime.sh 然后将打包好的release文件夹拷贝到开发板上就可以运行了。</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="永久链接至标题">¶</a></h2>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="永久链接至标题">¶</a></h3>
+<p>example的编译和运行：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># sh cicd/build_linux.sh</span>
+<span class="c1"># scp -r build/bin username@x2_pad_ip:/run/path</span>
+<span class="c1"># ssh username@x2_pad_ip</span>
+<span class="c1"># cd /run/path</span>
+<span class="c1"># export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./</span>
+<span class="c1"># ./CNNMethod_example get_model_info config/models/PanelBoard.hbm config/configs/bpu_config.json</span>
+<span class="c1"># ./CNNMethod_example do_fb_det_cnn pose_lmk config/det_cnn_pose_lmk.json config/vio_config/vio_onsemi0230_fb.json data/det_cnn/det_cnn_list.txt data/det_cnn/det_cnn_out.txt</span>
+<span class="c1"># ./CNNMethod_example do_fb_rect_cnn anti_spf  config/anti_spf.json config/vio_config/vio_onsemi0230_fb.json data/rect_cnn/anti_spf/img_lst.txt data/rect_cnn/anti_spf/anti_spf_out.txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>输入/输出<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id2">
+<h4>输入<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h4>
+<p>车牌识别</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>rois</td>
+<td>需要做预测的检测框</td>
+</tr>
+<tr>
+<td>1</td>
+<td>pyramid</td>
+<td>图像的金字塔数据</td>
+</tr>
+<tr>
+<td>2</td>
+<td>match_rois</td>
+<td>车辆车牌融合后的车牌框</td>
+</tr>
+</tbody>
+</table><p>摔倒</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>rois</td>
+<td>需要做预测的检测框</td>
+</tr>
+<tr>
+<td>1</td>
+<td>kpses</td>
+<td>需要做预测的关键点</td>
+</tr>
+<tr>
+<td>2</td>
+<td>disappeared_track_ids</td>
+<td>消失的track ids</td>
+</tr>
+</tbody>
+</table><p>其他</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>rois</td>
+<td>需要做预测的检测框</td>
+</tr>
+<tr>
+<td>1</td>
+<td>pyramid</td>
+<td>图像的金字塔数据</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id3">
+<h4>输出<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h4>
+<p>车牌识别模型</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>plate_num</td>
+<td>车牌号，类型为vector<int></td>
+</tr>
+</tbody>
+</table><p>车型车颜色识别模型</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>feature</td>
+<td>车型或车颜色的识别结果，类型为int</td>
+</tr>
+</tbody>
+</table><p>活体模型</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>anti_spf</td>
+<td>活体值，包括value和score</td>
+</tr>
+<tr>
+<td>1</td>
+<td>norm_roi</td>
+<td>经过norm_method处理后的roi</td>
+</tr>
+</tbody>
+</table><p>人脸特征值</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>face_feature</td>
+<td>人脸特征值</td>
+</tr>
+</tbody>
+</table><p>人脸质量</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Blur</td>
+<td>清晰度</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Brightness</td>
+<td>亮度</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Eye_Abnormalities</td>
+<td>眼睛表情</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mouth_Abnormal</td>
+<td>嘴部表情</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Left_Eye</td>
+<td>左眼可见区域</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Right_Eye</td>
+<td>右眼可见区域</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Left_Brow</td>
+<td>左眉毛可见区域</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Right_Brow</td>
+<td>右眉毛可见区域</td>
+</tr>
+<tr>
+<td>8</td>
+<td>ForeHead</td>
+<td>额头可见区域</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Left_Cheek</td>
+<td>左脸颊可见区域</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Right_Cheek</td>
+<td>右脸颊可见区域</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Nose</td>
+<td>鼻子可见区域</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Mouth</td>
+<td>嘴部可见区域</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Jaw</td>
+<td>下巴可见区域</td>
+</tr>
+</tbody>
+</table><p>pose+lmk</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>lmk</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>pose</td>
+<td></td>
+</tr>
+</tbody>
+</table><p>摔倒</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>fall_list</td>
+<td>摔倒值，包括value和score</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="section" id="id4">
+<h3>配置文件<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;model_name&quot;</span><span class="p">:</span> <span class="s2">&quot;faceAntiSpfRGB&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;model_version&quot;</span><span class="p">:</span> <span class="s2">&quot;x2.1.0.11&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;model_file_path&quot;</span><span class="p">:</span> <span class="s2">&quot;../models/PanelBoard.hbm&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;bpu_config_path&quot;</span><span class="p">:</span> <span class="s2">&quot;../bpu_config/bpu_config.json&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;in_msg_type&quot;</span><span class="p">:</span> <span class="s2">&quot;img&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;norm_method&quot;</span><span class="p">:</span> <span class="s2">&quot;norm_by_lside_square&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;filter_method&quot;</span><span class="p">:</span> <span class="s2">&quot;no_filter&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;expand_scale&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+  <span class="nt">&quot;post_fn&quot;</span><span class="p">:</span> <span class="s2">&quot;antispoofing&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;threshold&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+  <span class="nt">&quot;max_handle_num&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
+  <span class="nt">&quot;output_size&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>配置名</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model_name</td>
+<td>编译模型时指定的模型名字</td>
+<td></td>
+</tr>
+<tr>
+<td>model_version</td>
+<td>模型版本号</td>
+<td></td>
+</tr>
+<tr>
+<td>model_file_path</td>
+<td>模型文件地址</td>
+<td></td>
+</tr>
+<tr>
+<td>bpu_config_path</td>
+<td>bpu的配置文件地址</td>
+<td></td>
+</tr>
+<tr>
+<td>in_msg_type</td>
+<td>模型的处理方式（resizer或者pyramid或者ddr）</td>
+<td>rect/img(resizer/pyramid)/lmk_seq</td>
+</tr>
+<tr>
+<td>norm_method</td>
+<td>pyramid方式必填</td>
+<td>norm_by_width_length<br />norm_by_width_ratio<br />norm_by_height_rario<br />norm_by_lside_ratio<br />norm_by_height_length<br />norm_by_lside_length<br />norm_by_lside_square<br />norm_by_diagonal_square<br />norm_by_nothing</td>
+</tr>
+<tr>
+<td>filter_method</td>
+<td>pyramid方式必填</td>
+<td>out_of_range<br />no_filter</td>
+</tr>
+<tr>
+<td>expand_scale</td>
+<td>pyramid方式必填</td>
+<td>外扩系数</td>
+</tr>
+<tr>
+<td>post_fn</td>
+<td>后处理方式</td>
+<td>face_feature<br />antispoofing<br />lmk_pose<br />age_gender<br />face_quality<br />act_det</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>阈值</td>
+<td></td>
+</tr>
+<tr>
+<td>input_shift</td>
+<td>输入转浮点时参数</td>
+<td></td>
+</tr>
+<tr>
+<td>seq_len</td>
+<td>输入序列长度</td>
+<td></td>
+</tr>
+<tr>
+<td>stride</td>
+<td>序列步长</td>
+<td></td>
+</tr>
+<tr>
+<td>max_gap</td>
+<td>步长允许误差范围</td>
+<td></td>
+</tr>
+<tr>
+<td>buf_len</td>
+<td>缓存buffer长度</td>
+<td></td>
+</tr>
+<tr>
+<td>norm_kps_conf</td>
+<td>是否强制进行关键点置信度归一化</td>
+<td></td>
+</tr>
+<tr>
+<td>kps_norm_scale</td>
+<td>关键点置信度归一化参数</td>
+<td></td>
+</tr>
+<tr>
+<td>merge_groups</td>
+<td>类别融合</td>
+<td>字符串，需要保证格式为"[group1_idx1,group1_idx2];[group2_idx1,group_idx2]"</td>
+</tr>
+<tr>
+<td>target_group_idx</td>
+<td>目标类别index</td>
+<td></td>
+</tr>
+<tr>
+<td>max_handle_num</td>
+<td>最大处理数量</td>
+<td>负数表示无限制</td>
+</tr>
+<tr>
+<td>output_size</td>
+<td>输出槽的个数</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

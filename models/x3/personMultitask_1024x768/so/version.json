@@ -1,0 +1,27 @@
+{
+	"hbdk_info": {
+		"cmake_build_type": " releasewithassert",
+		"git_branch": " TC3.4.0",
+		"git_version": " 3ca1533",
+		"release_type": " public",
+		"runtime version": " 3.5.3",
+		"supported_march": " bernoulli, bernoulli2, ",
+		"version": " 3.7.10"
+	},
+	"pub_model_info": {
+		"pub_model_name": "personMultitask",
+		"pub_version": "v0.0.2",
+		"models_list": [
+			{
+				"model_name": "personMultitask",
+				"version": "v0.0.29",
+				"output_model_name": "personMultitask.hbm",
+				"hbm_md5": "5a38bf7f9a91f643a4d6874cc964bf20",
+				"model_json_file": "/gpfs/plat_aidi/model/1942/IntInference/multitask-3-absorb-bn-ft-3-x2-hobot-predict-symbol_v0.0.27.json",
+				"json_file_md5": "d82c3286d8e290ed1f334a0a7558d463",
+				"model_param_file": "/gpfs/plat_aidi/model/1942/IntInference/multitask-3-absorb-bn-ft-3-x2-hobot-predict-0011_v0.0.27.params",
+				"param_file_md5": "8192b4891e175b67eddde87619bcf60c"
+			}
+		]
+	}
+}

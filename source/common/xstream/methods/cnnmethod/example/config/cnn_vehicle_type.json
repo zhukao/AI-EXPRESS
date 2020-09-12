@@ -1,0 +1,25 @@
+{
+  "inputs": [
+    "face_box",
+    "pyramid"
+  ],
+  "outputs": [
+    "vehicle_type",
+    "pyramid",
+    "face_box"
+  ],
+  "workflow": [
+    {
+      "unique_name": "vehicle_type",
+      "method_type": "CNNMethod",
+      "inputs": [
+        "face_box",
+        "pyramid"
+      ],
+      "outputs": [
+        "vehicle_type"
+      ],
+      "method_config_file": "method_conf/vehicle_type.json"
+    }
+  ]
+}

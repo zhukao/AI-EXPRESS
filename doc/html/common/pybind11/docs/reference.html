@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reference &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/common/pybind11/docs/reference.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="admonition warning" id="reference">
+<p class="admonition-title">警告</p>
+<p>Please be advised that the reference documentation discussing pybind11
+internals is currently incomplete. Please refer to the previous sections
+and the pybind11 header files for the nitty gritty details.</p>
+</div>
+<div class="section" id="id1">
+<h1>Reference<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="macros">
+<span id="id2"></span><h2>Macros<a class="headerlink" href="#macros" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="convenience-classes-for-arbitrary-python-types">
+<span id="core-types"></span><h2>Convenience classes for arbitrary Python types<a class="headerlink" href="#convenience-classes-for-arbitrary-python-types" title="永久链接至标题">¶</a></h2>
+<div class="section" id="common-member-functions">
+<h3>Common member functions<a class="headerlink" href="#common-member-functions" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="without-reference-counting">
+<h3>Without reference counting<a class="headerlink" href="#without-reference-counting" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="with-reference-counting">
+<h3>With reference counting<a class="headerlink" href="#with-reference-counting" title="永久链接至标题">¶</a></h3>
+</div>
+</div>
+<div class="section" id="convenience-classes-for-specific-python-types">
+<h2>Convenience classes for specific Python types<a class="headerlink" href="#convenience-classes-for-specific-python-types" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="passing-extra-arguments-to-def-or-class">
+<span id="extras"></span><h2>Passing extra arguments to <code class="docutils literal notranslate"><span class="pre">def</span></code> or <code class="docutils literal notranslate"><span class="pre">class_</span></code><a class="headerlink" href="#passing-extra-arguments-to-def-or-class" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="embedding-the-interpreter">
+<h2>Embedding the interpreter<a class="headerlink" href="#embedding-the-interpreter" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="redirecting-c-streams">
+<h2>Redirecting C++ streams<a class="headerlink" href="#redirecting-c-streams" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="python-built-in-functions">
+<h2>Python built-in functions<a class="headerlink" href="#python-built-in-functions" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="inheritance">
+<h2>Inheritance<a class="headerlink" href="#inheritance" title="永久链接至标题">¶</a></h2>
+<p>See <span class="xref std std-doc">/classes</span> and <span class="xref std std-doc">/advanced/classes</span> for more detail.</p>
+</div>
+<div class="section" id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="literals">
+<h2>Literals<a class="headerlink" href="#literals" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

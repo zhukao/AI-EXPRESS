@@ -1,0 +1,6 @@
+artifact2 com.hobot.native:x2_prebuilt:1.1.36:zip:false
+artifact3 com.hobot.native.hobot:imagetools:1.0.0:zip:false
+artifact4 third_party:libyuv:1.0.0:zip:false
+artifact6 com.hobot.native:opencv:3.4.502:zip:true
+artifact9 third_party:libjpeg-turbo:1.5.3:zip:false
+

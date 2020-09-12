@@ -1,0 +1,6 @@
+{
+  "type": "vehicle",
+  "vehicle": {
+    "max_slide_window_size": 50
+  }
+}

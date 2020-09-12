@@ -1,0 +1,35 @@
+{
+  "inputs": [
+    "face_box",
+    "disappeared_face_id",
+    "head_box",
+    "disappeared_head_id",
+    "rgb_lmk",
+    "nir_lmk"
+  ],
+  "outputs": [
+    "merged_face_box",
+    "merged_head_box",
+    "disappeared_track_id"
+  ],
+  "workflow": [
+    {
+      "unique_name": "merge_method",
+      "method_type": "MergeMethod",
+      "inputs": [
+        "face_box",
+        "disappeared_face_id",
+        "head_box",
+        "disappeared_head_id",
+        "rgb_lmk",
+        "nir_lmk"
+      ],
+      "outputs": [
+        "merged_face_box",
+        "merged_head_box",
+        "disappeared_track_id"
+      ],
+      "method_config_file": "merge_head_face.json"
+    }
+  ]
+}

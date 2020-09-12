@@ -1,0 +1,33 @@
+Basic API
+=========
+
+Introduction to Basic API.
+
+Overview
+--------
+
+.. py:currentmodule:: gluon_face.common.base_trainer
+
+.. autosummary::
+    :nosignatures:
+
+    BaseTrainer
+    train
+
+
+.. py:currentmodule:: gluon_face.common.train_on_cluster
+
+.. autosummary::
+    :nosignatures:
+
+    traincli
+
+
+API Reference
+-------------
+
+.. automodule:: gluon_face.common.base_trainer
+    :members:
+
+.. automodule:: gluon_face.common.train_on_cluster
+    :members:

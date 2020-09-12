@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Intro &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/language_data.js"></script>
+        <script src="../../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Intro</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../_sources/ai_express_release/source/solution_zoo/xstream/methods/vehicle_snap_method/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>车辆抓拍及车辆与车牌关联模块</p>
+<div class="section" id="intro">
+<h1>Intro<a class="headerlink" href="#intro" title="永久链接至标题">¶</a></h1>
+<p>本部分包含两个功能模块，即车辆与车牌的关联，车辆的抓拍。车辆的抓拍支持优选和过线两种抓拍模式。</p>
+</div>
+<div class="section" id="build-deploy">
+<h1>Build&amp;Deploy<a class="headerlink" href="#build-deploy" title="永久链接至标题">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">build</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">deploy</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dependency">
+<h1>Dependency<a class="headerlink" href="#dependency" title="永久链接至标题">¶</a></h1>
+<p>vision_type
+jsoncpp
+如果需要编译测试代码，则还依赖 opencv</p>
+</div>
+<div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>车牌与车辆的关联<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>API 头文件是 <code class="docutils literal notranslate"><span class="pre">include/vehicle_match_strategy/pairs_match_api.hpp</span></code>。
+使用该模块时，可使用静态方法 <code class="docutils literal notranslate"><span class="pre">NewPairsMatchAPI(const</span> <span class="pre">std::string</span> <span class="pre">&amp;config_file)</span></code> 通过</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>auto match_api = NewPairsMatchAPI(config_file)；
+</pre></div>
+</div>
+<p>来新建一个处理车牌与车辆关联任务的实体。其中 <code class="docutils literal notranslate"><span class="pre">config_file</span></code> 是配置文件。样例配置文件在 <code class="docutils literal notranslate"><span class="pre">config/config_match.json</span></code>。</p>
+<p>其中，各参数意义如下：</p>
+<p><code class="docutils literal notranslate"><span class="pre">image_width</span></code>: 视频的宽度</p>
+<p><code class="docutils literal notranslate"><span class="pre">image_height</span></code>: 视频的高度</p>
+<p><code class="docutils literal notranslate"><span class="pre">min_statis_frames</span></code>: 形成统计矩阵所需要的最小帧数</p>
+<p><code class="docutils literal notranslate"><span class="pre">work_frames</span></code>: 一个统计矩阵的工作寿命，即多少帧更新一次统计矩阵。</p>
+<p><code class="docutils literal notranslate"><span class="pre">overlap_threshold</span></code>: 车牌框在车辆框中的比率大于多少时，认为它们可能是同一辆车的</p>
+<p><code class="docutils literal notranslate"><span class="pre">nums_cells_img</span></code>: 形成统计矩阵时，图像被分为 <code class="docutils literal notranslate"><span class="pre">nums_cells_img</span> <span class="pre">x</span> <span class="pre">nums_cells_img</span></code> 个格子</p>
+<p><code class="docutils literal notranslate"><span class="pre">max_pair_dis</span></code>: 可能匹配的车牌与车辆之间的最小距离</p>
+<p><code class="docutils literal notranslate"><span class="pre">min_stat_value</span></code>: 统计矩阵有意义的最小值</p>
+<p>构建完 API 实体，可以使用 <code class="docutils literal notranslate"><span class="pre">process</span></code> 方法处理车牌与车辆的关联。具体实例可以参考 <code class="docutils literal notranslate"><span class="pre">test/test_pair_match.cpp</span></code>。</p>
+</div>
+<div class="section" id="id2">
+<h2>车辆抓拍<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>API 头文件是 <code class="docutils literal notranslate"><span class="pre">include/vehicle_snap_strategy/vehicle_snap_strategy_api.hpp</span></code>。可以使用静态方法 <code class="docutils literal notranslate"><span class="pre">NewVEhicleSnapStrategyAPI(const</span> <span class="pre">std::</span> <span class="pre">&amp;config_file_name,</span> <span class="pre">const</span> <span class="pre">CropImage</span> <span class="pre">&amp;crop_image)</span></code> 通过</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>auto snap_api = NewPairsMatchAPI(config_file_name, crop_image)；
+</pre></div>
+</div>
+<p>来构建一个 API 实体。其中 <code class="docutils literal notranslate"><span class="pre">crop_image</span></code> 是一个函数指针，指向一个抠图函数，需要调用该 API 的程序根据自己的图像类型来实现，其类型定义也在该 API 头文件中。<code class="docutils literal notranslate"><span class="pre">config_file_name</span></code> 是配置文件名，样例配置在 <code class="docutils literal notranslate"><span class="pre">config/config_snap.json</span></code> 中。</p>
+<p>其中个参数意义如下：</p>
+<div class="section" id="factors">
+<h3><code class="docutils literal notranslate"><span class="pre">factors</span></code><a class="headerlink" href="#factors" title="永久链接至标题">¶</a></h3>
+<p>该项下定义了计算优选抓拍各项分数所需要的参数。</p>
+<p><code class="docutils literal notranslate"><span class="pre">norm</span></code>: {</p>
+<p><code class="docutils literal notranslate"><span class="pre">min</span></code>: 归一化时所用的最小值</p>
+<p><code class="docutils literal notranslate"><span class="pre">max</span></code>: 归一化时所用的最大值</p>
+<p>}</p>
+<p><code class="docutils literal notranslate"><span class="pre">vehicle_szie</span></code>: {
+计算车辆大小分数所需的各项参数</p>
+<p><code class="docutils literal notranslate"><span class="pre">weight</span></code>: 权重</p>
+<p><code class="docutils literal notranslate"><span class="pre">norm_fun</span></code>: 归一化函数</p>
+<p><code class="docutils literal notranslate"><span class="pre">valid_min</span></code>: 有效的车辆 size 最小值</p>
+<p><code class="docutils literal notranslate"><span class="pre">norm_factor</span></code>: 归一化因子</p>
+<p>}</p>
+<p><code class="docutils literal notranslate"><span class="pre">plate_szie</span></code>: {
+计算车牌大小分数所需的各项参数</p>
+<p><code class="docutils literal notranslate"><span class="pre">weight</span></code>: 权重</p>
+<p><code class="docutils literal notranslate"><span class="pre">norm_fun</span></code>: 归一化函数</p>
+<p><code class="docutils literal notranslate"><span class="pre">valid_min</span></code>: 有效的车牌 size 最小值</p>
+<p><code class="docutils literal notranslate"><span class="pre">norm_factor</span></code>: 归一化因子</p>
+<p>}</p>
+<p><code class="docutils literal notranslate"><span class="pre">vehicle_det_score</span></code>: {
+计算车辆检测置信度分数所需的各项参数</p>
+<p><code class="docutils literal notranslate"><span class="pre">weight</span></code>: 权重</p>
+<p><code class="docutils literal notranslate"><span class="pre">norm_fun</span></code>: 归一化函数</p>
+<p><code class="docutils literal notranslate"><span class="pre">min</span></code>: 检测置信度最小值</p>
+<p><code class="docutils literal notranslate"><span class="pre">max</span></code>: 检测置信度最大值</p>
+<p>}</p>
+<p><code class="docutils literal notranslate"><span class="pre">plate_det_score</span></code>: {
+计算车牌检测置信度分数所需的各项参数</p>
+<p><code class="docutils literal notranslate"><span class="pre">weight</span></code>: 权重</p>
+<p><code class="docutils literal notranslate"><span class="pre">norm_fun</span></code>: 归一化函数</p>
+<p><code class="docutils literal notranslate"><span class="pre">min</span></code>: 检测置信度最小值</p>
+<p><code class="docutils literal notranslate"><span class="pre">max</span></code>: 检测置信度最大值</p>
+<p>}</p>
+<p><code class="docutils literal notranslate"><span class="pre">vehicle_visibility</span></code>: {
+计算车辆可见度分数所需的各项参数</p>
+<p><code class="docutils literal notranslate"><span class="pre">weight</span></code>: 权重</p>
+<p><code class="docutils literal notranslate"><span class="pre">norm_fun</span></code> 归一化函数</p>
+<p>}</p>
+<p><code class="docutils literal notranslate"><span class="pre">vehicle_integrity</span></code>: {
+计算车辆完整度所需的各项分数</p>
+<p><code class="docutils literal notranslate"><span class="pre">weight</span></code>: 权重</p>
+<p><code class="docutils literal notranslate"><span class="pre">dis_th</span></code>: 与边缘的距离小于多少像素时判定为不完整</p>
+<p><code class="docutils literal notranslate"><span class="pre">norm_fun</span></code> 归一化函数</p>
+<p>}</p>
+<div class="section" id="snap-contorl">
+<h4><code class="docutils literal notranslate"><span class="pre">snap_contorl</span></code><a class="headerlink" href="#snap-contorl" title="永久链接至标题">¶</a></h4>
+<p>该项下定义了控制何时输出抓拍信息所需的参数</p>
+<p><code class="docutils literal notranslate"><span class="pre">snap_mode</span></code>: 抓拍模式，<code class="docutils literal notranslate"><span class="pre">score_selective</span></code> 优选抓拍或 <code class="docutils literal notranslate"><span class="pre">cross_line</span></code> 过线抓拍。</p>
+<p><code class="docutils literal notranslate"><span class="pre">score_selective</span></code>: {
+该项下定义优选抓拍所需的各项控制参数</p>
+<p><code class="docutils literal notranslate"><span class="pre">ignore_overlap_ratio</span></code>: 车辆在 <code class="docutils literal notranslate"><span class="pre">black_area</span></code> 中所占的比例大于多少时，认为该车辆是需要 <code class="docutils literal notranslate"><span class="pre">ignore</span></code> 的</p>
+<p><code class="docutils literal notranslate"><span class="pre">post_frame_threshold</span></code>: 车辆出现多少帧时，输出抓拍信息</p>
+<p><code class="docutils literal notranslate"><span class="pre">min_tracklet_len</span></code>: 可输出抓拍信息的最小  <code class="docutils literal notranslate"><span class="pre">tracklet</span></code> 长度</p>
+<p><code class="docutils literal notranslate"><span class="pre">snap_min_score</span></code>: 大于多少分数时，才输出抓拍信息</p>
+<p><code class="docutils literal notranslate"><span class="pre">growth_ladder</span></code>: 当一个 <code class="docutils literal notranslate"><span class="pre">tracklet</span></code> 的目标的优选分数显著大于上一个最优的目标多少时，才更新最优抓拍目标</p>
+<p>}</p>
+<p><code class="docutils literal notranslate"><span class="pre">cross_line</span></code>: {
+该项下定义了过线抓拍所需的各项参数</p>
+<p><code class="docutils literal notranslate"><span class="pre">line_width</span></code>: 线宽</p>
+<p><code class="docutils literal notranslate"><span class="pre">line</span></code>: 标定的线，碰到这条线时，输出抓拍信息
+}</p>
+<p><code class="docutils literal notranslate"><span class="pre">black_area</span></code>: ignore 区域</p>
+<p>之后使用 <code class="docutils literal notranslate"><span class="pre">process</span></code> 方法处理抓拍。具体样例可见 <code class="docutils literal notranslate"><span class="pre">test\test_snap_pipeline.cpp</span></code></p>
+</div>
+<div class="section" id="id3">
+<h4>额外功能<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h4>
+<p>抓拍模块中提供了 <code class="docutils literal notranslate"><span class="pre">SetSnapMode(snap_mode)</span></code> 来动态设置抓拍模式。还提供了 <code class="docutils literal notranslate"><span class="pre">SetBlackArea(black_are)</span></code> 来动态设置 ignore 区域.
+And <code class="docutils literal notranslate"><span class="pre">SetLine(line)</span></code> method to dynamicly set line which is used in cross line snap mode.</p>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>单元测试<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>需要把配置文件放在运行目录下的 config/ 中
+./vehicle_snap_method_test</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

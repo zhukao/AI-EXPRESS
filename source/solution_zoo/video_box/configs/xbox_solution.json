@@ -1,0 +1,6 @@
+{
+  "xstream_workflow_file": "./body_solution/configs/xbox_action_det.json",
+  "enable_profile": 0,
+  "profile_log_path": "",
+  "enable_result_to_json": false
+}

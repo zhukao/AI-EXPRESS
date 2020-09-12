@@ -1,0 +1,28 @@
+Initialize HBCC Env
+PATH=/gpfs/plat_aidi/build/hbcc/v3.7.10/bin/:/usr/local/jdk/jdk1.8.0_241/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/hadoop-2.7.2/bin
+LD_LIBRARY_PATH=:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/lib/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/lib32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/lib64/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/darwin/lib32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/darwin/lib64/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/m2/lib32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/m2/lib64/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/matrix/lib32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/matrix/libarm32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/x2/lib32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/x2/lib64/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/x2/libarch64/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/x2a/lib32/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/x2a/lib64/:/gpfs/plat_aidi/build/hbcc/v3.7.10/hbcc/targets/x2a/libarch64/
+PYTHONPATH=/gpfs/plat_aidi/build/hbcc/v3.7.10/lib/python3.6/site-packages/:
+HBDK Info
+version: 3.7.10
+runtime version: 3.5.3
+cmake_build_type: releasewithassert
+supported_march: bernoulli, bernoulli2, 
+git_version: 3ca1533
+git_branch: TC3.4.0
+release_type: public
+
+hbdk-cc --march bernoulli2 -m /gpfs/plat_aidi/model/1942/IntInference/multitask-3-absorb-bn-ft-3-x2-hobot-predict-symbol_v0.0.27.json -p /gpfs/plat_aidi/model/1942/IntInference/multitask-3-absorb-bn-ft-3-x2-hobot-predict-0011_v0.0.27.params -s 1x768x1024x3 -i pyramid --O2  -o personMultitask.hbm
+warning: missing stride for pyramid input[0], use its aligned width by default.
+info: Layer "rcnn_feat_branch0_rois" will be JUST-IN-TIME compiled by runtime.
+info: Layer "rcnn_feat_branch1_rois" will be JUST-IN-TIME compiled by runtime.
+info: Layer "rcnn_feat_branch2_rois" will be JUST-IN-TIME compiled by runtime.
+info: Layer "rpp_branch0" will be executed on CPU
+info: Layer "rpp_branch1" will be executed on CPU
+info: Layer "rpp_branch2" will be executed on CPU
+info: Layer "lmk_feat_rois" will be JUST-IN-TIME compiled by runtime.
+info: Layer "face_pose_feat_rois" will be JUST-IN-TIME compiled by runtime.
+info: Layer "lmk_reg_feat_rois" will be JUST-IN-TIME compiled by runtime.
+info: Layer "kps_feat_rois" will be JUST-IN-TIME compiled by runtime.
+hbdk-pack /gpfs/plat_aidi/build/1269/so/personMultitask.hbm -o /gpfs/plat_aidi/build/1269/so/personMultitask_1024x768.hbm --tag personMultitask_v0.0.2
+hbdk-perf /gpfs/plat_aidi/build/1269/so/personMultitask_1024x768.hbm
+  FPS=33.07   (see personMultitask.html)

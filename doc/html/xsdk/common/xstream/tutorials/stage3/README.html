@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>线程安全 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>线程安全</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/xsdk/common/xstream/tutorials/stage3/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>线程安全<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="is-thread-safe">
+<h2>is_thread_safe_<a class="headerlink" href="#is-thread-safe" title="永久链接至标题">¶</a></h2>
+<p>目前method属性中，有一个is_thread_safe_字段，该字段默认值为false。
+如果is_thread_safe_字段为false，表示一个method的实例只能与一个thread绑定, 也就是一个method实例对应一个thread，method和thread数量要一一对应。但是一个thread可以绑定多个不同method实例。</p>
+<p>如果is_thread_safe_字段为true，表示一个method实例可以同时运行在多个线程上。</p>
+<p><img alt="one_method_bind_one_thread" src="../../../../../_images/one_method_bind_one_thread1.png" /></p>
+<p>使用线程安全的属性，要求method本身在业务上是可重入的。如果设置了线程安全属性（is_thread_safe=true）， 即使执行该method的node设置了多个运行线程（通过thread_cout或thread_list字段，见stage2），实际只会创建一个method实例，因此如果method满足线程安全的条件，尽量设置该属性，该属性可以节省一些运行资源。</p>
+<p><img alt="multi_method_bind_multi_thread" src="../../../../../_images/multi_method_bind_multi_thread1.png" /></p>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>输入数据重排序<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h1>
+<div class="section" id="is-need-reorder">
+<h2>is_need_reorder<a class="headerlink" href="#is-need-reorder" title="永久链接至标题">¶</a></h2>
+<p>有的业务场景下(例如MOT，或者其他对图像前后帧信息有严格顺序要求的场景)，method要求输入数据必须是按照顺序输入的，当数据在workflow里流动的过程中，数据的顺序经常是乱序的，此时需要对输入数据进行重新排序。此时，将需要数据是按照顺序输入的method的is_need_reorder置为true即可。</p>
+</div>
+</div>
+<div class="section" id="method">
+<h1>Method属性设置<a class="headerlink" href="#method" title="永久链接至标题">¶</a></h1>
+<p>前面已经介绍了线程安全(is_thread_safe_)和输入数据重排序(is_need_reorder)的属性,下面介绍如何在xstream框架中使用is_thread_safe_和is_need_reorder属性。</p>
+<div class="section" id="methodinfo">
+<h2>MethodInfo数据结构定义<a class="headerlink" href="#methodinfo" title="永久链接至标题">¶</a></h2>
+<p>xstream框架的Method属性是通过对MethodInfo类的各个属性成员进行赋值和使用来实现的。
+MethodInfo类的数据结构定义如下：</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/framework/include/hobotxstream/method.h</span>
+
+<span class="c1">// Method基本信息</span>
+<span class="k">struct</span> <span class="n">MethodInfo</span> <span class="p">{</span>
+  <span class="c1">// 是否线程安全</span>
+  <span class="kt">bool</span> <span class="n">is_thread_safe_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="c1">// 是否需要做reorder，也就是让每一帧结果的返回顺序同请求顺序。</span>
+  <span class="kt">bool</span> <span class="n">is_need_reorder</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="c1">// 是否对输入源有前后文依赖 source context dependent</span>
+  <span class="kt">bool</span> <span class="n">is_src_ctx_dept</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>可以看到，属性is_thread_safe_默认是false，属性is_need_reorder默认是false。</p>
+</div>
+<div class="section" id="id3">
+<h2>MethodInfo获取和使用<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>Method类(<code class="docutils literal notranslate"><span class="pre">xstream/framework/include/hobotxstream/method.h</span></code>)中定义了GetMethodInfo()成员函数。
+当需要设置和使用Method属性时，直接在派生自Method的子类中对GetMethodInfo()成员函数进行重新定义即可。
+MethodInfo的获取也同样通过GetMethodInfo()函数。</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/framework/src/method.h</span>
+<span class="k">class</span> <span class="nc">Method</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="c1">// 获取Method基本信息,GetMethodInfo可以被继承自Method的类子类覆盖，描述本Method所支持的属性</span>
+  <span class="k">virtual</span> <span class="n">MethodInfo</span> <span class="n">GetMethodInfo</span><span class="p">();</span>
+  <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>设置线程安全属性举例<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>以ThreadSafetyMethod类为例，描述如何设置和使用线程安全属性。
+ThreadSafetyMethod类定义如下：</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage3/method/thread_safety_method.h</span>
+<span class="k">class</span> <span class="nc">ThreadSafetyMethod</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Method</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="kt">int</span> <span class="n">Init</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">config_file_path</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;&gt;</span> <span class="n">DoProcess</span><span class="p">(</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HobotXStream</span><span class="o">::</span><span class="n">InputParamPtr</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">param</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+  <span class="kt">void</span> <span class="nf">Finalize</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="nf">UpdateParameter</span><span class="p">(</span><span class="n">InputParamPtr</span> <span class="n">ptr</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="n">InputParamPtr</span> <span class="nf">GetParameter</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetVersion</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">OnProfilerChanged</span><span class="p">(</span><span class="kt">bool</span> <span class="n">on</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="c1">// 设置和获取本类的MethodInfo，描述本Method支持的属性</span>
+  <span class="n">MethodInfo</span> <span class="nf">GetMethodInfo</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+ <span class="k">private</span><span class="o">:</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">shared_safe_value_</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>ThreadSafetyMethod类的线程安全属性的设置，实现如下：</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage3/method/thread_safety_method.cc</span>
+<span class="n">MethodInfo</span> <span class="n">ThreadSafetyMethod</span><span class="o">::</span><span class="n">GetMethodInfo</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">MethodInfo</span> <span class="n">order_method</span> <span class="o">=</span> <span class="n">MethodInfo</span><span class="p">();</span>
+  <span class="c1">// 设置ThreadSafetyMethod为线程安全</span>
+  <span class="n">order_method</span><span class="p">.</span><span class="n">is_thread_safe_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="c1">// ...</span>
+  <span class="k">return</span> <span class="n">order_method</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>按照如上设置ThreadSafetyMethod，即可使用xstream提供的线程安全属性。</p>
+<p>ThreadSafetyMethod的功能描述：ThreadSafetyMethod每次处理输出一个sequence_id, 在设置了is_thread_safe_=true后，即使配置了多个线程，但只会创建了一个method实例，加上shared_safe_value_为一个原子变量，所以能保证每次处理都返回一个唯一的sequence_id。</p>
+</div>
+<div class="section" id="id5">
+<h2>设置输入数据重排序属性举例<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>以PassthroughMethod类为例，对输入数据重排序功能进行说明：
+PassthroughMethod类定义如下:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage3/method/passthrough_method.h</span>
+<span class="k">class</span> <span class="nc">PassthroughMethod</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Method</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="kt">int</span> <span class="n">Init</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">config_file_path</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;&gt;</span> <span class="n">DoProcess</span><span class="p">(</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HobotXStream</span><span class="o">::</span><span class="n">InputParamPtr</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">param</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+  <span class="kt">void</span> <span class="nf">Finalize</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="nf">UpdateParameter</span><span class="p">(</span><span class="n">InputParamPtr</span> <span class="n">ptr</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="n">InputParamPtr</span> <span class="nf">GetParameter</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetVersion</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">OnProfilerChanged</span><span class="p">(</span><span class="kt">bool</span> <span class="n">on</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="n">MethodInfo</span> <span class="nf">GetMethodInfo</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+ <span class="k">private</span><span class="o">:</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>PassthroughMethod类的输入数据重排序属性的设置，实现如下：</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">MethodInfo</span> <span class="n">PassthroughMethod</span><span class="o">::</span><span class="n">GetMethodInfo</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">MethodInfo</span> <span class="n">order_method</span> <span class="o">=</span> <span class="n">MethodInfo</span><span class="p">();</span>
+  <span class="n">order_method</span><span class="p">.</span><span class="n">is_thread_safe_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="n">order_method</span><span class="p">.</span><span class="n">is_need_reorder</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">order_method</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>按照如上设置PassthroughMethod，即可使用xstream提供的输入数据重排序属性。
+在is_reorder=true的method，由于有前后帧序依赖，一般线程数设置为1。</p>
+<p>PassthroughMethod的功能描述：PassthroughMethod功能是把输入顺序透传到输出，同上为了模拟真实应用负载，每次处理过程中随机sleep了一段时间。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

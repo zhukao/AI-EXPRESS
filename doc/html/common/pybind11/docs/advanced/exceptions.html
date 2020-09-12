@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Exceptions &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Exceptions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/common/pybind11/docs/advanced/exceptions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="exceptions">
+<h1>Exceptions<a class="headerlink" href="#exceptions" title="永久链接至标题">¶</a></h1>
+<div class="section" id="built-in-exception-translation">
+<h2>Built-in exception translation<a class="headerlink" href="#built-in-exception-translation" title="永久链接至标题">¶</a></h2>
+<p>When C++ code invoked from Python throws an <code class="docutils literal notranslate"><span class="pre">std::exception</span></code>, it is
+automatically converted into a Python <code class="docutils literal notranslate"><span class="pre">Exception</span></code>. pybind11 defines multiple
+special exception classes that will map to different types of Python
+exceptions:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>C++ exception type</p></th>
+<th class="head"><p>Python exception type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">std::exception</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">std::bad_alloc</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MemoryError</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">std::domain_error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ValueError</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">std::invalid_argument</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ValueError</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">std::length_error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ValueError</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">std::out_of_range</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IndexError</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">std::range_error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ValueError</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">std::overflow_error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OverflowError</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11::stop_iteration</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> (used to implement
+custom iterators)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11::index_error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IndexError</span></code> (used to indicate out
+of bounds access in <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code>,
+<code class="docutils literal notranslate"><span class="pre">__setitem__</span></code>, etc.)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11::value_error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ValueError</span></code> (used to indicate
+wrong value passed in
+<code class="docutils literal notranslate"><span class="pre">container.remove(...)</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11::key_error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">KeyError</span></code> (used to indicate out
+of bounds access in <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code>,
+<code class="docutils literal notranslate"><span class="pre">__setitem__</span></code> in dict-like
+objects, etc.)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11::error_already_set</span></code></p></td>
+<td><p>Indicates that the Python exception
+flag has already been set via Python
+API calls from C++ code; this C++
+exception is used to propagate such
+a Python exception back to Python.</p></td>
+</tr>
+</tbody>
+</table>
+<p>When a Python function invoked from C++ throws an exception, it is converted
+into a C++ exception of type <code class="xref py py-class docutils literal notranslate"><span class="pre">error_already_set</span></code> whose string payload
+contains a textual summary.</p>
+<p>There is also a special exception <code class="xref py py-class docutils literal notranslate"><span class="pre">cast_error</span></code> that is thrown by
+<code class="xref py py-func docutils literal notranslate"><span class="pre">handle::call()</span></code> when the input arguments cannot be converted to Python
+objects.</p>
+</div>
+<div class="section" id="registering-custom-translators">
+<h2>Registering custom translators<a class="headerlink" href="#registering-custom-translators" title="永久链接至标题">¶</a></h2>
+<p>If the default exception conversion policy described above is insufficient,
+pybind11 also provides support for registering custom exception translators.
+To register a simple exception conversion that translates a C++ exception into
+a new Python exception using the C++ exception’s <code class="docutils literal notranslate"><span class="pre">what()</span></code> method, a helper
+function is available:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">py</span><span class="o">::</span><span class="n">register_exception</span><span class="o">&lt;</span><span class="n">CppExp</span><span class="o">&gt;</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s">&quot;PyExp&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This call creates a Python exception class with the name <code class="docutils literal notranslate"><span class="pre">PyExp</span></code> in the given
+module and automatically converts any encountered exceptions of type <code class="docutils literal notranslate"><span class="pre">CppExp</span></code>
+into Python exceptions of type <code class="docutils literal notranslate"><span class="pre">PyExp</span></code>.</p>
+<p>When more advanced exception translation is needed, the function
+<code class="docutils literal notranslate"><span class="pre">py::register_exception_translator(translator)</span></code> can be used to register
+functions that can translate arbitrary exception types (and which may include
+additional logic to do so).  The function takes a stateless callable (e.g.  a
+function pointer or a lambda function without captured variables) with the call
+signature <code class="docutils literal notranslate"><span class="pre">void(std::exception_ptr)</span></code>.</p>
+<p>When a C++ exception is thrown, the registered exception translators are tried
+in reverse order of registration (i.e. the last registered translator gets the
+first shot at handling the exception).</p>
+<p>Inside the translator, <code class="docutils literal notranslate"><span class="pre">std::rethrow_exception</span></code> should be used within
+a try block to re-throw the exception.  One or more catch clauses to catch
+the appropriate exceptions should then be used with each clause using
+<code class="docutils literal notranslate"><span class="pre">PyErr_SetString</span></code> to set a Python exception or <code class="docutils literal notranslate"><span class="pre">ex(string)</span></code> to set
+the python exception to a custom exception type (see below).</p>
+<p>To declare a custom Python exception type, declare a <code class="docutils literal notranslate"><span class="pre">py::exception</span></code> variable
+and use this in the associated exception translator (note: it is often useful
+to make this a static declaration when using it inside a lambda expression
+without requiring capturing).</p>
+<p>The following example demonstrates this for a hypothetical exception classes
+<code class="docutils literal notranslate"><span class="pre">MyCustomException</span></code> and <code class="docutils literal notranslate"><span class="pre">OtherException</span></code>: the first is translated to a
+custom python exception <code class="docutils literal notranslate"><span class="pre">MyCustomError</span></code>, while the second is translated to a
+standard python RuntimeError:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">py</span><span class="o">::</span><span class="n">exception</span><span class="o">&lt;</span><span class="n">MyCustomException</span><span class="o">&gt;</span> <span class="n">exc</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s">&quot;MyCustomError&quot;</span><span class="p">);</span>
+<span class="n">py</span><span class="o">::</span><span class="n">register_exception_translator</span><span class="p">([](</span><span class="n">std</span><span class="o">::</span><span class="n">exception_ptr</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">rethrow_exception</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">MyCustomException</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">exc</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">OtherException</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">PyErr_SetString</span><span class="p">(</span><span class="n">PyExc_RuntimeError</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Multiple exceptions can be handled by a single translator, as shown in the
+example above. If the exception is not caught by the current translator, the
+previously registered one gets a chance.</p>
+<p>If none of the registered exception translators is able to handle the
+exception, it is handled by the default converter as described in the previous
+section.</p>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<p>The file <code class="file docutils literal notranslate"><span class="pre">tests/test_exceptions.cpp</span></code> contains examples
+of various custom exception translators and custom exception types.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>You must call either <code class="docutils literal notranslate"><span class="pre">PyErr_SetString</span></code> or a custom exception’s call
+operator (<code class="docutils literal notranslate"><span class="pre">exc(string)</span></code>) for every exception caught in a custom exception
+translator.  Failure to do so will cause Python to crash with <code class="docutils literal notranslate"><span class="pre">SystemError:</span>
+<span class="pre">error</span> <span class="pre">return</span> <span class="pre">without</span> <span class="pre">exception</span> <span class="pre">set</span></code>.</p>
+<p>Exceptions that you do not plan to handle should simply not be caught, or
+may be explicitly (re-)thrown to delegate it to the other,
+previously-declared existing exception translators.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

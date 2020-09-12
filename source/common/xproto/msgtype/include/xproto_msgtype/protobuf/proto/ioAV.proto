@@ -1,0 +1,18 @@
+syntax = "proto3";
+package ioAV;
+
+option optimize_for = LITE_RUNTIME;
+
+//interpretative structure of computer feeling and perception
+message Perception {
+	int32 type = 1;//the data type of computer perception
+	
+	fixed64 timestamp = 2;//the timestamp of computer perception, NTP format
+
+	int32 sync_flag = 3;//the number of sync channel, 0 means needn't to sync
+
+	bytes body = 4;//the computer perception data, suggestion length is less than a megabyte
+	
+	string checkCode = 5;//the checkCode of computer perception data, defined in proto file
+}
+

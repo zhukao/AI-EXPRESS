@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FasterRCNNMethod &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/language_data.js"></script>
+        <script src="../../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>FasterRCNNMethod</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../_sources/ai_express_release/source/common/xstream/methods/fasterrcnnmethod/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fasterrcnnmethod">
+<h1>FasterRCNNMethod<a class="headerlink" href="#fasterrcnnmethod" title="永久链接至标题">¶</a></h1>
+<div class="section" id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="永久链接至标题">¶</a></h2>
+<p>FasterRCNNMethod主要是对fasterrcnn检测算法的集成，输入支持PyImageFrame和CVImageFrame两种类型，内部调用bpu_predict接口进行预测，得到相关的检测结果。目前method已支持人脸框，人头框，人体框，人脸关键点，人脸3dpose，人体关键点，人体reid，人体单例分割，车辆，非机动车，行人，车前窗，车牌，车颜色，双排车牌号码等输出。</p>
+</div>
+<div class="section" id="build">
+<h2>Build<a class="headerlink" href="#build" title="永久链接至标题">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># sh cicd/scripts/build_linux.sh, 默认编译release版，sh cicd/scripts/build_linux.sh debug 编译debug版</span>
+<span class="c1"># 打包example程序与依赖的库：sh cicd/scripts/copy_runtime.sh 然后将打包好的release文件夹拷贝到开发板上就可以运行了。</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="永久链接至标题">¶</a></h2>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="永久链接至标题">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>TestFasterRCNNImage</th>
+<th>跑fasterrcnn，输入为bgr格式的图像</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TestFBFasterrcnn</td>
+<td>回灌方式跑fasterrcnn</td>
+</tr>
+<tr>
+<td>TestFBPyramid</td>
+<td>回灌通路测试</td>
+</tr>
+<tr>
+<td>TestModelInfo</td>
+<td>获取模型信息</td>
+</tr>
+<tr>
+<td>TestTwoFasterRCNN</td>
+<td>同时运行两个fasterrcnn实例，fasterrcnnmethod支持创建多个实例</td>
+</tr>
+<tr>
+<td>TestX2DEVDualPyramid</td>
+<td>双目camera通路测试</td>
+</tr>
+<tr>
+<td>TestX2DEVFasterRCNNPyramid</td>
+<td>实时视频跑fasterrcnn</td>
+</tr>
+<tr>
+<td>TestX2DEVSinglePyramid</td>
+<td>单目camera通路测试</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id1">
+<h3>输入/输出<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id2">
+<h4>输入<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot id</th>
+<th>content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>slot0</td>
+<td>ImageFrame</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id3">
+<h4>输出<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h4>
+<p>(输出槽的信息和使用的配置文件有关，以face_pose_lmk_config.json为例)</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>slot id</th>
+<th>content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>slot0</td>
+<td>face_box</td>
+</tr>
+<tr>
+<td>slot1</td>
+<td>landmark</td>
+</tr>
+<tr>
+<td>slot2</td>
+<td>pose</td>
+</tr>
+</tbody>
+</table><p><strong>单实例不支持多线程访问，支持多实例。</strong></p>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>配置文件<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>根据实际使用情况，fasterrcnn目前有四个配置文件，存放在configs文件夹下，分别对应faceDet模型，faceMultitask(face+pose+lmk)模型,personMultitask（face+head+body+kps+reid+mask） 模型以及vechicle（车辆检测）模型。原则上每集成一个新的模型，是需要添加一个对应的配置文件的。下面以face_pose_lmk_config.json配置为例，讲解配置里主要参数的意思。</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>net_info</td>
+<td>和模型相关的信息</td>
+</tr>
+<tr>
+<td>model_name</td>
+<td>编译出的hbm文件中模型的名字</td>
+</tr>
+<tr>
+<td>model_version</td>
+<td>模型的版本号，GetVersion接口返回的就是这个值</td>
+</tr>
+<tr>
+<td>pyramid_layer</td>
+<td>模型用到的金字塔的第几层</td>
+</tr>
+<tr>
+<td>method_outs</td>
+<td>method的实际输出，我们可以根据这个输出模型输出能力的子集</td>
+</tr>
+<tr>
+<td>bpu_config_path</td>
+<td>bpu_predict配置的路径</td>
+</tr>
+<tr>
+<td>model_file_path</td>
+<td>模型文件的路径</td>
+</tr>
+<tr>
+<td>face_pv_thr</td>
+<td>人脸的置信度阈值，没达到置信度阈值的face_box及关联的人脸lmk和人脸pose一并不输出，默认阈值为0</td>
+</tr>
+<tr>
+<td>model_out_sequence</td>
+<td>模型输出各分支的信息，我们需要根据model_out_sequence来进行模型结果的后处理</td>
+</tr>
+</tbody>
+</table><p>对于”model_out_sequence”,其内部个参数含义如下：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>输出的名字</td>
+</tr>
+<tr>
+<td>type</td>
+<td>输出的类型</td>
+</tr>
+<tr>
+<td>box_name</td>
+<td>依赖的box的名字</td>
+</tr>
+<tr>
+<td>model_input_width</td>
+<td>模型输入的宽</td>
+</tr>
+<tr>
+<td>model_input_height</td>
+<td>模型输入的高</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id5">
+<h3>如何集成一个新的模型<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>假设你有一个新的fasterrcnn模型要集成，集成的步骤是什么？例如这个模型是个车辆检测相关的模型，输出能力包括车辆，车牌，车前窗，主驾驶，副驾驶。</p>
+<ol class="simple">
+<li><p>利用编译工具（hbcc）将模型文件（mxnet对应一个json和param文件）编译成一个hbm文件，确定好模型的名字（也可以通过编译器提供的接口获得），询问算法同事每层的输出是什么，修改配置文件中的model_out_sequence，适配每层的输出。</p></li>
+<li><p>编写模型的配置文件</p></li>
+<li><p>根据每层的输出类型，确定是否要扩充FasterRCNNBranchOutType以及FasterRCNNOutMsg以及是否需要添加新的后处理代码</p></li>
+<li><p>如果需要添加新的后处理代码，则根据算法同事提供的后处理python代码编写c++后处理代码</p></li>
+<li><p>通过打印数值或渲染图片的方式初步验证集成是否正确。</p></li>
+<li><p>跑测试集验证指标一致性</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

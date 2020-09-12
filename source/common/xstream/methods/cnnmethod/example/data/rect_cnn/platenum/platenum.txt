@@ -1,0 +1,1 @@
+data/rect_cnn/platenum/platenum.jpg 590.0 410.0 772.0 467.0

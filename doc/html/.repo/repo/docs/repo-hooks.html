@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>repo hooks &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>repo hooks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/.repo/repo/docs/repo-hooks.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="repo-hooks">
+<h1>repo hooks<a class="headerlink" href="#repo-hooks" title="永久链接至标题">¶</a></h1>
+<p>[TOC]</p>
+<p>Repo provides a mechanism to hook specific stages of the runtime with custom
+python modules.  All the hooks live in one git project which is checked out by
+the manifest (specified during <code class="docutils literal notranslate"><span class="pre">repo</span> <span class="pre">init</span></code>), and the manifest itself defines
+which hooks are registered.</p>
+<p>These are useful to run linters, check formatting, and run quick unittests
+before allowing a step to proceed (e.g. before uploading a commit to Gerrit).</p>
+<p>A complete example can be found in the Android project.  It can be easily
+re-used by any repo based project and is not specific to Android.<br>
+https://android.googlesource.com/platform/tools/repohooks</p>
+<div class="section" id="approvals">
+<h2>Approvals<a class="headerlink" href="#approvals" title="永久链接至标题">¶</a></h2>
+<p>When a hook is processed the first time, the user is prompted for approval.
+We don’t want to execute arbitrary code without explicit consent.  For manifests
+fetched via secure protocols (e.g. https://), the user is prompted once.  For
+insecure protocols (e.g. http://), the user is prompted whenever the registered
+repohooks project is updated and a hook is triggered.</p>
+</div>
+<div class="section" id="manifest-settings">
+<h2>Manifest Settings<a class="headerlink" href="#manifest-settings" title="永久链接至标题">¶</a></h2>
+<p>For the full syntax, see the <a class="reference internal" href="manifest-format.html"><span class="doc">repo manifest format</span></a>.</p>
+<p>Here’s a short example from
+<a class="reference external" href="https://android.googlesource.com/platform/manifest/+/master/default.xml">Android</a>.
+The <code class="docutils literal notranslate"><span class="pre">&lt;project&gt;</span></code> line checks out the repohooks git repo to the local
+<code class="docutils literal notranslate"><span class="pre">tools/repohooks/</span></code> path.  The <code class="docutils literal notranslate"><span class="pre">&lt;repo-hooks&gt;</span></code> line says to look in the project
+with the name <code class="docutils literal notranslate"><span class="pre">platform/tools/repohooks</span></code> for hooks to run during the
+<code class="docutils literal notranslate"><span class="pre">pre-upload</span></code> phase.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;project</span> <span class="na">path=</span><span class="s">&quot;tools/repohooks&quot;</span> <span class="na">name=</span><span class="s">&quot;platform/tools/repohooks&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;repo-hooks</span> <span class="na">in-project=</span><span class="s">&quot;platform/tools/repohooks&quot;</span> <span class="na">enabled-list=</span><span class="s">&quot;pre-upload&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="source-layout">
+<h2>Source Layout<a class="headerlink" href="#source-layout" title="永久链接至标题">¶</a></h2>
+<p>The repohooks git repo should have a python file with the same name as the hook.
+So if you want to support the <code class="docutils literal notranslate"><span class="pre">pre-upload</span></code> hook, you’ll need to create a file
+named <code class="docutils literal notranslate"><span class="pre">pre-upload.py</span></code>.  Repo will dynamically load that module when processing
+the hook and then call the <code class="docutils literal notranslate"><span class="pre">main</span></code> function in it.</p>
+<p>Hooks should have their <code class="docutils literal notranslate"><span class="pre">main</span></code> accept <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> for future compatibility.</p>
+</div>
+<div class="section" id="runtime">
+<h2>Runtime<a class="headerlink" href="#runtime" title="永久链接至标题">¶</a></h2>
+<p>Hook return values are ignored.</p>
+<p>Any uncaught exceptions from the hook will cause the step to fail.  This is
+intended as a fallback safety check though rather than the normal flow.  If
+you want your hook to trigger a failure, it should call <code class="docutils literal notranslate"><span class="pre">sys.exit()</span></code> (after
+displaying relevant diagnostics).</p>
+<p>Output (stdout &amp; stderr) are not filtered in any way.  Hooks should generally
+not be too verbose.  A short summary is nice, and some status information when
+long running operations occur, but long/verbose output should be used only if
+the hook ultimately fails.</p>
+<p>The hook runs from the top level of the repo client where the operation is
+started.
+For example, if the repo client is under <code class="docutils literal notranslate"><span class="pre">~/tree/</span></code>, then that is where the hook
+runs, even if you ran repo in a git repository at <code class="docutils literal notranslate"><span class="pre">~/tree/src/foo/</span></code>, or in a
+subdirectory of that git repository in <code class="docutils literal notranslate"><span class="pre">~/tree/src/foo/bar/</span></code>.
+Hooks frequently start off by doing a <code class="docutils literal notranslate"><span class="pre">os.chdir</span></code> to the specific project they’re
+called on (see below) and then changing back to the original dir when they’re
+finished.</p>
+<p>Python’s <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> is modified so that the top of repohooks directory comes
+first.  This should help simplify the hook logic to easily allow importing of
+local modules.</p>
+<p>Repo does not modify the state of the git checkout.  This means that the hooks
+might be running in a dirty git repo with many commits and checked out to the
+latest one.  If the hook wants to operate on specific git commits, it needs to
+manually discover the list of pending commits, extract the diff/commit, and
+then check it directly.  Hooks should not normally modify the active git repo
+(such as checking out a specific commit to run checks) without first prompting
+the user.  Although user interaction is discouraged in the common case, it can
+be useful when deploying automatic fixes.</p>
+</div>
+<div class="section" id="hooks">
+<h2>Hooks<a class="headerlink" href="#hooks" title="永久链接至标题">¶</a></h2>
+<p>Here are all the points available for hooking.</p>
+<div class="section" id="pre-upload">
+<h3>pre-upload<a class="headerlink" href="#pre-upload" title="永久链接至标题">¶</a></h3>
+<p>This hook runs when people run <code class="docutils literal notranslate"><span class="pre">repo</span> <span class="pre">upload</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pre-upload.py</span></code> file should be defined like:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">project_list</span><span class="p">,</span> <span class="n">worktree_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Main function invoked directly by repo.</span>
+
+<span class="sd">    We must use the name &quot;main&quot; as that is what repo requires.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      project_list: List of projects to run on.</span>
+<span class="sd">      worktree_list: A list of directories.  It should be the same length as</span>
+<span class="sd">          project_list, so that each entry in project_list matches with a</span>
+<span class="sd">          directory in worktree_list.  If None, we will attempt to calculate</span>
+<span class="sd">          the directories automatically.</span>
+<span class="sd">      kwargs: Leave this here for forward-compatibility.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

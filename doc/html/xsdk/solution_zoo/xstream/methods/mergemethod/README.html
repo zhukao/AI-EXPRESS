@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MergeMethod &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>MergeMethod</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/xsdk/solution_zoo/xstream/methods/mergemethod/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mergemethod">
+<h1>MergeMethod<a class="headerlink" href="#mergemethod" title="永久链接至标题">¶</a></h1>
+<p>MergeMethod主要用于完成检测框的融合，目前的实现是基于IOU的融合，即两个框的交并比满足条件，则为两个框赋予相同的track_id，MergeMethod目前主要用于人脸与人头框的融合以及rgb人脸框与nir人脸框的融合。</p>
+<div class="section" id="id1">
+<h2>输入<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h3>人头、人脸策略<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Slot</th>
+<th align="center">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">face_box</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">disappeared_face_id</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">head_box</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">disappeared_head_id</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">rgb_lmk</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">nir_lmk</td>
+<td align="center">可选项</td>
+</tr>
+</tbody>
+</table><p>从slot4开始，可输入rgb_lmk与nir_lmk，主要用于图像校正，通过CALIBRATION宏进行控制，默认关闭。</p>
+<p><em>备注</em>：此类策略主要用于人脸抓拍场景</p>
+</div>
+<div class="section" id="id3">
+<h3>人头、人脸、人体策略<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Slot</th>
+<th align="center">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">face_box</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">head_box</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">body_box</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">disappeared_face_id</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">disappeared_head_id</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">disappeared_body_id</td>
+<td align="center">必要项</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">body_kps</td>
+<td align="center">可选项</td>
+</tr>
+</tbody>
+</table><p><em>备注</em>：此类策略主要用于室内跟踪场景</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>输出<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id5">
+<h3>人头、人脸<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Slot</th>
+<th align="center">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">merged_face_box</td>
+<td align="center">融合后ID</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">merged_head_box</td>
+<td align="center">融合后ID</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">disappeared_track_id</td>
+<td align="center">融合后ID</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id6">
+<h3>人头、人脸、人体<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Slot</th>
+<th align="center">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">merged_face_box</td>
+<td align="center">融合后ID</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">merged_head_box</td>
+<td align="center">融合后ID</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">merged_body_box</td>
+<td align="center">融合后ID</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">disappeared_track_id</td>
+<td align="center">融合后ID</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="section" id="id7">
+<h2>配置文件参数<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id8">
+<h3>人头、人脸<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">字段</th>
+<th align="center">描述</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">match_threshold</td>
+<td align="center">匹配阈值，若分数低于该值则认为不构成匹配对</td>
+<td align="center">0.4</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id9">
+<h3>可见光、红外<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">字段</th>
+<th align="center">描述</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">camera_type</td>
+<td align="center">0代表横屏，1代表竖屏</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id10">
+<h3>人头、人脸、人体<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">字段</th>
+<th align="center">描述</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">merge_type</td>
+<td align="center">融合策略选择，人头人脸融合或者人头人体融合</td>
+<td align="center">head_body</td>
+</tr>
+<tr>
+<td align="center">match_threshold</td>
+<td align="center">匹配阈值，若分数低于该值则认为不构成匹配对</td>
+<td align="center">0.4</td>
+</tr>
+<tr>
+<td align="center">use_kps</td>
+<td align="center">是否使用人体关键点辅助人头人体匹配</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="center">double_thresh_flag</td>
+<td align="center">是否使用双阈值条件来去除容易产生矛盾的人头人体的匹配输出</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">valid_kps_score_thresh</td>
+<td align="center">kps的分数阈值，低于该值则认为该关键点是无效的</td>
+<td align="center">0.2</td>
+</tr>
+<tr>
+<td align="center">kps_cnt_threshold</td>
+<td align="center">有效kps的个数阈值，若低于该值则认为匹配无效</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">conflict_thresh</td>
+<td align="center">若同一人体与多个人头的匹配分数大于该阈值，则认为该人体存在矛盾的匹配</td>
+<td align="center">0.8</td>
+</tr>
+<tr>
+<td align="center">head_extend_ratio</td>
+<td align="center">人头框外扩比例</td>
+<td align="center">0.05</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

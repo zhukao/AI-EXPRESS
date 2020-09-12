@@ -1,0 +1,26 @@
+Basic Layers
+====================================
+
+Introduction to Basic Layers.
+
+
+Overview
+--------
+
+.. py:currentmodule:: gluon_face.common.nn.op_py.basic_layers
+
+.. autosummary::
+    :nosignatures:
+
+    Conv
+    BatchNorm
+    Activation
+    ElementWiseSum
+
+
+API Reference
+-------------
+
+.. automodule:: gluon_face.common.nn.op_py.basic_layers
+    :members:
+

@@ -1,0 +1,23 @@
+Sampler
+==============
+
+Introduction to Sampler.
+
+Overview
+--------
+
+.. py:currentmodule:: gluon_face.common.data.sampler
+
+.. autosummary::
+    :nosignatures:
+
+    BaseSampler
+    BaseBatchSampler
+
+
+API Reference
+-------------
+
+.. automodule:: gluon_face.common.data.sampler
+    :members:
+

@@ -1,0 +1,13 @@
+# CreatePublishedModelDirVersionReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**basic_version** | **str** | basic versions of this published model version in: body | [optional] 
+**commit_message** | **str** | published model&#39;s commit message in: body | [optional] 
+**name** | **str** | published model dir&#39;s name in: body | 
+**version** | **str** | published model&#39;s version, if not set, it will auto increment in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

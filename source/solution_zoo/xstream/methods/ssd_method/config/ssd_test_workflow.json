@@ -1,0 +1,21 @@
+{
+  "inputs": [
+    "pyramid"
+  ],
+  "outputs": [
+    "detect_box"
+  ],
+  "workflow": [
+    {
+      "unique_name": "ssd_method",
+      "method_type": "SSDMethod",
+      "inputs": [
+        "pyramid"
+      ],
+      "outputs": [
+        "detect_box"
+      ],
+      "method_config_file": "ssd_module.json"
+    }
+  ]
+}

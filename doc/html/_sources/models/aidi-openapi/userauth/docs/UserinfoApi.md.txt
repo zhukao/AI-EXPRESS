@@ -1,0 +1,63 @@
+# aidi_userauth.UserinfoApi
+
+All URIs are relative to *http://aidi.hobot.cc/api*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**get_user_info**](UserinfoApi.md#get_user_info) | **GET** /auth/v1/useradmin/userinfo | Get user detailed info.
+
+
+# **get_user_info**
+> APIResult get_user_info(body=body)
+
+Get user detailed info.
+
+This will return user's name, departments, email and role in each department.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi_userauth
+from aidi_userauth.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi_userauth.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi_userauth.UserinfoApi(aidi_userauth.ApiClient(configuration))
+body = aidi_userauth.BaseReq() # BaseReq |  (optional)
+
+try:
+    # Get user detailed info.
+    api_response = api_instance.get_user_info(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UserinfoApi->get_user_info: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**BaseReq**](BaseReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

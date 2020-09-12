@@ -1,0 +1,816 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started with Hobot Framework {#hobotsdk} &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Getting Started with Hobot Framework    {#hobotsdk}</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/common/hobotsdk/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started-with-hobot-framework-hobotsdk">
+<h1>Getting Started with Hobot Framework    {#hobotsdk}<a class="headerlink" href="#getting-started-with-hobot-framework-hobotsdk" title="永久链接至标题">¶</a></h1>
+<p>[TOC]</p>
+<p>Hobot Framework 提供了一个通过有向图的形式, 将基础代码功能模块组织成较复杂功能模块的机制。</p>
+<p>基于Hobot Framework, 所有的基础的功能以 <code class="docutils literal notranslate"><span class="pre">Module</span></code> 的形式提供; 功能之间的数据交换以 <code class="docutils literal notranslate"><span class="pre">Message</span></code> 为单位。</p>
+<p>一个 <code class="docutils literal notranslate"><span class="pre">Module</span></code> 由多个 <code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code> 组成，其中 <code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code> 又可以以一个或多个别的 <code class="docutils literal notranslate"><span class="pre">Module::Forward{n}</span></code> 产生的 <code class="docutils literal notranslate"><span class="pre">Message</span></code> 为输入, 可以输出自己的 <code class="docutils literal notranslate"><span class="pre">Message</span></code>。</p>
+<p>这样, 基础功能的开发者可以将自己的基础功能封装成一个 包含多个 <code class="docutils literal notranslate"><span class="pre">Forward</span></code> 的 <code class="docutils literal notranslate"><span class="pre">Module</span></code>, 并说明自己的输入输出;</p>
+<p>上层更复杂的功能开发者可以将这些 <code class="docutils literal notranslate"><span class="pre">Module::Forward{n}</span></code> 以有向图 <code class="docutils literal notranslate"><span class="pre">Workflow</span></code> 的形式组织起来, 形成更复杂的功能。</p>
+<p><img alt="概念图" src="../../_images/concept.png" /></p>
+</div>
+<div class="section" id="build">
+<h1>Build<a class="headerlink" href="#build" title="永久链接至标题">¶</a></h1>
+<p>你需要一个编译好的库, 和 <code class="docutils literal notranslate"><span class="pre">hobot/api/</span></code> 下面的 <code class="docutils literal notranslate"><span class="pre">.h</span></code> 文件就可以开始开发。</p>
+<p>编译使用 <code class="docutils literal notranslate"><span class="pre">cmake</span></code>。</p>
+<p>生成文档，请用 <code class="docutils literal notranslate"><span class="pre">doxygen</span> <span class="pre">doxygen.txt</span></code></p>
+<div class="section" id="cmake">
+<h2>CMake 脚本初始化<a class="headerlink" href="#cmake" title="永久链接至标题">¶</a></h2>
+<p>将<code class="docutils literal notranslate"><span class="pre">CMakeLists.txt.sample</span></code>, <code class="docutils literal notranslate"><span class="pre">test/CMakeLists.txt.sample</span></code>, <code class="docutils literal notranslate"><span class="pre">example/CMakeLists.txt.sample</span></code> 三个文件分别复制至同目录下的<code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>。</p>
+<p>比如linux下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">CMakeLists</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">sample</span> <span class="n">CMakeLists</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">cp</span> <span class="n">test</span><span class="o">/</span><span class="n">CMakeLists</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">sample</span> <span class="n">test</span><span class="o">/</span><span class="n">CMakeLists</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">cp</span> <span class="n">example</span><span class="o">/</span><span class="n">CMakeLists</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">sample</span> <span class="n">example</span><span class="o">/</span><span class="n">CMakeLists</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>决定目标平台<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>目前支持四种平台：OS X, linux, android, windows.</p>
+<p>配置平台信息的文件是<code class="docutils literal notranslate"><span class="pre">build.properties.local</span></code>文件。你可以：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">build</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">example</span> <span class="n">build</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">local</span>
+</pre></div>
+</div>
+<div class="section" id="build-for-android">
+<h3>Build for Android<a class="headerlink" href="#build-for-android" title="永久链接至标题">¶</a></h3>
+<p>需要最新的Android NDK。NDK路径也在<code class="docutils literal notranslate"><span class="pre">build.properties.local</span></code>设置，根据你本机的路径来设置：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ANDROID_NDK</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">witwolf</span><span class="o">/</span><span class="n">Develop</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">ndk</span><span class="o">-</span><span class="n">r10e</span>
+<span class="n">platform</span> <span class="n">android</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-for-linux">
+<h3>Build for Linux<a class="headerlink" href="#build-for-linux" title="永久链接至标题">¶</a></h3>
+<p>需要gcc 4.9。</p>
+<p><code class="docutils literal notranslate"><span class="pre">build.properties.local</span></code>中设置：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">platform</span> <span class="n">linux</span>
+</pre></div>
+</div>
+<p>然后运行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span>
+<span class="n">make</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-for-mac">
+<h3>Build for Mac<a class="headerlink" href="#build-for-mac" title="永久链接至标题">¶</a></h3>
+<p>需要XCode。</p>
+<p><code class="docutils literal notranslate"><span class="pre">build.properties.local</span></code>中设置：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">platform</span> <span class="n">mac</span>
+</pre></div>
+</div>
+<p>然后运行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span>
+<span class="n">make</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-for-windows">
+<h3>Build for Windows<a class="headerlink" href="#build-for-windows" title="永久链接至标题">¶</a></h3>
+<p>需要安装 VS2015 以上版本。</p>
+<p><code class="docutils literal notranslate"><span class="pre">build.properties.local</span></code>中设置：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">platform</span> <span class="n">win</span>
+</pre></div>
+</div>
+<p>然后运行</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build
+<span class="nb">cd</span> build
+cmake ..
+cmake --build . --config Debug<span class="p">|</span>Release
+</pre></div>
+</div>
+<p>注意根据需要, 指定 <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">Debug</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">Release</span></code>。</p>
+</div>
+</div>
+</div>
+<div class="section" id="develop">
+<h1>Develop<a class="headerlink" href="#develop" title="永久链接至标题">¶</a></h1>
+<div class="section" id="hello-world">
+<h2>Hello World!<a class="headerlink" href="#hello-world" title="永久链接至标题">¶</a></h2>
+<p>我们来完成一个最简单的功能: 加法计算。</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>class FloatMessage: public hobot::Message {
+ public:
+  float value_;
+
+  FloatMessage() { }
+
+  explicit FloatMessage(float value) : value_(value) { }
+};
+
+class Add: public hobot::Module {
+ private:
+  hobot::spMessage output_;
+
+ public:
+  explicit Add(std::string instance_name = &quot;&quot;)
+      : hobot::Module(instance_name, &quot;Add&quot;) { }
+
+  void Init(hobot::Engine *engine,
+            hobot::Workflow *workflow,
+            const hobot::MessageLists &amp;input) override {
+    output_.reset(new FloatMessage(0));
+    std::cout &lt;&lt; &quot;Add::Init&quot; &lt;&lt; std::endl;
+  }
+
+  void Reset() override {
+  }
+
+  FORWARD_DECLARE(Add, 0) {
+    std::cout &lt;&lt; &quot;Add::Forward, input size:&quot; &lt;&lt; input.size() &lt;&lt; std::endl;
+    float sum = 0;
+    static_cast&lt;FloatMessage *&gt;(output_.get())-&gt;value_ = 0;
+    for (int i = 0; i &lt; input.size(); i++) {
+      hobot::spMessage in = (*input[i])[0];
+      sum += static_cast&lt;FloatMessage *&gt;(in.get())-&gt;value_;
+    }
+    std::cout &lt;&lt; &quot;Add::Forward, sum:&quot; &lt;&lt; sum &lt;&lt; std::endl;
+
+    static_cast&lt;FloatMessage *&gt;(output_.get())-&gt;value_ = sum;
+    workflow-&gt;Return(this, 0, output_, context);
+  }
+};
+
+class Hello1Result: public hobot::RunObserver {
+ public:
+  void OnResult(hobot::Module *from,
+                int forward_index,
+                hobot::spMessage output) override {
+    std::cout &lt;&lt; &quot;result:&quot;
+        &lt;&lt; (static_cast&lt;FloatMessage *&gt;(output.get()))-&gt;value_
+        &lt;&lt; std::endl;
+  }
+};
+
+int TestHello1() {
+  std::cout &lt;&lt; &quot;Hello, TestLoop!&quot; &lt;&lt; std::endl;
+  hobot::Engine *engine = hobot::Engine::NewInstance();
+  hobot::Workflow *workflow = engine-&gt;NewWorkflow();
+  hobot::InputModule *a = new hobot::InputModule(&quot;a&quot;);
+  hobot::InputModule *b = new hobot::InputModule(&quot;b&quot;);
+  hobot::Module *add_module = new Add();
+  workflow-&gt;From(a, 0)-&gt;To(add_module, 0, 0);
+  workflow-&gt;From(b, 0)-&gt;To(add_module, 1, 0);
+  Hello1Result *out = new Hello1Result();
+  workflow-&gt;Run({std::make_pair(add_module, 0)}, {
+      std::make_tuple(a, 0, hobot::spMessage(new FloatMessage(1))),
+      std::make_tuple(b, 0, hobot::spMessage(new FloatMessage(2)))
+  }, out);
+  return 0;
+}
+</pre></div>
+</div>
+<p>下面我们来仔细看看这个例子。</p>
+<div class="section" id="id2">
+<h3>引入依赖<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>#include &quot;hobot/api/hobot.h&quot;
+</pre></div>
+</div>
+<p>一般情况下, 无论你想开发一个基础<code class="docutils literal notranslate"><span class="pre">Module</span></code>, 还是想构造一个<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>, 你需要依赖 <code class="docutils literal notranslate"><span class="pre">hobot/api/hobot.h</span></code> 来继续开发。</p>
+</div>
+<div class="section" id="module">
+<h3>Module 开发者<a class="headerlink" href="#module" title="永久链接至标题">¶</a></h3>
+<div class="section" id="message">
+<h4>Message<a class="headerlink" href="#message" title="永久链接至标题">¶</a></h4>
+<p>我们要实现的加法运算，无论输入还是输出的数据，都是浮点数。所以，我们首先得有一个消息类型<code class="docutils literal notranslate"><span class="pre">FloatMessage</span></code>：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>class FloatMessage : public hobot::Message {
+ public:
+  float value_;
+
+  FloatMessage() {}
+
+  explicit FloatMessage(float value) : value_(value) {}
+};
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Module</span></code>的开发者必须使用<code class="docutils literal notranslate"><span class="pre">hobot::Message</span></code>类型来做数据交换。如果不是使用别人已经开发好的<code class="docutils literal notranslate"><span class="pre">Message</span></code>，那么就得像现在一样，定义自己的<code class="docutils literal notranslate"><span class="pre">Message</span></code>类型。</p>
+</div>
+<div class="section" id="id3">
+<h4>Module<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h4>
+<p>然后，我们需要实现我们的<code class="docutils literal notranslate"><span class="pre">Add</span></code>类：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>
+class Add : public hobot::Module {
+  ...
+}
+</pre></div>
+</div>
+<p>实现一个<code class="docutils literal notranslate"><span class="pre">Module</span></code>，你需要继承抽象类<code class="docutils literal notranslate"><span class="pre">hobot::Module</span></code>。其中最重要的是实现<code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code>方法：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>  FORWARD_DECLARE(Add, 0) {
+      std::cout &lt;&lt; &quot;Add::Forward, input size:&quot; &lt;&lt; input.size() &lt;&lt; std::endl;
+      float sum = 0;
+      static_cast&lt;FloatMessage *&gt;(output_.get())-&gt;value_ = 0;
+      for (int i = 0; i &lt; input.size(); i++) {
+        hobot::spMessage in = (*input[i])[0];
+        sum += static_cast&lt;FloatMessage *&gt;(in.get())-&gt;value_;
+      }
+      std::cout &lt;&lt; &quot;Add::Forward, sum:&quot; &lt;&lt; sum &lt;&lt; std::endl;
+  
+      static_cast&lt;FloatMessage *&gt;(output_.get())-&gt;value_ = sum;
+      workflow-&gt;Return(this, 0, output_, context);
+    }
+</pre></div>
+</div>
+<p>在<code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code>方法里面，你需要实现这个<code class="docutils literal notranslate"><span class="pre">Module</span></code>想要实现的功能。比如在这里，<code class="docutils literal notranslate"><span class="pre">Add::Forward0</span></code>需要实现的功能是把它的所有输入加起来，输出结果。可以看到，Module的所有输入的数据都被放到<code class="docutils literal notranslate"><span class="pre">input</span></code>参数中，只有基类的类型信息<code class="docutils literal notranslate"><span class="pre">hobot::Message</span></code>，你在实现<code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code>方法体中访问这些数据的时候，需要自己转换成需要的类型：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>      sum += static_cast&lt;FloatMessage *&gt;(in.get())-&gt;value_;
+</pre></div>
+</div>
+<p>在完成你所需要的运算，需要返回结果的时候，需要调用<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>提供给你的接口<code class="docutils literal notranslate"><span class="pre">Return</span></code>来通知<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>，自己输出了一个<code class="docutils literal notranslate"><span class="pre">Message</span></code>：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>   workflow-&gt;Return(this, 0, output_, context);
+</pre></div>
+</div>
+<p>至此，一个基本的<code class="docutils literal notranslate"><span class="pre">Add</span></code>功能就开发完成了。</p>
+</div>
+</div>
+<div class="section" id="module-workflow">
+<h3>Module的使用者, Workflow的开发者<a class="headerlink" href="#module-workflow" title="永久链接至标题">¶</a></h3>
+<p>下面，我们通过使用<code class="docutils literal notranslate"><span class="pre">Add::Forward0</span></code>来构建一个图，执行加法运算：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>class Hello1Result: public hobot::RunObserver {
+ public:
+  void OnResult(hobot::Module *from,
+                int forward_index,
+                hobot::spMessage output) override {
+    std::cout &lt;&lt; &quot;result:&quot;
+        &lt;&lt; (static_cast&lt;FloatMessage *&gt;(output.get()))-&gt;value_
+        &lt;&lt; std::endl;
+  }
+};
+
+int TestHello1() {
+  std::cout &lt;&lt; &quot;Hello, TestLoop!&quot; &lt;&lt; std::endl;
+  hobot::Engine *engine = hobot::Engine::NewInstance();
+  hobot::Workflow *workflow = engine-&gt;NewWorkflow();
+  hobot::InputModule *a = new hobot::InputModule(&quot;a&quot;);
+  hobot::InputModule *b = new hobot::InputModule(&quot;b&quot;);
+  hobot::Module *add_module = new Add();
+  workflow-&gt;From(a, 0)-&gt;To(add_module, 0, 0);
+  workflow-&gt;From(b, 0)-&gt;To(add_module, 1, 0);
+  Hello1Result *out = new Hello1Result();
+  workflow-&gt;Run({std::make_pair(add_module, 0)}, {
+      std::make_tuple(a, 0, hobot::spMessage(new FloatMessage(1))),
+      std::make_tuple(b, 0, hobot::spMessage(new FloatMessage(2)))
+  }, out);
+  return 0;
+}
+</pre></div>
+</div>
+<p>直观上, 上述代码构建了一个非常简单的<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>, 其结构如下图:</p>
+<p><img alt="add" src="../../_images/add.png" /></p>
+<div class="section" id="workflow">
+<h4>初始化 workflow<a class="headerlink" href="#workflow" title="永久链接至标题">¶</a></h4>
+<p>首先，初始化一个<code class="docutils literal notranslate"><span class="pre">Engine</span></code>和一个<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>  hobot::Engine *engine = hobot::Engine::NewInstance();
+  hobot::Workflow *workflow = engine-&gt;NewWorkflow();
+</pre></div>
+</div>
+<p>简单地说，一个<code class="docutils literal notranslate"><span class="pre">Engine</span></code>代表一个线程池和一个调度线程。也许现在这些对你还不重要，只需要记住：每一个<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>都必须在一个<code class="docutils literal notranslate"><span class="pre">Engine</span></code>上来运行。所以，上述代码中创建的<code class="docutils literal notranslate"><span class="pre">workflow</span></code>会在<code class="docutils literal notranslate"><span class="pre">engine</span></code>上面执行。</p>
+</div>
+<div class="section" id="graph-in-workflow">
+<h4>组织 Graph in workflow<a class="headerlink" href="#graph-in-workflow" title="永久链接至标题">¶</a></h4>
+<p>然后，我们开始组织我们的<code class="docutils literal notranslate"><span class="pre">workflow</span></code>中的计算流程：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>  hobot::InputModule *a = new hobot::InputModule(&quot;a&quot;);
+    hobot::InputModule *b = new hobot::InputModule(&quot;b&quot;);
+    hobot::Module *add_module = new Add();
+    workflow-&gt;From(a, 0)-&gt;To(add_module, 0, 0);
+    workflow-&gt;From(b, 0)-&gt;To(add_module, 1, 0);
+</pre></div>
+</div>
+<p>这样，我们的<code class="docutils literal notranslate"><span class="pre">workflow</span></code>中有三个<code class="docutils literal notranslate"><span class="pre">Module</span></code>：输入<code class="docutils literal notranslate"><span class="pre">a</span></code>，输入<code class="docutils literal notranslate"><span class="pre">b</span></code>，加法计算<code class="docutils literal notranslate"><span class="pre">add_module</span></code>。<code class="docutils literal notranslate"><span class="pre">a::Forward0</span></code>连接到<code class="docutils literal notranslate"><span class="pre">add_module::Forward0</span></code>的0号输入；<code class="docutils literal notranslate"><span class="pre">b::Forward0</span></code>连接到<code class="docutils literal notranslate"><span class="pre">add_module::Forward0</span></code>的1号输入。</p>
+</div>
+<div class="section" id="id4">
+<h4>运行 workflow<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">workflow</span></code>已经建好，下面开始跑了：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>  workflow-&gt;Run({std::make_pair(add_module, 0)}, {
+        std::make_tuple(a, 0, hobot::spMessage(new FloatMessage(1))),
+        std::make_tuple(b, 0, hobot::spMessage(new FloatMessage(2)))
+    }, out);
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Run</span></code>的第一个参数 <code class="docutils literal notranslate"><span class="pre">{add_module::Forward0}</span></code>，表示这次运行希望最终得到哪个<code class="docutils literal notranslate"><span class="pre">Module::Forward{n}</span></code>的结果；在这里，我们显然是希望得到加法计算后的结果；第二个参数是个<code class="docutils literal notranslate"><span class="pre">Vector</span></code>，表示这次运行的时候所需要的输入，也就是<code class="docutils literal notranslate"><span class="pre">InputModule</span></code> <code class="docutils literal notranslate"><span class="pre">a::Forward0</span></code>；<code class="docutils literal notranslate"><span class="pre">b::Forward0</span></code> 所代表得值。对了！<code class="docutils literal notranslate"><span class="pre">out</span></code>的类型是<code class="docutils literal notranslate"><span class="pre">Hello1Result</span></code>，这是一个用来收集运行结果的类：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>class Hello1Result: public hobot::RunObserver {
+ public:
+  void OnResult(hobot::Module *from,
+                int forward_index,
+                hobot::spMessage output) override {
+    std::cout &lt;&lt; &quot;result:&quot;
+        &lt;&lt; (static_cast&lt;FloatMessage *&gt;(output.get()))-&gt;value_
+        &lt;&lt; std::endl;
+  }
+};
+</pre></div>
+</div>
+<p>当<code class="docutils literal notranslate"><span class="pre">add_module::Forward0</span></code>有输出的时候，<code class="docutils literal notranslate"><span class="pre">out</span></code>的<code class="docutils literal notranslate"><span class="pre">OnResult</span></code>方法会被<code class="docutils literal notranslate"><span class="pre">Engine</span></code>回调回来，通知运行的结果。所以，如果你运行上面的例子，应该可以得到输出结果<code class="docutils literal notranslate"><span class="pre">result:3</span></code>。</p>
+<p>至此，你已经完成了一个能做加法运算的<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>。</p>
+</div>
+</div>
+</div>
+<div class="section" id="threading">
+<h2>Threading<a class="headerlink" href="#threading" title="永久链接至标题">¶</a></h2>
+<p>在上一节的例子里面, <code class="docutils literal notranslate"><span class="pre">Workflow</span></code>中只有一个<code class="docutils literal notranslate"><span class="pre">Module</span></code>; 在实际场景下的<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>通常会由更多的<code class="docutils literal notranslate"><span class="pre">Module</span></code>组成; 这些<code class="docutils literal notranslate"><span class="pre">Module</span></code>执行的任务会更复杂, 需要更多的计算资源。</p>
+<p>你有可能希望在<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>执行的过程中希望利用系统中的多个核来处理不同的<code class="docutils literal notranslate"><span class="pre">Module::Forward{n}</span></code>的工作, 这样可以让整个<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>运行的更快。</p>
+<p>想利用多线程, 你只需要:</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>int TestHello2(){
+  ...
+  engine-&gt;ExecuteOnThread(module_a, 0, 0);
+  engine-&gt;ExecuteOnThread(module_b, 0, 1);
+  engine-&gt;ExecuteOnThread(module_c, 0, 2);
+  ...
+}
+</pre></div>
+</div>
+<p>上面这段例子的作用是让<code class="docutils literal notranslate"><span class="pre">module_a::Forward0</span></code>运行在0号线程; 让<code class="docutils literal notranslate"><span class="pre">module_b::Forward0</span></code>运行在1号线程; 让<code class="docutils literal notranslate"><span class="pre">module_c::Forward0</span></code>运行在2号线程。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Engine::ExecuteOnThread</span></code>提供了一个接口, 让你可以指定某个<code class="docutils literal notranslate"><span class="pre">Module::Forward{n}</span></code>在这个<code class="docutils literal notranslate"><span class="pre">Engine</span></code>的第几号线程上运行。</p>
+<p>在不调用这个方法的时候, 默认所有线程都在0号线程上运行。</p>
+<p>这些线程会被<code class="docutils literal notranslate"><span class="pre">Engine</span></code>启动, 并一直运行; 在没有<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>运行的时候, 这些线程会被挂起, 并不会占用CPU资源。</p>
+<div class="section" id="id5">
+<h3>更多关于线程的信息<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>每个<code class="docutils literal notranslate"><span class="pre">Engine</span></code>实例内部, 除了一个线程池来运行所有的<code class="docutils literal notranslate"><span class="pre">Module::Forward{n}</span></code>以外, 还有个调度线程;</p>
+<p>用户在自己的线程上调用<code class="docutils literal notranslate"><span class="pre">Workflow::Run</span></code>会立即返回, 所有的输入会在调度线程中处理; 当执行完的时候, 调度线程会负责收集用户想要的输出并调用回调<code class="docutils literal notranslate"><span class="pre">RunObserver::OnResult</span></code>。</p>
+</div>
+</div>
+<div class="section" id="module-input-control">
+<h2>Module Input Control<a class="headerlink" href="#module-input-control" title="永久链接至标题">¶</a></h2>
+<div class="section" id="inputslot">
+<h3>InputSlot的概念<a class="headerlink" href="#inputslot" title="永久链接至标题">¶</a></h3>
+<p>先回忆一下Hello World中的<code class="docutils literal notranslate"><span class="pre">Module</span></code>是怎么连接的:</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>  workflow-&gt;From(a)-&gt;To(add_module, 0, 0);
+  workflow-&gt;From(b)-&gt;To(add_module, 1, 0);
+</pre></div>
+</div>
+<p>再回忆一下<code class="docutils literal notranslate"><span class="pre">Add</span></code>的<code class="docutils literal notranslate"><span class="pre">Forward0</span></code>方法:</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>  FORWARD_DECLARE(Add, 0) {
+        ...
+}
+</pre></div>
+</div>
+<p>按照我们刚才的<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>定义的话, 那么在这个<code class="docutils literal notranslate"><span class="pre">Forward0</span></code>执行的时候, <code class="docutils literal notranslate"><span class="pre">a</span></code>输入的值出现在<code class="docutils literal notranslate"><span class="pre">input[0]</span></code>中; <code class="docutils literal notranslate"><span class="pre">b</span></code>输入的值会出现在<code class="docutils literal notranslate"><span class="pre">input[1]</span></code>中。</p>
+<p>我们把<code class="docutils literal notranslate"><span class="pre">input[0]</span></code>对应的<code class="docutils literal notranslate"><span class="pre">module_a</span></code>的 <em>输入位置</em> 称为 <em>InputSlot 0</em> ; <code class="docutils literal notranslate"><span class="pre">input[1]</span></code>对应的<code class="docutils literal notranslate"><span class="pre">module_a</span></code>的 <em>输入位置</em> 称为 <em>InputSlot 1</em>。</p>
+<p>可以看到, 一个<code class="docutils literal notranslate"><span class="pre">Module::Forward{n}</span></code>有多少个<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>是在<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>中确定<code class="docutils literal notranslate"><span class="pre">Module</span></code>之间的连接关系的时候确定的。这样可以支持不定<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>数量的Module的开发。</p>
+<p>但是, 很明显, <code class="docutils literal notranslate"><span class="pre">Module::Forward{n}</span></code>需要处理多少个<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>是由自己的<code class="docutils literal notranslate"><span class="pre">Forward</span></code>逻辑决定的, 如果<code class="docutils literal notranslate"><span class="pre">Module</span></code>在实现<code class="docutils literal notranslate"><span class="pre">Forward</span></code>的过程中只处理了前两个<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>, 那么即使你在<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>构建的过程中给这个<code class="docutils literal notranslate"><span class="pre">Module</span></code>接入了3个<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>, 第三个也不会被处理。</p>
+</div>
+<div class="section" id="inputslot-module-condition-expression">
+<h3>InputSlot 与 Module 执行条件: Condition Expression<a class="headerlink" href="#inputslot-module-condition-expression" title="永久链接至标题">¶</a></h3>
+<p>事实上, <code class="docutils literal notranslate"><span class="pre">Module::Forward{n}</span></code>的每个<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>都是一个FIFO队列。</p>
+<p>默认情况下, 当<code class="docutils literal notranslate"><span class="pre">Module::Forward{n}</span></code>的所有的<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>都有了一个<code class="docutils literal notranslate"><span class="pre">Message</span></code>以后, <code class="docutils literal notranslate"><span class="pre">InputSlot</span> <span class="pre">i</span></code>中的第一个元素(最早进入的元素)会被取出来放入<code class="docutils literal notranslate"><span class="pre">input[i]</span></code>当中; 然后以<code class="docutils literal notranslate"><span class="pre">input</span></code>为参数, 调用<code class="docutils literal notranslate"><span class="pre">Module::Forward</span></code>。</p>
+<p>但是, 如果你不想每个<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>处理一个<code class="docutils literal notranslate"><span class="pre">Message</span></code>, 而是希望更多的<code class="docutils literal notranslate"><span class="pre">Message</span></code>一起处理呢?</p>
+<p>想象你做了个<code class="docutils literal notranslate"><span class="pre">AverageModule::Forward0</span></code>, 功能是把<code class="docutils literal notranslate"><span class="pre">input[0]</span></code>里面所有的<code class="docutils literal notranslate"><span class="pre">FloatMessage</span></code>求了一个平均数, 然后输出:</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>class AverageModule: public hobot::Module {
+ public:
+  explicit AverageModule(std::string instance_name)
+      : Module(
+      instance_name,
+      &quot;Average&quot;) { }
+
+  void Init(hobot::Engine *engine,
+            hobot::Workflow *workflow,
+            const hobot::MessageLists &amp;input) override { }
+
+  void Reset() override { }
+
+  FORWARD_DECLARE(AverageModule, 0) {
+    hobot::MessageList *in = input[0];
+    float sum = 0;
+    for (int i = 0; i &lt; in-&gt;size(); i++) {
+      hobot::spMessage msg = in-&gt;at(i);
+      sum += (static_cast&lt;FloatMessage *&gt;(msg.get()))-&gt;value_;
+    }
+    if (in-&gt;size() &gt; 0) {
+      sum /= in-&gt;size();
+    }
+    workflow-&gt;Return(this, 0, hobot::spMessage(new FloatMessage(sum)), context);
+  }
+};
+</pre></div>
+</div>
+<p>这样, 你在<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>中使用这个<code class="docutils literal notranslate"><span class="pre">AverageModule</span></code>的时候, 希望根据需要, 有些情况下每收到2个<code class="docutils literal notranslate"><span class="pre">Message</span></code>就做一次平均然后输出; 有些情况下每收到4个<code class="docutils literal notranslate"><span class="pre">Message</span></code>就做一次平均然后输出。</p>
+<p>Hobot Framework 支持你做这样的事情:</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>    workflow-&gt;SetCondition(avg_module,
+                           hobot::Expression::Require(0, 2), 0);
+</pre></div>
+</div>
+<p>以上代码的功能是让<code class="docutils literal notranslate"><span class="pre">avg_module::Forward0</span></code>每当在<code class="docutils literal notranslate"><span class="pre">InputSlot</span> <span class="pre">0</span></code>收到2个消息的时候, 就可以启动。</p>
+<p>可以看到, 在<code class="docutils literal notranslate"><span class="pre">workflow</span></code>里面, 每个<code class="docutils literal notranslate"><span class="pre">Module::Forward{n}</span></code>都可以设置对应的 <strong>Condition</strong> ; 当满足<code class="docutils literal notranslate"><span class="pre">Condition</span></code>的时候, <code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code> 得以执行。</p>
+<p>关于<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>, <code class="docutils literal notranslate"><span class="pre">Condition</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Module::Forward</span></code> 之间的关系, 可以见下图:</p>
+<p><img alt="input slot" src="../../_images/inputslot.png" /></p>
+<p>以下是一些Condition的例子:</p>
+<p><em>InputSlot 0 有2个Message, 并且InputSlot 1 有3个Message</em>:</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>    workflow-&gt;SetCondition(avg_module, hobot::Expression::Require(0, 2)-&gt;And(hobot::Expression::Require(1,3)));
+</pre></div>
+</div>
+<p><em>InputSlot 0 有1个Message, 或者InputSlot 1 有1个Message</em>:</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>    workflow-&gt;SetCondition(avg_module, hobot::Expression::Require(0, 1)-&gt;Or(hobot::Expression::Require(1,1)));
+</pre></div>
+</div>
+<p><em>InputSlot 0 有1个Message; InputSlot 1 无论多少个Message都可以</em>:</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>    workflow-&gt;SetCondition(avg_module, hobot::Expression::Require(0, 1)-&gt;And(hobot::Expression::Require(1,hobot::ReqAll)));
+</pre></div>
+</div>
+<p>这里, <code class="docutils literal notranslate"><span class="pre">hobot::ReqAll</span></code> 是个特殊的值; 表示这个<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>无论有多少Message都不妨碍执行<code class="docutils literal notranslate"><span class="pre">Forward</span></code>; 但只要执行<code class="docutils literal notranslate"><span class="pre">Forward</span></code>, 就取出这个<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>所有的<code class="docutils literal notranslate"><span class="pre">Message</span></code>放进<code class="docutils literal notranslate"><span class="pre">input</span></code>参数。</p>
+<p>这样, 你可以更灵活地运用你的<code class="docutils literal notranslate"><span class="pre">Module</span></code>。</p>
+</div>
+</div>
+<div class="section" id="module-output-control">
+<h2>Module Output Control<a class="headerlink" href="#module-output-control" title="永久链接至标题">¶</a></h2>
+<p>在上一节, 我们知道了如何指定一个<code class="docutils literal notranslate"><span class="pre">Module</span></code>在<code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code>的时候, 它的输入<code class="docutils literal notranslate"><span class="pre">Message</span></code>所必须满足的条件。但是有些时候, 你可能还会希望<code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code>之前, 这个<code class="docutils literal notranslate"><span class="pre">Module</span></code>的输出也需要满足一定的条件。</p>
+<p>例如, 如果你有一个<code class="docutils literal notranslate"><span class="pre">Module</span></code>: <code class="docutils literal notranslate"><span class="pre">module_a</span></code>, 他的每个输出的<code class="docutils literal notranslate"><span class="pre">Message</span></code>都会占据比较大的内存空间; 所以你可能会希望当<code class="docutils literal notranslate"><span class="pre">module_a</span></code>每次输出的<code class="docutils literal notranslate"><span class="pre">Message</span></code>都被处理完了以后, 再执行<code class="docutils literal notranslate"><span class="pre">module_a</span></code>的下一个<code class="docutils literal notranslate"><span class="pre">Forward</span></code>。</p>
+<p>你可以这么做:</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>    workflow-&gt;From(module_a, 0)-&gt;To(module_b, 0, 0)-&gt;Limit(1);
+</pre></div>
+</div>
+<p>这里, 第三个参数<code class="docutils literal notranslate"><span class="pre">1</span></code>表示从<code class="docutils literal notranslate"><span class="pre">module_a::Forward0</span></code>的输出到<code class="docutils literal notranslate"><span class="pre">module_b::Forward0</span></code>的<code class="docutils literal notranslate"><span class="pre">InputSlot</span> <span class="pre">0</span></code>之间的这个Link, 最多只能有1个待处理的<code class="docutils literal notranslate"><span class="pre">Message</span></code>。也就是说, 如果<code class="docutils literal notranslate"><span class="pre">module_b</span></code>的<code class="docutils literal notranslate"><span class="pre">InputSlot</span> <span class="pre">0</span></code>累积了1个<code class="docutils literal notranslate"><span class="pre">Message</span></code>没被处理, 那么<code class="docutils literal notranslate"><span class="pre">module_a</span></code>的<code class="docutils literal notranslate"><span class="pre">Forward</span></code>就不会再次被调用。</p>
+<p>这里, <code class="docutils literal notranslate"><span class="pre">module_a::Forward0</span></code>的输出<code class="docutils literal notranslate"><span class="pre">Message</span></code>可能会被多个不同的Module::Forward使用; 这种情况下, 需要<code class="docutils literal notranslate"><span class="pre">module_a::Forward0</span></code>所有的后续的Link的个数约束都满足后, 才会执行<code class="docutils literal notranslate"><span class="pre">module_a</span></code>的<code class="docutils literal notranslate"><span class="pre">Forward0</span></code>。</p>
+</div>
+<div class="section" id="rescheduling">
+<h2>Rescheduling<a class="headerlink" href="#rescheduling" title="永久链接至标题">¶</a></h2>
+<p>如上述两节所述, 在正常情况下, 当一个Module的输入<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>、输出<code class="docutils literal notranslate"><span class="pre">Link</span></code>都满足条件后, 就会执行<code class="docutils literal notranslate"><span class="pre">Forward</span></code>, 消耗掉<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>里面的Message; 当条件再次满足的时候再次执行, 周而复始。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Module::Forward{n}</span></code> 本身并没有参与决定自己什么时候再次被执行。</p>
+<p>但是, 有的时候, 或许你想自己决定将来自己会再次执行, 而不依赖输入条件的触发。</p>
+<p>例如, 如果你有一个<code class="docutils literal notranslate"><span class="pre">Forward</span></code>: <code class="docutils literal notranslate"><span class="pre">ModuleA::Forward0</span></code>, 他首次执行后, 希望每隔一秒自动执行一次。</p>
+<p>你可以这么做:</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>  FORWARD_DECLARE(Tick, 0) {
+      ...
+      workflow-&gt;Reschedule(this, 0, input, context, 1000);
+    }
+</pre></div>
+</div>
+<p>Hobot Framework的Workflow提供了Reschedule方法, 最后一个参数<code class="docutils literal notranslate"><span class="pre">1000</span></code>为自己再次Forward0的毫秒数。</p>
+</div>
+</div>
+<div class="section" id="architecture">
+<h1>Architecture<a class="headerlink" href="#architecture" title="永久链接至标题">¶</a></h1>
+<p>如果希望结合代码了解Hobot Framework的实现，请先阅读以上使用文档，再继续阅读本节。</p>
+<div class="section" id="id6">
+<h2>事件驱动的运行模式<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>所有的设计，都是为了功能、也就是提供给使用者的接口服务的。所以，先来回顾一下Hobot Framework所提供的功能。</p>
+<p>从<code class="docutils literal notranslate"><span class="pre">Module</span></code>作者的角度来看，在实现一个<code class="docutils literal notranslate"><span class="pre">Module</span></code>的时候，需要关心的是：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code>方法的功能实现</p></li>
+<li><p>输入的消息的定义</p></li>
+<li><p>输出的消息的定义</p></li>
+</ul>
+<p>只要输入的消息准备好了，就执行<code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code>的逻辑，而可以不关心什么时候，被谁，在哪个线程调用。</p>
+<p>从<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>作者的角度来看，在写一个<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>，以及执行<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>的时候，需要关心的是：</p>
+<ul class="simple">
+<li><p>各个<code class="docutils literal notranslate"><span class="pre">Module</span></code>之间的逻辑关系，以构建图</p></li>
+<li><p>输入数据<code class="docutils literal notranslate"><span class="pre">Message</span></code>的时机，以开始<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>的计算</p></li>
+</ul>
+<p>整个<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>在构建好以后，其运行完全是由输入的数据<code class="docutils literal notranslate"><span class="pre">Message</span></code>来驱动运行的。收集返回结果的接口也是异步的。<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>的作者，也可以不用关心<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>中的哪个<code class="docutils literal notranslate"><span class="pre">Module</span></code>在什么时候运行，只要能及时从<code class="docutils literal notranslate"><span class="pre">RunObserver</span></code>中获取到正确的结果。</p>
+<p>可以看出，Hobot Framework提供的功能接口是异步回调的方式。这决定了其内部实现也是异步事件驱动的方式。</p>
+</div>
+<div class="section" id="event-loop-event-queue">
+<h2>线程：Event Loop 和 Event Queue<a class="headerlink" href="#event-loop-event-queue" title="永久链接至标题">¶</a></h2>
+<p>对于所有事件驱动的系统，最常见的实现方式就是消息队列和事件循环：
+一个单独的thread，对应一个event queue；这个thread是event queue的消费者，thread的主要逻辑是在一个循环中，不断取出event，然后dispatch给感兴趣的程序模块。</p>
+<p>例如，一个基于<code class="docutils literal notranslate"><span class="pre">select</span></code>的非阻塞网络处理线程，可以写成下面这样子：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>for(;;) {
+    // 接收事件
+    int rc = select(max(from,to)+1, &amp;readfds, &amp;writefds, NULL, NULL);
+    // 分发处理事件
+    if(FD_ISSET(from, &amp;readfds)){
+        ...        
+    }
+    if(FD_ISSET(to, &amp;writefds)){
+        ...
+    }
+    
+}
+</pre></div>
+</div>
+<p>其中，event queue可以看做是隐含在<code class="docutils literal notranslate"><span class="pre">select</span></code>接口之下，在上述代码中并不可见。</p>
+<p>又例如，一个GUI界面程序需要响应鼠标、键盘的输入来改变其显示，程序的事件处理线程可以写成下面这样子：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>for(;;){
+    // 接收事件
+    event = event_queue-&gt;poll_next();
+    if(event != NULL){
+        // 分发处理事件
+        get_handler_for(event)-&gt;handle(event);
+    }
+}
+</pre></div>
+</div>
+<p>在上面的例子中，有几个值得注意的地方：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">select()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">poll_next()</span></code> 调用，在没有事件发生的时候，会一直阻塞，使得线程进入sleep状态，直到有事件发生为止。这样避免了在没有事件发生的时候，<code class="docutils literal notranslate"><span class="pre">for(;;){}</span></code>循环导致占用CPU的问题。</p></li>
+<li><p>Event queue中event的生产者，可能运行在本线程上，也可能运行在别的线程上。这就要求event queue 这个数据结构支持高效的多线程访问。</p></li>
+<li><p>上述事件循环本身可以是和具体的业务无关的，只负责将event dispatch给相应的模块（在上述例子中，就是调用响应handler的handle方法），具体的业务代码由handler自己实现。</p></li>
+</ul>
+<p>所以，一个通用的事件处理的系统需要的事件处理线程，应该包括一个上述的事件分发循环，以及对应的满足上述要求的事件队列 event queue。</p>
+<p>在Hobot Framework中，这个事件处理线程，连同其event queue，被封装成一个<code class="docutils literal notranslate"><span class="pre">Thread</span></code>类，其接口定义在 <code class="docutils literal notranslate"><span class="pre">include/hobot/thread.h</span></code>中。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Thread</span></code>的具体实现的代码在<code class="docutils literal notranslate"><span class="pre">src/thread/</span></code>，来自于webrtc和chromium项目。</p>
+</div>
+<div class="section" id="hobot-frameworkevent">
+<h2>Hobot Framework中的Event处理<a class="headerlink" href="#hobot-frameworkevent" title="永久链接至标题">¶</a></h2>
+<p>我们来看一个<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>的例子（完整例子来自于<code class="docutils literal notranslate"><span class="pre">example/example_calculate.cpp</span></code>）：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>int ComplexCalculate(int argc, char **argv) {
+  hobot::Engine *engine = hobot::Engine::NewInstance();
+  hobot::Workflow *workflow = engine-&gt;NewWorkflow();
+
+  // workflow to compute a*x^2 + b*x + c
+
+  hobot::InputModule *a = new hobot::InputModule(&quot;a&quot;);
+  hobot::InputModule *b = new hobot::InputModule(&quot;b&quot;);
+  hobot::InputModule *c = new hobot::InputModule(&quot;c&quot;);
+  hobot::InputModule *x = new hobot::InputModule(&quot;x&quot;);
+
+  Add *add = new Add(&quot;sum&quot;);
+  Multiply *ma = new Multiply(&quot;ma&quot;);
+  Multiply *mb = new Multiply(&quot;mb&quot;);
+//  workflow-&gt;From(a)-&gt;To(ma, 0); // error message: duplicate 0
+  workflow-&gt;From(a)-&gt;To(ma, 0);
+  workflow-&gt;From(x)-&gt;To(ma, 1);
+  workflow-&gt;From(x)-&gt;To(ma, 2);
+  workflow-&gt;From(b)-&gt;To(mb, 0);
+  workflow-&gt;From(x)-&gt;To(mb, 1);
+//  workflow-&gt;From(ma)-&gt;To(add, 4); // error message: missing 3
+  workflow-&gt;From(ma)-&gt;To(add, 0);
+  workflow-&gt;From(mb)-&gt;To(add, 1);
+  workflow-&gt;From(c)-&gt;To(add, 2);
+  engine-&gt;ExecuteOnThread(ma, 0, 0);
+  engine-&gt;ExecuteOnThread(mb, 0, 1);
+  engine-&gt;ExecuteOnThread(add, 0, 0);
+
+  ComplexCalculateObserver *observer = new ComplexCalculateObserver();
+  hobot::spMessage a_msg(new FloatMessage(1));
+  hobot::spMessage b_msg(new FloatMessage(2));
+  hobot::spMessage c_msg(new FloatMessage(3));
+  hobot::spMessage x_msg(new FloatMessage(5));
+
+  hobot::spRunContext run_task =
+      workflow-&gt;Run({{std::make_pair(add, 0)}}, observer);
+  run_task-&gt;Init();
+  workflow-&gt;Feed(run_task, a, 0, a_msg);
+  workflow-&gt;Feed(run_task, b, 0, b_msg);
+  workflow-&gt;Feed(run_task, c, 0, c_msg);
+  workflow-&gt;Feed(run_task, x, 0, x_msg);
+  
+  ...
+  return 0;
+}
+</pre></div>
+</div>
+<p>上述代码中，首先是<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>的结构：构建了一个计算<code class="docutils literal notranslate"><span class="pre">a*x^2</span> <span class="pre">+</span> <span class="pre">b*x</span> <span class="pre">+</span> <span class="pre">c</span></code>的工作流，其结构如下：</p>
+<p><img alt="axxbxc" src="../../_images/axxbxc0.png" /></p>
+<p>其次，指明了不同<code class="docutils literal notranslate"><span class="pre">Module</span></code>所运行的线程，其中<code class="docutils literal notranslate"><span class="pre">ma</span></code> <code class="docutils literal notranslate"><span class="pre">add</span></code>在0号线程，<code class="docutils literal notranslate"><span class="pre">mb</span></code>在1号线程。</p>
+<p>再其次，朝<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>中feed了一些输入<code class="docutils literal notranslate"><span class="pre">Message</span></code>，开始执行计算。</p>
+<p>下面，将按照时间顺序，分析在<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>执行过程中的事件处理流程设计。</p>
+<div class="section" id="msg-module-feed">
+<h3>MSG_MODULE_FEED<a class="headerlink" href="#msg-module-feed" title="永久链接至标题">¶</a></h3>
+<p>当如下代码运行的时候：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>  workflow-&gt;Feed(run_task, a, 0, a_msg);
+  workflow-&gt;Feed(run_task, b, 0, b_msg);
+  workflow-&gt;Feed(run_task, c, 0, c_msg);
+  workflow-&gt;Feed(run_task, x, 0, x_msg);
+</pre></div>
+</div>
+<p>4个<code class="docutils literal notranslate"><span class="pre">Message</span></code>分别被feed给<code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span></code> 4个<code class="docutils literal notranslate"><span class="pre">Module</span></code>：
+此时，workflow 产生了一个<code class="docutils literal notranslate"><span class="pre">MSG_MODULE_FEED</span></code>事件。这个事件实际的效果是，将<code class="docutils literal notranslate"><span class="pre">Message</span></code>放在了对应的<code class="docutils literal notranslate"><span class="pre">Module</span></code>的<code class="docutils literal notranslate"><span class="pre">InputSlot</span></code>中：</p>
+<p><img alt="axxbxc" src="../../_images/axxbxc_feed.png" /></p>
+<p>如上图所示，<code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span></code> 4个<code class="docutils literal notranslate"><span class="pre">Module</span></code>都有输入的<code class="docutils literal notranslate"><span class="pre">Message</span></code>待处理。而每当图中任何一个<code class="docutils literal notranslate"><span class="pre">Module</span></code>的输入输出消息队列的情况发生变化的时候，都会触发<code class="docutils literal notranslate"><span class="pre">MSG_TRY_EXECUTE_MODULE</span></code> 事件。</p>
+</div>
+<div class="section" id="msg-try-execute-module-thread-post">
+<h3>MSG_TRY_EXECUTE_MODULE 和 Thread::Post<a class="headerlink" href="#msg-try-execute-module-thread-post" title="永久链接至标题">¶</a></h3>
+<p>这个事件发生以后，<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>会尝试检查相应的<code class="docutils literal notranslate"><span class="pre">Module</span></code>是否满足运行的条件（比如，是否满足指定的输入条件表达式，或者指定的输出Limit），如果满足的话，会执行这个<code class="docutils literal notranslate"><span class="pre">Module</span></code>的<code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code>方法。</p>
+<p>相应的实现代码请参考<code class="docutils literal notranslate"><span class="pre">DefaultWorkflow::TryExecuteModule</span></code>。</p>
+<p>这个消息会在<code class="docutils literal notranslate"><span class="pre">Module</span></code>被用户指定的对应的工作线程上被处理，这样<code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code>就会在指定的线程上运行了。</p>
+<p>向一个线程的消息队列加入一个消息，可以用<code class="docutils literal notranslate"><span class="pre">Thread::Post</span></code>方法。本节中涉及到的所有消息，都是用<code class="docutils literal notranslate"><span class="pre">Thread::Post</span></code>在指定的线程上做处理。</p>
+</div>
+<div class="section" id="return-msg-module-return">
+<h3>Return() 和 MSG_MODULE_RETURN<a class="headerlink" href="#return-msg-module-return" title="永久链接至标题">¶</a></h3>
+<p>此时，<code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span></code> 4个<code class="docutils literal notranslate"><span class="pre">Module</span></code> 都是 <code class="docutils literal notranslate"><span class="pre">InputModule</span></code>，<code class="docutils literal notranslate"><span class="pre">InputModule</span></code>的运行条件是只要有消息就马上处理。所以<code class="docutils literal notranslate"><span class="pre">InputModule</span></code>的<code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code>一定会被调用，其实现如下：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>FORWARD_DEFINE(InputModule, 0) {
+  // directly return input message
+  workflow-&gt;Return(this, 0, (*input[0])[0], context);
+}
+</pre></div>
+</div>
+<p>可以看到，<code class="docutils literal notranslate"><span class="pre">InputModule</span></code>直接调用了<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>提供的<code class="docutils literal notranslate"><span class="pre">Return</span></code>方法。如前文所述，这个方法会通知<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>：本<code class="docutils literal notranslate"><span class="pre">Module</span></code>输出了一个<code class="docutils literal notranslate"><span class="pre">Message</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Workflow::Return</span></code>被调用以后，如果这个<code class="docutils literal notranslate"><span class="pre">Module</span></code>是observer需要输出的<code class="docutils literal notranslate"><span class="pre">Module</span></code>，那么相应的<code class="docutils literal notranslate"><span class="pre">Message</span></code>会通知到observer。
+然后，会产生<code class="docutils literal notranslate"><span class="pre">MSG_MODULE_RETURN</span></code>事件，表明<code class="docutils literal notranslate"><span class="pre">Message</span></code>进入了<code class="docutils literal notranslate"><span class="pre">Module</span></code>的输出端：</p>
+<p><img alt="axxbxc" src="../../_images/axxbxc_return.png" /></p>
+<p>可以看到<code class="docutils literal notranslate"><span class="pre">x</span></code> 产生了3个<code class="docutils literal notranslate"><span class="pre">MSG_MODULE_RETURN</span></code>，分别对应不同的下游的<code class="docutils literal notranslate"><span class="pre">Module</span></code>，因为<code class="docutils literal notranslate"><span class="pre">MSG_MODULE_RETURN</span></code>需要在下游的<code class="docutils literal notranslate"><span class="pre">Module</span></code>对应的线程上处理。</p>
+<p>请注意，上图所显示的是<code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span></code> 4个<code class="docutils literal notranslate"><span class="pre">Module</span></code> 都同时Return了之后的状态。实际执行的时候由于时序和线程调度也许状态变迁和上图不一样，但在这里不影响我们的分析过程。</p>
+<p><code class="docutils literal notranslate"><span class="pre">MSG_MODULE_RETURN</span></code> 的处理方式是，首先，按照<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>的连接关系，将<code class="docutils literal notranslate"><span class="pre">Return</span></code>的<code class="docutils literal notranslate"><span class="pre">Message</span></code>放到连接的目标<code class="docutils literal notranslate"><span class="pre">Module</span></code>的相应输入端：</p>
+<p><img alt="axxbxc" src="../../_images/axxbxc_return2.png" /></p>
+<p>然后，会尝试检查以及运行目标<code class="docutils literal notranslate"><span class="pre">Module</span></code>，也就是调用 <code class="docutils literal notranslate"><span class="pre">DefaultWorkflow::TryExecuteModule</span></code>。</p>
+<p>可以看出，上图中<code class="docutils literal notranslate"><span class="pre">ma</span></code> <code class="docutils literal notranslate"><span class="pre">mb</span></code>均满足了执行条件，此时会执行<code class="docutils literal notranslate"><span class="pre">ma</span></code> <code class="docutils literal notranslate"><span class="pre">mb</span></code>的<code class="docutils literal notranslate"><span class="pre">Forward{n}</span></code>方法。这两个方法的实现如下：</p>
+<div class="highlight-{.cpp} notranslate"><div class="highlight"><pre><span></span>  FORWARD_DECLARE(Multiply, 0) {
+    float sum = 1;
+    for (int i = 0; i &lt; input.size(); i++) {
+      hobot::spMessage in = (*input[i])[0];
+      sum *= static_cast&lt;FloatMessage *&gt;(in.get())-&gt;value_;
+    }
+    //    std::cout &lt;&lt; &quot;Multiple::Forward, sum:&quot; &lt;&lt; sum &lt;&lt; std::endl;
+
+    workflow-&gt;Return(this, 0, hobot::spMessage(new FloatMessage(sum)), context);
+  }
+</pre></div>
+</div>
+<p>可以看出，乘法计算结束后，也会把结果通过<code class="docutils literal notranslate"><span class="pre">Workflow::Return</span></code>通知给<code class="docutils literal notranslate"><span class="pre">Workflow</span></code>，从而继续产生新的<code class="docutils literal notranslate"><span class="pre">MSG_MODULE_RETURN</span></code>：</p>
+<p><img alt="axxbxc" src="../../_images/axxbxc_mul.png" /></p>
+<p>以此类推，最终完成<code class="docutils literal notranslate"><span class="pre">add</span></code>计算，输出给observer:</p>
+<p><img alt="axxbxc" src="../../_images/axxbxc_add.png" /></p>
+<p>以上就是基本的事件驱动执行的过程。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

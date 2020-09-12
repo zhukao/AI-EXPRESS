@@ -1,0 +1,12 @@
+# MessageParamReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**content** | **str** | message detail in: body | 
+**subject** | **str** | message subject in: body | 
+**type** | **str** | message type in: body | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

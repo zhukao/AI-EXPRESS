@@ -1,0 +1,11 @@
+# Members
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**departments** | **list[str]** | authorized departments in: body | [optional] 
+**groups** | [**list[GroupEntity]**](GroupEntity.md) | authorized groups in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

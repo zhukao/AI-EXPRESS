@@ -1,0 +1,771 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>XStream用户手册 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="XStream开发指南" href="xstream_tutorials.html" />
+    <link rel="prev" title="场景参考解决方案" href="solution.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">XStream用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">设计理念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">基本概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">基础数据结构</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basedata">1. BaseData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inputparam">2. InputParam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inputdata">3. InputData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#outputdata">4. OutputData</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#xstream-sdk">XStream SDK创建</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1. XStream SDK接口</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2. XStream SDK使用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workflow">3. Workflow流向控制</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#method">Method实现</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1. Method定义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2. Method属性</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Workflow构建</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">1. Workflow骨架结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inputs-outputs">2. inputs/outputs定义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#node">3. Node定义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">4. 子workflow定义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pythonworkflow">5. 基于Python来构建Workflow配置文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">6. Workflow配置文件可视化</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>XStream用户手册</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/BuildAll/doc/xstream_guide.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="xstream">
+<h1>XStream用户手册<a class="headerlink" href="#xstream" title="永久链接至标题">¶</a></h1>
+<p>通过本文介绍，你可以熟悉XStream Framework开发框架的设计理念以及内部核心概念。</p>
+<div class="section" id="id1">
+<h2>设计理念<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>XStream Framework，是一套基于C++实现的算法SDK编程框架。</p>
+<ul class="simple">
+<li><p><strong>框架通过Workflow来表示一个计算有向图</strong>：框架支持通过Json配置或Python代码两种方式来构建一个有向图。</p></li>
+<li><p><strong>Workflow计算拓扑图中每一个计算任务由Method来表示，它为框架核心计算组件</strong>。在智能业务中，Method通常表示一个模型推理(如检测、分类、识别等等)或者一个智能策略（如过滤策略、融合策略、优选策略等等）。在Workflow中，Method会被包装在一个Node节点对象中，由Node对象来负责Method实例创建、初始化、分配线程资源、任务分发、参数配置等。</p></li>
+<li><p><strong>框架提供API接口将Workflow计算拓扑加载到内存，实现Workflow的加载、执行和调度，并对外提供计算API接口</strong>。计算接口参数为待计算的数据帧。通过接口，可以将一个由InputData表示的输入数据帧通过计算拓扑计算完成以后，返回一条或多条<code class="docutils literal notranslate"><span class="pre">OutputData</span></code>输出数据帧。OutputData数据中会记录该帧数据计算结果以及计算状态。</p></li>
+</ul>
+<p>为了达到简洁，易用，高效的设计目标，XStream Framework采用了一种<code class="docutils literal notranslate"><span class="pre">数据驱动</span></code>理念来进行设计。相比与另一种<code class="docutils literal notranslate"><span class="pre">面向计算过程</span></code>任务流实现方式，数据驱动设计理念不强调任务流中两个计算节点之间的数据流向，不关心任务流中两节点间数据交换和调度过程，而是通过数据是否可用等数据驱动的方式来对每个计算节点进行独立调度。</p>
+<p>下图是两种设计理念的架构图：</p>
+<p><img alt="框架" src="../../_images/xstream-scheduling.png" /></p>
+<p>其中采用数据驱动的设计理念，可以获得以下收益：</p>
+<ul class="simple">
+<li><p><strong>简化数据流配置</strong>：基于数据驱动的Workflow拓扑图配置，我们不需要关系拓扑中两个计算节点之间的强链路依赖关系，而只需关心整个Workflow的输入输出数据内容以及每个计算节点数据输入输出内容。这对于一些复杂的数据流场景，可以极大简化workflow设计代价。同时我们可以非常灵活的在拓扑加入新的”专家知识”计算节点来对数据进行加工，持续强化workflow功能。</p></li>
+<li><p><strong>高效的内存使用</strong>：数据驱动设计方案关注的是数据字段有效性和可用性，框架可以根据数据依赖关系决定单帧数据内部分字段的有效性，在合适时机将无效数据进行内存回收。相比面向计算过程设计思路，可以极大缩短无效字段数据的生命周期，提高内存的利用效率。</p></li>
+<li><p><strong>高效的调度效率</strong>:相比面向计算过程的设计思路,数据驱动在保持计算调度策略简洁的情况下，可以实现极高的调度效率。</p></li>
+</ul>
+<p>XStream除了支持客户完成自定义Method开发、Workflow配置和算法SDK开发之外，还内置了大量可复用的算法Method和策略Method，支持客户更快完成的场景应用逻辑，详细参见<a class="reference internal" href="xstream_ai.html"><span class="doc">XStream模型与策略开发</span></a>。</p>
+</div>
+<div class="section" id="id2">
+<h2>基本概念<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Workflow</strong>：将一些计算任务级联在一起构建的有向无环图，它定义了一种工作范式。如人脸检测、跟踪、属性（人脸朝向、人脸清晰度等）以及优选策略等计算任务级联在一起定义了一个人脸抓拍范式。</p></li>
+<li><p><strong>Method</strong>：框架核心计算组件，在智能业务中Method通常表示一个模型推理(如检测、分类、识别等等)或者一个智能策略（如过滤策略、融合策略、优选策略等等）;</p></li>
+<li><p><strong>Node</strong>：为Workflow计算图中一个计算节点，负责method实例创建、分配线程资源、任务分发、参数配置等。每个Node管理了一个或多个method实例。</p></li>
+<li><p><strong>Slot</strong>：每个node的输入或者输出端口。</p></li>
+<li><p><strong>Data</strong>：Workflow中的每个node之间流转的数据表示，数据表现为一帧一帧，每帧会分配一个唯一单调递增的sequence_id。其中InputData为workflow的输入数据，OutputData为workflow输出数据。</p></li>
+<li><p><strong>Param</strong>：Param为一个配置信息，它可以是一个json字符串，也可以是一个普通字符串，支持在框架以及自定义Method实现中进行解析。</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>基础数据结构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>基于数据驱动的框架设计，其中最为重要的部分是数据表示，它包括数据帧的表示以及数据帧内每个字段的表示。在数据驱动设计下，数据帧中的每个字段需要有一定的机制来标识数据状态，比如有效，无效，不可见等，进而可以利用这些状态来实现调度。</p>
+<p>在XStream中，通过<code class="docutils literal notranslate"><span class="pre">BaseData</span></code>，<code class="docutils literal notranslate"><span class="pre">BaseDataVector</span></code>,<code class="docutils literal notranslate"><span class="pre">XStreamData</span></code>,<code class="docutils literal notranslate"><span class="pre">InputData</span></code>,<code class="docutils literal notranslate"><span class="pre">OutputData</span></code>，<code class="docutils literal notranslate"><span class="pre">InputParam</span></code>等基础数据类型来表示数据和配置参数。</p>
+<div class="section" id="basedata">
+<h3>1. BaseData<a class="headerlink" href="#basedata" title="永久链接至标题">¶</a></h3>
+<p>Workflow中的每个node之间流转的数据都是从BaseData继承而来，它定义如下：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span>  <span class="n">xstream</span> <span class="p">{</span>
+<span class="k">struct</span> <span class="n">BaseData</span> <span class="p">{</span>
+  <span class="n">BaseData</span><span class="p">();</span>
+  <span class="k">virtual</span> <span class="o">~</span><span class="n">BaseData</span><span class="p">();</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span><span class="c1">// 类型</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span><span class="c1">// 名称</span>
+  <span class="kt">int</span> <span class="n">error_code_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="c1">// 错误码</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">error_detail_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span><span class="c1">// 错误信息</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">CContext</span><span class="o">&gt;</span> <span class="n">c_data_</span><span class="p">;</span><span class="c1">// C数据结构上下文</span>
+  <span class="n">DataState</span> <span class="n">state_</span> <span class="o">=</span> <span class="n">DataState</span><span class="o">::</span><span class="n">VALID</span><span class="p">;</span><span class="c1">// 状态</span>
+<span class="p">};</span>
+<span class="k">enum</span> <span class="k">class</span> <span class="nc">DataState</span> <span class="p">{</span>
+  <span class="n">VALID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="c1">// 有效</span>
+  <span class="n">FILTERED</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="c1">// 被过滤掉</span>
+  <span class="n">INVISIBLE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="c1">// 不可见</span>
+  <span class="n">DISAPPEARED</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span><span class="c1">// 消失</span>
+  <span class="n">INVALID</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="c1">// 无效</span>
+<span class="p">};</span>
+
+<span class="c1">// 还预定义了数组和从普通数据类型快速转化为XStream数据表示的模板：</span>
+<span class="k">struct</span> <span class="nl">BaseDataVector</span> <span class="p">:</span> <span class="k">public</span> <span class="n">BaseData</span> <span class="p">{</span>
+  <span class="n">BaseDataVector</span><span class="p">();</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;</span> <span class="n">datas_</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="c1">// 类模板，value可以为任意类型的数据</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Dtype</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="nl">XStreamData</span> <span class="p">:</span> <span class="k">public</span> <span class="n">BaseData</span> <span class="p">{</span>
+  <span class="n">Dtype</span> <span class="n">value</span><span class="p">;</span>
+  <span class="n">XStreamData</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="k">explicit</span> <span class="n">XStreamData</span><span class="p">(</span><span class="k">const</span> <span class="n">Dtype</span><span class="o">&amp;</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>实例：将一个BBox数据结构包装为可以输入到XStream中数据表示。</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Dtype</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">BBox_</span> <span class="p">{</span>
+  <span class="n">Dtype</span> <span class="n">x1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">Dtype</span> <span class="n">y1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">Dtype</span> <span class="n">x2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">Dtype</span> <span class="n">y2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">typedef</span> <span class="n">XStreamData</span><span class="o">&lt;</span><span class="n">BBox_</span><span class="o">&gt;</span> <span class="n">BBox</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inputparam">
+<h3>2. InputParam<a class="headerlink" href="#inputparam" title="永久链接至标题">¶</a></h3>
+<p>InputParam定义了内置执行参数的基类，用户可以继承基类实现自定义参数类.它</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">InputParam</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="k">explicit</span> <span class="n">InputParam</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">unique_name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">unique_name_</span> <span class="o">=</span> <span class="n">unique_name</span><span class="p">;</span>
+    <span class="n">is_json_format_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">is_enable_this_method_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">virtual</span> <span class="o">~</span><span class="n">InputParam</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">Format</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+ <span class="k">public</span><span class="o">:</span>
+  <span class="kt">bool</span> <span class="n">is_json_format_</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">is_enable_this_method_</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">unique_name_</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">InputParam</span><span class="o">&gt;</span> <span class="n">InputParamPtr</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inputdata">
+<h3>3. InputData<a class="headerlink" href="#inputdata" title="永久链接至标题">¶</a></h3>
+<p>InputData定义了workflow的输入数据，整体结构表现为一帧一帧的数据流。</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// 输入数据类型</span>
+<span class="k">struct</span> <span class="n">InputData</span> <span class="p">{</span>
+  <span class="c1">// 用户输入的数据，比如图片、channel、框等等</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;</span> <span class="n">datas_</span><span class="p">;</span>
+  <span class="c1">// 当前请求自定义的参数</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">InputParamPtr</span><span class="o">&gt;</span> <span class="n">params_</span><span class="p">;</span>
+  <span class="c1">// 数据源 id 用于多路输入时区分输入源,单一源情况赋值为 0</span>
+  <span class="kt">uint32_t</span> <span class="n">source_id_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// 透传的数据，该数据会透传到OutputData::context_ 字段</span>
+  <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="outputdata">
+<h3>4. OutputData<a class="headerlink" href="#outputdata" title="永久链接至标题">¶</a></h3>
+<p>OutputData定义了workflow的输出数据，整体结构表现为一帧一帧的数据流。</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// 输出数据类型</span>
+<span class="k">struct</span> <span class="n">OutputData</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">error_code_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="c1">// 错误码</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">error_detail_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span><span class="c1">// 错误信息</span>
+  <span class="c1">// 当该OutputData为给某个Method的定向回调结果时，该字段用于指示Method名称</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">unique_name_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">output_type_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span><span class="c1">// 多路输出结果名称</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;</span> <span class="n">datas_</span><span class="p">;</span><span class="c1">// 输出结果</span>
+  <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span><span class="c1">// 从InputData透传过来的数据</span>
+  <span class="kt">int64_t</span> <span class="n">sequence_id_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="c1">// 该结果的序列号</span>
+  <span class="kt">uint32_t</span> <span class="n">source_id_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="c1">// 该结果是属于那个输入源产生的结果</span>
+  <span class="kt">uint64_t</span> <span class="n">global_sequence_id_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">OutputData</span><span class="o">&gt;</span> <span class="n">OutputDataPtr</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">error_code_</span></code>等字段记录了该数据在处理过程中是否成功信息。</p>
+</div>
+</div>
+<div class="section" id="xstream-sdk">
+<h2>XStream SDK创建<a class="headerlink" href="#xstream-sdk" title="永久链接至标题">¶</a></h2>
+<p>XStream Framework主要功能是支持用户自定义Method计算任务，配置计算Workflow拓扑图以及将拓扑图转化为一个算法SDK。</p>
+<p>在详细讲解前面两点之前，我们先站在workflow之上，来看看如何将拓扑图转化为算法SDK，从而通过用户接口可以更好来认识的XStream Framework。</p>
+<div class="section" id="id4">
+<h3>1. XStream SDK接口<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">xstream</span> <span class="p">{</span>
+<span class="cm">/**</span>
+<span class="cm"> * 典型使用</span>
+<span class="cm"> * xstream::XStreamSDK *flow = xstream::XStreamSDK::CreateSDK();</span>
+<span class="cm"> * flow-&gt;SetConfig(&quot;config_file&quot;, config);</span>
+<span class="cm"> * flow-&gt;Init();</span>
+<span class="cm"> * InputDataPtr inputdata(new InputData());</span>
+<span class="cm"> * // ... 构造输入数据</span>
+<span class="cm"> * auto out = flow-&gt;SyncPredict(inputdata);</span>
+<span class="cm"> * // PrintOut(out);</span>
+<span class="cm"> * // ... 处理输出结果</span>
+<span class="cm"> * delete flow;</span>
+<span class="cm"> */</span>
+<span class="c1">// 数据流提供的接口</span>
+<span class="k">class</span> <span class="nc">XStreamSDK</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="c1">// 因为构造出来的实例是XStreamSDK接口的子类</span>
+  <span class="k">virtual</span> <span class="o">~</span><span class="n">XStreamSDK</span><span class="p">()</span> <span class="p">{}</span>
+
+  <span class="c1">// 通过此方法构造SDK实例</span>
+  <span class="k">static</span> <span class="n">XStreamSDK</span> <span class="o">*</span><span class="n">CreateSDK</span><span class="p">();</span>
+
+  <span class="c1">//说明：用于设置整个workflow的配置，目前支持的功能有：  </span>
+  <span class="c1">//1）key为&quot;config_file&quot;，value设置为workflow的配置路径，它定义整个workflow数据流。   </span>
+  <span class="c1">//2）key为&quot;profiler&quot;，value为&quot;on&quot;，表示打开性能统计功能。&quot;off&quot;表示关闭, 默认为关闭。   </span>
+  <span class="c1">//3）key为&quot;profiler_file&quot;,value为性能统计输出文件路径，用于设置性能统计文件的路径名称，默认为./profiler.txt   </span>
+  <span class="c1">//4）key为&quot;free_framedata&quot;, value为&quot;on&quot;, 表示尽早地释放掉在后面node节点中不再需要使用的Framework Data中的某项数据。   </span>
+  <span class="c1">//打开此项配置,可以减少峰值内存使用。&quot;off&quot;表示关闭, 默认为关闭。 </span>
+  <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">SetConfig</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+
+  <span class="c1">//用于初始化xstream句柄，必须在调用SetConfig之后执行Init()</span>
+  <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">Init</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// 用于设置node的参数，最终会通过调用对应的node管理的method实例的UpdateParameter(InputParamPtr ptr)接口，完成参数的更新。</span>
+  <span class="c1">// 形参unique_name传入node的名字；形参ptr为该node对应的配置信息</span>
+  <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">UpdateConfig</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">unique_name</span><span class="p">,</span> <span class="n">InputParamPtr</span> <span class="n">ptr</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">//获取某个node的参数，最终会调用对应的node管理的method实例的GetParameter()返回配置信息。</span>
+  <span class="k">virtual</span> <span class="n">InputParamPtr</span> <span class="nf">GetConfig</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">unique_name</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// 获取node对应method的版本信息。</span>
+  <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetVersion</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">unique_name</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// 同步运行接口，传⼊数据，接口会阻塞住，直到整个workflow处理完成，将workflow的结果通过函数返回值返回为止。</span>
+  <span class="c1">// 该接口需要在Init()之后执行才有效。</span>
+  <span class="k">virtual</span> <span class="n">OutputDataPtr</span> <span class="nf">SyncPredict</span><span class="p">(</span><span class="n">InputDataPtr</span> <span class="n">input</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// 同步多路输出的场景下， 输出接口可以通过output_type_信息判断输出类型。</span>
+  <span class="k">virtual</span> <span class="n">OutputDataPtr</span> <span class="nf">SyncPredict2</span><span class="p">(</span><span class="n">InputDataPtr</span> <span class="n">input</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// 使用异步运行接口时，设置SetCallback才有效。</span>
+  <span class="c1">// 将name设置为默认值，通过该接口可以设置整个workflow处理完成后的回调函数；</span>
+  <span class="c1">// 将name设置为某个node的unique名字，通过该接口可以设置该node处理数据完成后的回调函数。</span>
+  <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">SetCallback</span><span class="p">(</span><span class="n">XStreamCallback</span> <span class="n">callback</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+
+  <span class="c1">// 异步运行接口，结果通过SetCallback设置的回调函数捕获。AsyncPredict接口调用后立即返回。</span>
+  <span class="c1">// 该接口需要在Init()之后执行才有效。</span>
+  <span class="k">virtual</span> <span class="kt">int64_t</span> <span class="nf">AsyncPredict</span><span class="p">(</span><span class="n">InputDataPtr</span> <span class="n">input</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>XStreamSDK核心功能是将一个Workflow配置转化为算法SDK：</p>
+<ul class="simple">
+<li><p>XStreamSDK实例创建：当前单进程只支持创建单个SDK实例。并且由于XStreamSDK内部调度目标是最大化利用BPU芯片资源，因此当前版本不建议跨进程运行多个XStream SDK实例。</p></li>
+<li><p>XStreamSDk实例配置：其中最重要是<code class="docutils literal notranslate"><span class="pre">config_file</span></code>，它即为Workflow配置。同时也支持通过<code class="docutils literal notranslate"><span class="pre">UpdateConfig</span></code>和<code class="docutils literal notranslate"><span class="pre">GetConfig</span></code>来动态获取和修改Workflow中各个配置。</p></li>
+<li><p>XStreamSDk实例初始化：即<code class="docutils literal notranslate"><span class="pre">Init</span></code>过程，它基于<code class="docutils literal notranslate"><span class="pre">config_file</span></code>定义的Workflow配置，完成计算拓扑的构建和初始化。</p></li>
+<li><p>XStreamSDk预测接口：针对一个InputData数据进行计算，返回一个OutputData数据。当前支持<strong>同步计算和异步回调</strong>两种模式。</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>2. XStream SDK使用<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p><strong>同步运行模式</strong>：通过<code class="docutils literal notranslate"><span class="pre">SyncPredict</span></code>函数堵塞进行调用。</p>
+<p>实例代码如下:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage1/sync_main.cc</span>
+<span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseData</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseDataPtr</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseDataVector</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">InputData</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">InputDataPtr</span><span class="p">;</span>
+
+<span class="k">auto</span> <span class="n">config</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">xstream</span><span class="o">::</span><span class="n">XStreamSDK</span> <span class="o">*</span><span class="n">flow</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">::</span><span class="n">XStreamSDK</span><span class="o">::</span><span class="n">CreateSDK</span><span class="p">();</span>
+<span class="n">flow</span><span class="o">-&gt;</span><span class="n">SetConfig</span><span class="p">(</span><span class="s">&quot;config_file&quot;</span><span class="p">,</span> <span class="n">config</span><span class="p">);</span>
+<span class="n">flow</span><span class="o">-&gt;</span><span class="n">Init</span><span class="p">();</span>
+<span class="c1">/// Get Method Version</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;BBoxFilter_A Method Version : &quot;</span>
+          <span class="o">&lt;&lt;</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">GetVersion</span><span class="p">(</span><span class="s">&quot;BBoxFilter_A&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">x1</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>   <span class="c1">// BBox(框)的左上角横坐标</span>
+<span class="kt">float</span> <span class="n">y1</span><span class="p">{</span><span class="mi">20</span><span class="p">};</span>  <span class="c1">// BBox(框)的左上角纵坐标</span>
+<span class="kt">float</span> <span class="n">x2</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>   <span class="c1">// BBox(框)的右上角横坐标</span>
+<span class="kt">float</span> <span class="n">y2</span><span class="p">{</span><span class="mi">50</span><span class="p">};</span>  <span class="c1">// BBox(框)的右上角纵坐标</span>
+<span class="c1">// 框的面积计算公式:(x2-x2)*(y2-y1)</span>
+<span class="c1">// 生成面积为{ 0, 30, 60, 90, 120, 150, 180, 210, 240,</span>
+<span class="c1">// 270 } 序列,作为BBoxFilter的输入数据</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">x2</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+  <span class="n">InputDataPtr</span> <span class="nf">inputdata</span><span class="p">(</span><span class="k">new</span> <span class="n">InputData</span><span class="p">());</span>
+  <span class="n">BaseDataVector</span> <span class="o">*</span><span class="nf">data</span><span class="p">(</span><span class="k">new</span> <span class="n">BaseDataVector</span><span class="p">);</span>
+  <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox</span><span class="p">(</span>
+      <span class="k">new</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)));</span>
+  <span class="n">bbox</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox</span><span class="p">));</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;in_bbox&quot;</span><span class="p">;</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+  <span class="k">auto</span> <span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">SyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+  <span class="n">ParseOutput</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">delete</span> <span class="n">flow</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>异步运行模式</strong>：通过<code class="docutils literal notranslate"><span class="pre">SetCallback</span></code>设置回掉函数，实现<code class="docutils literal notranslate"><span class="pre">AsyncPredict</span></code>非堵塞调用。</p>
+<p>实例代码所示:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage1/async_main.cc</span>
+<span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseData</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseDataPtr</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseDataVector</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">InputData</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">InputDataPtr</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">Stage1Async</span><span class="o">::</span><span class="n">Callback</span><span class="p">;</span>
+
+<span class="k">auto</span> <span class="n">config</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">xstream</span><span class="o">::</span><span class="n">XStreamSDK</span> <span class="o">*</span><span class="n">flow</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">::</span><span class="n">XStreamSDK</span><span class="o">::</span><span class="n">CreateSDK</span><span class="p">();</span>
+<span class="n">Callback</span> <span class="n">callback</span><span class="p">;</span>
+<span class="c1">// 整个Workflow回调函数</span>
+<span class="n">flow</span><span class="o">-&gt;</span><span class="n">SetCallback</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Callback</span><span class="o">::</span><span class="n">OnCallback</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">callback</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span>
+<span class="n">flow</span><span class="o">-&gt;</span><span class="n">SetConfig</span><span class="p">(</span><span class="s">&quot;config_file&quot;</span><span class="p">,</span> <span class="n">config</span><span class="p">);</span>
+<span class="n">flow</span><span class="o">-&gt;</span><span class="n">Init</span><span class="p">();</span>
+<span class="c1">// BBoxFilter_A回调函数</span>
+<span class="n">flow</span><span class="o">-&gt;</span><span class="n">SetCallback</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Callback</span><span class="o">::</span><span class="n">OnCallback</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">callback</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">),</span>
+    <span class="s">&quot;BBoxFilter_A&quot;</span><span class="p">);</span>
+<span class="c1">// BBoxFilter_B回调函数</span>
+<span class="n">flow</span><span class="o">-&gt;</span><span class="n">SetCallback</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Callback</span><span class="o">::</span><span class="n">OnCallback</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">callback</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">),</span>
+    <span class="s">&quot;BBoxFilter_B&quot;</span><span class="p">);</span>
+<span class="kt">float</span> <span class="n">x1</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>   <span class="c1">// BBox(框)的左上角横坐标</span>
+<span class="kt">float</span> <span class="n">y1</span><span class="p">{</span><span class="mi">20</span><span class="p">};</span>  <span class="c1">// BBox(框)的左上角纵坐标</span>
+<span class="kt">float</span> <span class="n">x2</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>   <span class="c1">// BBox(框)的右上角横坐标</span>
+<span class="kt">float</span> <span class="n">y2</span><span class="p">{</span><span class="mi">50</span><span class="p">};</span>  <span class="c1">// BBox(框)的右上角纵坐标</span>
+<span class="c1">// 框的面积计算公式:(x2-x2)*(y2-y1)</span>
+<span class="c1">// 生成面积为{ 0, 30, 60, 90, 120, 150, 180, 210, 240,</span>
+<span class="c1">// 270 } 序列,作为BBoxFilter的输入数据</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">x2</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+  <span class="n">InputDataPtr</span> <span class="nf">inputdata</span><span class="p">(</span><span class="k">new</span> <span class="n">InputData</span><span class="p">());</span>
+  <span class="n">BaseDataVector</span> <span class="o">*</span><span class="nf">data</span><span class="p">(</span><span class="k">new</span> <span class="n">BaseDataVector</span><span class="p">);</span>
+  <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox</span><span class="p">(</span>
+      <span class="k">new</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)));</span>
+  <span class="n">bbox</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox</span><span class="p">));</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;in_bbox&quot;</span><span class="p">;</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+  <span class="k">auto</span> <span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">AsyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+  <span class="c1">// waiting for async function done</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">1000</span><span class="p">));</span>
+<span class="k">delete</span> <span class="n">flow</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="workflow">
+<h3>3. Workflow流向控制<a class="headerlink" href="#workflow" title="永久链接至标题">¶</a></h3>
+<p>针对每一次<code class="docutils literal notranslate"><span class="pre">Predict</span></code>计算，XStream SDK都会按照Workflow中定义的计算流程对Input数据进行处理。但是可能会因为一些需求需要对单次计算选择临时跳过一些Node计算节点。例如, 通过外部传入人脸照片，提取特征时，创建底库时, 需要运行人脸检测，特征提取计算, 但不需要再进行人脸mot跟踪, mot method的计算节点就可以关闭。针对这个需求，XStream提供Workflow流向控制方案，详细参考<a class="reference internal" href="xstream_more.html"><span class="doc">高级特性</span></a>.</p>
+</div>
+</div>
+<div class="section" id="method">
+<h2>Method实现<a class="headerlink" href="#method" title="永久链接至标题">¶</a></h2>
+<p>Method是框架中核心计算组件，在智能业务中Method通常表示一个模型推理(如检测、分类、识别等等)或者一个智能策略（如过滤策略、融合策略、优选策略等等）。但是XStream Framework框架本身，Method是不区分模型推理或智能策略，我们开放接口支持客户定义任意计算逻辑。</p>
+<div class="section" id="id6">
+<h3>1. Method定义<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>下面是Method的接口类：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">xstream</span> <span class="p">{</span>
+<span class="k">class</span> <span class="nc">Method</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="k">virtual</span> <span class="o">~</span><span class="n">Method</span><span class="p">();</span>
+  <span class="c1">/// 初始化</span>
+  <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">Init</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">config_file_path</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">Init</span><span class="p">(</span><span class="k">const</span> <span class="n">Json</span><span class="o">::</span><span class="n">Value</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="c1">/// 获取Method运行参数配置</span>
+  <span class="k">virtual</span> <span class="n">InputParamPtr</span> <span class="nf">GetParameter</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// 动态改变Method运行参数配置</span>
+  <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">UpdateParameter</span><span class="p">(</span><span class="n">InputParamPtr</span> <span class="n">ptr</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">/// 获取Method版本号，比如 metric_v0.4.0 或者 MD112 等</span>
+  <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetVersion</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">/// 获取Method基本信息</span>
+  <span class="k">virtual</span> <span class="n">MethodInfo</span> <span class="nf">GetMethodInfo</span><span class="p">();</span>
+  <span class="c1">/// 用于告知Method整个SDK的Profiler状态更改</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">OnProfilerChanged</span><span class="p">(</span><span class="kt">bool</span> <span class="n">on</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// 数据处理函数，第一个参数是输入数据（双重vector，外层vector表示batch是多帧的输入</span>
+  <span class="c1">// 内层的vector表示单帧的数据列表），</span>
+  <span class="c1">// 内层vector对应workflow的&quot;inputs&quot;输入列表</span>
+  <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;&gt;</span> <span class="n">DoProcess</span><span class="p">(</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">InputParamPtr</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">param</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">/// 析构</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Finalize</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Method</span><span class="o">&gt;</span> <span class="n">MethodPtr</span><span class="p">;</span>
+
+<span class="p">}</span>  <span class="c1">// namespace xstream</span>
+</pre></div>
+</div>
+<ul>
+<li><p><strong>初始化</strong>：Method初始化支持读取一个配置文件进行初始化或一个配置字符串进行初始化，在Workflow构建时候，会做相应的配置，详细参见<a class="reference external" href="#workflow">Workflow构建</a></p></li>
+<li><p><strong>资源回收</strong>：Method作为计算组件，初始化过程中会申请占用一些计算资源和存储资源，在SDK退出时，需要严格对申请资源进行回收，避免资源泄漏。</p></li>
+<li><p><strong>参数更新</strong>: 除了初始化设置Method参数，框架也支持通过<code class="docutils literal notranslate"><span class="pre">XStreamSDK::UpdateConfig</span></code>接口在运行时动态调整Method内部的参数。</p></li>
+<li><p><strong>MethodInfo</strong>: 定义了Method属性信息，详细参见<a class="reference external" href="#id7">Method属性</a></p></li>
+<li><p><strong>计算接口</strong>：<code class="docutils literal notranslate"><span class="pre">DoProcess</span></code>定义了Method实际计算逻辑。</p>
+<ul class="simple">
+<li><p>函数输入<code class="docutils literal notranslate"><span class="pre">input</span></code>和函数返回值都是按照Batch方式进行数据帧处理，BatchNum=1时即为单帧数据处理，通过该设计来满足一些需要Batch计算的场景需求。</p></li>
+<li><p>输入参数<code class="docutils literal notranslate"><span class="pre">input</span></code>的每个Batch数据类型为<code class="docutils literal notranslate"><span class="pre">std::vector&lt;BaseDataPtr&gt;</span></code>。在数据驱动调度方式中，框架会根据workflow Node定义传递相应字段数据到函数中，而非帧数据的全部字段。</p></li>
+<li><p>函数返回值的每个Batch数据类型也为<code class="docutils literal notranslate"><span class="pre">std::vector&lt;BaseDataPtr&gt;</span></code>。框架会根据workflow Node定义字段，将会返回值写回到相应帧中。因此需要保证返回值帧字段个数与配置个数一致。</p></li>
+<li><p>参考下面Methode Node定义实例：每个数据帧输入字段数目为1个<code class="docutils literal notranslate"><span class="pre">image</span></code>,输出的字段数目为3个，分别是<code class="docutils literal notranslate"><span class="pre">rgb_face_box,rgb_lmk,rgb_pose</span></code>。</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;method_type&quot;: &quot;FasterRCNNMethod&quot;,
+  &quot;inputs&quot;: [
+    &quot;image&quot;
+  ],
+  &quot;outputs&quot;: [
+    &quot;rgb_face_box&quot;,
+    &quot;rgb_lmk&quot;,
+    &quot;rgb_pose&quot;
+  ],
+  &quot;method_config_file&quot;: &quot;face_pose_lmk.json&quot;
+},
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>2. Method属性<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>自定义Method，可以通过实现<code class="docutils literal notranslate"><span class="pre">virtual</span> <span class="pre">MethodInfo</span> <span class="pre">GetMethodInfo();</span></code>函数来对Method的一些属性进行配置。</p>
+<p>MethidInfo定义如下：</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">MethodInfo</span> <span class="p">{</span>
+  <span class="c1">// 是否线程安全</span>
+  <span class="kt">bool</span> <span class="n">is_thread_safe_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="c1">// 是否需要做reorder，也就是让每一帧结果的返回顺序同请求顺序。</span>
+  <span class="kt">bool</span> <span class="n">is_need_reorder</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="c1">// 是否对输入源有前后文依赖 source context dependent</span>
+  <span class="kt">bool</span> <span class="n">is_src_ctx_dept</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>其中is_thread_safe_和is_need_reorder两个属性最为重要：</p>
+<ul class="simple">
+<li><p>属性is_thread_safe_定义了Method是否为线程安全。在Workflow定义时候，支持配置Node的线程数。如果线程数配置大于1，此时要求Method计算过程的实现，需要满足线程安全的要求。默认值是false，在需要配置Method多实例并发时，需要设置该属性为True。</p></li>
+<li><p>属性is_need_reorder定义了是否要求数据按顺逐帧调用Method计算函数。比如一些目标跟踪场景，要求输出数据是有序的。默认是false，表示为不要求有序。</p>
+<ul>
+<li><p>注意：在is_reorder=true的method，由于有前后帧序依赖，线程数只允许为1。同时is_reorder会一定程度上降低Method执行效率。</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Workflow构建<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>Workflow定义了整个计算拓扑结构，XStream SDK支持读取Workflow配置文件来在构建一个算法SDK。文件内容为一个json字符串，它定义了一个完整的workflow拓扑结构。</p>
+<div class="section" id="id9">
+<h3>1. Workflow骨架结构<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>下面是一个workflow配置示例</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;workflow&quot;</span><span class="p">,</span>  
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;workflow&quot;</span><span class="p">,</span> 
+  <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_head_box&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;face_head_box_filter2&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;workflow&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter_1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;thread_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;method_type&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unique_name&quot;</span><span class="p">:</span> <span class="s2">&quot;BBoxFilter_2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;face_head_box_filter2&quot;</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;method_config_file&quot;</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>它的骨干结构如下：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+	&quot;name&quot;: &quot;xxx&quot;,         // workflow名称，需唯一化
+	&quot;type&quot;: &quot;workflow&quot;,    // 表示Workflow对象
+	&quot;inputs&quot;: [],          // 输入slots名称
+	&quot;outputs&quot;: [],         // 输出slots名称
+	&quot;workflow&quot;: [          // Workflow内容，包括Node或Workflow对象(子workflow)
+	]
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>定义了Workflow名称，默认可以省略，内部会自定生成一个唯一名称。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inputs/outputs</span></code>定义了workflow整个有效输入输出名称。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">workflow</span></code>定义了整个拓扑的结构，它由多个Node或Workflow对象(子workflow)组成。Node之间通过inputs和outputs字段来构建起数据依赖。</p></li>
+</ul>
+</div>
+<div class="section" id="inputs-outputs">
+<h3>2. inputs/outputs定义<a class="headerlink" href="#inputs-outputs" title="永久链接至标题">¶</a></h3>
+<p>对于XStream SDK的<code class="docutils literal notranslate"><span class="pre">virtual</span> <span class="pre">OutputDataPtr</span> <span class="pre">SyncPredict(InputDataPtr</span> <span class="pre">input)</span> <span class="pre">=</span> <span class="pre">0;</span></code>函数，InputDataPtr定义了整个workflow的输入数据，OutputDataPtr定义了整个workflow的输出数据。</p>
+<ul class="simple">
+<li><p>workflows的inputs数据字段名称需要与InputDataPtr的数据字段对应，在基于数据驱动框架中，如果InputDataPtr中字段缺失，可能会导致该帧数据无法被处理。</p></li>
+<li><p>workflow在计算过程中，一些中间Method可能会产生一些中间字段，这些中间字段可能也会成为其他中间Method的输入，但是可以不是整个Workflow的输出。</p></li>
+</ul>
+</div>
+<div class="section" id="node">
+<h3>3. Node定义<a class="headerlink" href="#node" title="永久链接至标题">¶</a></h3>
+<p>Node是一个计算单元，它包装了Method的配置与定义，它的骨干结构如下：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;node&quot;,                   // 表示Node对象
+    &quot;method_type&quot;: &quot;TestMethod&quot;,      // Method类型，需要实现该Method
+    &quot;unique_name&quot;: &quot;method&quot;,          // Node名称，唯一性标志
+    &quot;thread_count&quot;: 3,
+    &quot;inputs&quot;: [&quot;global_in&quot;],          // 输入slots
+    &quot;outputs&quot;: [&quot;global_out&quot;],         // 输出slots
+    &quot;method_config_file&quot;: &quot;face_pose_lmk.json&quot; // Method配置文件
+    // ...
+}
+</pre></div>
+</div>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">type=node</span></code>表示当前节点是一个Method类型单一Node节点。用于区分<code class="docutils literal notranslate"><span class="pre">type=workflow</span></code>子workflow类型节点，详细参见<a class="reference internal" href="xstream_more.html"><span class="doc">子workflow定义</span></a>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">method_type</span></code>当前Node所使用的Method名称，Node初始化时，会通过一个<code class="docutils literal notranslate"><span class="pre">工厂类</span></code>来实现<code class="docutils literal notranslate"><span class="pre">method_type</span></code>到MethodInstance对象实例的初始化。</p>
+<p>实例工厂类如下所示：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">xstream</span> <span class="p">{</span>
+<span class="n">MethodPtr</span> <span class="n">MethodFactory</span><span class="o">::</span><span class="n">CreateMethod</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">method_name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="s">&quot;MOTMethod&quot;</span> <span class="o">==</span> <span class="n">method_name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">MethodPtr</span><span class="p">(</span><span class="k">new</span> <span class="n">MOTMethod</span><span class="p">());</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s">&quot;FasterRCNNMethod&quot;</span> <span class="o">==</span> <span class="n">method_name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">MethodPtr</span><span class="p">(</span><span class="k">new</span> <span class="n">FasterRCNNMethod</span><span class="p">());</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s">&quot;GradingMethod&quot;</span> <span class="o">==</span> <span class="n">method_name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">MethodPtr</span><span class="p">(</span><span class="k">new</span> <span class="n">GradingMethod</span><span class="p">());</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s">&quot;SnapShotMethod&quot;</span> <span class="o">==</span> <span class="n">method_name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">MethodPtr</span><span class="p">(</span><span class="k">new</span> <span class="n">SnapShotMethod</span><span class="p">());</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">MethodPtr</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unique_name</span></code>用于唯一标识一个MethodInstance对象实例。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thread_count</span></code>配置Node并发副本数目，如果Method是线程安全的，可以通过设置线程数目来提高计算并发能力。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inputs/outputs</span></code>定义了Method的输入输出名称。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">method_config_file</span></code>配置文件，在Method init初始化时候，会将路径传递给Method，Method内部负责读取文件并完成Method的初始化。</p></li>
+</ul>
+<p>除此之外，针对Method类型单Node节点，还可以配置线程调度相关参数，详细参考<a class="reference internal" href="xstream_more.html"><span class="doc">Workflow调度</span></a></p>
+</div>
+<div class="section" id="id10">
+<h3>4. 子workflow定义<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p>在一些复杂的业务场景中，我们可以将一个<code class="docutils literal notranslate"><span class="pre">Node</span></code>表示为一个Workflow，通过子Workflow的功能来实现Workflow嵌套。详细参见<a class="reference internal" href="xstream_more.html"><span class="doc">子workflow定义</span></a></p>
+</div>
+<div class="section" id="pythonworkflow">
+<h3>5. 基于Python来构建Workflow配置文件<a class="headerlink" href="#pythonworkflow" title="永久链接至标题">¶</a></h3>
+<p>在一些复杂的业务场景中，json文件本身较为复杂，当前在缺乏可视化拖拉拽方式时候，我们也提供一个基于python脚本来构建workflow的工具，简化workflow json配置，提高workflow可复用率。详细参见<a class="reference internal" href="xstream-python-workflow.html"><span class="doc">Python-Workflow构建</span></a></p>
+</div>
+<div class="section" id="id11">
+<h3>6. Workflow配置文件可视化<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>XStream内的数据流是通过配置json文件来生成的，框架内目前已对数据流配置是否有效进行了检查，而此工具可将配置的json文件数据流向图可视化，生成一份自定义格式的文档或图片，以直观的方式展现json文件中的数据流向。详细参见<a class="reference internal" href="tools.html"><span class="doc">数据流可视化工具</span></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

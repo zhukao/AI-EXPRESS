@@ -1,0 +1,8 @@
+# 版本说明  版本 2.3.1
+
+<h2>        任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-410'>XPPXROC-410</a>] -         	x3支持bpu-predict新接口
+</li>
+</ul>

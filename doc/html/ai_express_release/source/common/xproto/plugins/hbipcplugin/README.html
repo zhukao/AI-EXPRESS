@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hbipc plugin &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/language_data.js"></script>
+        <script src="../../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>hbipc plugin</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../_sources/ai_express_release/source/common/xproto/plugins/hbipcplugin/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hbipc-plugin">
+<h1>hbipc plugin<a class="headerlink" href="#hbipc-plugin" title="永久链接至标题">¶</a></h1>
+<div class="section" id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="永久链接至标题">¶</a></h2>
+<p>HbipcPlugin（Hbipc Plugin）为传输插件，主要负责实现AP与CP端的双向通信功能，用于AP与CP间的BIF通信功能，CP端通过HbipcPlugin将智能帧等数据发送到AP端，或者通过HbipcPlugin接收AP端发过来的配置数据与命令数据。</p>
+</div>
+<div class="section" id="detail">
+<h2>Detail<a class="headerlink" href="#detail" title="永久链接至标题">¶</a></h2>
+<p>hbipc接口是系统软件提供的一套用于CP、AP通信的接口（API），拥有统一的上层接口，支持包括bifspi、bifsd等不同的底层传输协议。具体可以参考：《系统软件HBIPC Service API》</p>
+<p>hbipcplugin 分为两部分，分别为hbipcplugin与hbipcsession，hbipcplugin为xproto框架下的接口，hbipcsession为系统软软件接口的实例，此plugin主要用于AP与CP间的通信：</p>
+<ul class="simple">
+<li><p>HbipcPlugin在CP端主要与SmartPlugin与VioPlugin进行通信，获取从两个Plugin发来的消息，经过串行化后通过底层接口发送给AP端；</p></li>
+<li><p>HbipcPlugin通过底层接口与AP端进行通信，将从AP端发过来的串行化数据发送给CP端的总线；</p></li>
+<li><p>HbipcPlugin支持通过配置文件选择不同的通信方式；</p></li>
+</ul>
+</div>
+<div class="section" id="build">
+<h2>Build<a class="headerlink" href="#build" title="永久链接至标题">¶</a></h2>
+<p>运行命令：
+<code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">cicd/scripts/build_aarch.sh</span></code></p>
+<div class="section" id="dependency">
+<h3>Dependency<a class="headerlink" href="#dependency" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>build.properties</p></li>
+<li><p>build.properties.local</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>编译环境设置<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>build.gradle</p></li>
+<li><p>hobot_util.cmake</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>编译选项设置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>CMakeLists.txt</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h3>使用说明<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p><strong>默认配置文件：</strong> hbipc_config.json</p>
+<p><strong>配置文件说明：</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  // 通信域名
+  &quot;domain_name&quot;: &quot;X2SD001&quot;,
+  // 通信server id
+  &quot;server_id&quot;: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 14]
+}
+</pre></div>
+</div>
+<p><strong>接口调用顺序：</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="k">auto</span> <span class="n">sc_plg</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">HbipcPlugin</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;./configs/hbipc_config.json&quot;</span><span class="p">);</span>
+  <span class="n">sc_plg</span><span class="o">-&gt;</span><span class="n">Init</span><span class="p">();</span>
+  <span class="n">sc_plg</span><span class="o">-&gt;</span><span class="n">Start</span><span class="p">();</span>
+  <span class="n">sc_plg</span><span class="o">-&gt;</span><span class="n">Stop</span><span class="p">();</span>
+  <span class="n">sc_plg</span><span class="o">-&gt;</span><span class="n">Deinit</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>如果创建对象时没有传入配置文件，就是用默认配置，默认配置为：</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">domain_name_</span> <span class="o">=</span> <span class="s">&quot;X2SD001&quot;</span><span class="p">;</span>
+<span class="n">uuid</span> <span class="n">server_id_</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x1</span><span class="p">,</span> <span class="mh">0x2</span><span class="p">,</span> <span class="mh">0x3</span><span class="p">,</span> <span class="mh">0x4</span><span class="p">,</span> <span class="mh">0x5</span><span class="p">,</span> <span class="mh">0x6</span><span class="p">,</span> <span class="mh">0x7</span><span class="p">,</span>
+                     <span class="mh">0x8</span><span class="p">,</span> <span class="mh">0x9</span><span class="p">,</span> <span class="mh">0xa</span><span class="p">,</span> <span class="mh">0xb</span><span class="p">,</span> <span class="mh">0xc</span><span class="p">,</span> <span class="mh">0xd</span><span class="p">,</span> <span class="mh">0xe</span><span class="p">,</span> <span class="mh">0xf</span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>模块消息<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p><strong>模块消息定义：</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nl">CustomHbipcMessage</span> <span class="p">:</span> <span class="n">HbipcMessage</span> <span class="p">{</span>
+  <span class="k">explicit</span> <span class="n">CustomHbipcMessage</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">proto</span><span class="p">)</span> <span class="o">:</span> <span class="n">proto_</span><span class="p">(</span><span class="n">proto</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">type_</span> <span class="o">=</span> <span class="n">TYPE_HBIPC_MESSAGE</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">Serialize</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+ <span class="k">private</span><span class="o">:</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">proto_</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>proto_：存储接收到的AP端串行化数据</p></li>
+<li><p>Serialize()：提供Hbipc的串行化数据，本质上为直接返回proto_存储的protobuf字串流</p></li>
+</ul>
+<p>HbipcPlugin的消息暂时只向AP发送，所有的串行化数据存储于消息对象中的proto_数据成员中。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

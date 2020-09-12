@@ -1,0 +1,14 @@
+{
+    "match": {
+        "description": "Match pairs requird params",
+        "image_width": 1920,
+        "image_height": 1080,
+        "min_statis_frames": 500,
+        "work_frames": 2500,
+        "overlap_threshold": 0.90,
+        "nums_cells_image": 2,
+        "nums_cells_bbox": 4,
+        "max_pair_dis": 8,
+        "min_stat_value": 5
+    }
+}

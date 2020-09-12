@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Road Side Perception &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Road Side Perception</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/common/roadside_perception/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="road-side-perception">
+<h1>Road Side Perception<a class="headerlink" href="#road-side-perception" title="永久链接至标题">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="永久链接至标题">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">roadside</span> <span class="pre">perception</span> <span class="pre">SDK</span></code>将视频检测结果，映射定位到二维地图平面上。</p>
+<p>目前支持的转换类型包括：</p>
+<ul class="simple">
+<li><p>机动车</p>
+<ul>
+<li><p>车辆bbox检测框 –&gt; 车辆行驶方向，车辆行驶速度</p></li>
+<li><p>车轮关键点，车型，行驶方向 –&gt; 车辆定位中心点</p></li>
+</ul>
+</li>
+<li><p>非机动车</p>
+<ul>
+<li><p>非机动车bbox检测框 –&gt; 定位中心点，行进方向，速度</p></li>
+</ul>
+</li>
+<li><p>人</p>
+<ul>
+<li><p>人bbox检测框 –&gt; 定位中心点，行进方向，速度</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="build">
+<h2>Build<a class="headerlink" href="#build" title="永久链接至标题">¶</a></h2>
+<div class="section" id="dependency">
+<h3>dependency<a class="headerlink" href="#dependency" title="永久链接至标题">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">artifact1</span> <span class="n">third_party</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">googletest</span><span class="p">:</span><span class="n">gtest</span><span class="p">:</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="p">:</span><span class="nb">zip</span><span class="p">:</span><span class="n">false</span><span class="p">:</span><span class="n">false</span>
+<span class="n">artifact2</span> <span class="n">com</span><span class="o">.</span><span class="n">hobot</span><span class="o">.</span><span class="n">native</span><span class="o">.</span><span class="n">hobot</span><span class="p">:</span><span class="n">hobot</span><span class="p">:</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">1</span><span class="p">:</span><span class="nb">zip</span><span class="p">:</span><span class="n">true</span>
+<span class="n">artifact3</span> <span class="n">com</span><span class="o">.</span><span class="n">hobot</span><span class="o">.</span><span class="n">native</span><span class="o">.</span><span class="n">hobot</span><span class="p">:</span><span class="n">hobotlog</span><span class="p">:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="p">:</span><span class="nb">zip</span><span class="p">:</span><span class="n">true</span>
+<span class="n">artifact4</span> <span class="n">third_party</span><span class="p">:</span><span class="n">jsoncpp</span><span class="p">:</span><span class="mf">1.8</span><span class="o">.</span><span class="mi">4</span><span class="p">:</span><span class="nb">zip</span><span class="p">:</span><span class="n">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="environment">
+<h3>Environment<a class="headerlink" href="#environment" title="永久链接至标题">¶</a></h3>
+<p>The library is tested with vendor centos and toolchain gcc-4.8.5. If you use different environment, please revise your build.property.local file accordingly.</p>
+</div>
+<div class="section" id="make">
+<h3>make<a class="headerlink" href="#make" title="永久链接至标题">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@gitlab</span><span class="o">.</span><span class="n">hobot</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="n">iot</span><span class="o">/</span><span class="n">smart</span><span class="o">-</span><span class="n">security</span><span class="o">/</span><span class="n">changsha</span><span class="o">/</span><span class="n">roadside_perception</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">roadside_perception</span>
+<span class="o">./</span><span class="n">gradlew</span>
+<span class="n">mkdir</span> <span class="n">build</span><span class="p">;</span> <span class="n">cd</span> <span class="n">build</span><span class="p">;</span>
+<span class="n">cmake</span> <span class="o">..</span>
+<span class="n">make</span>
+</pre></div>
+</div>
+<p>生成单元测试的二进制文件：<code class="docutils literal notranslate"><span class="pre">./bin/unit_test</span></code></p>
+</div>
+<div class="section" id="run-unit-test">
+<h3>run unit test<a class="headerlink" href="#run-unit-test" title="永久链接至标题">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">output</span>
+<span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">unit_test</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="project-struct">
+<h2>project struct<a class="headerlink" href="#project-struct" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>头文件 include/roadside_perception/*.hpp</p>
+<ul>
+<li><p>api定义 roadside_perception_api.hpp</p></li>
+<li><p>data定义 roadside_perception_data.hpp</p></li>
+<li><p>namespace定义 roadside_perception_namespace.hpp</p></li>
+</ul>
+</li>
+<li><p>部件：</p>
+<ul>
+<li><p>common 通用部件（内外参数转换、配置读入和输出、frame缓存模块、定位通用函数）</p></li>
+<li><p>completer 使用卡尔曼滤波，平稳定位，计算速度</p></li>
+<li><p>locators 定位模块</p></li>
+<li><p>smoother 平滑模块</p></li>
+<li><p>speed 速度计算（已弃用）</p></li>
+</ul>
+</li>
+<li><p>入口函数：</p>
+<ul>
+<li><p>roadside_perception_api.hpp 内的
+std::pair&lt;Status, RoadSideData&gt; Process(const RoadSideData&amp; data) const;</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="永久链接至标题">¶</a></h2>
+<p>输入：逐帧传入模型输出结果，数据格式如下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>struct RoadSideTarget {
+  std::vector&lt;float&gt; bbox;                          // 输入bbox检测框
+  std::vector&lt; std::vector&lt;float&gt; &gt; key_points;     // 输入的关键点（x1,y1,x2,y2,x3,y3,x4,y4)
+  std::vector&lt;float&gt; key_points_score;              // 关键点得分
+  TargetType target_type;                           // 机动车（vehicle）、非机动车（non-motor）、行人（pedestrian）
+  uint64 track_id;
+  VehicleAttribute vehicle_attribute;               // 根据target_type选填
+  NonMotoAttribute nonmoto_attribute;
+  PedestrianAttribute pedestrian_attribute;
+};
+
+struct VehicleAttribute {
+  VehicleType vehicle_type;                         // 车型（参考roadside_perception_data.hpp/VehicleType）
+  Color color;                                      // 车颜色（参考roadside_perception_data.hpp/Color）
+};
+</pre></div>
+</div>
+<p>输出：逐帧输出处理结果，数据格式如下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>struct RoadSideTarget {
+  std::vector&lt;float&gt; bbox;                          // 输入的关键点（x1,y1,x2,y2,x3,y3,x4,y4)
+  std::vector&lt; std::vector&lt;float&gt; &gt; key_points;     // 关键点
+  std::vector&lt;float&gt; key_points_score;              // 关键点得分
+  TargetType target_type;
+  double longitude;                                 // 定位结果，对应x
+  double latitude;                                  // 定位结果，对应y
+  KeyPointsCenter key_points_center;                // 关键点优化后输出
+  uint64 track_id;
+  float speed;                                      // 车速 (km/h)
+  VehicleAttribute vehicle_attribute;               // 与target_type对应
+  NonMotoAttribute nonmoto_attribute;
+  PedestrianAttribute pedestrian_attribute;
+};
+
+struct VehicleAttribute {
+  VehicleType vehicle_type;                         // 车型（参考roadside_perception_data.hpp/VehicleType）
+  Color color;                                      // 车颜色（参考roadside_perception_data.hpp/Color
+  float width = 1.f;                                // 车宽（尾边）
+  float length = 1.f;                               // 车长（侧边）
+  float orientation;                                // [0 - 360];
+};
+
+struct KeyPointsCenter {
+  std::vector&lt;float&gt; center;                        // longitude, latitude
+  std::vector&lt;float&gt; size;                          // width, length
+  float orientation;                                // [0 - 360];
+};
+</pre></div>
+</div>
+<p>具体例子可见<code class="docutils literal notranslate"><span class="pre">test/data/test_pipline.cpp</span></code></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id1">
+<h2>可配置项<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>路径: test/data</p>
+<ol class="simple">
+<li><p>内外参：<code class="docutils literal notranslate"><span class="pre">test_camera_calibration.json</span></code></p></li>
+<li><p>比例尺：<code class="docutils literal notranslate"><span class="pre">test_measure_scale.json</span></code></p></li>
+<li><p>配置文件：<code class="docutils literal notranslate"><span class="pre">test_config.conf</span></code></p></li>
+<li><p>先验车辆大小：<code class="docutils literal notranslate"><span class="pre">test_vehicle_size.json</span></code></p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+    &quot;[C]Description1&quot;: &quot;This is an example for configuration file, please set your values as needed. Lines starting with [C] are comments.&quot;,
+    &quot;camera&quot;: {
+        &quot;calibration&quot;: &quot;../test/data/test_camera_calibration.json&quot;,
+        &quot;measure_scale&quot;: &quot;../test/data/test_measure_scale.json&quot;,
+        &quot;camera_location&quot;: &quot;../test/data/test_camera_location.json&quot;,
+        &quot;video_size&quot;: &quot;../test/data/test_video_size.txt&quot;,
+        &quot;vehicle_size&quot;: &quot;../test/data/test_vehicle_size.json&quot;,
+        &quot;gap&quot;: &quot;../test/data/test_gap_size.json&quot;
+    },
+    &quot;[C]location_type&quot;: &quot;Candidates are [map, gps]&quot;,
+    &quot;location_type&quot;: &quot;map&quot;,
+    &quot;pre_smoother&quot;: [                           // 前平滑处理
+        {
+            &quot;smoother_type&quot;: &quot;box&quot;,             // 平滑类型（box、orientation、location、kps_score、kps）
+            &quot;target_type&quot;: [&quot;vehicle&quot;, &quot;non-motor&quot;, &quot;pedestrian&quot;],  // 平滑对象
+            &quot;smoother_config&quot;: {
+                &quot;alpha&quot;: 0.5,                   // 平滑程度正相关
+                &quot;lambda&quot;: 0.001,                // 平滑程度正相关
+                &quot;cache_time&quot;: 3000              // 平滑缓存时间
+            }
+        },
+        {
+            &quot;smoother_type&quot;: &quot;vehicle_color&quot;,   // 投票平滑（vehicle_color、vehicle_type）
+            &quot;target_type&quot;: [&quot;vehicle&quot;],
+            &quot;smoother_config&quot;: {
+                &quot;cache_time&quot;: 3000
+            }
+        }
+    ],
+    &quot;post_smoother&quot;: [                          // 后处理平滑
+        {
+            &quot;smoother_type&quot;: &quot;location&quot;,
+            &quot;target_type&quot;: [&quot;vehicle&quot;],
+            &quot;smoother_config&quot;: {
+                &quot;alpha&quot;: 0.7,
+                &quot;lambda&quot;: 0.001,
+                &quot;cache_time&quot;: 3000
+            }
+        }
+    ],
+    &quot;completer&quot;: {
+        &quot;speed_limit&quot;: 500,
+        &quot;max_predict_time&quot;: 0,
+        &quot;tracklet&quot;: {
+        &quot;min_occur_times&quot;: 2,
+        &quot;max_miss_time&quot;: 3000,
+        &quot;speed&quot;: {
+	        	&quot;[C]speed metric&quot;: &quot;Cadidates are [&#39;km/h&#39; or &#39;m/s&#39;]&quot;,
+	        	&quot;metric&quot;: &quot;km/h&quot;,
+            &quot;time_per_display&quot;: 100,
+            &quot;smooth_alpha&quot;: 0.3
+            }
+        }
+    },
+     &quot;speed&quot;: {
+       &quot;cache_time&quot; : 3000,
+       &quot;[C]metric&quot;: &quot;Cadidates are [&#39;km/h&#39; or &#39;m/s&#39;]&quot;,
+       &quot;metric&quot;: &quot;km/h&quot;,
+       &quot;speed_limit&quot;: 200
+    },
+    &quot;strategy&quot;: {
+        &quot;@down_gap&quot;: 700,
+        &quot;@up_gap&quot;: 300,
+        &quot;down_gap&quot;: 0,
+        &quot;up_gap&quot;: 0,
+        &quot;video_size&quot;: [1920,1080],
+        &quot;cache_time&quot;: 3000,
+        &quot;window&quot;: 15,
+        &quot;delta&quot;: 0.15,
+        &quot;alpha&quot;: 0.5
+    }
+}
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

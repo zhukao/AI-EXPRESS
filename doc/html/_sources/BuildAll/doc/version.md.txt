@@ -1,0 +1,168 @@
+# Release Notes
+## V2.4.0版本
+### Release Date
+2020/08/11
+
+### Features
+- 升级bpu-predict，与芯片基础工具链3.7.0版本对齐
+- 升级系统镜像至0808版本
+- 支持接入usb camera
+- 完善usb camera功能，支持分辨率与图像格式动态切换、修复uvc相关稳定性问题
+- 使用Python接口，对接AIDI平台
+- X3小板子支持接入os8a10 这款mipi sensor
+- X3小板子支持接入usb camera
+- 新增手检测、手关键点检测、手势识别，新增手势识别solution
+- 新增多路视频盒子solution
+- web客户端优化：优化人体分割的展示效果、新增预测的得分显示
+
+## V2.3.1版本
+### Release Date
+2020/07/31
+
+### Features
+- 支持X3 bpu-predict新接口
+
+
+## V2.3.0版本
+### Release Date
+2020/07/10
+
+### Features
+- 支持X3类海思接口回灌
+- Web统一展示端重构优化，Target属性增加value_string输出，分割结果展示
+- 支持X3 JPEG编码功能
+- AI Express 项目开源，X2与X3整体打包在一起、去除代码、模型以及配置中的一些外部客户信息
+- 更新uvc库
+- 模型预测，只依赖bpu-predict对外数据结构与接口，去掉对hbrt接口的直接调用，以及bpu-predict部分内部接口的调用
+- 升级bpu-predict，与芯片基础工具链3.6.0版本对齐
+
+### Bugfixs
+- 修复xwarehouse示例中特征比较相似度为0的问题
+
+
+## V2.2.2版本
+### Release Date
+2020/07/01
+
+### Features
+- vehicle solution定制化开发：新增V2版本多任务和车型模型，新增V2版本workflow 
+
+### Bugfixs
+- 无
+
+## V2.2.1版本
+### Release Date
+2020/06/19
+
+### Features
+- USB Camera功能稳定性优化: 支持将X3开发板，通过USB接口接到AP上，AP通过UVC/HID拿到图像与智能结果
+- 添加年龄、性别、口罩模型：在face_solution、body_solution中添加年龄性别以及口罩检测，支持X2与X3
+- 框架层面支持json初始化Method：具体Method的初始化实现后续支持
+
+### Bugfixs
+- 修复solution退出问题：修复程序退出不能完全释放资源
+
+## V2.2.0版本
+### Release Date
+2020/06/13
+
+### Features
+- 适配X3模型: 基于hbdk3.7.10，提供X3版本模型;基于bpu-predict master分支，bpu-predict第一套接口进行模型预测;适配FasterRCNNMethod以及CNNMethod等预测Method，同时支持X2与X3;适配SSDMethod，同时支持X2和X3
+- 适配X3 VIO: 支持X3系统软件原生vio接口，获取camera图像以及图像回灌;支持X3媒体库接口获取camera图像;适配imx327（1080p），os8a10(2160p)，s5kgm（2160p与4000x3000);封装VIOWrapper，支持X2/X3接口统一调用
+- 现有Solution支持X3平台: 现有face_solution， face_recog solution，body solution, vehicle solution， face_body_multisource能够正常在X3上运行
+- web统一客户端: 现有solution的结果展示切换到web 统一客户端， 能够显示视频、检测结果、属性分类、关键点结果
+- 新增人体行为分析solution: 集成人体多任务检测，人体摔倒模型，支持举手、站立、下蹲等策略分析。支持X2与X3
+- 新增体感游戏solution: 集成人体多任务检测，人体特征提取，人体行为三个模型，web客户端展示游戏界面，支持CrappyBird和PandaRun两个游戏。支持X2与X3
+- 新增USB Camera功能: 支持将X3开发板，通过USB接口接到AP上，AP通过UVC/HID拿到图像与智能结果。
+
+## V2.1.0版本
+### Release Date
+2020/05/08
+
+### Features
+- 各个功能模块新增测试用例，提升代码覆盖率。
+- 重构XStream Profile功能模块，完善profile能力，支持profile结果可视化查看。
+- 新增xproto python api、 xstream python api。
+- 提供PC端展示工具，可以直观展示solution zoo运行结果。
+- 完善子模块readme。
+
+### Bugfixs
+无
+
+## v2.0.1版本
+### Release Date
+2020/04/30
+
+### Features
+- 将hbrt运行时库从3.3.5升级到3.5.3最新版本。
+- 将依赖的模型使用hbdk-cc 3.7.10重新编译。
+- solution_zoo中新增ssdmethod，用于ssd模型的运行。model zoo中提供了ssd模型，发布包中提供了SSDMethod的源码以及测试程序。客户可以基于工具链3.4.0，自行训练ssd模型。
+- xproto中新增hbipcplugin的代码。
+
+### Bugfixs
+无
+
+## v2.0.0版本
+### Release Date
+2020/04/10
+
+### Features
+- XRoc&XPP整体升级为AI Express应用开发中间件，并纳入OpenExplorer天工开物AI开发平台体系。
+- 支持多通道输入多Workflow数据流方案，并新增AI盒子场景参考方案。
+- 人脸结构化参考方案升级，新增人脸识别workflow
+- 新增两个工具集：数据流可视化工具和python-workflow构建工具。
+
+### Bugfixs
+无
+
+
+## v1.0.0版本
+### Release Date
+2020/03/20
+
+### Features
+- 支持基于hobotsdk engine的XRoc-framework.
+- 重构vehicle相关CNN处理，添加了VehicleImgInputPredictor前处理方式．
+- 扩充CNN前处理Normalize方式，以支持vehicle相关CNN.
+- 补充vehicle solution UT测试用例.
+- 文档完善．
+
+### Bugfixs
+- 解决车辆因模型重复load，无法平滑退出的问题．
+- 清理子repo冗余cmake标志．
+- 单目情况下将96board vio可用slot数量从３改为７，以降低丢帧率．
+
+## v0.9.5版本
+### Release Date
+2020/03/19
+
+### Features
+- 智能生态沉淀：vehicle Solution方案更新多任务模型．
+
+### Bugfixs
+无
+
+## v0.9.4版本
+### Release Date
+2020/03/06
+
+### Features
+- 智能生态沉淀：增加vehicle Solution方案．
+
+### Bugfixs
+无
+
+## v0.9.0版本
+### Release Date
+2020/02/29
+
+### Features
+- 智能生态沉淀：提供人脸抓拍识别，人体检测及关键点Solution方案供用户参考．
+- 开源XStream framework, XProto framework等.
+- 提供Method zoo，其中包含FasterrcnnMethod、CNNMethod等模型处理方法，及人脸、人体Solution相关策略方法．
+- 提供XProto Plugins, 其中包括VioPlugin（Vio处理模块）、SmartPlugin(智能处理模块)等．
+- 组织AI Express相关文档．
+- 提供96board　cp定制镜像，以支持hbdk3.
+- 构建基于CMake的源码依赖编译框架．
+### Bugfixs
+无

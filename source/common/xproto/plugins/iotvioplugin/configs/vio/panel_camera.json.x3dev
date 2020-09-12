@@ -1,0 +1,8 @@
+{
+  "type": "mono",
+  "cam_index": 0,
+  "mono_cam_cfg_file": "/etc/cam/hb_96board.json",
+  "mono_vio_cfg_file": "configs/vio/x3dev/iot_vio_x3_imx327.json",
+  "dual_cam_cfg_file": "/etc/cam/hb_96board.json",
+  "dual_vio_cfg_file": "configs/vio/96board/vio_onsemi_dual.json"
+}

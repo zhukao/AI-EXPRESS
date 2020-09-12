@@ -1,0 +1,25 @@
+{
+  "inputs": [
+    "image",
+    "face_head_box_list"
+  ],
+  "outputs": [
+    "bbox_list",
+    "disappeared_track_id_list"
+  ],
+  "workflow": [
+    {
+      "unique_name": "IOU_example",
+      "method_type": "MOTMethod",
+      "inputs": [
+        "image",
+        "face_head_box_list"
+      ],
+      "outputs": [
+        "bbox_list",
+        "disappeared_track_id_list"
+      ],
+      "method_config_file": "iou2_method_param.json"
+    }
+  ]
+}

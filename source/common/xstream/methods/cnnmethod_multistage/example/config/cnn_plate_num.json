@@ -1,0 +1,37 @@
+{
+  "inputs": [
+    "face_box",
+    "pyramid"
+  ],
+  "outputs": [
+    "plate_num",
+    "pyramid",
+    "face_box"
+  ],
+  "workflow": [
+    {
+        "unique_name": "vehicle_img_input",
+        "method_type": "CNNVehicleImgPreMethod",
+        "inputs": [
+          "face_box",
+          "pyramid",
+          "face_box"
+        ],
+        "outputs": [
+          "tmp_out"
+        ],
+        "method_config_file": "method_conf/plate_num.json"
+    },
+    {
+      "unique_name": "plate_num",
+      "method_type": "CNNPlateNumPostMethod",
+      "inputs": [
+        "tmp_out"
+      ],
+      "outputs": [
+        "plate_num"
+      ],
+      "method_config_file": "method_conf/plate_num.json"
+    }
+  ]
+}

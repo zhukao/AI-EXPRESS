@@ -1,0 +1,78 @@
+{
+  "inputs": [
+    "image"
+  ],
+  "outputs": [
+    "image",
+    "hand_final_box",
+    "hand_lmk",
+    "gesture_vote"
+  ],
+  "workflow": [
+    {
+      "thread_count": 1,
+      "method_type": "FasterRCNNMethod",
+      "unique_name": "multi_task",
+      "inputs": [
+        "image"
+      ],
+      "outputs": [
+        "body_box",
+        "face_box",
+        "hand_box"
+      ],
+      "method_config_file": "guesture_multitask.json"
+    },
+    {
+      "thread_count": 1,
+      "method_type": "MOTMethod",
+      "unique_name": "hand_mot",
+      "inputs": [
+        "hand_box"
+      ],
+      "outputs": [
+        "hand_final_box",
+        "hand_disappeared_track_id_list"
+      ],
+      "method_config_file": "iou_method_param.json"
+    },
+    {
+      "method_type": "CNNMethod",
+      "unique_name": "hand_lmk",
+      "inputs": [
+        "hand_final_box",
+        "image"
+      ],
+      "outputs": [
+        "hand_lmk"
+      ],
+      "method_config_file": "hand_lmk.json"
+    },
+    {
+      "method_type": "CNNMethod",
+      "unique_name": "gesture_recog",
+      "inputs": [
+        "hand_final_box",
+        "hand_lmk",
+        "hand_disappeared_track_id_list"
+      ],
+      "outputs": [
+        "gesture"
+      ],
+      "method_config_file": "gesture_det.json"
+    },
+    {
+      "method_type": "VoteMethod",
+      "unique_name": "gesture_voting",
+      "inputs": [
+        "hand_final_box",
+        "hand_disappeared_track_id_list",
+        "gesture"
+      ],
+      "outputs": [
+        "gesture_vote"
+      ],
+      "method_config_file": "gesture_voting.json"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+    "model_name": "faceMask",
+    "model_version": "1.2",
+    "model_file_path": "../models/faceMask.hbm",
+    "bpu_config_path": "../configs/bpu_config.json",
+    "in_msg_type": "rect",
+    "post_fn": "binary_classify",
+    "data_type": "img_nv12_separate",
+    "max_handle_num": -1,
+    "output_size": 1
+}
+  

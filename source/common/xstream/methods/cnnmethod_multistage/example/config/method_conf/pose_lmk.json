@@ -1,0 +1,7 @@
+{
+    "model_name" : "facePoseLMKs",
+    "model_version": "v0.0.1",
+    "model_file_path": "../models/facePoseLMKs.hbm",
+    "bpu_config_path": "../configs/bpu_config.json",
+    "output_size" : 2
+}

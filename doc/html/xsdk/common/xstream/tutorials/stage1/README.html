@@ -1,0 +1,1085 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Build and Run &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Build and Run</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/xsdk/common/xstream/tutorials/stage1/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!-- TOC --><ul class="simple">
+<li><p><a class="reference external" href="#build-and-run">Build and Run</a></p>
+<ul>
+<li><p><a class="reference external" href="#build">Build</a></p></li>
+<li><p><a class="reference external" href="#run">Run</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#hello-world">Hello World！</a></p>
+<ul>
+<li><p><a class="reference external" href="#sample-%E5%8A%9F%E8%83%BD%E6%8F%8F%E8%BF%B0">Sample 功能描述</a></p></li>
+<li><p><a class="reference external" href="#%E5%BC%80%E5%8F%91bboxfilter-method">开发BBoxFilter Method</a>
+- <a class="reference external" href="#%E5%AE%9A%E4%B9%89method%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">定义method输入输出数据类型</a>
+- <a class="reference external" href="#%E5%B0%86%E6%95%B0%E6%8D%AE%E5%B0%81%E8%A3%85%E4%B8%BAxstream%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA">将数据封装为XStream数据表示</a>
+- <a class="reference external" href="#%E7%BB%A7%E6%89%BFmethod%E5%9F%BA%E7%B1%BB%E5%AE%9E%E7%8E%B0bboxfilter-method">继承Method基类，实现BBoxFilter Method</a></p></li>
+<li><p><a class="reference external" href="#%E9%80%9A%E8%BF%87json%E6%9E%84%E5%BB%BAworkflow">通过JSON构建workflow</a></p></li>
+<li><p><a class="reference external" href="#%E5%9F%BA%E4%BA%8E%E5%B7%B2%E5%AE%9A%E4%B9%89%E7%9A%84method%E5%8F%8Ajson-workflow%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%9E%84%E5%BB%BAsdk">基于已定义的method及Json workflow配置文件构建SDK</a>
+- <a class="reference external" href="#%E6%B3%A8%E5%86%8Cbboxfilter-method%E5%88%B0methodfactory%E4%B8%AD">注册BBoxFilter Method到MethodFactory中</a>
+- <a class="reference external" href="#%E5%9F%BA%E4%BA%8Ejson-workflow%E9%85%8D%E7%BD%AE%E6%9E%84%E5%BB%BAsdk%E5%90%8C%E6%AD%A5%E9%A2%84%E6%B5%8B%E6%8E%A5%E5%8F%A3">基于Json workflow配置构建SDK(同步预测接口)</a>
+- <a class="reference external" href="#%E5%88%9B%E5%BB%BAsdk%E5%8F%A5%E6%9F%84">创建SDK句柄:</a>
+- <a class="reference external" href="#%E8%AE%BE%E7%BD%AExstream%E9%85%8D%E7%BD%AE%E5%88%9D%E5%A7%8B%E5%8C%96">设置XStream配置初始化</a>
+- <a class="reference external" href="#init">Init</a>
+- <a class="reference external" href="#getversion">GetVersion</a>
+- <a class="reference external" href="#%E4%BA%A7%E7%94%9F%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE">产生输入数据</a>
+- <a class="reference external" href="#%E8%B0%83%E7%94%A8%E5%90%8C%E6%AD%A5%E9%A2%84%E6%B5%8B%E6%8E%A5%E5%8F%A3syncpredict">调用同步预测接口SyncPredict</a>
+- <a class="reference external" href="#%E8%A7%A3%E6%9E%90%E7%BB%93%E6%9E%9C">解析结果</a>
+- <a class="reference external" href="#%E5%9F%BA%E4%BA%8Ejson-workflow%E9%85%8D%E7%BD%AE%E6%9E%84%E5%BB%BAsdk%E5%BC%82%E6%AD%A5%E9%A2%84%E6%B5%8B%E6%8E%A5%E5%8F%A3">基于Json workflow配置构建SDK(异步预测接口)</a>
+- <a class="reference external" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E8%AE%BE%E7%BD%AE-callback">定义和设置 callback</a>
+- <a class="reference external" href="#%E5%8A%A8%E6%80%81%E6%9B%B4%E6%96%B0%E9%85%8D%E7%BD%AE">动态更新配置</a></p></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC --><div class="section" id="build-and-run">
+<h1>Build and Run<a class="headerlink" href="#build-and-run" title="永久链接至标题">¶</a></h1>
+<div class="section" id="build">
+<h2>Build<a class="headerlink" href="#build" title="永久链接至标题">¶</a></h2>
+<p>根据平台，直接运行每个Stage的子目录下的shell编译脚本即可编译。
+例如：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ./cmake_build.sh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run">
+<h2>Run<a class="headerlink" href="#run" title="永久链接至标题">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd build/bin</span>
+<span class="c1"># ./sync_main ../config/filter_workflow.json</span>
+<span class="c1"># ./async_main ../config/filter_workflow.json</span>
+<span class="c1"># ./update_param_main ../config/filter_workflow.json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="hello-world">
+<h1>Hello World！<a class="headerlink" href="#hello-world" title="永久链接至标题">¶</a></h1>
+<div class="section" id="sample">
+<h2>Sample 功能描述<a class="headerlink" href="#sample" title="永久链接至标题">¶</a></h2>
+<p>这里定义一个workflow，该workflow包含两个矩形框的过滤模块A、B，A过滤掉面积小于100的框， B过滤掉面积小于200的框。</p>
+<p><img alt="xstream-sample-desc" src="../../../../../_images/xstream-sample-desc2.png" /></p>
+</div>
+<div class="section" id="bboxfilter-method">
+<h2>开发BBoxFilter Method<a class="headerlink" href="#bboxfilter-method" title="永久链接至标题">¶</a></h2>
+<p>根据上面的功能描述，需要实现一个根据面积过滤框的Method，命名为BBoxFilter。</p>
+<div class="section" id="method">
+<h3>定义method输入输出数据类型<a class="headerlink" href="#method" title="永久链接至标题">¶</a></h3>
+<p>BBoxFilter Method需要输入一组BBox，输出一组BBox，因此需要定义的数据类型为BBox。</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage1/method/b_box.h</span>
+<span class="k">namespace</span> <span class="n">hobot</span> <span class="p">{</span>
+<span class="k">namespace</span> <span class="n">vision</span> <span class="p">{</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Dtype</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">BBox_</span> <span class="p">{</span>
+  <span class="kr">inline</span> <span class="n">BBox_</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="kr">inline</span> <span class="n">BBox_</span><span class="p">(</span><span class="n">Dtype</span> <span class="n">x1_</span><span class="p">,</span> <span class="n">Dtype</span> <span class="n">y1_</span><span class="p">,</span> <span class="n">Dtype</span> <span class="n">x2_</span><span class="p">,</span> <span class="n">Dtype</span> <span class="n">y2_</span><span class="p">,</span> <span class="kt">float</span> <span class="n">score_</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">,</span>
+               <span class="kt">int32_t</span> <span class="n">id_</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">category_name_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">x1_</span><span class="p">;</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">y1_</span><span class="p">;</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">x2_</span><span class="p">;</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="n">y2_</span><span class="p">;</span>
+    <span class="n">id</span> <span class="o">=</span> <span class="n">id_</span><span class="p">;</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">score_</span><span class="p">;</span>
+    <span class="n">category_name</span> <span class="o">=</span> <span class="n">category_name_</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kr">inline</span> <span class="n">Dtype</span> <span class="n">Width</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">);</span> <span class="p">}</span>
+  <span class="kr">inline</span> <span class="n">Dtype</span> <span class="n">Height</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">);</span> <span class="p">}</span>
+  <span class="kr">inline</span> <span class="n">Dtype</span> <span class="n">CenterX</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span> <span class="p">}</span>
+  <span class="kr">inline</span> <span class="n">Dtype</span> <span class="n">CenterY</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">y1</span> <span class="o">+</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span> <span class="p">}</span>
+
+  <span class="kr">inline</span> <span class="k">friend</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">out</span><span class="p">,</span> <span class="n">BBox_</span> <span class="o">&amp;</span><span class="n">bbox</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;( x1: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="p">.</span><span class="n">x1</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; y1: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="p">.</span><span class="n">y1</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; x2: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="p">.</span><span class="n">x2</span>
+        <span class="o">&lt;&lt;</span> <span class="s">&quot; y2: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="p">.</span><span class="n">y2</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; score: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="p">.</span><span class="n">score</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; )&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">out</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kr">inline</span> <span class="k">friend</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="n">BBox_</span> <span class="o">&amp;</span><span class="n">bbox</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;( x1: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="p">.</span><span class="n">x1</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; y1: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="p">.</span><span class="n">y1</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; x2: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="p">.</span><span class="n">x2</span>
+        <span class="o">&lt;&lt;</span> <span class="s">&quot; y2: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="p">.</span><span class="n">y2</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; score: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="p">.</span><span class="n">score</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; )&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">out</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">Dtype</span> <span class="n">x1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">Dtype</span> <span class="n">y1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">Dtype</span> <span class="n">x2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">Dtype</span> <span class="n">y2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">score</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+  <span class="kt">int32_t</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">category_name</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">typedef</span> <span class="n">BBox_</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">BBox</span><span class="p">;</span>
+<span class="p">}</span>  <span class="c1">// namespace vision</span>
+<span class="p">}</span>  <span class="c1">// namespace hobot</span>
+</pre></div>
+</div>
+<p>Note: 为了统一基础数据结构定义，我们在vision_type中预定义了一组基础数据类型，包括检测框BBox、关键点Landmark、人脸3DPose信息、基础图像帧表示等。</p>
+</div>
+<div class="section" id="xstream">
+<h3>将数据封装为XStream数据表示<a class="headerlink" href="#xstream" title="永久链接至标题">¶</a></h3>
+<p>XStream定义了一个公共基类用来记录框架中流转的数据的描述信息，上述定义的数据类型需要继承该基类从而包含这些描述信息，基础类定义如下：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/framework/include/hobotxsdk/xstream_data.h</span>
+<span class="k">namespace</span> <span class="n">xstream</span> <span class="p">{</span>
+<span class="c1">// 数据状态</span>
+<span class="k">enum</span> <span class="k">class</span> <span class="nc">DataState</span> <span class="p">{</span>
+  <span class="c1">// 有效</span>
+      <span class="n">VALID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="c1">// 被过滤掉</span>
+      <span class="n">FILTERED</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="c1">// 不可见</span>
+      <span class="n">INVISIBLE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="c1">// 消失</span>
+      <span class="n">DISAPPEARED</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="c1">// 无效</span>
+      <span class="n">INVALID</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="c1">// 数据结构基类，框，lmk等等的基类</span>
+<span class="k">struct</span> <span class="n">BaseData</span> <span class="p">{</span>
+  <span class="n">BaseData</span><span class="p">();</span>
+  <span class="k">virtual</span> <span class="o">~</span><span class="n">BaseData</span><span class="p">();</span>
+  <span class="c1">// 类型</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+  <span class="c1">// 名称</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+  <span class="c1">// 错误码</span>
+  <span class="kt">int</span> <span class="n">error_code_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// 错误信息</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">error_detail_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+  <span class="c1">// C数据结构上下文</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">CContext</span><span class="o">&gt;</span> <span class="n">c_data_</span><span class="p">;</span>
+  <span class="c1">// 状态</span>
+  <span class="n">DataState</span> <span class="n">state_</span> <span class="o">=</span> <span class="n">DataState</span><span class="o">::</span><span class="n">VALID</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">BaseData</span><span class="o">&gt;</span> <span class="n">BaseDataPtr</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>除了数据基类，XStream还预定义了数组和从普通数据类型快速转化为XStream数据表示的模板：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/framework/include/hobotxsdk/xstream_data.h</span>
+<span class="k">struct</span> <span class="nl">BaseDataVector</span> <span class="p">:</span> <span class="k">public</span> <span class="n">BaseData</span> <span class="p">{</span>
+  <span class="n">BaseDataVector</span><span class="p">();</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;</span> <span class="n">datas_</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 类模板，value可以为任意类型的数据，比如vision_type里定义的各种基础数据</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Dtype</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="nl">XStreamData</span> <span class="p">:</span> <span class="k">public</span> <span class="n">BaseData</span> <span class="p">{</span>
+  <span class="n">Dtype</span> <span class="n">value</span><span class="p">;</span>
+  <span class="n">XStreamData</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="k">explicit</span> <span class="n">XStreamData</span><span class="p">(</span><span class="k">const</span> <span class="n">Dtype</span><span class="o">&amp;</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="p">}</span>  <span class="c1">// namespace xstream</span>
+</pre></div>
+</div>
+<p>将BBox转化为XStream数据表示：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage1/method/b_box.h</span>
+<span class="k">typedef</span> <span class="n">XStreamData</span><span class="o">&lt;</span><span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="o">&gt;</span> <span class="n">BBox</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>输入输出是一组BBox，因此是一个BaseDataVector, 构成一个BBox数组的方式为：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">BaseDataVector</span> <span class="o">*</span><span class="nf">data</span><span class="p">(</span><span class="k">new</span> <span class="n">BaseDataVector</span><span class="p">);</span>
+<span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox1</span><span class="p">(</span><span class="k">new</span> <span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">105</span><span class="p">));</span>
+<span class="n">bbox1</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+<span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox1</span><span class="p">));</span>
+<span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox2</span><span class="p">(</span><span class="k">new</span> <span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">68</span><span class="p">));</span>
+<span class="n">bbox2</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+<span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox2</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="method-bboxfilter-method">
+<h3>继承Method基类，实现BBoxFilter Method<a class="headerlink" href="#method-bboxfilter-method" title="永久链接至标题">¶</a></h3>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage1/method/b_box_filter.h</span>
+<span class="cp">#include</span> <span class="cpf">&quot;hobotxstream/method.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">xstream</span> <span class="p">{</span>
+
+<span class="k">class</span> <span class="nc">BBoxFilter</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Method</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="c1">// load json配置参数，完成method初始化</span>
+  <span class="kt">int</span> <span class="n">Init</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">config_file_path</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="c1">// 数据处理函数，第一个参数是输入数据（双重vector，外层vector表示batch是多帧的输入</span>
+  <span class="c1">// 内层的vector表示单帧的数据列表），</span>
+  <span class="c1">// Note：由于目前XStream框架接口并没有支持Batch模式，外层的vector恒等于1</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;&gt;</span> <span class="n">DoProcess</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+                                                  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">xstream</span><span class="o">::</span><span class="n">InputParamPtr</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">param</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="c1">// 析构</span>
+  <span class="kt">void</span> <span class="nf">Finalize</span><span class="p">()</span> <span class="k">override</span> <span class="p">{}</span>
+  <span class="c1">// 动态改变Method运行参数配置</span>
+  <span class="kt">int</span> <span class="nf">UpdateParameter</span><span class="p">(</span><span class="n">InputParamPtr</span> <span class="n">ptr</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="c1">// 获取Method运行参数配置</span>
+  <span class="n">InputParamPtr</span> <span class="nf">GetParameter</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+  <span class="c1">// 获取Method版本号，比如 metric_v0.4.0 或者 MD112 等</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetVersion</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;BBoxFilter_test_v0.0.1&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// 当workflow的profile状态发生变化时，调用该函数.</span>
+  <span class="kt">void</span> <span class="n">OnProfilerChanged</span><span class="p">(</span><span class="kt">bool</span> <span class="n">on</span><span class="p">)</span> <span class="k">override</span> <span class="p">{}</span>
+
+ <span class="k">private</span><span class="o">:</span>
+  <span class="c1">// 过滤bbox的面积阈值</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">area_threshold_</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="p">}</span>  <span class="c1">// namespace xstream</span>
+</pre></div>
+</div>
+<p>实现DoProcess：根据面积过滤框，这里没有直接过滤掉框，而是设置了Filter状态，最终输出可以通过检查状态位得到剩余框（未被过滤的框状态应为VALID）：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage1/method/b_box_filter.cc</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;&gt;</span> <span class="n">BBoxFilter</span><span class="o">::</span><span class="n">DoProcess</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">InputParamPtr</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;BBoxFilter::DoProcess&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;&gt;</span> <span class="n">output</span><span class="p">;</span>
+  <span class="n">output</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">input</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 当前不支持batch模式，batch恒等于1</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">auto</span> <span class="o">&amp;</span><span class="n">in_batch_i</span> <span class="o">=</span> <span class="n">input</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="k">auto</span> <span class="o">&amp;</span><span class="n">out_batch_i</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">out_batch_i</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">in_batch_i</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;input size: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">in_batch_i</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="c1">// 只支持n个输入，输入格式是BBox的数组</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">in_batch_i</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">auto</span> <span class="n">in_rects</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">static_pointer_cast</span><span class="o">&lt;</span><span class="n">BaseDataVector</span><span class="o">&gt;</span><span class="p">(</span><span class="n">in_batch_i</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+      <span class="n">assert</span><span class="p">(</span><span class="s">&quot;BaseDataVector&quot;</span> <span class="o">==</span> <span class="n">in_rects</span><span class="o">-&gt;</span><span class="n">type_</span><span class="p">);</span>
+      <span class="k">auto</span> <span class="n">out_rects</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">BaseDataVector</span><span class="o">&gt;</span><span class="p">();</span>
+      <span class="n">out_batch_i</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">static_pointer_cast</span><span class="o">&lt;</span><span class="n">BaseData</span><span class="o">&gt;</span><span class="p">(</span><span class="n">out_rects</span><span class="p">);</span>
+      <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">in_rect</span> <span class="p">:</span> <span class="n">in_rects</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">bbox</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">static_pointer_cast</span><span class="o">&lt;</span><span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span><span class="o">&gt;</span><span class="p">(</span><span class="n">in_rect</span><span class="p">);</span>
+        <span class="c1">// 因为BBoxFilter_A和BBoxFilter_B使用智能指针指向同一份输入数据，为避免两个Filter在一个处理完成后修改State，</span>
+        <span class="c1">// 影响另一个Filter处理输入数据，这里会将原来的输入数据copy一份</span>
+        <span class="k">auto</span> <span class="n">out_rect</span> <span class="o">=</span> <span class="n">BaseDataPtr</span><span class="p">(</span><span class="k">new</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="n">bbox</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">));</span>
+        <span class="n">out_rect</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="n">bbox</span><span class="o">-&gt;</span><span class="n">type_</span><span class="p">;</span>
+        <span class="c1">// 如果已经被之前的模块过滤掉，直接传递到输出。</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">in_rect</span><span class="o">-&gt;</span><span class="n">state_</span> <span class="o">==</span> <span class="n">DataState</span><span class="o">::</span><span class="n">FILTERED</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">out_rects</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">in_rect</span><span class="p">);</span>
+          <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">assert</span><span class="p">(</span><span class="s">&quot;BBox&quot;</span> <span class="o">==</span> <span class="n">out_rect</span><span class="o">-&gt;</span><span class="n">type_</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bbox</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">Width</span><span class="p">()</span> <span class="o">*</span> <span class="n">bbox</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">Height</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">area_threshold_</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">out_rects</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">out_rect</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;B filter: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">x1</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">y1</span>
+                    <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">x2</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">y2</span>
+                    <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+          <span class="c1">// 设置过滤状态，输出通过该状态过滤</span>
+          <span class="n">out_rect</span><span class="o">-&gt;</span><span class="n">state_</span> <span class="o">=</span> <span class="n">DataState</span><span class="o">::</span><span class="n">FILTERED</span><span class="p">;</span>
+          <span class="n">out_rects</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">out_rect</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">output</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>初始化时需要解析json配置参数，初始化不同的阈值，对模块A需要过滤掉面积小于100的框，a_filter.json配置为：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;threshold&quot;</span> <span class="p">:</span> <span class="mi">100</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>b_filter.json配置为：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;threshold&quot;</span> <span class="p">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>需要注意的是Init输入参数为Json config文件路径，并不是json配置文件本身，需要先load文件然后完成json解析:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage1/method/b_box_filter.cc</span>
+<span class="kt">int</span> <span class="n">BBoxFilter</span><span class="o">::</span><span class="n">Init</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">config_file_path</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;BBoxFilter::Init &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">config_file_path</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">ifstream</span> <span class="n">infile</span><span class="p">(</span><span class="n">file_path</span><span class="p">);</span>
+  <span class="n">HOBOT_CHECK</span><span class="p">(</span><span class="n">infile</span><span class="p">.</span><span class="n">good</span><span class="p">())</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;error config file path &#39;&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">file_path</span>
+                             <span class="o">&lt;&lt;</span> <span class="s">&quot;&#39;, please check it&quot;</span><span class="p">;</span>
+  <span class="n">Json</span><span class="o">::</span><span class="n">Value</span> <span class="n">cfg_jv</span><span class="p">;</span>
+  <span class="n">infile</span> <span class="o">&gt;&gt;</span> <span class="n">cfg_jv</span><span class="p">;</span>
+  <span class="n">infile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+  <span class="n">area_threshold_</span> <span class="o">=</span> <span class="n">cfg_jv</span><span class="p">[</span><span class="s">&quot;threshold&quot;</span><span class="p">].</span><span class="n">asFloat</span><span class="p">();</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果需要运行时更新阈值，需要实现UpdateParameter</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage1/method/b_box_filter.cc</span>
+<span class="kt">int</span> <span class="n">BBoxFilter</span><span class="o">::</span><span class="n">UpdateParameter</span><span class="p">(</span><span class="n">InputParamPtr</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">real_ptr</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">xstream</span><span class="o">::</span><span class="n">FilterParam</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">ptr</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">real_ptr</span><span class="o">-&gt;</span><span class="n">HasThreshold</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">area_threshold_</span> <span class="o">=</span> <span class="n">real_ptr</span><span class="o">-&gt;</span><span class="n">GetThreshold</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>UpdateParameter的输入参数类型是InputParamPtr，这是XStream定义的参数类型的基类，用户需要继承该基类实现自定义的输入参数类;
+InputParamPtr定义在hobotsdk/xstream_data.h:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/framework/include/hobotxsdk/xstream_data.h</span>
+<span class="k">class</span> <span class="nc">InputParam</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="k">explicit</span> <span class="n">InputParam</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">unique_name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">unique_name_</span> <span class="o">=</span> <span class="n">unique_name</span><span class="p">;</span>
+    <span class="n">is_json_format_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">is_enable_this_method_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">virtual</span> <span class="o">~</span><span class="n">InputParam</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">Format</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+ <span class="k">public</span><span class="o">:</span>
+  <span class="kt">bool</span> <span class="n">is_json_format_</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">is_enable_this_method_</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">unique_name_</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">InputParam</span><span class="o">&gt;</span> <span class="n">InputParamPtr</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>继承基类InputParam实现FilterParam：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage1/filter_param.h</span>
+<span class="cp">#include</span> <span class="cpf">&quot;hobotxsdk/xstream_data.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">xstream</span> <span class="p">{</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">_FilterParam__isset</span> <span class="p">{</span>
+  <span class="n">_FilterParam__isset</span><span class="p">()</span> <span class="o">:</span> <span class="n">threshold</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="kt">bool</span> <span class="nl">threshold</span> <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">_FilterParam__isset</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FilterParam</span> <span class="o">:</span> <span class="k">public</span> <span class="n">InputParam</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="k">explicit</span> <span class="n">FilterParam</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">unique_name</span><span class="p">)</span> <span class="o">:</span> <span class="n">InputParam</span><span class="p">(</span><span class="n">unique_name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">threshold_</span> <span class="o">=</span> <span class="mf">2500.0</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">virtual</span> <span class="o">~</span><span class="n">FilterParam</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+
+  <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">Format</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;threshold&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">threshold_</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kt">void</span> <span class="n">SetThreshold</span><span class="p">(</span><span class="kt">float</span> <span class="n">thres</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">threshold_</span> <span class="o">=</span> <span class="n">thres</span><span class="p">;</span>
+    <span class="n">is_set_</span><span class="p">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">bool</span> <span class="n">HasThreshold</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">is_set_</span><span class="p">.</span><span class="n">threshold</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="kt">float</span> <span class="n">GetThreshold</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">threshold_</span><span class="p">;</span> <span class="p">}</span>
+
+ <span class="k">private</span><span class="o">:</span>
+  <span class="n">_FilterParam__isset</span> <span class="n">is_set_</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">threshold_</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="p">}</span>  <span class="c1">// namespace xstream</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="jsonworkflow">
+<h2>通过JSON构建workflow<a class="headerlink" href="#jsonworkflow" title="永久链接至标题">¶</a></h2>
+<p>filter_workflow.json文件内容如下:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;inputs&quot;: [&quot;in_bbox&quot;],  // 输入的数据list，它是workflow里面定义的inputs的子集
+  &quot;outputs&quot;: [&quot;bbox_filtered_A&quot;,
+              &quot;bbox_filtered_B&quot;],  // 输出的数据list，它是workflow里面定义的outputs的一个子集
+  &quot;workflow&quot;: [ // node列表，
+    {
+      &quot;method_type&quot;: &quot;BBoxFilter&quot;,  // Method类型是BBoxFilter
+      &quot;unique_name&quot;: &quot;BBoxFilter_A&quot;,  // Node 在workflow中的唯一名字
+      &quot;inputs&quot;: [
+        &quot;in_bbox&quot;  // 本Node的输入，它是从整体workflow的“inputs”中连过来的
+      ],
+      &quot;outputs&quot;: [
+        &quot;bbox_filtered_A&quot;  // 本Node的输出，它可以被连接到workflow输出或者其他Node的输入
+      ],
+      &quot;method_config_file&quot;: &quot;a_filter.json&quot;  // 本Node对应的Method的配置文件路径，为相对本workflow配置文件的相对路径
+    },
+    {
+      &quot;method_type&quot;: &quot;BBoxFilter&quot;,  // Method类型是BBoxFilter
+      &quot;unique_name&quot;: &quot;BBoxFilter_B&quot;,  // Node 在workflow中的唯一名字
+      &quot;inputs&quot;: [
+        &quot;in_bbox&quot;  // 本Node的输入，它是从整体workflow的“inputs”中连过来的
+      ],
+      &quot;outputs&quot;: [
+        &quot;bbox_filtered_B&quot;
+      ],
+      &quot;method_config_file&quot;: &quot;b_filter.json&quot;
+    }
+  ]
+}
+</pre></div>
+</div>
+<p>上面的配置文件对应的workflow如下图:<br /><img alt="XStream-Workflow-Example" src="../../../../../_images/xstream-workflow-sample2.png" /></p>
+</div>
+<div class="section" id="methodjson-workflowsdk">
+<h2>基于已定义的method及Json workflow配置文件构建SDK<a class="headerlink" href="#methodjson-workflowsdk" title="永久链接至标题">¶</a></h2>
+<div class="section" id="bboxfilter-methodmethodfactory">
+<h3>注册BBoxFilter Method到MethodFactory中<a class="headerlink" href="#bboxfilter-methodmethodfactory" title="永久链接至标题">¶</a></h3>
+<p>XStream框架构建workflow时，调用全局MethodFactory创建对应Method实例，在使用BBoxFilter之前需要注册到MethodFactory中;</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/tutorials/stage1/method_factory.h</span>
+<span class="cp">#include</span> <span class="cpf">&quot;hobotxstream/method_factory.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;method/bbox_filter.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">xstream</span> <span class="p">{</span>
+<span class="k">namespace</span> <span class="n">method_factory</span>
+<span class="n">MethodPtr</span> <span class="n">CreateMethod</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">method_name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="s">&quot;BBoxFilter&quot;</span> <span class="o">==</span> <span class="n">method_name</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// method_name即为JSON config中Node @method_type 名字。</span>
+    <span class="k">return</span> <span class="n">MethodPtr</span><span class="p">(</span><span class="k">new</span> <span class="n">BBoxFilter</span><span class="p">());</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">MethodPtr</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>  <span class="c1">// namespace method_factory</span>
+<span class="p">}</span>  <span class="c1">// namespace xstream</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="json-workflowsdk">
+<h3>基于Json workflow配置构建SDK(同步预测接口)<a class="headerlink" href="#json-workflowsdk" title="永久链接至标题">¶</a></h3>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="c1">// xstream/tutorials/stage1/sync_main.cc文件对输入数据稍作改动，改成了循环输入10次数据。</span>
+  <span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseData</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseDataPtr</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseDataVector</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">InputData</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">InputDataPtr</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Usage : ./bbox_filter_main work_flow_config_file&quot;</span>
+              <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Example : ./bbox_filter_main ./filter_workflow.json&quot;</span>
+              <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">auto</span> <span class="n">config</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="n">xstream</span><span class="o">::</span><span class="n">XStreamSDK</span> <span class="o">*</span><span class="n">flow</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">::</span><span class="n">XStreamSDK</span><span class="o">::</span><span class="n">CreateSDK</span><span class="p">();</span>
+  <span class="n">flow</span><span class="o">-&gt;</span><span class="n">SetConfig</span><span class="p">(</span><span class="s">&quot;config_file&quot;</span><span class="p">,</span> <span class="n">config</span><span class="p">);</span>
+  <span class="n">flow</span><span class="o">-&gt;</span><span class="n">Init</span><span class="p">();</span>
+  <span class="c1">/// Get Method Version</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;BBoxFilter_A Method Version : &quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">GetVersion</span><span class="p">(</span><span class="s">&quot;BBoxFilter_A&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="kt">float</span> <span class="n">x1</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>   <span class="c1">// BBox(框)的左上角横坐标</span>
+  <span class="kt">float</span> <span class="n">y1</span><span class="p">{</span><span class="mi">20</span><span class="p">};</span>  <span class="c1">// BBox(框)的左上角纵坐标</span>
+  <span class="kt">float</span> <span class="n">x2</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>   <span class="c1">// BBox(框)的右上角横坐标</span>
+  <span class="kt">float</span> <span class="n">y2</span><span class="p">{</span><span class="mi">50</span><span class="p">};</span>  <span class="c1">// BBox(框)的右上角纵坐标</span>
+  <span class="c1">// 框的面积计算公式:(x2-x2)*(y2-y1)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;***********************&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+              <span class="o">&lt;&lt;</span> <span class="s">&quot;testing synchronous function&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+              <span class="o">&lt;&lt;</span> <span class="s">&quot;***********************&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="c1">// 生成面积为{ 0, 30, 60, 90, 120, 150, 180, 210, 240,</span>
+    <span class="c1">// 270 } 序列,作为BBoxFilter的输入数据</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">x2</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+      <span class="n">InputDataPtr</span> <span class="nf">inputdata</span><span class="p">(</span><span class="k">new</span> <span class="n">InputData</span><span class="p">());</span>
+      <span class="n">BaseDataVector</span> <span class="o">*</span><span class="nf">data</span><span class="p">(</span><span class="k">new</span> <span class="n">BaseDataVector</span><span class="p">);</span>
+      <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox</span><span class="p">(</span>
+          <span class="k">new</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)));</span>
+      <span class="n">bbox</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;main i:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; bbox:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+      <span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox</span><span class="p">));</span>
+
+      <span class="n">data</span><span class="o">-&gt;</span><span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;in_bbox&quot;</span><span class="p">;</span>
+      <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+
+      <span class="k">auto</span> <span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">SyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+      <span class="n">ParseOutput</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">delete</span> <span class="n">flow</span><span class="p">;</span>
+ 
+</pre></div>
+</div>
+<div class="section" id="sdk">
+<h4>创建SDK句柄:<a class="headerlink" href="#sdk" title="永久链接至标题">¶</a></h4>
+<p>调用XStreamSDK的class静态接口CreateSDK, 创建一个XStreamSDK的对象。
+代码:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">flow</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">::</span><span class="n">XStreamSDK</span><span class="o">::</span><span class="n">CreateSDK</span><span class="p">();</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>接口:</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">XStreamSDK</span> <span class="o">*</span><span class="nf">CreateSDK</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h4>设置XStream配置初始化<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p>代码:</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">-&gt;</span><span class="n">SetConfig</span><span class="p">(</span><span class="s">&quot;config_file&quot;</span><span class="p">,</span> <span class="s">&quot;configs/filter_workflow.json&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>接口:</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="kt">int</span> <span class="n">SetConfig</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>key为”config_file”，value设置为workflow的配置路路径，用于设置整个workflow的配置文件。</p>
+</div>
+<div class="section" id="init">
+<h4>Init<a class="headerlink" href="#init" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p>代码：</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">-&gt;</span><span class="n">Init</span><span class="p">();</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>接口：</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="kt">int</span> <span class="nf">Init</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>用于初始化xstream句柄，必须在调⽤用SetConfig之后执行Init()</p>
+</div>
+<div class="section" id="getversion">
+<h4>GetVersion<a class="headerlink" href="#getversion" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">virtual</span> <span class="pre">std::string</span> <span class="pre">GetVersion(const</span> <span class="pre">std::string</span> <span class="pre">&amp;method_name)</span> <span class="pre">const</span> <span class="pre">=</span> <span class="pre">0;</span></code>
+说明：获取XStream-Framework method的版本信息。</p>
+</div>
+<div class="section" id="id2">
+<h4>产生输入数据<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h4>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="n">InputDataPtr</span> <span class="nf">inputdata</span><span class="p">(</span><span class="k">new</span> <span class="n">InputData</span><span class="p">());</span>
+  <span class="n">BaseDataVector</span> <span class="o">*</span><span class="nf">data</span><span class="p">(</span><span class="k">new</span> <span class="n">BaseDataVector</span><span class="p">);</span>
+
+  <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox1</span><span class="p">(</span><span class="k">new</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span>
+    <span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">105</span><span class="p">)));</span>
+  <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox2</span><span class="p">(</span><span class="k">new</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span>
+    <span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">68</span><span class="p">)));</span>
+  <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox3</span><span class="p">(</span><span class="k">new</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span>
+    <span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">)));</span>
+  <span class="n">bbox1</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+  <span class="n">bbox2</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+  <span class="n">bbox3</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;bbox1: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox1</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;bbox2: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox2</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;bbox3: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox3</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox1</span><span class="p">));</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox2</span><span class="p">));</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox3</span><span class="p">));</span>
+
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;in_bbox&quot;</span><span class="p">;</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>如上面章节说明XStream框架中流转的数据需要基于一个公共基类BaseData扩展，产生输入数据时也需要把输入数据先转化为XStream数据表示。
+这里做了两次转化：
+1）将基础数据类型hobot::vision::BBox转化为带XStream描述信息的表示：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox1</span><span class="p">(</span><span class="k">new</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span>
+    <span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">105</span><span class="p">)));</span>
+  <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox2</span><span class="p">(</span><span class="k">new</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span>
+    <span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">68</span><span class="p">)));</span>
+  <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox3</span><span class="p">(</span><span class="k">new</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span>
+    <span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">)));</span>
+  <span class="c1">// 添加数据类型描述信息</span>
+  <span class="n">bbox1</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+  <span class="n">bbox2</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+  <span class="n">bbox3</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>xstream::BBox的定义为：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="n">XStreamData</span><span class="o">&lt;</span><span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="o">&gt;</span> <span class="n">BBox</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>2）workflow的输入数据为一组框，因此需要把上述3个BBox定义组织到数组中，同时数组也要转化为XStream数据表示:
+BaseData的数组表示为BaseDataVector， BaseDataVector已经是BaseData的子类，可以直接转化为BaseData。</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="n">BaseDataVector</span> <span class="o">*</span><span class="nf">data</span><span class="p">(</span><span class="k">new</span> <span class="n">BaseDataVector</span><span class="p">);</span>
+  <span class="p">...</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox1</span><span class="p">));</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox2</span><span class="p">));</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox3</span><span class="p">));</span>
+  <span class="c1">// 数据的name， 需要和定义的json workflow的输入部分name一致</span>
+  <span class="n">data</span><span class="o">-&gt;</span><span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;in_bbox&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>这里需要注意的是输入数据需要添加name信息，name需要和定义的JSON workflow inputs一样，预测时即是通过该信息Feed workflow：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;inputs&quot;: [&quot;in_bbox&quot;],  // 输入的数据list，它是workflow里面定义的inputs的子集
+  &quot;outputs&quot;: [&quot;bbox_filtered_A&quot;,
+              &quot;bbox_filtered_B&quot;],  // 输出的数据list，它是workflow里面定义的outputs的一个子集
+  ...
+</pre></div>
+</div>
+<p>XStream输入数据的数据结构为：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// 输入数据类型</span>
+<span class="k">struct</span> <span class="n">InputData</span> <span class="p">{</span>
+  <span class="c1">// 用户输入的数据，比如图片channel、时间戳、框等等</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;</span> <span class="n">datas_</span><span class="p">;</span>
+  <span class="c1">// 当前请求自定义的参数</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">InputParamPtr</span><span class="o">&gt;</span> <span class="n">params_</span><span class="p">;</span>
+  <span class="c1">// 数据源 id 用于多路输入时区分输入源,单一源情况赋值为 0</span>
+  <span class="kt">uint32_t</span> <span class="n">source_id_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// 透传的数据，该数据会透传到OutputData::context_ 字段</span>
+  <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>输入数据存储在datas_中:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="n">data</span><span class="o">-&gt;</span><span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;in_bbox&quot;</span><span class="p">;</span>
+  <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="syncpredict">
+<h4>调用同步预测接口SyncPredict<a class="headerlink" href="#syncpredict" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p>代码</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="k">auto</span> <span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">SyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>接口：</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="n">OutputDataPtr</span> <span class="nf">SyncPredict</span><span class="p">(</span><span class="n">InputDataPtr</span> <span class="n">input</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>说明：同步预测接口，传⼊输入数据后，接口会阻塞住，直到整个workflow处理完成，将workflow的结果通过函数返回值返回为⽌。
+该接口需要在Init()之后执⾏才有效。
+使用场景：可用于对本地的图片提取特征创建底库，其他场景。</p>
+</div>
+<div class="section" id="id3">
+<h4>解析结果<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h4>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span> <span class="c1">// xstream/tutorials/stage1/sync_main.cc</span>
+  <span class="kt">void</span> <span class="nf">ParseOutput</span><span class="p">(</span><span class="n">xstream</span><span class="o">::</span><span class="n">OutputDataPtr</span> <span class="n">output</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseDataVector</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;=====================&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;seq: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">output</span><span class="o">-&gt;</span><span class="n">sequence_id_</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;output_type: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">output</span><span class="o">-&gt;</span><span class="n">output_type_</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;method_unique_name: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">output</span><span class="o">-&gt;</span><span class="n">unique_name_</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;error_code: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">output</span><span class="o">-&gt;</span><span class="n">error_code_</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;error_detail_: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">output</span><span class="o">-&gt;</span><span class="n">error_detail_</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;datas_ size: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">output</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">data</span> <span class="p">:</span> <span class="n">output</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="o">-&gt;</span><span class="n">error_code_</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;data error: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">data</span><span class="o">-&gt;</span><span class="n">error_code_</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">continue</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;data type_name : &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">data</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">data</span><span class="o">-&gt;</span><span class="n">name_</span>
+                <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+      <span class="n">BaseDataVector</span> <span class="o">*</span><span class="n">pdata</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">BaseDataVector</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;pdata size: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">pdata</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Output BBox &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">pdata</span><span class="o">-&gt;</span><span class="n">name_</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;:&quot;</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">pdata</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">xstream_box</span> <span class="o">=</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">static_pointer_cast</span><span class="o">&lt;</span><span class="n">xstream</span><span class="o">::</span><span class="n">XStreamData</span><span class="o">&lt;</span><span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+                <span class="n">pdata</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">xstream_box</span><span class="o">-&gt;</span><span class="n">state_</span> <span class="o">==</span> <span class="n">xstream</span><span class="o">::</span><span class="n">DataState</span><span class="o">::</span><span class="n">VALID</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;[&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">xstream_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">x1</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">xstream_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">y1</span>
+                    <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">xstream_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">x2</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">xstream_box</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">.</span><span class="n">y2</span>
+                    <span class="o">&lt;&lt;</span> <span class="s">&quot;]&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>输出数据结构为：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// xstream/framework/include/hobotxsdk/xstream_data.h</span>
+<span class="c1">// 输出数据类型</span>
+<span class="k">struct</span> <span class="n">OutputData</span> <span class="p">{</span>
+  <span class="c1">// 错误码</span>
+  <span class="kt">int</span> <span class="n">error_code_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// 错误信息</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">error_detail_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+  <span class="c1">// 当该OutputData为给某个Method的定向回调结果时，该字段用于指示Method名称</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">unique_name_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+  <span class="c1">// 多路输出结果名称</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">output_type_</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+  <span class="c1">// 输出结果</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;</span> <span class="n">datas_</span><span class="p">;</span>
+  <span class="c1">// 从InputData透传过来的数据</span>
+  <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+  <span class="c1">// 该结果的序列号</span>
+  <span class="kt">int64_t</span> <span class="n">sequence_id_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// 该结果是属于那个输入源产生的结果</span>
+  <span class="kt">uint32_t</span> <span class="n">source_id_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">uint64_t</span> <span class="n">global_sequence_id_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">OutputData</span><span class="o">&gt;</span> <span class="n">OutputDataPtr</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>datas_字段存储了输出的结果，对于该workflow保护两个输出：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s">&quot;inputs&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s">&quot;in_bbox&quot;</span><span class="p">],</span>  <span class="c1">// 输入的数据list，它是workflow里面定义的inputs的子集</span>
+  <span class="s">&quot;outputs&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s">&quot;bbox_filtered_A&quot;</span><span class="p">,</span>
+              <span class="s">&quot;bbox_filtered_B&quot;</span><span class="p">],</span>  <span class="c1">// 输出的数据list，它是workflow里面定义的outputs的一个子集</span>
+  <span class="p">...</span>
+</pre></div>
+</div>
+<p>每个输出都是一个框的数组，解析的数据结果层次为：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BaseDataPtr</span><span class="o">&gt;</span>
+<span class="o">--&gt;</span> <span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">BaseDataVector</span><span class="p">)</span>
+<span class="o">--&gt;</span> <span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">XStreamData</span><span class="o">&lt;</span><span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="o">&gt;&gt;</span><span class="p">)</span>
+<span class="o">--&gt;</span> <span class="n">xstream_data</span><span class="o">-&gt;</span><span class="n">value_</span><span class="p">(</span><span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>基于Json workflow配置构建SDK(异步预测接口)<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>XStream SDK预测接口包括两种类型：同步接口和异步接口。
+上个章节基于同步接口构建了XStream SDK，这个章节将基于异步接口重新构建SDK。</p>
+<ul class="simple">
+<li><p>接口：</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="kt">int64_t</span> <span class="nf">AsyncPredict</span><span class="p">(</span><span class="n">InputDataPtr</span> <span class="n">input</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>说明：异步预测接口，AsyncPredict接⼝调⽤后立即返回，结果通过SetCallback设置的回调函数捕获。<br />Note:该接⼝需要在Init()之后执⾏才有效。</p>
+<ul class="simple">
+<li><p>设置异步回调接口</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="kt">int</span> <span class="nf">SetCallback</span><span class="p">(</span><span class="n">XStreamCallback</span> <span class="n">callback</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>说明：使⽤异步分析接口时，设置SetCallback才有效。
+将name设置为默认值，通过该接口可以设置整个workflow处理完成后的回调函数；
+将name设置为某个Node的unique名字，通过该接口可以设置某个method实例处理完成后的回调函数。</p>
+<ul class="simple">
+<li><p>基于异步接口创建sdk的方式：</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="c1">// xstream/tutorials/stage1/async_main.cc</span>
+  <span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseData</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseDataPtr</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BaseDataVector</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">InputData</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">xstream</span><span class="o">::</span><span class="n">InputDataPtr</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">Stage1Async</span><span class="o">::</span><span class="n">Callback</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Usage : ./bbox_filter_main work_flow_config_file&quot;</span>
+              <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Example : ./bbox_filter_main ./filter_workflow.json&quot;</span>
+              <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">auto</span> <span class="n">config</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="n">xstream</span><span class="o">::</span><span class="n">XStreamSDK</span> <span class="o">*</span><span class="n">flow</span> <span class="o">=</span> <span class="n">xstream</span><span class="o">::</span><span class="n">XStreamSDK</span><span class="o">::</span><span class="n">CreateSDK</span><span class="p">();</span>
+  <span class="n">Callback</span> <span class="n">callback</span><span class="p">;</span>
+  <span class="c1">// 整个Workflow回调函数</span>
+  <span class="n">flow</span><span class="o">-&gt;</span><span class="n">SetCallback</span><span class="p">(</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Callback</span><span class="o">::</span><span class="n">OnCallback</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">callback</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span>
+  <span class="n">flow</span><span class="o">-&gt;</span><span class="n">SetConfig</span><span class="p">(</span><span class="s">&quot;config_file&quot;</span><span class="p">,</span> <span class="n">config</span><span class="p">);</span>
+  <span class="n">flow</span><span class="o">-&gt;</span><span class="n">Init</span><span class="p">();</span>
+  <span class="c1">// BBoxFilter_A回调函数</span>
+  <span class="n">flow</span><span class="o">-&gt;</span><span class="n">SetCallback</span><span class="p">(</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Callback</span><span class="o">::</span><span class="n">OnCallback</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">callback</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">),</span>
+      <span class="s">&quot;BBoxFilter_A&quot;</span><span class="p">);</span>
+  <span class="c1">// BBoxFilter_B回调函数</span>
+  <span class="n">flow</span><span class="o">-&gt;</span><span class="n">SetCallback</span><span class="p">(</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Callback</span><span class="o">::</span><span class="n">OnCallback</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">callback</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">),</span>
+      <span class="s">&quot;BBoxFilter_B&quot;</span><span class="p">);</span>
+
+  <span class="c1">// Get Method Version</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;BBoxFilter_A Method Version : &quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">GetVersion</span><span class="p">(</span><span class="s">&quot;BBoxFilter_A&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="kt">float</span> <span class="n">x1</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>   <span class="c1">// BBox(框)的左上角横坐标</span>
+  <span class="kt">float</span> <span class="n">y1</span><span class="p">{</span><span class="mi">20</span><span class="p">};</span>  <span class="c1">// BBox(框)的左上角纵坐标</span>
+  <span class="kt">float</span> <span class="n">x2</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>   <span class="c1">// BBox(框)的右上角横坐标</span>
+  <span class="kt">float</span> <span class="n">y2</span><span class="p">{</span><span class="mi">50</span><span class="p">};</span>  <span class="c1">// BBox(框)的右上角纵坐标</span>
+  <span class="c1">// 框的面积计算公式:(x2-x2)*(y2-y1)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;***********************&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+              <span class="o">&lt;&lt;</span> <span class="s">&quot;testing synchronous function&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+              <span class="o">&lt;&lt;</span> <span class="s">&quot;***********************&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="c1">// 生成面积为{ 0, 30, 60, 90, 120, 150, 180, 210, 240,</span>
+    <span class="c1">// 270 } 序列,作为BBoxFilter的输入数据</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">x2</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+      <span class="n">InputDataPtr</span> <span class="nf">inputdata</span><span class="p">(</span><span class="k">new</span> <span class="n">InputData</span><span class="p">());</span>
+      <span class="n">BaseDataVector</span> <span class="o">*</span><span class="nf">data</span><span class="p">(</span><span class="k">new</span> <span class="n">BaseDataVector</span><span class="p">);</span>
+      <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span> <span class="o">*</span><span class="n">bbox</span><span class="p">(</span>
+          <span class="k">new</span> <span class="n">xstream</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="n">hobot</span><span class="o">::</span><span class="n">vision</span><span class="o">::</span><span class="n">BBox</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)));</span>
+      <span class="n">bbox</span><span class="o">-&gt;</span><span class="n">type_</span> <span class="o">=</span> <span class="s">&quot;BBox&quot;</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;i:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; bbox:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bbox</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+      <span class="n">data</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">bbox</span><span class="p">));</span>
+
+      <span class="n">data</span><span class="o">-&gt;</span><span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;in_bbox&quot;</span><span class="p">;</span>
+      <span class="n">inputdata</span><span class="o">-&gt;</span><span class="n">datas_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">BaseDataPtr</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+
+      <span class="k">auto</span> <span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">AsyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+      <span class="c1">// waiting for async function done</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">delete</span> <span class="n">flow</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="section" id="callback">
+<h4>定义和设置 callback<a class="headerlink" href="#callback" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p>定义用户的Callback类,实现一个类似OnCallback函数，参数类型为
+<code class="docutils literal notranslate"><span class="pre">xstream::OutputDataPtr</span> <span class="pre">output</span></code>，用来处理XStream worflow的回调结果
+代码:</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Callback</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="kt">void</span> <span class="n">OnCallback</span><span class="p">(</span><span class="n">xstream</span><span class="o">::</span><span class="n">OutputDataPtr</span> <span class="n">output</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ParseOutput</span><span class="p">(</span><span class="n">output</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>设置callback</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Callback</span><span class="o">::</span><span class="n">Callback</span> <span class="n">callback</span><span class="p">;</span>
+<span class="n">flow</span><span class="o">-&gt;</span><span class="n">SetCallback</span><span class="p">(</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MethodCallback</span><span class="o">::</span><span class="n">Callback</span><span class="o">::</span><span class="n">OnCallback</span><span class="p">,</span>
+    <span class="o">&amp;</span><span class="n">callback</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>动态更新配置<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>如果想动态更新BBoxFilter的阈值，可以调用UpdateConfig接口完成。</p>
+<ul class="simple">
+<li><p>接口</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="kt">int</span> <span class="nf">UpdateConfig</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">unique_name</span><span class="p">,</span> <span class="n">InputParamPtr</span> <span class="n">ptr</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>说明：用于设置method的参数，最终会通过调用对应的Method-&gt;UpdateParameter(InputParamPtr ptr)接口，完成Method参数的更新。<br />&#64;unique_name：指定需要更新配置的node的unique name;<br />&#64;ptr：需要更新配置信息</p>
+<p>调用GetConfig可以获得Node当前参数配置。</p>
+<ul class="simple">
+<li><p>接口</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="n">InputParamPtr</span> <span class="nf">GetConfig</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">unique_name</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>说明：获取某个method的参数，最终会调用对应的Method-&gt;GetParameter()返回method配置信息。</p>
+<ul class="simple">
+<li><p>代码</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;***********************&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;testing aysnc function&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;***********************&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">flow</span><span class="o">-&gt;</span><span class="n">AsyncPredict</span><span class="p">(</span><span class="n">inputdata</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">unique_name</span><span class="p">(</span><span class="s">&quot;BBoxFilter_A&quot;</span><span class="p">);</span>
+      <span class="k">auto</span> <span class="n">ptr</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">xstream</span><span class="o">::</span><span class="n">FilterParam</span><span class="o">&gt;</span><span class="p">(</span><span class="n">unique_name</span><span class="p">);</span>
+      <span class="n">ptr</span><span class="o">-&gt;</span><span class="n">SetThreshold</span><span class="p">(</span><span class="mf">90.0</span><span class="p">);</span>
+      <span class="n">flow</span><span class="o">-&gt;</span><span class="n">UpdateConfig</span><span class="p">(</span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">unique_name_</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">auto</span> <span class="n">node_config</span> <span class="o">=</span> <span class="n">flow</span><span class="o">-&gt;</span><span class="n">GetConfig</span><span class="p">(</span><span class="s">&quot;BBoxFilter_A&quot;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">node_config</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">auto</span> <span class="n">real_ptr</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">xstream</span><span class="o">::</span><span class="n">FilterParam</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">node_config</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;threshold:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">real_ptr</span><span class="o">-&gt;</span><span class="n">GetThreshold</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

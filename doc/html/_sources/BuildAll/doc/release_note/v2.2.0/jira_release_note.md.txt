@@ -1,0 +1,131 @@
+# 版本说明  版本 2.2.0        
+<h2>        故事
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-405'>XPPXROC-405</a>] -         提供xstream与xproto二进制依赖包
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-409'>XPPXROC-409</a>] -         X3 电视
+</li>
+</ul>
+                                                                                                        
+<h2>        任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-359'>XPPXROC-359</a>] -         展示端：AI Express 和 AIToolchain对齐
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-365'>XPPXROC-365</a>] -         web展示端实现
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-376'>XPPXROC-376</a>] -         智慧屏 Demo准备
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-384'>XPPXROC-384</a>] -         vio_wrapper封装
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-387'>XPPXROC-387</a>] -         X2版本升级96board系统镜像至br1.2
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-413'>XPPXROC-413</a>] -         ai-express 集成系统软件类海思的VIO接口
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-416'>XPPXROC-416</a>] -         ai-express编译、ut执行、部署支持x3
+</li>
+</ul>
+    
+<h2>        故障
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-99'>XPPXROC-99</a>] -         xroc中method manager的问题导致bpu无法完全被利用
+</li>
+</ul>
+                                    
+<h2>        子任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-283'>XPPXROC-283</a>] -         确定X3J3系统软件接口
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-285'>XPPXROC-285</a>] -         适配X3设计
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-366'>XPPXROC-366</a>] -         设备端http服务器搭建
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-369'>XPPXROC-369</a>] -         源码依赖bpu-predict master分支的tag
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-370'>XPPXROC-370</a>] -         新建X3_prebuilt
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-371'>XPPXROC-371</a>] -         X3 VioPlugin适配
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-372'>XPPXROC-372</a>] -         X3同构模型 FasterRCNNMethod适配
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-373'>XPPXROC-373</a>] -         X3同构模型 CNNMethod适配
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-374'>XPPXROC-374</a>] -         已有的Solution ZOO，适配X3同构模型
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-375'>XPPXROC-375</a>] -         ai-express已有的模型，进行X3版本编译
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-382'>XPPXROC-382</a>] -         web展示前端功能实现
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-385'>XPPXROC-385</a>] -         体感游戏-X2版本部署，体验
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-386'>XPPXROC-386</a>] -         体感游戏-熟悉智能分析模块的代码逻辑
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-388'>XPPXROC-388</a>] -         vision_type适配x3的金字塔数据
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-389'>XPPXROC-389</a>] -         CNNmethod_multistage X3适配
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-391'>XPPXROC-391</a>] -         X3版本solution zoo功能自测与问题修复
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-392'>XPPXROC-392</a>] -         体感游戏-CNNMethod集成人体特征提取模型
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-393'>XPPXROC-393</a>] -         体感游戏-CNNMethod集成行为分析模型
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-394'>XPPXROC-394</a>] -         体感游戏-完成体感游戏solution的详细设计
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-395'>XPPXROC-395</a>] -         体感游戏-完成该solution的开发
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-396'>XPPXROC-396</a>] -         摔倒检测-熟悉参考代码逻辑
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-397'>XPPXROC-397</a>] -         摔倒检测-完成该solution的详细设计
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-398'>XPPXROC-398</a>] -         摔倒检测-集成人体检测17骨骼点多任务检测模型
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-399'>XPPXROC-399</a>] -         摔倒检测-集成人体摔倒cnn模型
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-400'>XPPXROC-400</a>] -         摔倒检测-完成solution开发
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-401'>XPPXROC-401</a>] -         大小安防-集成年龄性别
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-402'>XPPXROC-402</a>] -         大小安防-集成口罩检测模型
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-403'>XPPXROC-403</a>] -         大小安防-solution的详细设计
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-404'>XPPXROC-404</a>] -         大小安防-完成solution开发
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-415'>XPPXROC-415</a>] -         设计android端接口
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-418'>XPPXROC-418</a>] -         采用通用的金字塔数据类型，重构ai-express
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-419'>XPPXROC-419</a>] -         VioWrapper适配iot vio接口
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-420'>XPPXROC-420</a>] -         VIOplugin适配iot vio接口
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-423'>XPPXROC-423</a>] -         输出软件框图以及接口定义
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-424'>XPPXROC-424</a>] -         Demo中集成UVC视频发送与接收的功能
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-425'>XPPXROC-425</a>] -         DEMO中集成HID智能结果发送与接收
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-426'>XPPXROC-426</a>] -         图像与智能结果同步
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-429'>XPPXROC-429</a>] -         body_solution 人多的时候，qt客户端展示卡顿
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-430'>XPPXROC-430</a>] -         适配8M sensor
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-431'>XPPXROC-431</a>] -         android侧demo
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-432'>XPPXROC-432</a>] -         H264编码功能
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-433'>XPPXROC-433</a>] -         MOT生成的trackid会出现非常大的数字
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-435'>XPPXROC-435</a>] -         适配48M sensor
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-437'>XPPXROC-437</a>] -         修复多任务模型，输出body_box和kps数量不一致
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-443'>XPPXROC-443</a>] -         CNNMethod X3测试用例出现pym crash的问题
+</li>
+</ul>
+            

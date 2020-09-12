@@ -1,0 +1,12 @@
+{
+  "tracker_type": "IOU",
+  "device": "X2",
+  "update_no_target_predict": false,
+  "support_hungarian": false,
+  "need_check_merge": false,
+  "original_bbox": true,
+  "max_track_target_num": 512,
+  "max_det_target_num": 512,
+  "vanish_frame_count": 30,
+  "time_gap": 40
+}

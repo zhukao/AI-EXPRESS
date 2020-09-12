@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+  <title>OpenExplorer web 展示端</title>
+
+  <link rel="stylesheet" href="../styles/normalize.css">
+  <link rel="stylesheet" href="./main.css">
+  <script src="../utils/protobuf.js"></script>
+  <script src="../utils/config.js"></script>
+  <script src="../utils/helper.js"></script>
+  <script src="../utils/h-canvas.js"></script>
+  <script src="../utils/threejs/three.min.js"></script>
+  <script src="../utils/threejs/inflate.min.js"></script>
+  <script src="../utils/threejs/FBXLoader.js"></script>
+  <script src="../utils/reconnecting-websocket.js"></script>
+  <!-- <script src="../utils/opencv.js" async onload="onOpenCvReady();" type="text/javascript"></script> -->
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="video">
+      <div class="cont">
+        <div class="cam" id="cam">
+          <img class="logo1" src="../assets/images/usbcam-top.png" alt="">
+          <img class="logo2" src="../assets/images/aionhorizon.png" alt="">
+          <img src="" class="layer" id="video-1" alt="">
+          <canvas class="canvas" id="canvas-1"></canvas>
+          <canvas class="canvas" id="canvas-2"></canvas>
+          <ul class="canvas info-panel-1">
+            <!-- <li class="attribute-panel large" style="top: 100px; left: 60px;">
+              <ol>
+                <li class="age">年龄：17</li>
+              </ol>
+            </li> -->
+          </ul>
+          <ul class="canvas info-panel-2">
+            <!-- <li class="alert" style="top:98px; left:200px">
+              <p class="img"><img src="../assets/images/danger.png" width="16px" alt=""/>有人摔倒啦</p>
+              <p>score: 0.23432324432</p>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+      <ul id="message">
+        <p class="message-t">
+          <a href="https://developer.horizon.ai/" target="__blank">OpenExplorer 首页链接</a>
+        </p>
+        <li id="message-t">智能信息展示</li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="boxes" checked="true">
+          <label>检测框（人体框，人头框，人脸框，车、非机动车检测框，其他检测框（宠物、椅子等））</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="handBox" checked="true">
+          <label>人手（检测框）</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="handMarks" checked="true">
+          <label>人手（手势骨骼）</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="body" checked="true">
+          <label>人体（人体骨骼）</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="face" checked="true">
+          <label>人脸（人脸关键点，人脸姿态）</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="attributes" checked="true">
+          <label>分类信息（年龄性别、口罩眼镜等）</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="floatMatrixs" checked="true">
+          <label>分割</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="floatMatrixsMask">
+          <label>人体分割</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="scoreShow">
+          <label>模型置信度</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="depth" disabled='true'>
+          <label>深度</label>
+        </li>
+      </ul>
+    </div>
+    <div class="performance">
+      <ul id="performance-message">
+        <!-- <li>性能数据</li> -->
+      </ul>
+      <div class="message-change message-h">
+        <img src="../assets/images/arrow-right.png" alt="">
+      </div>
+      <div class="message-change message-v">
+        <img src="../assets/images/arrow-left.png" alt="">
+      </div>
+    </div>
+    <!-- <div id="alert"><img src="../assets/images/danger.png" width="16px" alt=""/> 有人摔倒啦</div> -->
+  </div>
+  <script src="./page1/main.js"></script>
+  <script src="./main.js"></script>
+</body>
+
+</html>

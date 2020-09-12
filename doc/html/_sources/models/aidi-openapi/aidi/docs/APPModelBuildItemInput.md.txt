@@ -1,0 +1,13 @@
+# APPModelBuildItemInput
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**gpu_model_name** | **str** | experimental model name in: body | 
+**gpu_model_version** | **str** | experimental model version in: body | [optional] 
+**model_name** | **str** | name of hbdk file in: body | 
+**param** | [**HBCCParam**](HBCCParam.md) |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

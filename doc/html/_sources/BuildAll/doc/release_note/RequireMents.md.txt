@@ -1,0 +1,16 @@
+# <font color=#0000ff>Requirements</font>
+
+## Platforms
+### 96board
+- 支持的AIExpress版本：All Versions.
+- 系统镜像：基于br1.1.0 + 替换了支持hbdk3的库（libcnn_intf.so)，镜像随AIExpress发版包一起发布．
+
+### 2610 
+- 支持的AIExpress版本: Version >= V1.0.0.
+- 系统镜像：基于br1.2　+ 2610定制化硬件驱动，镜像随AIExpress发版包一起发布．
+
+## HBDK
+V3.3.5
+
+## BPU_PREDICT
+V3.2.2

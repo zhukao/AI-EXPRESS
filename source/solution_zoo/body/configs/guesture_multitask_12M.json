@@ -1,0 +1,49 @@
+{
+  "in_msg_type": "pyramid_image",
+  "net_info": {
+    "model_name": "personMultitask",
+    "model_version": "1.2.1",
+    "model_out_sequence": [
+      {
+        "name": "body_box_int",
+        "type": "invalid"
+      },
+      {
+        "name": "body_box",
+        "type": "bbox"
+      },
+      {
+        "name": "face_box_int",
+        "type": "invalid"
+      },
+      {
+        "name": "face_box",
+        "type": "bbox"
+      },
+      {
+        "name": "hand_box_int",
+        "type": "invalid"
+      },
+      {
+        "name": "hand_box",
+        "type": "bbox"
+      }
+    ],
+    "model_input_width": 640,
+    "model_input_height": 480,
+    "pyramid_layer": 9,
+    "kps_pos_distance": 25,
+    "kps_feat_width": 16,
+    "kps_feat_height": 16,
+    "kps_points_number": 17,
+    "lmk_feat_width": 8,
+    "lmk_feat_height": 8,
+    "lmk_points_number": 5,
+    "lmk_pos_distance": 12,
+    "lmk_feat_stride": 16,
+    "3d_pose_number": 3
+  },
+  "method_outs": ["body_box", "head_box", "hand_box"],
+  "bpu_config_path": "../configs/bpu_config.json",
+  "model_file_path": "../../models/guestureMultitask_640x480.hbm"
+}

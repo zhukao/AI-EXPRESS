@@ -1,0 +1,63 @@
+# 版本说明  版本 2.0.0
+<h2>        故事
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-79'>XPPXROC-79</a>] -         XRoc和hobotSDK框架融合
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-81'>XPPXROC-81</a>] -         XRoc功能完善
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-179'>XPPXROC-179</a>] -         XRoc&amp;XPP支持Python API
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-251'>XPPXROC-251</a>] -         增加多通道输入的sample示例
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-309'>XPPXROC-309</a>] -         多路输入的solution sample
+</li>
+</ul>
+                                                                                                
+<h2>        任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-10'>XPPXROC-10</a>] -         整理XRoc-Framework用户使用指南、tutorial、开发手册
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-155'>XPPXROC-155</a>] -         MultisourceTestMethod测试用例的brazel的引入
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-301'>XPPXROC-301</a>] -         AI Express 和open Explore文档对齐
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-310'>XPPXROC-310</a>] -         AI Express 文档结构调整
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-311'>XPPXROC-311</a>] -         代码中的名词改名为AIExpress/XStream/XProto
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-342'>XPPXROC-342</a>] -         人脸特征提取的人脸识别solution
+</li>
+</ul>
+    
+<h2>        子任务
+</h2>
+<ul>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-322'>XPPXROC-322</a>] -         文档整理：tools/数据流可视化工具
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-323'>XPPXROC-323</a>] -         文档整理：tools/工具集整体介绍
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-324'>XPPXROC-324</a>] -         文档整理：xproto/整体综述
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-325'>XPPXROC-325</a>] -         文档整理：xproto/XpluginFLow消息总线介绍
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-326'>XPPXROC-326</a>] -         文档整理：xproto/内置plugin列表介绍
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-327'>XPPXROC-327</a>] -         文档整理：xstream用户手册/整体综述
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-328'>XPPXROC-328</a>] -         文档整理：xstream用户手册/Method相关
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-329'>XPPXROC-329</a>] -         文档整理：XStream用户手册/Workflow高级配置
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-330'>XPPXROC-330</a>] -         文档整理：XStream模型与策略开发/整体综述
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-331'>XPPXROC-331</a>] -         文档整理：XStream模型与策略开发/模型集成、策略开发
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-332'>XPPXROC-332</a>] -         文档整理：XStream模型与策略开发/回灌流程
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-335'>XPPXROC-335</a>] -         在一个solution中集成人脸/人体，一路/多路回灌跑通
+</li>
+<li>[<a href='https://jira.hobot.cc:8443/browse/XPPXROC-336'>XPPXROC-336</a>] -         修改vioplugin，支持多路回灌
+</li>
+</ul>

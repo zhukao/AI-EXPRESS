@@ -1,0 +1,21 @@
+# CreateGPUModelVersionReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**basic_versions** | **list[str]** | basic versions of this gpu model version in: body | [optional] 
+**cluster_info** | **str** | gpu model&#39;s related job cluster, currently support idc aliyun and ucloud in: body | [optional] 
+**commit_message** | **str** | gpu model&#39;s commit message in: body | [optional] 
+**custom_version** | **str** |  | [optional] 
+**framework** | **str** | gpu model&#39;s framework, currently support MXNet TensorFlow PyTorch and Caffe in: body | [optional] 
+**job_id** | **int** | gpu model&#39;s related job id, it means that this gpu model was born from the gpu job, and this gpu job&#39;s log url will automaticlly bind to the model in: body | [optional] 
+**log_url** | **str** | gpu model&#39;s logurl, if this param is not empty, it means you are manually binding a log url to this model in: body | [optional] 
+**name** | **str** | gpu model dir&#39;s name in: body | 
+**platform** | **list[str]** | gpu model&#39;s platform, currently support X2 J2 GPU Hisilicon NVIDIA Matrix FPGA X1 CPU and Others in: body | [optional] 
+**project_id** | **int** | gpu model&#39;s related project id in: body | [optional] 
+**stages** | [**list[CreateGPUModelStage]**](CreateGPUModelStage.md) | gpu model&#39;s file and attachment of each stage in: body | 
+**version** | **str** | gpu model&#39;s version, if not set, it will auto increment in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

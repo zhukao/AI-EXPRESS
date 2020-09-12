@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FilterMethod &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/language_data.js"></script>
+        <script src="../../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>FilterMethod</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../_sources/ai_express_release/source/solution_zoo/xstream/methods/filtermethod/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="filtermethod">
+<h1>FilterMethod<a class="headerlink" href="#filtermethod" title="永久链接至标题">¶</a></h1>
+<p>过滤Method，用于检测框的过滤，未通过过滤条件的bbox会被标记为FIlTERED状态。，目前支持对以下条件进行过滤：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>过滤项</th>
+<th>对应字段</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>检测框大小</td>
+<td>snap_size_thr</td>
+<td></td>
+</tr>
+<tr>
+<td>三维角度</td>
+<td>frontal_thr</td>
+<td>通过公式：face_frontal = pitch * pitch / (a * a) + yaw * yaw / (b * b) + roll * roll / (c * c)计算，以pitch = a，yaw = b，roll = c的椭球为边界，超出边界（face_frontal &gt; 1）被过滤。</td>
+</tr>
+<tr>
+<td>图像质量</td>
+<td>quality_thr</td>
+<td></td>
+</tr>
+<tr>
+<td>关键点置信度</td>
+<td>lmk_thr</td>
+<td>所有关键点置信度大于所设阈值才能通过过滤条件</td>
+</tr>
+<tr>
+<td>人脸置信度</td>
+<td>pv_thr</td>
+<td></td>
+</tr>
+<tr>
+<td>边界过滤</td>
+<td>bound_thr_w/bound_thr_h</td>
+<td></td>
+</tr>
+<tr>
+<td>黑名单区域</td>
+<td>black_area_iou_thr/black_area_list</td>
+<td>黑名单IOU阈值共享</td>
+</tr>
+<tr>
+<td>保留最大检测框数</td>
+<td>max_box_counts</td>
+<td>会选择最大的几个检测框作为输出，设置为0则输出所有检测框</td>
+</tr>
+<tr>
+<td>遮挡过滤</td>
+<td>*_occluded_thr</td>
+<td></td>
+</tr>
+<tr>
+<td>外扩系数及norm方法</td>
+<td>expand_scale/norm_method</td>
+<td></td>
+</tr>
+</tbody>
+</table><div class="section" id="id1">
+<h2>输入<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Slot</th>
+<th align="center">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">XStreamDisappeared_id</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">XStreamBBox_list</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">XStreamPose3D_list</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">XStreamLandmarks_list</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">blur</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">brightness</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">eye_abnormalities</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">mouth_abnormal</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">left_eye</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">right_eye</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">left_brow</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">right_brow</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">forehead</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">left_cheek</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">right_cheek</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">nose</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">mouth</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">jaw</td>
+<td align="center">可选项</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id2">
+<h2>输出<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Slot</th>
+<th align="center">内容</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">filter_info</td>
+<td align="center">过滤错误码</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">XStreamDisappeared_id</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">XStreamBBox_list</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">XStreamPose3D_list</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">XStreamLandmarks_list</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">blur</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">brightness</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">eye_abnormalities</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">mouth_abnormal</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">left_eye</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">right_eye</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">right_brow</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">forehead</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">left_cheek</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">right_cheek</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">nose</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">mouth</td>
+<td align="center">可选项</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">jaw</td>
+<td align="center">可选项</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id3">
+<h2>补充说明<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>对于不同的可选项可以自由组合，但是此method的输入必须大于等于1</p></li>
+<li><p>例如对于智能帧过滤可以只输入box相关数据，对于抓拍帧需要输入disappeared_id、box、pose、landmark等</p></li>
+<li><p>内部无状态机</p></li>
+<li><p>该Method支持workflow多实例，method_info.is_thread_safe_ = true，method_info.is_need_reorder = false。</p></li>
+</ul>
+</div>
+<div class="section" id="update-history">
+<h2>Update History<a class="headerlink" href="#update-history" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Date</th>
+<th align="center">Ver.</th>
+<th align="center">Change Log</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">20191105</td>
+<td align="center">N/A</td>
+<td align="center">初始版本</td>
+</tr>
+<tr>
+<td align="center">20200106</td>
+<td align="center">N/A</td>
+<td align="center">重构版本</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id4">
+<h2>配置文件参数<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">字段</th>
+<th align="center">描述</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">image_width</td>
+<td align="center">视频帧宽度</td>
+<td align="center">1920</td>
+</tr>
+<tr>
+<td align="center">image_height</td>
+<td align="center">视频帧高度</td>
+<td align="center">1080</td>
+</tr>
+<tr>
+<td align="center">face_size_thr</td>
+<td align="center">人脸检测框大小阈值</td>
+<td align="center">72</td>
+</tr>
+<tr>
+<td align="center">head_size_thr</td>
+<td align="center">人头检测框大小阈值</td>
+<td align="center">72</td>
+</tr>
+<tr>
+<td align="center">body_size_thr</td>
+<td align="center">人体检测框大小阈值</td>
+<td align="center">72</td>
+</tr>
+<tr>
+<td align="center">face_pv_thr</td>
+<td align="center">人脸置信度阈值</td>
+<td align="center">0.98</td>
+</tr>
+<tr>
+<td align="center">head_pv_thr</td>
+<td align="center">人头置信度阈值</td>
+<td align="center">0.98</td>
+</tr>
+<tr>
+<td align="center">body_pv_thr</td>
+<td align="center">人体置信度阈值</td>
+<td align="center">0.98</td>
+</tr>
+<tr>
+<td align="center">face_expand_scale</td>
+<td align="center">人脸外扩系数，用以过滤外扩出边界的检测框</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="center">head_expand_scale</td>
+<td align="center">人头外扩系数，用以过滤外扩出边界的检测框</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="center">body_expand_scale</td>
+<td align="center">人体外扩系数，用以过滤外扩出边界的检测框</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="center">max_box_counts</td>
+<td align="center">最大检测框数，设置为0不对检测框数目作过滤</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">filter_with_frontal_thr</td>
+<td align="center">是否使用总体阈值进行过滤</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">frontal_pitch_thr</td>
+<td align="center">正侧椭球pitch阈值</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="center">frontal_yaw_thr</td>
+<td align="center">正侧椭球yaw阈值</td>
+<td align="center">40</td>
+</tr>
+<tr>
+<td align="center">frontal_roll_thr</td>
+<td align="center">正侧椭球roll阈值</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">frontal_thr</td>
+<td align="center">正侧脸阈值</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center">quality_thr</td>
+<td align="center">清晰度阈值，越小越好</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">lmk_thr</td>
+<td align="center">人脸坐标阈值</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">lmk_filter_num</td>
+<td align="center">人脸坐标点过滤数量</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">bound_thr_w</td>
+<td align="center">视频帧宽边界</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">bound_thr_h</td>
+<td align="center">视频帧高边界</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">black_area_iou_thr</td>
+<td align="center">黑名单区域iou阈值</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">black_area_list</td>
+<td align="center">黑名单区域，例如可配置为[[10, 10, 30, 30], [40, 40, 50, 50]]即为在两个黑名单区域被过滤</td>
+<td align="center">[]</td>
+</tr>
+<tr>
+<td align="center">white_area_list</td>
+<td align="center">白名单区域</td>
+<td align="center">[]</td>
+</tr>
+<tr>
+<td align="center">brightness_min</td>
+<td align="center">亮度过滤最小值</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">brightness_max</td>
+<td align="center">亮度过滤最大值</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">abnormal_thr</td>
+<td align="center">行为异常遮挡阈值，越小表示行为较为正常</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">filter_status</td>
+<td align="center">过滤结果状态设定，0：有效，1：被过滤，2：不可见，3：消失，4：无效</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">age_min</td>
+<td align="center">年龄最小值</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">age_max</td>
+<td align="center">年龄最大值</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center">age_thr</td>
+<td align="center">年龄阈值</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">stop_id</td>
+<td align="center">停止输出ID值</td>
+<td align="center">-1</td>
+</tr>
+<tr>
+<td align="center">left_eye_occluded_thr</td>
+<td align="center">左眼遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">right_brow_occluded_thr</td>
+<td align="center">右眼遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">forehead_occluded_thr</td>
+<td align="center">前额遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">left_cheek_occluded_thr</td>
+<td align="center">左脸遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">right_cheek_occluded_thr</td>
+<td align="center">右脸遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">nose_occluded_thr</td>
+<td align="center">鼻子遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">mouth_occluded_thr</td>
+<td align="center">嘴巴遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">jaw_occluded_thr</td>
+<td align="center">下巴遮挡阈值，越小遮挡程度越轻</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="center">input_slot</td>
+<td align="center"><strong>输入数据的信息，表明每个数据的名称、类型、分组</strong></td>
+<td align="center">已有分类：id,bbox,Pose3D,landmark等，与vision type中类型一一对应，已有分组：none,face,head,body,当需要添加新的分离与分组时，需要确定代码中是否支持</td>
+</tr>
+<tr>
+<td align="center">err_description</td>
+<td align="center">错误码描述，对应字段设置为多少filter_info输出对应的错误码</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"snap_area": -1,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"snap_size_thr": -2,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"expand_thr": -3,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"frontal_thr": -4,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"pv_thr": -5,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"quality_thr": -6,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"lmk_thr": -7,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"black_list": -8,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"big_face": -10,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"age": -11,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"stop_id" : -12,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"brightness": -21,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"abnormal_thr": -22,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"left_eye_occluded_thr": -23,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"right_eye_occluded_thr": -24,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"left_brow_occluded_thr": -25,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"right_brow_occluded_thr": -26,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"forehead_occluded_thr": -27,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"left_cheek_occluded_thr": -28,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"right_cheek_occluded_thr": -29,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"nose_occluded_thr": -30,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"mouth_occluded_thr": -31,</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">"jaw_occluded_thr": -32</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

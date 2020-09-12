@@ -1,0 +1,9 @@
+{
+  "tracker_type": "X2_IOU",
+  "update_no_target_predict": false,
+  "support_hungarian": false,
+  "need_check_merge": false,
+  "original_bbox": true,
+  "max_track_target_num": 256,
+  "max_det_target_num": 256
+}

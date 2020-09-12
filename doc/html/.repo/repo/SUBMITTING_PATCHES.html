@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Short Version &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Short Version</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/.repo/repo/SUBMITTING_PATCHES.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="short-version">
+<h1>Short Version<a class="headerlink" href="#short-version" title="永久链接至标题">¶</a></h1>
+<ul>
+<li><p>Make small logical changes.</p></li>
+<li><p>Provide a meaningful commit message.</p></li>
+<li><p>Check for coding errors and style nits with pyflakes and flake8</p></li>
+<li><p>Make sure all code is under the Apache License, 2.0.</p></li>
+<li><p>Publish your changes for review.</p></li>
+<li><p>Make corrections if requested.</p></li>
+<li><p>Verify your changes on gerrit so they can be submitted.</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">https://gerrit-review.googlesource.com/git-repo</span> <span class="pre">HEAD:refs/for/master</span></code></p>
+</li>
+</ul>
+</div>
+<div class="section" id="long-version">
+<h1>Long Version<a class="headerlink" href="#long-version" title="永久链接至标题">¶</a></h1>
+<p>I wanted a file describing how to submit patches for repo,
+so I started with the one found in the core Git distribution
+(Documentation/SubmittingPatches), which itself was based on the
+patch submission guidelines for the Linux kernel.</p>
+<p>However there are some differences, so please review and familiarize
+yourself with the following relevant bits.</p>
+<div class="section" id="make-separate-commits-for-logically-separate-changes">
+<h2>Make separate commits for logically separate changes.<a class="headerlink" href="#make-separate-commits-for-logically-separate-changes" title="永久链接至标题">¶</a></h2>
+<p>Unless your patch is really trivial, you should not be sending
+out a patch that was generated between your working tree and your
+commit head.  Instead, always make a commit with complete commit
+message and generate a series of patches from your repository.
+It is a good discipline.</p>
+<p>Describe the technical detail of the change(s).</p>
+<p>If your description starts to get too long, that’s a sign that you
+probably need to split up your commit to finer grained pieces.</p>
+</div>
+<div class="section" id="check-for-coding-errors-and-style-nits-with-pyflakes-and-flake8">
+<h2>Check for coding errors and style nits with pyflakes and flake8<a class="headerlink" href="#check-for-coding-errors-and-style-nits-with-pyflakes-and-flake8" title="永久链接至标题">¶</a></h2>
+<div class="section" id="coding-errors">
+<h3>Coding errors<a class="headerlink" href="#coding-errors" title="永久链接至标题">¶</a></h3>
+<p>Run <code class="docutils literal notranslate"><span class="pre">pyflakes</span></code> on changed modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyflakes</span> <span class="n">file</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Ideally there should be no new errors or warnings introduced.</p>
+</div>
+<div class="section" id="style-violations">
+<h3>Style violations<a class="headerlink" href="#style-violations" title="永久链接至标题">¶</a></h3>
+<p>Run <code class="docutils literal notranslate"><span class="pre">flake8</span></code> on changes modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flake8</span> <span class="n">file</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Note that repo generally follows [Google’s python style guide]
+(https://google.github.io/styleguide/pyguide.html) rather than [PEP 8]
+(https://www.python.org/dev/peps/pep-0008/), so it’s possible that
+the output of <code class="docutils literal notranslate"><span class="pre">flake8</span></code> will be quite noisy. It’s not mandatory to
+avoid all warnings, but at least the maximum line length should be
+followed.</p>
+<p>If there are many occurrences of the same warning that cannot be
+avoided without going against the Google style guide, these may be
+suppressed in the included <code class="docutils literal notranslate"><span class="pre">.flake8</span></code> file.</p>
+</div>
+</div>
+<div class="section" id="check-the-license">
+<h2>Check the license<a class="headerlink" href="#check-the-license" title="永久链接至标题">¶</a></h2>
+<p>repo is licensed under the Apache License, 2.0.</p>
+<p>Because of this licensing model <em>every</em> file within the project
+<em>must</em> list the license that covers it in the header of the file.
+Any new contributions to an existing file <em>must</em> be submitted under
+the current license of that file.  Any new files <em>must</em> clearly
+indicate which license they are provided under in the file header.</p>
+<p>Please verify that you are legally allowed and willing to submit your
+changes under the license covering each file <em>prior</em> to submitting
+your patch.  It is virtually impossible to remove a patch once it
+has been applied and pushed out.</p>
+</div>
+<div class="section" id="sending-your-patches">
+<h2>Sending your patches.<a class="headerlink" href="#sending-your-patches" title="永久链接至标题">¶</a></h2>
+<p>Do not email your patches to anyone.</p>
+<p>Instead, login to the Gerrit Code Review tool at:</p>
+<p>https://gerrit-review.googlesource.com/</p>
+<p>Ensure you have completed one of the necessary contributor
+agreements, providing documentation to the project maintainers that
+they have right to redistribute your work under the Apache License:</p>
+<p>https://gerrit-review.googlesource.com/#/settings/agreements</p>
+<p>Ensure you have obtained an HTTP password to authenticate:</p>
+<p>https://gerrit-review.googlesource.com/new-password</p>
+<p>Ensure that you have the local commit hook installed to automatically
+add a ChangeId to your commits:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -Lo `git rev-parse --git-dir`/hooks/commit-msg https://gerrit-review.googlesource.com/tools/hooks/commit-msg
+chmod +x `git rev-parse --git-dir`/hooks/commit-msg
+</pre></div>
+</div>
+<p>If you have already committed your changes you will need to amend the commit
+to get the ChangeId added.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">--</span><span class="n">amend</span>
+</pre></div>
+</div>
+<p>Push your patches over HTTPS to the review server, possibly through
+a remembered remote to make this easier in the future:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="n">remote</span><span class="o">.</span><span class="n">review</span><span class="o">.</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gerrit</span><span class="o">-</span><span class="n">review</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">-</span><span class="n">repo</span>
+<span class="n">git</span> <span class="n">config</span> <span class="n">remote</span><span class="o">.</span><span class="n">review</span><span class="o">.</span><span class="n">push</span> <span class="n">HEAD</span><span class="p">:</span><span class="n">refs</span><span class="o">/</span><span class="k">for</span><span class="o">/</span><span class="n">master</span>
+
+<span class="n">git</span> <span class="n">push</span> <span class="n">review</span>
+</pre></div>
+</div>
+<p>You will be automatically emailed a copy of your commits, and any
+comments made by the project maintainers.</p>
+</div>
+<div class="section" id="make-changes-if-requested">
+<h2>Make changes if requested<a class="headerlink" href="#make-changes-if-requested" title="永久链接至标题">¶</a></h2>
+<p>The project maintainer who reviews your changes might request changes to your
+commit. If you make the requested changes you will need to amend your commit
+and push it to the review server again.</p>
+</div>
+<div class="section" id="verify-your-changes-on-gerrit">
+<h2>Verify your changes on gerrit<a class="headerlink" href="#verify-your-changes-on-gerrit" title="永久链接至标题">¶</a></h2>
+<p>After you receive a Code-Review+2 from the maintainer, select the Verified
+button on the gerrit page for the change. This verifies that you have tested
+your changes and notifies the maintainer that they are ready to be submitted.
+The maintainer will then submit your changes to the repository.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+{
+    "factors": {
+        "description": "The factors are to be considered in decision-making",
+        "norm": {
+            "min": -5,
+            "max": 5
+        },
+        "vehicle_size": {
+            "weight": 5,
+            "norm_fun": "linear",
+            "valid_min_w": 35,
+            "valid_min_h": 35,
+            "size_max": {
+                "default": 1e6,
+                "#comment_large": "[Bus, BigTruck]",
+                "large": 1e6,
+                "#comment_median": "[SUV, MiniVan, Lorry, MPV, Special_vehicle, MiniBus]",
+                "median": 2e5,
+                "#comment_small": "[Sedan_Car, Scooter]",
+                "small": 1e5
+            }
+        },
+        "plate_size": {
+            "weight": 8,
+            "norm_fun": "linear",
+            "valid_min_w": 25,
+            "valid_min_h": 10,
+            "size_max": {
+                "default": 2.5e3
+            }
+        },
+        "vehicle_det_score": {
+            "weight": 2,
+            "norm_fun": "linear",
+            "min": 0.94,
+            "max": 1.0
+        },
+        "plate_det_score": {
+            "weight": 2,
+            "norm_fun": "linear",
+            "min": 0.7,
+            "max": 1.0
+        },
+        "vehicle_visibility": {
+            "weight": 4,
+            "norm_fun": "linear"
+        },
+        "vehicle_integrity": {
+            "weight": 4,
+            "dis_th": 20,
+            "norm_fun": "linear"
+        }
+    },
+    "snap_control": {
+        "description": "snap_mode: [cross_line] or [score_selective]",
+        "snap_mode": "score_selective",
+        "score_selective": {
+          "ignore_overlap_ratio": 0.8,
+          "post_frame_threshold": 500,
+          "min_tracklet_len": 10,
+          "snap_min_score": 0.48,
+          "growth_ladder": 0.01
+        },
+        "cross_line": {
+          "line_width": 50,
+          "line": [644,817,1418,817]
+        }
+    },
+    "black_area": [[114, 0, 835, 306]]
+}

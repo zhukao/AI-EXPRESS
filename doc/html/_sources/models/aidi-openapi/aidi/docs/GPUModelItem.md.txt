@@ -1,0 +1,11 @@
+# GPUModelItem
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **str** | experimental model&#39;s name in: body | 
+**version** | **str** | experimental model&#39;s version, if not set, it will use the lastest version in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

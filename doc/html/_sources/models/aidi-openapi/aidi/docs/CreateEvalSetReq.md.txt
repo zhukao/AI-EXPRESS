@@ -1,0 +1,18 @@
+# CreateEvalSetReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**auth_info** | [**ResourceAddition**](ResourceAddition.md) |  | 
+**change_log** | **str** | change log of this eval set in: body | [optional] 
+**desc** | **str** | eval set dir&#39;s description in: body | [optional] 
+**name** | **str** | eval set dir&#39;s name in: body | 
+**params_infos** | [**list[EvalStaticInfo]**](EvalStaticInfo.md) | params of this eval set, if not set, default value is the assigned profile&#39;s all params in: body | [optional] 
+**profile_info** | [**EvalStaticInfo**](EvalStaticInfo.md) |  | 
+**sub_eval_sets** | [**list[SubEvalSetConfig]**](SubEvalSetConfig.md) | sub eval sets of this eval set in: body | 
+**tags** | **list[str]** | tags of this eval set in: body | [optional] 
+**version** | **str** | version of this eval set in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

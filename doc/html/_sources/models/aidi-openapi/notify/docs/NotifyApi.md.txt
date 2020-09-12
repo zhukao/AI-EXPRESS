@@ -1,0 +1,63 @@
+# aidi_notify.NotifyApi
+
+All URIs are relative to *http://notification.aidi-test.hobot.cc*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**message_notify_param_req**](NotifyApi.md#message_notify_param_req) | **POST** /message-center/notify | Message notify.
+
+
+# **message_notify_param_req**
+> APIResult message_notify_param_req(body=body)
+
+Message notify.
+
+This will send messages to several users.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import aidi_notify
+from aidi_notify.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = aidi_notify.Configuration()
+configuration.api_key['X-Forwarded-User'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Forwarded-User'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = aidi_notify.NotifyApi(aidi_notify.ApiClient(configuration))
+body = aidi_notify.MessageNotifyParamReq() # MessageNotifyParamReq |  (optional)
+
+try:
+    # Message notify.
+    api_response = api_instance.message_notify_param_req(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling NotifyApi->message_notify_param_req: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**MessageNotifyParamReq**](MessageNotifyParamReq.md)|  | [optional] 
+
+### Return type
+
+[**APIResult**](APIResult.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

@@ -1,0 +1,23 @@
+{
+    "inputs": [
+      "face_box",
+      "pyramid"
+    ],
+    "outputs": [
+      "cnn_mask"
+    ],
+    "workflow": [
+      {
+        "unique_name": "mask",
+        "method_type": "CNNMethod",
+        "inputs": [
+          "face_box",
+          "pyramid"
+        ],
+        "outputs": [
+          "cnn_mask"
+        ],
+        "method_config_file": "method_conf/mask.json"
+      }
+    ]
+  }

@@ -1,0 +1,41 @@
+{
+    "workflows": [
+        {
+            "xstream_workflow_file": "./face_body_multisource/configs/face_snapshot.json",
+            "source_list": [
+                0
+            ],
+            "overwrite": true,
+            "enable_profile": 0,
+            "profile_log_path": "/userdata/log/face_1.txt"
+        },
+        {
+            "xstream_workflow_file": "./face_body_multisource/configs/body_detection.json",
+            "source_list": [
+                1
+            ],
+            "overwrite": true,
+            "enable_profile": 0,
+            "profile_log_path": "/userdata/log/body_1.txt"
+        },
+        {
+            "xstream_workflow_file": "./face_body_multisource/configs/face_snapshot.json",
+            "source_list": [
+                2
+            ],
+            "overwrite": true,
+            "enable_profile": 0,
+            "profile_log_path": "/userdata/log/face_2.txt"
+        },
+        {
+            "xstream_workflow_file": "./face_body_multisource/configs/body_detection.json",
+            "source_list": [
+                3
+            ],
+            "overwrite": true,
+            "enable_profile": 0,
+            "profile_log_path": "/userdata/log/body_2.txt"
+        }
+    ],
+    "enable_result_to_json": false
+}

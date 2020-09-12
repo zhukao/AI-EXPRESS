@@ -1,0 +1,17 @@
+# PublishAPPModelReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**compilation_task_name** | **str** | compilation task name in: body | [optional] 
+**compilation_task_version** | **str** | compilation task version in: body | [optional] 
+**fuel_task_id** | **int** | fuel task ID in: body | [optional] 
+**mail_group** | **list[str]** | email group in: body | [optional] 
+**mail_user** | **list[str]** | email user in: body | [optional] 
+**published_model_name** | **str** | publish model name in: body | 
+**published_model_version** | **str** | publish model version in: body | [optional] 
+**wiki_url** | **str** | wiki url related to publish note in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

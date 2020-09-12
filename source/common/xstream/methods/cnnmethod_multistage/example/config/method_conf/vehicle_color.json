@@ -1,0 +1,14 @@
+{
+  "model_name": "vehicle_color_v2.0",
+  "model_file_path": "../models/vehicle_color_v2.0.hbm",
+  "bpu_config_path": "../configs/bpu_config.json",
+  "in_msg_type": "img",
+  "post_fn": "vehicle_color",
+  "norm_method": "norm_by_lside_length",
+  "filter_method": "no_filter",
+  "expand_scale": 1.08,
+  "output_size": 1,
+  "output_names": ["vehicle_color"],
+  "enable_conformance_test": 0,
+  "conformance_log_file": "vehicle_color_info.log"
+}

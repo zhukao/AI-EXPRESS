@@ -1,0 +1,12 @@
+# GroupEntity
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**expiration** | **str** | expire date in: body | [optional] 
+**gname** | **str** | group name in: body | [optional] 
+**grole** | **str** | group role, developer or maintainer in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

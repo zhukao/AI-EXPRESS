@@ -1,0 +1,13 @@
+{
+  "xstream_workflow_file": "./body_solution/configs/body_detection.json",
+  "enable_profile": 0,
+  "profile_log_path": "",
+  "enable_result_to_json": false,
+  "box_face_thr": 0.95,
+  "box_head_thr": 0.95,
+  "box_body_thr": 0.95,
+  "lmk_thr": 0.0,
+  "kps_thr": 0.50,
+  "box_veh_thr": 0.995,
+  "plot_fps": false
+}

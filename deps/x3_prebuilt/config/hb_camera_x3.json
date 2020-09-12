@@ -1,0 +1,24 @@
+{
+  "config_number": 1,
+  "board_name": "x3dev",
+  "config_0": {
+    "interface_type": "mipi",
+    "port_number": 1,
+    "port_0": {
+      "bus_type": 0,
+      "bus_num": 0,
+      "sensor_addr": "0x36",
+      "sensor_name": "imx327",
+      "reg_width": 16,
+      "sensor_mode": 1,
+      "entry_num": 0,
+      "fps": 25,
+      "resolution": 1097,
+      "dev_port": 0,
+      "spi_cs": 0,
+      "spi_mode": 2,
+      "spi_speed": 5000000,
+      "config_path": "/etc/cam/hb_mipi_imx327_raw12_%dfps_%dP.json"
+    }
+  }
+}

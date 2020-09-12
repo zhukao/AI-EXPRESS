@@ -1,0 +1,36 @@
+{
+  "inputs": [
+    "face_box",
+    "pyramid"
+  ],
+  "outputs": [
+    "vehicle_type",
+    "pyramid",
+    "face_box"
+  ],
+  "workflow": [
+    {
+      "unique_name": "img_input",
+      "method_type": "CNNImgPreMethod",
+      "inputs": [
+        "face_box",
+        "pyramid"
+      ],
+      "outputs": [
+        "tmp_out"
+      ],
+      "method_config_file": "method_conf/vehicle_type.json"
+    },
+    {
+        "unique_name": "vehicle_type",
+        "method_type": "CNNVehicleTypePostMethod",
+        "inputs": [
+          "tmp_out"
+        ],
+        "outputs": [
+          "vehicle_type"
+        ],
+        "method_config_file": "method_conf/vehicle_type.json"
+      }
+  ]
+}

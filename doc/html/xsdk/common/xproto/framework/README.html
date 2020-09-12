@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>XProto 接口文档 &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>XProto 接口文档</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/xsdk/common/xproto/framework/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="xproto">
+<h1>XProto 接口文档<a class="headerlink" href="#xproto" title="永久链接至标题">¶</a></h1>
+<p>XProto为一个插件管理和消息订阅分发框架. 它将插件共有的特性抽象成一个标准基类,使用XProto的插件必须继承于该基类.<br />基于XProto的Plugin是通过消息驱动的, 所有的Plugin都挂载到XProto的内部消息总线中,当一个插件产生消息并把消息Push到总线之后,其他订阅该消息的插件回调函数就会被调用.每一个Plugin都可以向总线订阅和发布消息.<br />XProto与Plugin之间的关系如下图:<br /><img alt="XProto与Plugin之间的关系" src="xsdk/common/xproto/framework/document/img/XProto%E4%B8%8EPlugin%E7%9A%84%E5%85%B3%E7%B3%BB.png" /></p>
+<p><strong>接口详细用法参考<code class="docutils literal notranslate"><span class="pre">sample_plugin.cpp</span></code></strong></p>
+<div class="section" id="id1">
+<h2>声明消息类型<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>每一类消息都有一个字符串形式的消息类型和结构体来表示.</p>
+<div class="section" id="id2">
+<h3>定义<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>#include “xproto/message/pluginflow/msg_registry.h”</p>
+<p><strong>XPLUGIN_REGISTER_MSG_TYPE(<em>MSG_TYPE</em>)</strong></p>
+</div>
+<div class="section" id="id3">
+<h3>参数<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>MSGTYPE: 消息类型</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>说明<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>该接口为一个宏, 参数<em>MSG_TYPE</em>用来表示声明的消息类型, 需要直接使用标识符的格式书写, 宏内部会将其转成字符串.<br /><strong>注意</strong>: 需要在消费者Plugin调用订阅消息接口之前调用该接口声明消息类型,一般将该宏放在全局变量声明的位置.</p>
+</div>
+</div>
+<div class="section" id="plugin">
+<h2>初始化Plugin<a class="headerlink" href="#plugin" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id5">
+<h3>定义<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>#include “xproto/plugin/xpluginasync.h”</p>
+<p><strong>int XPluginAsync::Init() override;</strong></p>
+</div>
+<div class="section" id="id6">
+<h3>参数<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+<div class="section" id="id7">
+<h3>返回值<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>0: 成功</p></li>
+<li><p>非0: 失败</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>说明<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>该接口需要继承<code class="docutils literal notranslate"><span class="pre">XPluginAsync</span></code>类的自定义Plugin实现该接口定义. 该接口用来初始化Plugin.<br />自定义Plugin一般在该接口内调用<em>订阅消息</em>接口, 然后继续调用<em>XPluginAsync::Init</em>接口以初始化父类.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id9">
+<h2>启动Plugin<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id10">
+<h3>定义<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p>#include “xproto/plugin/xpluginasync.h”</p>
+<p><strong>int XPluginAsync::Start();</strong></p>
+</div>
+<div class="section" id="id11">
+<h3>参数<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+<div class="section" id="id12">
+<h3>返回值<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>0: 成功</p></li>
+<li><p>非0: 失败</p></li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>说明<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>该接口需要继承<code class="docutils literal notranslate"><span class="pre">XPluginAsync</span></code>类的自定义Plugin实现该接口定义. 该接口用来启动Plugin.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id14">
+<h2>停止Plugin<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id15">
+<h3>定义<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>#include “xproto/plugin/xpluginasync.h”</p>
+<p><strong>int XPluginAsync::Stop();</strong></p>
+</div>
+<div class="section" id="id16">
+<h3>参数<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+<div class="section" id="id17">
+<h3>返回值<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>0: 成功</p></li>
+<li><p>非0: 失败</p></li>
+</ul>
+</div>
+<div class="section" id="id18">
+<h3>说明<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<p>该接口需要继承<code class="docutils literal notranslate"><span class="pre">XPluginAsync</span></code>类的自定义Plugin实现该接口定义. 该接口用来停止Plugin.</p>
+<hr class="docutils" />
+<p><strong>int XPluginAsync::DeInit() override;</strong></p>
+</div>
+<div class="section" id="id19">
+<h3>参数<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+<div class="section" id="id20">
+<h3>返回值<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>0: 成功</p></li>
+<li><p>非0: 失败</p></li>
+</ul>
+</div>
+<div class="section" id="id21">
+<h3>说明<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<p>该接口需要继承<code class="docutils literal notranslate"><span class="pre">XPluginAsync</span></code>类的自定义Plugin实现该接口定义. 该接口用来反初始化Plugin.<br />继承自<em>XPluginAsync</em>子plugin类，在完成自己的反初始化任务后，最后需要调用<em>XPluginAsync::DeInit</em>接口以反初始化父类.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id22">
+<h2>发布消息<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id23">
+<h3>定义<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<p>#include “xproto/plugin/xpluginasync.h”<br />using XProtoMessagePtr = std::shared_ptr&lt;XProtoMessage&gt;;</p>
+<p><strong>void XPluginAsync::PushMsg(XProtoMessagePtr <em>msg</em>);</strong></p>
+</div>
+<div class="section" id="id24">
+<h3>参数<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>XProtoMessagePtr <em>msg</em>: 发布到总线的消息.</p></li>
+</ul>
+</div>
+<div class="section" id="id25">
+<h3>返回值<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+<div class="section" id="id26">
+<h3>说明<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
+<p>该接口用来将消息发布到XProto内部总线上. 接收一个类型为<code class="docutils literal notranslate"><span class="pre">XProtoMessage</span></code>的结构体指针, XProto的所有消息都继承于该类型.</p>
+</div>
+</div>
+<div class="section" id="id27">
+<h2>订阅消息<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id28">
+<h3>定义<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
+<p>#include “xproto/plugin/xpluginasync.h”<br />using XProtoMessagePtr = std::shared_ptr&lt;XProtoMessage&gt;;
+using XProtoMessageFunc = std::function&lt;int(XProtoMessagePtr)&gt;;</p>
+<p><strong>void XPluginAsync::RegisterMsg(const std::string&amp; <em>type</em>, XProtoMessageFunc <em>callback</em>);</strong></p>
+</div>
+<div class="section" id="id29">
+<h3>参数<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>const std::string&amp; <em>type</em>: 消息类型字符串.</p></li>
+<li><p>XProtoMessageFunc <em>callback</em>: 该类型消息的回调函数.</p></li>
+</ul>
+</div>
+<div class="section" id="id30">
+<h3>返回值<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+<div class="section" id="id31">
+<h3>说明<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
+<p>订阅指定类型的消息. 监听总线, 当指定的消息类型发布时, 调用回调函数.<br />自定义的Plugin需要在Init函数中，调用XPluginAsync::Init之前调用该接口完成监听消息注册。</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id32">
+<h2>插件描述信息<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id33">
+<h3>定义<a class="headerlink" href="#id33" title="永久链接至标题">¶</a></h3>
+<p>#include “xproto/plugin/xpluginasync.h”</p>
+<p><strong>std::string XPluginAsync::desc() const;</strong></p>
+</div>
+<div class="section" id="id34">
+<h3>参数<a class="headerlink" href="#id34" title="永久链接至标题">¶</a></h3>
+<p>无</p>
+</div>
+<div class="section" id="id35">
+<h3>返回值<a class="headerlink" href="#id35" title="永久链接至标题">¶</a></h3>
+<p>描述当前自定义Plugin的字符串.</p>
+</div>
+<div class="section" id="id36">
+<h3>说明<a class="headerlink" href="#id36" title="永久链接至标题">¶</a></h3>
+<p>该接口需要继承<code class="docutils literal notranslate"><span class="pre">XPluginAsync</span></code>类的自定义Plugin实现该接口定义.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

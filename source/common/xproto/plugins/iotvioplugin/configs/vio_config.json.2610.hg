@@ -1,0 +1,19 @@
+{
+  "cam_type": "mono",
+  "data_source": "cached_image_list",
+  "max_vio_buffer": 3,
+  "ts_type": "input_coded",
+  "file_path": "name.list",
+  "image_list": ["face_body_multisource/configs/images/image-001.jpeg", "face_body_multisource/configs/images/image-002.jpeg"],
+  "interval": 20,
+  "pad_width": 1920,
+  "pad_height": 1080,
+  "vio_cfg_file": {
+    "ipc_camera": "configs/vio/hb_vio.json",
+    "panel_camera": "configs/vio/panel_camera.json.2610",
+    "jpeg_image_list": "/etc/vio/vio_onsemi0230_fb.json",
+    "nv12_image_list": "/etc/vio/vio_onsemi0230_fb.json",
+    "image": "/etc/vio/vio_onsemi0230_fb.json",
+    "cached_image_list": "configs/vio/vio_onsemi0230_fb.json"
+  }
+}

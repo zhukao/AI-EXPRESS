@@ -1,0 +1,9 @@
+{
+    "model_name": "faceAgeGender",
+    "model_version": "v0.0.1",
+    "model_file_path": "../models/faceAgeGender.hbm",
+    "bpu_config_path": "../configs/bpu_config.json",
+    "max_handle_num": -1,
+    "output_size": 2
+  }
+  

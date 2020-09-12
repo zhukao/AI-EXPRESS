@@ -1,0 +1,27 @@
+{
+  "input_platform": "tensorflow",
+  "score_threshold": 0.0,
+  "nms_threshold": 0.3,
+  "net_info": {
+    "model_name": "ssd",
+    "model_version": "x2-rc-0.2",
+    "model_input_width": 960,
+    "model_input_height": 540,
+    "pyramid_layer": 4,
+    "model_out_type":[6, 14]
+  },
+  "model_params": {
+    "mean": [0, 0, 0, 0],
+    "std": [0.1, 0.1, 0.2, 0.2],
+    "offset": [0.5, 0.5],
+    "step": [16, 32, 64, 128, 256, 512],
+    "anchor_size": [[51.2, 72.4077344], [102.4, 139.2643529], [189.4, 228.8015734], [276.4, 316.9809584], [363.52, 404.7247361], [450.6, 470.8451975]],
+    "anchor_ratio": [[1, 2, 0.5, 0, 0], [1, 2, 0.5, 3, 0.3333333], [1, 2, 0.5, 3, 0.3333333], [1, 2, 0.5, 3, 0.3333333], [1, 2, 0.5, 0, 0], [1, 2, 0.5, 0, 0]],
+    "class_num": 21
+  },
+  "method_outs": [
+    "detect_box"
+  ],
+  "bpu_config_path": "bpu_config.json",
+  "model_file_path": "models/ssd.hbm"
+}

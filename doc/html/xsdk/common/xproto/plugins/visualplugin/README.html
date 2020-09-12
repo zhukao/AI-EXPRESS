@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>vio plugin &mdash; AI Express用户手册 2.4.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> AI Express用户手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/overview.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/quick_start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/solution.html">场景参考解决方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_guide.html">XStream用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_tutorials.html">XStream开发指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_more.html">XStream高级特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xstream_ai.html">XStream模型与策略开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/xproto.html">XProto用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/tools.html">工具集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/version.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../BuildAll/doc/copyright.html">版权声明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AI Express用户手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>vio plugin</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/xsdk/common/xproto/plugins/visualplugin/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vio-plugin">
+<h1>vio plugin<a class="headerlink" href="#vio-plugin" title="永久链接至标题">¶</a></h1>
+<div class="section" id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>VisualPlugin</p>
+</div></blockquote>
+</div>
+<div class="section" id="detail">
+<h2>Detail<a class="headerlink" href="#detail" title="永久链接至标题">¶</a></h2>
+<p>VisualPlugin监听VioPlugin、SmartPlugin，获取视频帧、智能帧，进行编码（h264/jpeg）、Proto封装之后，推到live555服务。供客户端可以拉取数据进行播放或者存储。
+RTSP形式：”rtsp://10.31.43.96:556/horizonMeta?MediaType=2”</p>
+</div>
+<div class="section" id="build">
+<h2>Build<a class="headerlink" href="#build" title="永久链接至标题">¶</a></h2>
+<div class="section" id="dependency">
+<h3>Dependency<a class="headerlink" href="#dependency" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>build.properties</p></li>
+<li><p>build.properties.local</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>编译环境设置<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>build.gradle</p></li>
+<li><p>hobot_util.cmake</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>编译选项设置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>CMakeLists.txt</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h3>使用说明<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p><strong>默认配置文件：</strong> visualplugin.json</p>
+<p><strong>配置文件说明：</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;auth_mode&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>       <span class="c1">#鉴权模式，0不鉴权，1用户密码鉴权</span>
+  <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>      <span class="c1">#auth_mode为1时起效</span>
+  <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;smart_type&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>      <span class="c1">#智能数据类型，会影响客户端的解码 0-face, 1-body, 2-vehicle</span>
+  <span class="s2">&quot;video_type&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>      <span class="c1">#视频帧类型 0-yuv, 1-h264, 2-jpg，目前只支持jpg</span>
+  <span class="s2">&quot;image_width&quot;</span><span class="p">:</span> <span class="mi">1920</span><span class="p">,</span>  <span class="c1">#视频帧最大宽高</span>
+  <span class="s2">&quot;image_height&quot;</span><span class="p">:</span> <span class="mi">1080</span><span class="p">,</span>
+  <span class="s2">&quot;layer&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>           <span class="c1">#使用的图层</span>
+  <span class="s2">&quot;data_buf_size&quot;</span><span class="p">:</span> <span class="mi">3110400</span><span class="p">,</span> <span class="c1">#live555缓存区大小</span>
+  <span class="s2">&quot;packet_size&quot;</span><span class="p">:</span> <span class="mi">102400</span><span class="p">,</span>    <span class="c1">#live555分包大小</span>
+  <span class="s2">&quot;jpeg_quality&quot;</span><span class="p">:</span> <span class="mi">50</span>        <span class="c1">#JPG压缩质量</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>接口调用顺序：</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">visualplugin</span> <span class="o">=</span> <span class="n">std</span><span class="p">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">visualplugin</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">&quot;visualplugin.json&quot;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">visualplugin</span> <span class="o">==</span> <span class="n">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;visualplugin instance create failed&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">ret</span> <span class="o">=</span> <span class="n">visualplugin</span><span class="o">-&gt;</span><span class="n">Init</span><span class="p">();</span>
+  <span class="n">ret</span> <span class="o">=</span> <span class="n">visualplugin</span><span class="o">-&gt;</span><span class="n">Start</span><span class="p">();</span>
+  <span class="n">ret</span> <span class="o">=</span> <span class="n">visualplugin</span><span class="o">-&gt;</span><span class="n">Stop</span><span class="p">();</span>
+  <span class="n">ret</span> <span class="o">=</span> <span class="n">visualplugin</span><span class="o">-&gt;</span><span class="n">Deinit</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>如果创建对象时没有传入配置文件，就会报错，必须传入配置文件</strong></p>
+</div>
+<div class="section" id="id4">
+<h3>模块消息<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p><strong>模块消息定义：</strong>
+本模块增加消息类型。</p>
+</div>
+<div class="section" id="id5">
+<h3>性能开销<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3>维护人员<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Horizon Robotics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+{
+  "merge_type": "rgb_nir",
+  "match_threshold": 0.4
+}

@@ -1,0 +1,12 @@
+# SetPipeLineParamReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **str** | dag run id in: body | 
+**name** | **str** | dag name in: body | [optional] 
+**run_config** | [**CustomConfig**](CustomConfig.md) |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

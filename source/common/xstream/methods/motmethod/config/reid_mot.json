@@ -1,0 +1,35 @@
+{
+  "inputs": [
+    "img_frame",
+    "face_head_box_list",
+    "body_box_list",
+    "reid_feature_list",
+    "skeleton_list"
+  ],
+  "outputs": [
+    "track_id_list",
+    "bbox_list",
+    "disappeared_track_id_list",
+    "tracklet_list"
+  ],
+  "workflow": [
+    {
+      "method_name": "ReID_MOT_example",
+      "method_type": "MOTMethod",
+      "inputs": [
+        "img_frame",
+        "face_head_box_list",
+        "body_box_list",
+        "reid_feature_list",
+        "skeleton_list"
+      ],
+      "outputs": [
+        "track_id_list",
+        "bbox_list",
+        "disappeared_track_id_list",
+        "tracklet_list"
+      ],
+      "method_config_file": "reid_method_param.json"
+    }
+  ]
+}

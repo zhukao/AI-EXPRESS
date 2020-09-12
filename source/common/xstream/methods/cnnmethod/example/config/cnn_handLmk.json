@@ -1,0 +1,23 @@
+{
+    "inputs": [
+      "hand_box",
+      "pyramid"
+    ],
+    "outputs": [
+      "hand_lmk"
+    ],
+    "workflow": [
+      {
+        "unique_name": "handLmk",
+        "method_type": "CNNMethod",
+        "inputs": [
+          "hand_box",
+          "pyramid"
+        ],
+        "outputs": [
+          "hand_lmk"
+        ],
+        "method_config_file": "method_conf/hand_lmk.json"
+      }
+    ]
+  }

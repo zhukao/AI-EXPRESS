@@ -1,0 +1,13 @@
+# APIResult
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**code** | **int** | the error dode in: body | [optional] 
+**data** | **object** | the response body, this field value changed from different api in: body | [optional] 
+**err_msg** | **str** | the error message in: body | [optional] 
+**err_user_msg** | **str** | the error message in: body | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

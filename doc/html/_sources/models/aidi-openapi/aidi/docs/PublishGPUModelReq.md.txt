@@ -1,0 +1,13 @@
+# PublishGPUModelReq
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **str** | gpu model&#39;s name in: body | 
+**platform** | **list[str]** | gpu model&#39;s platform, currently support X2 J2 GPU Hisilicon NVIDIA Matrix FPGA X1 CPU Others in: body | 
+**published_model_dir_names** | **list[str]** | published model list&#39;s name in: body | [optional] 
+**version** | **str** | gpu model&#39;s version in: body | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
