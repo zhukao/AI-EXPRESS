@@ -7,7 +7,7 @@ AI Express，中文名称AI应用开发中间件，是地平线芯片“天工�
 # 快速上手
 
 **硬件环境**
-* 1台安装64位Linux操作系统的开发机(或者虚拟机)。操作题系统Debian(推荐)/Ubuntu、CentOS，主要用于编译AIExpress代码和日常开发。
+* 1台安装64位Linux操作系统的开发机(或者虚拟机)。操作系统Debian(推荐)/Ubuntu、CentOS，主要用于编译AIExpress代码和日常开发。
 * 1台安装Windows操作系统的开发机，用于烧录系统镜像，串口调试。
 * 1个1080p的USB摄像头
 * x3svb开发板套件
